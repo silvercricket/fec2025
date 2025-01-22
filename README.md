@@ -14,6 +14,10 @@ RFP FEC 2025
         
        CSS: Sass, Styled Components
 
+       Testing: Jest | React Testing Library
+
+       Deployment/Containers and Swarms: AWS | Docker 
+
 3. install all dependencies
 
 4. setup package.json
