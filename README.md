@@ -4,12 +4,21 @@ RFP FEC 2025
 0.write the README
 
 1. define all dependencies
+       Node: NPM,
 
-2. install all dependencies
+       formatting: airbnb linter,
 
-3. setup package.json
+       rendering:Babel, Webpack ,webpack-dev
+        
+       middleware: ReactJS, ExpressJS, Axios, Redux,
+        
+       CSS: Sass, Styled Components
+
+3. install all dependencies
+
+4. setup package.json
     run server, and run client
 
-4. setup express.static and render the the client
+5. setup express.static and render the the client
 
-5. 
+6. 
