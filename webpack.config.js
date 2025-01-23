@@ -42,7 +42,7 @@ module.exports = {
   plugins: [
     // new ReactRefreshPlugin(), // See note below...
     new HtmlWebpackPlugin({
-      title: "FEC2025"
+      title: "eastbluelegends"
     }),
     // This will allow you to refer to process.env variables
     // within client-side files at build-time:
