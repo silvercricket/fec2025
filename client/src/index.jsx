@@ -1,11 +1,9 @@
 import React from 'react';
-import './assets/base.css';
-import './assets/styles.css';
-import { render } from 'react-dom';
+// import './assets/base.css';
+// import './assets/styles.css';
 import App from './components/App.jsx';
+import { createRoot } from 'react-dom/client';
 
-const root = document.createElement('div');
-root.setAttribute('id', 'root');
-document.body.appendChild(root);
-
-render(<App />, root);
+const root = createRoot(document.getElementById('root'));
+console.log(document.getElementById('root'));
+root.render(<App/>);
