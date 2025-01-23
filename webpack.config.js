@@ -42,6 +42,7 @@ module.exports = {
   plugins: [
     // new ReactRefreshPlugin(), // See note below...
     new HtmlWebpackPlugin({
+      template: 'client/index.html',
       title: "eastbluelegends"
     }),
     // This will allow you to refer to process.env variables
