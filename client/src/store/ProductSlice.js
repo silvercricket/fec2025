@@ -9,4 +9,4 @@ const ProductSlice = createSlice({
 })
 
 export default ProductSlice;
-export const ProductActions = ProductActions.actions;
+export const ProductActions = ProductSlice.actions;
