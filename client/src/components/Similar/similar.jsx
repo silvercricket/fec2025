@@ -29,7 +29,7 @@ const Similar = ({product, setProduct}) => {
       </div>
       <ul>
         {products.map((product) => (
-          <li key={product.product_id}>{product.name}</li>
+          <li key={product.id}>{product.name}</li>
         ))}
       </ul>
     </>
