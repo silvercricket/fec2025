@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import Slider from 'react-slick';
 
 
 
@@ -38,3 +39,8 @@ const Similar = ({product, setProduct}) => {
 
 
 export default Similar;
+
+// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/?page=1
+// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344
+// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/related
+// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/styles
