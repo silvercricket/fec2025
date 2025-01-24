@@ -6,6 +6,11 @@ import QA from './Q&A/QA.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 import Similar from './Similar/similar.jsx';
 
+<<<<<<< HEAD
+=======
+//send get request for specific productID
+//axios.get(path.join(API_URL, 'products', productID),{headers: {Authorization:process.env.AUTH_SECRET }})
+>>>>>>> 192b64a0950b687fa42ea01fb4e48b7ca050603c
 const App = () => {
   const [product, setProduct] = useState({});
 
@@ -17,6 +22,10 @@ const App = () => {
       console.log(result.data);
       setProduct(result.data[0])
     })
+<<<<<<< HEAD
+=======
+
+>>>>>>> 192b64a0950b687fa42ea01fb4e48b7ca050603c
   },[])
 
 
