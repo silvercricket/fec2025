@@ -1,6 +1,6 @@
 import React from 'react';
 import ReviewsSidebar from './ReviewsSidebar.jsx';
-const Reviews = () => (
+const Reviews = ( {Product} ) => (
   <div>
     <ReviewsSidebar />
   </div>
