@@ -1,32 +1,30 @@
-import React, {useState, useEffect}  from 'react';
-import {useSelector} from 'react-redux';
+import React, {useEffect}  from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import Overview from './Overview/overview.jsx';
 import QA from './Q&A/QA.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 import Similar from './Similar/similar.jsx';
+import {ProductActions} from '../store/ProductSlice.js';
 
 const App = () => {
   const Product = useSelector(store => store.Product);
-
   useEffect(() => {
-
-    axios.get(process.env.API_URL + 'product',{headers: {Authorization:process.env.AUTH_SECRET, } })
-    .then((result)=>{
-      setProduct(result.data[0])
-    })
+    axios.get(process.env.API_URL + '/products',{headers: {Authorization:process.env.AUTH_SECRET} })
+      .then((result)=>{
+        useDispatch(ProductActions.setProduct(result.data[0]));
+      })
   },[])
 
 
   return(
-  <div>
-    Hello World
-    <Overview Product={Product} />
-    <Similar Product={Product}/>
-    <Reviews Product={Product} setProduct={setProduct}/>
-    <QA Product={Product}/>
-
-  </div>
+  <>
+    {console.log(Product.product)}
+    <Overview/>
+    <Similar/>
+    <QA/>
+    <Reviews/>
+  </>
 );
 }
 
