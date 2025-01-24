@@ -4,6 +4,7 @@ import axios from 'axios';
 import Slider from 'react-slick';
 import '../../../assets/styles.css';
 import {RelatedActions} from '../../store/RelatedSlice.js';
+import {ProductActions} from '../../store/ProductSlice.js';
 
 
 const Similar = () => {
@@ -26,6 +27,14 @@ const Similar = () => {
     React.useEffect(() => {
       getProducts()
     }, []);
+
+    const handleCardClick = (product) => {
+      dispatch(ProductActions.setProduct(product));
+    };
+
+    const handleStarClick = (currentProduct, compareProduct) => {
+      console.log(currentProduct, compareProduct);
+    }
 
     var settings = {
       arrows: true,
@@ -53,7 +62,14 @@ const Similar = () => {
         <button className="prev">Last</button>
         <Slider {...settings}>
             {Related.related.map((product) => (
-              <div key={product.id} className="similarCard">
+              <div
+                key={product.id}
+                className="similarCard"
+                onClick={() => handleCardClick(product)}>
+                  <button
+                    className="star-button"
+                    onClick={handleStarClick(product, product)}>
+                  </button>
                 <h3>{product.name}</h3>
               </div>
             ))}
