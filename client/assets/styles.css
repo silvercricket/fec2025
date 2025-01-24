@@ -21,3 +21,32 @@
   --width-card-wide: 800px;
   --width-content: 1080px;
 }
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.slick-slider {
+  flex: 1;
+  margin: 20px;
+  overflow: hidden;
+}
+
+.slick-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  box-sizing: border-box;
+}
