@@ -22,10 +22,10 @@ module.exports = {
           loader: "babel-loader",
         },
       },
-      // {
-      //   test: /\.css$/i,
-      //   use: ["style-loader", "css-loader"],
-      // },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
       // {
       //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
       //   type: "asset/resource",
@@ -39,9 +39,12 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       "process.env": {
-        AUTH_SECRET: JSON.stringify(process.env.AUTH_SECRET),
+        API_URL: JSON.stringify(process.env.API_URL),
+        AUTH_SECRET: JSON.stringify(process.env.AUTH_SECRET)
       },
     }),
+
   ],
+
 };
 
