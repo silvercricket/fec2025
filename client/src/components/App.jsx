@@ -1,8 +1,8 @@
 import React from 'react';
-
+import Reviews from './Reviews/Reviews.jsx';
 const App = () => (
   <div>
-    Hello World
+    <Reviews />
   </div>
 )
 
