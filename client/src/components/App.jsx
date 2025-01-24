@@ -5,14 +5,7 @@ import Overview from './Overview/overview.jsx';
 import QA from './Q&A/QA.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 import Similar from './Similar/similar.jsx';
-// import 'dotenv/config';
 
-const API_URL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/';
-
-//when doign a axios request put : before the id of the product in question
-
-//access specific produ
-//axios.get(path.join(API_URL, 'products', productID),{headers: {Authorization:process.env.AUTH_SECRET }})
 const App = () => {
   const [product, setProduct] = useState({});
 
@@ -24,8 +17,6 @@ const App = () => {
       console.log(result.data);
       setProduct(result.data[0])
     })
-    //get request
-    //then setProduct(result.data);
   },[])
 
 
