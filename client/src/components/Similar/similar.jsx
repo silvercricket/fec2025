@@ -1,22 +1,25 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import Slider from 'react-slick';
 import '../../../assets/styles.css';
+import {RelatedActions} from '../../store/RelatedSlice.js';
 
 
+const Similar = () => {
 
-const Similar = ({product, setProduct}) => {
-
-  const [similar, setSimilar] = useState([]);
-  const [products, setProducts] = useState([]);
+  // const [similar, setSimilar] = useState([]);
+  // const [products, setProducts] = useState([]);
+  const Related = useSelector(store => store.Related);
+  const dispatch = useDispatch();
 
   const getProducts = () => {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/?page=1', {headers: {Authorization: process.env.AUTH_SECRET}})
+    axios.get(process.env.API_URL + '/products/?page=1', {headers: {Authorization: process.env.AUTH_SECRET}})
     .then((response) => {
-      setProducts(response.data);
+      dispatch(RelatedActions.setRelated(response.data));
     })
     .catch((err) => {
-      console.error('Similar failed', err);
+      console.error('Related GET failed', err);
     })
   }
 
@@ -49,7 +52,7 @@ const Similar = ({product, setProduct}) => {
       <div className="slider-container">
         <button className="prev">Last</button>
         <Slider {...settings}>
-            {products.map((product) => (
+            {Related.related.map((product) => (
               <div key={product.id} className="similarCard">
                 <h3>{product.name}</h3>
               </div>
