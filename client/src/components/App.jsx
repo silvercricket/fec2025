@@ -25,7 +25,6 @@ const App = () => {
     <Similar Product={Product}/>
     <Reviews Product={Product} setProduct={setProduct}/>
     <QA Product={Product}/>
-
   </div>
 );
 }
