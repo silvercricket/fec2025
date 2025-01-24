@@ -17,8 +17,10 @@
     "path": "^0.12.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-slick": "^0.30.3",
     "redux": "^5.0.1",
     "sass": "^1.83.4",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^6.1.14"
   },
   "devDependencies": {
@@ -42,7 +44,7 @@
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.0"
   },
-  "browser":{
+  "browser": {
     "os": false,
     "crypto": false
   }
