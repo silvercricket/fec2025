@@ -8,15 +8,14 @@ import Similar from './Similar/similar.jsx';
 
 //send get request for specific productID
 //axios.get(path.join(API_URL, 'products', productID),{headers: {Authorization:process.env.AUTH_SECRET }})
-const App = () => {
+const App = ({props}) => {
   const [product, setProduct] = useState({});
 
   useEffect(() => {
 
     axios.get(process.env.API_URL + 'products',{headers: {Authorization:process.env.AUTH_SECRET, } })
     .then((result)=>{
-      console.log(result);
-      console.log(result.data);
+
       setProduct(result.data[0])
     })
 
@@ -25,7 +24,6 @@ const App = () => {
 
   return(
   <div>
-    Hello World
     <Overview product={product} />
     <Similar product={product}/>
     <Reviews product={product} setProduct={setProduct}/>
