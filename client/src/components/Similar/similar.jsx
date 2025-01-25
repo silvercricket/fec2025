@@ -11,11 +11,13 @@ const Similar = () => {
 
   // const [similar, setSimilar] = useState([]);
   // const [products, setProducts] = useState([]);
+  const Product = useSelector(store => store.Product);
   const Related = useSelector(store => store.Related);
   const dispatch = useDispatch();
+  const firstUpdate = true;
 
   const getProducts = () => {
-    axios.get(process.env.API_URL + '/products/?page=1', {headers: {Authorization: process.env.AUTH_SECRET}})
+    axios.get(process.env.API_URL + `/products/?product_id=${Product.product.id}`, {headers: {Authorization: process.env.AUTH_SECRET}})
     .then((response) => {
       dispatch(RelatedActions.setRelated(response.data));
     })
@@ -29,11 +31,12 @@ const Similar = () => {
     }, []);
 
     const handleCardClick = (product) => {
+      console.log(Product.product.id)
       dispatch(ProductActions.setProduct(product));
     };
 
     const handleStarClick = (currentProduct, compareProduct) => {
-      console.log(currentProduct, compareProduct);
+      console.log('star click', currentProduct, compareProduct);
     }
 
     var settings = {
@@ -68,7 +71,9 @@ const Similar = () => {
                 onClick={() => handleCardClick(product)}>
                   <button
                     className="star-button"
-                    onClick={handleStarClick(product, product)}>
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleStarClick(Product.product, product)}}>
                   </button>
                 <h3>{product.name}</h3>
               </div>
