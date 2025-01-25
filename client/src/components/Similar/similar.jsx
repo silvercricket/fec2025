@@ -1,98 +1,59 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
-<<<<<<< HEAD
-// import Slider from 'react-slick';
-// import '../../../assets/styles.css';
-=======
 import Slider from 'react-slick';
 import '../../../assets/styles.css';
 import {RelatedActions} from '../../store/RelatedSlice.js';
->>>>>>> af63db0139115101e52b3e5f9b424e8a5863194c
+import {ProductActions} from '../../store/ProductSlice.js';
 
 
 const Similar = () => {
-
-<<<<<<< HEAD
-const Similar = ({product, setProduct}) => {
-
-  // const [similar, setSimilar] = useState([]);
-  // const [products, setProducts] = useState([]);
-
-  // const getProducts = () => {
-  //   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/?page=1', {headers: {Authorization: process.env.AUTH_SECRET}})
-  //   .then((response) => {
-  //     setProducts(response.data);
-  //   })
-  //   .catch((err) => {
-  //     console.error('Similar failed', err);
-  //   })
-  // }
-=======
+  const Product = useSelector(store => store.Product);
   const Related = useSelector(store => store.Related);
   const dispatch = useDispatch();
 
   const getProducts = () => {
-    axios.get(process.env.API_URL + '/products/?page=1', {headers: {Authorization: process.env.AUTH_SECRET}})
+    axios.get(process.env.API_URL + `/products/?product_id=${Product.product.id}`, {headers: {Authorization: process.env.AUTH_SECRET}})
     .then((response) => {
       dispatch(RelatedActions.setRelated(response.data));
     })
     .catch((err) => {
       console.error('Related GET failed', err);
     })
-  }
->>>>>>> af63db0139115101e52b3e5f9b424e8a5863194c
+   }
 
-  //   React.useEffect(() => {
-  //     getProducts()
-  //   }, []);
+    React.useEffect(() => {
+      getProducts()
+    }, []);
 
-  //   var settings = {
-  //     arrows: true,
-  //     infinite: true,
-  //     autoplay: true,
-  //     autoplaySpeed: 3000,
-  //     pauseOnHover: true,
-  //     speed: 500,
-  //     slidesToShow: 3,
-  //     slidesToScroll: 1
-  //   };
-  //   var settings2 = {
-  //     speed: 500,
-  //     infinite: false,
-  //     slidesToShow: 1,
-  //     slidesToScroll: 1
-  //   };
 
-<<<<<<< HEAD
-  // return (
-  //   <>
-  //     <div>
-  //       Similar products go here!
-  //     </div>
-  //     <div className="slider-container">
-  //       <button className="prev">Last</button>
-  //       <Slider {...settings}>
-  //           {products.map((product) => (
-  //             <div key={product.id} className="similarCard">
-  //               <h3>{product.name}</h3>
-  //             </div>
-  //           ))}
-  //       </Slider>
-  //       <button className="next">Next</button>
-  //     </div>
-  //     <div className="slider-container">
-  //       <button className="prev">Last</button>
-  //       <Slider {...settings2}>
-  //         <div className="outfitCard">
-  //           <button>Add to Outfit</button>
-  //         </div>
-  //       </Slider>
-  //       <button className="next">Next</button>
-  //     </div>
-  //   </>
-  // );
-=======
+    const handleCardClick = (product) => {
+      console.log(Product.product.id)
+      dispatch(ProductActions.setProduct(product));
+    };
+
+    const handleStarClick = (currentProduct, compareProduct) => {
+      console.log('star click', currentProduct, compareProduct);
+    }
+
+    var settings = {
+      arrows: true,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      pauseOnHover: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 1
+    };
+    var settings2 = {
+      speed: 500,
+      infinite: false,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
+
+
   return (
     <>
       <div>
@@ -102,7 +63,16 @@ const Similar = ({product, setProduct}) => {
         <button className="prev">Last</button>
         <Slider {...settings}>
             {Related.related.map((product) => (
-              <div key={product.id} className="similarCard">
+              <div
+                key={product.id}
+                className="similarCard"
+                onClick={() => handleCardClick(product)}>
+                  <button
+                    className="star-button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleStarClick(Product.product, product)}}>
+                  </button>
                 <h3>{product.name}</h3>
               </div>
             ))}
@@ -120,7 +90,6 @@ const Similar = ({product, setProduct}) => {
       </div>
     </>
   );
->>>>>>> af63db0139115101e52b3e5f9b424e8a5863194c
 };
 
 
