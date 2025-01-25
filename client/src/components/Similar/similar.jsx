@@ -20,11 +20,12 @@ const Similar = () => {
     .catch((err) => {
       console.error('Related GET failed', err);
     })
-  }
+   }
 
     React.useEffect(() => {
       getProducts()
     }, []);
+
 
     const handleCardClick = (product) => {
       console.log(Product.product.id)
@@ -51,6 +52,7 @@ const Similar = () => {
       slidesToShow: 1,
       slidesToScroll: 1
     };
+
 
   return (
     <>

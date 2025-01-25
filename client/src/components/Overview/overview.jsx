@@ -2,7 +2,12 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {ProductActions} from '../../store/ProductSlice.js';
 
-// import {OverviewActions} from '../../store/OverviewSlice.js';
+
+import {OverviewActions} from '../../store/OverviewSlice.js';
+import MainDisplay from './overviewComponents/MainDisplay.jsx'
+import Share from './overviewComponents/Share.jsx'
+import Gallery from './overviewComponents/Gallery.jsx';
+import Checkout from './overviewComponents/Checkout.jsx'
 
 const Overview = () => {
   // const dispatch = useDispatch();
@@ -14,7 +19,10 @@ const Overview = () => {
   return(
   <div>
     Overview goes here!
-
+    <MainDisplay />
+    <Gallery />
+    <Checkout/>
+    <Share />
   </div>
 );
 }
