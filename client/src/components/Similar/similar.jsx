@@ -5,7 +5,7 @@ import '../../../assets/styles.css';
 
 
 
-const Similar = ({product, setProduct}) => {
+const Similar = () => {
 
   const [similar, setSimilar] = useState([]);
   const [products, setProducts] = useState([]);
