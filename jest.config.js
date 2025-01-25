@@ -4,9 +4,15 @@
  */
 
 /** @type {import('jest').Config} */
+
 const config = {
+  verbose : true,
+  testEnvironment : 'jsdom-worker',
+  setupFiles : ['./client/src/tests/App.test.jsx'],
+
   // All imported modules in your tests should be mocked automatically
   // automock: false,
+
 
   // Stop running tests after `n` failures
   // bail: 0,
@@ -194,5 +200,6 @@ const config = {
   // Whether to use watchman for file crawling
   // watchman: true,
 };
+
 
 module.exports = config;

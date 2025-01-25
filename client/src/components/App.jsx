@@ -1,3 +1,4 @@
+
 import React, {useEffect}  from 'react';
 import {useDispatch} from 'react-redux';
 import axios from 'axios';
@@ -8,6 +9,7 @@ import Similar from './Similar/similar.jsx';
 import {ProductActions} from '../store/ProductSlice.js';
 
 const App = () => {
+  const Product = useSelector(store => store.Product);
   const dispatch = useDispatch();
   useEffect(() => {
     axios.get(process.env.API_URL + '/products',{headers: {Authorization:process.env.AUTH_SECRET} })
@@ -15,13 +17,14 @@ const App = () => {
         dispatch(ProductActions.setProduct(result.data[0]));
       })
   },[])
+  
   return(
-  <>
+  <div>
     <Overview/>
-    <Similar/>
-    <QA/>
-    <Reviews/>
-  </>
+    <Similar Product={Product}/>
+    <Reviews Product={Product}/>
+    <QA Product={Product}/>
+  </div>
 );
 }
 
