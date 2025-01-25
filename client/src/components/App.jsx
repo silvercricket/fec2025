@@ -17,10 +17,10 @@ const App = () => {
   },[])
   return(
   <>
-    <Overview id="overview"/>
-    <Similar id="similar"/>
-    <QA id="QA"/>
-    <Reviews id="Reviews"/>
+    <Overview/>
+    <Similar/>
+    <QA/>
+    <Reviews/>
   </>
 );
 }
