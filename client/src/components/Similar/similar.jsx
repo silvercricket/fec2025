@@ -8,9 +8,6 @@ import {ProductActions} from '../../store/ProductSlice.js';
 
 
 const Similar = () => {
-
-  // const [similar, setSimilar] = useState([]);
-  // const [products, setProducts] = useState([]);
   const Product = useSelector(store => store.Product);
   const Related = useSelector(store => store.Related);
   const dispatch = useDispatch();
