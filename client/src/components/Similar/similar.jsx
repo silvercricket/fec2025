@@ -14,7 +14,6 @@ const Similar = () => {
   const Product = useSelector(store => store.Product);
   const Related = useSelector(store => store.Related);
   const dispatch = useDispatch();
-  const firstUpdate = true;
 
   const getProducts = () => {
     axios.get(process.env.API_URL + `/products/?product_id=${Product.product.id}`, {headers: {Authorization: process.env.AUTH_SECRET}})
