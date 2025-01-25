@@ -10,12 +10,12 @@ import Gallery from './overviewComponents/Gallery.jsx';
 import Checkout from './overviewComponents/Checkout.jsx'
 
 const Overview = () => {
-  // const dispatch = useDispatch();
-  // const Product = useSelector(store => store.Product);
-  // const Overview = useSelector(store => store.Overview);
-  // dispatch(OverviewActions.setOverview('AHHHHHHHHHHHHH'));
-  // console.log(Product.product);
-  // console.log(Overview);
+  const dispatch = useDispatch();
+  const Product = useSelector(store => store.Product);
+  const Overview = useSelector(store => store.Overview);
+  dispatch(OverviewActions.setOverview('AHHHHHHHHHHHHH'));
+  console.log(Product.product);
+  console.log(Overview);
   return(
   <div>
     Overview goes here!
