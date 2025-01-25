@@ -18,9 +18,7 @@ const QA = () => {
   },[Product.product.id])
 
   return (
-  <div>
-    {console.log(Product.product)}
-    {console.log(QA.questions)}
+  <div data-testid="qa">
   </div>
   );
 };
