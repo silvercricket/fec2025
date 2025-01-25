@@ -1,10 +1,19 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
+<<<<<<< HEAD
 // import Slider from 'react-slick';
 // import '../../../assets/styles.css';
+=======
+import Slider from 'react-slick';
+import '../../../assets/styles.css';
+import {RelatedActions} from '../../store/RelatedSlice.js';
+>>>>>>> af63db0139115101e52b3e5f9b424e8a5863194c
 
 
+const Similar = () => {
 
+<<<<<<< HEAD
 const Similar = ({product, setProduct}) => {
 
   // const [similar, setSimilar] = useState([]);
@@ -19,6 +28,20 @@ const Similar = ({product, setProduct}) => {
   //     console.error('Similar failed', err);
   //   })
   // }
+=======
+  const Related = useSelector(store => store.Related);
+  const dispatch = useDispatch();
+
+  const getProducts = () => {
+    axios.get(process.env.API_URL + '/products/?page=1', {headers: {Authorization: process.env.AUTH_SECRET}})
+    .then((response) => {
+      dispatch(RelatedActions.setRelated(response.data));
+    })
+    .catch((err) => {
+      console.error('Related GET failed', err);
+    })
+  }
+>>>>>>> af63db0139115101e52b3e5f9b424e8a5863194c
 
   //   React.useEffect(() => {
   //     getProducts()
@@ -41,6 +64,7 @@ const Similar = ({product, setProduct}) => {
   //     slidesToScroll: 1
   //   };
 
+<<<<<<< HEAD
   // return (
   //   <>
   //     <div>
@@ -68,6 +92,35 @@ const Similar = ({product, setProduct}) => {
   //     </div>
   //   </>
   // );
+=======
+  return (
+    <>
+      <div>
+        Similar products go here!
+      </div>
+      <div className="slider-container">
+        <button className="prev">Last</button>
+        <Slider {...settings}>
+            {Related.related.map((product) => (
+              <div key={product.id} className="similarCard">
+                <h3>{product.name}</h3>
+              </div>
+            ))}
+        </Slider>
+        <button className="next">Next</button>
+      </div>
+      <div className="slider-container">
+        <button className="prev">Last</button>
+        <Slider {...settings2}>
+          <div className="outfitCard">
+            <button>Add to Outfit</button>
+          </div>
+        </Slider>
+        <button className="next">Next</button>
+      </div>
+    </>
+  );
+>>>>>>> af63db0139115101e52b3e5f9b424e8a5863194c
 };
 
 
