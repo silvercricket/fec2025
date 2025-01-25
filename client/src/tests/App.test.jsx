@@ -1,6 +1,4 @@
-/**
- * @jest-environment jsdom
- */
+
 import React from 'react';
 import {fireEvent, render} from '@testing-library/react';
 import App from '../components/App.jsx';
@@ -22,7 +20,6 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: jest.fn(),
   })),
 });
-//afterEach function runs after each test suite is executed
 
 describe('App',()=>{
   it('Should render', () => {

@@ -4,26 +4,37 @@ import axios from 'axios';
 import Slider from 'react-slick';
 import '../../../assets/styles.css';
 import {RelatedActions} from '../../store/RelatedSlice.js';
+import {ProductActions} from '../../store/ProductSlice.js';
 
 
 const Similar = () => {
-
+  const Product = useSelector(store => store.Product);
   const Related = useSelector(store => store.Related);
   const dispatch = useDispatch();
 
   const getProducts = () => {
-    axios.get(process.env.API_URL + '/products/?page=1', {headers: {Authorization: process.env.AUTH_SECRET}})
+    axios.get(process.env.API_URL + `/products/?product_id=${Product.product.id}`, {headers: {Authorization: process.env.AUTH_SECRET}})
     .then((response) => {
       dispatch(RelatedActions.setRelated(response.data));
     })
     .catch((err) => {
       console.error('Related GET failed', err);
     })
-  }
+   }
 
     React.useEffect(() => {
       getProducts()
     }, []);
+
+
+    const handleCardClick = (product) => {
+      console.log(Product.product.id)
+      dispatch(ProductActions.setProduct(product));
+    };
+
+    const handleStarClick = (currentProduct, compareProduct) => {
+      console.log('star click', currentProduct, compareProduct);
+    }
 
     var settings = {
       arrows: true,
@@ -42,6 +53,7 @@ const Similar = () => {
       slidesToScroll: 1
     };
 
+
   return (
     <div data-testid="similar">
       <div>
@@ -51,7 +63,16 @@ const Similar = () => {
         <button className="prev">Last</button>
         <Slider {...settings}>
             {Related.related.map((product) => (
-              <div key={product.id} className="similarCard">
+              <div
+                key={product.id}
+                className="similarCard"
+                onClick={() => handleCardClick(product)}>
+                  <button
+                    className="star-button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleStarClick(Product.product, product)}}>
+                  </button>
                 <h3>{product.name}</h3>
               </div>
             ))}
