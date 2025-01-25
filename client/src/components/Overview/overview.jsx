@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Overview = ({product}) => (
+const Overview = () => (
   <div>
     Overview goes here!
 
