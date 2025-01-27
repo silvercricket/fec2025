@@ -31,7 +31,7 @@ const Reviews = () => {
   },[Product.product.id]);
 
   return (
-    <div>
+    <div data-testid="review">
       <div id='metaData'>
         <ReviewsSidebar />
       </div>
