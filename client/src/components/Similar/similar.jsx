@@ -55,7 +55,7 @@ const Similar = () => {
 
 
   return (
-    <>
+    <div data-testid="similar">
       <div>
         Similar products go here!
       </div>
@@ -88,7 +88,7 @@ const Similar = () => {
         </Slider>
         <button className="next">Next</button>
       </div>
-    </>
+    </div>
   );
 };
 
