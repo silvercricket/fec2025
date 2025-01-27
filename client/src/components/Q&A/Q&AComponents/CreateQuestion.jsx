@@ -2,14 +2,14 @@
 /*eslint no-undef: "error"*/
 import React from 'react';
 
-const CreateQuestions = () => {
+const CreateQuestion = () => {
 
   return (
   <div data-testid="create-question">
-    <input type="submit">Create questions here</input>
+    <input type="submit">Create question here</input>
   </div>
   );
 };
 
 
-export default CreateQuestions;
+export default CreateQuestion;
