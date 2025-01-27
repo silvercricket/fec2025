@@ -7,7 +7,6 @@ import Share from './overviewComponents/Share.jsx'
 import Gallery from './overviewComponents/Gallery.jsx';
 import Checkout from './overviewComponents/Checkout.jsx'
 
-
 const Overview = () => {
   const dispatch = useDispatch();
   const Product = useSelector(store => store.Product);
