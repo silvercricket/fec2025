@@ -14,14 +14,19 @@ const App = () => {
   useEffect(() => {
     axios.get(process.env.API_URL + 'products',{headers: {Authorization:process.env.AUTH_SECRET, } })
     .then((result)=>{
-      dispatch(ProductActions.setProduct(result.data[0]));
+      if (result.data[0].id !== Product.product.id) { // Only dispatch if the product has changed
+        dispatch(ProductActions.setProduct(result.data[0]));
+      }
     })
+    .catch((err)=> {
+      console.log(err);
+    })
+
   },[])
 
 
   return(
   <>
-    {console.log(Product.product)}
     <Overview/>
     <Similar/>
     <QA/>

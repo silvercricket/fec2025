@@ -1,16 +1,24 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const ReviewSlice = createSlice({
+const ReviewsSlice = createSlice({
   name: "Review",
   initialState: {
-    Review: {},
+    Reviews: {
+      init: [],
+    },
+    Meta: {
+      data: null,
+    },
   },
   reducers: {
-    setCurrReview: (state, action) => {
-      state.Review = action.payload;
+    setReviews: (state, action) => {
+      state.Reviews = action.payload;
     },
+    setMeta: (state, action) => {
+      state.Meta = action.payload;
+    }
   }
 });
 
-export default ReviewSlice;
-export const ReviewActions = ReviewSlice.actions;
+export default ReviewsSlice;
+export const ReviewsActions = ReviewsSlice.actions;

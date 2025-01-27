@@ -3,7 +3,9 @@ import {createSlice} from '@reduxjs/toolkit';
 const ProductSlice = createSlice({
   name: "Product",
   initialState: {
-    product: {},
+    product: {
+      did: 1
+    },
   },
   reducers: {
     setProduct: (state, action) => {

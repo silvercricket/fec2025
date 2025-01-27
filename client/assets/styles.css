@@ -50,3 +50,34 @@
   width: auto;
   box-sizing: border-box;
 }
+
+#metaData {
+  display: inline;
+  width: 50%;
+  float: left;
+}
+
+#reviewCards {
+  display: inline;
+  width: 50%;
+  float: right;
+}
+
+.spacious {
+  display: inline;
+  font-size: 14px;
+}
+
+.helpButton {
+  background: none;
+  border: none;
+  color: #666666;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 5px;
+  font-size: inherit;
+}
+
+.helpButton:hover {
+  text-decoration: underline;
+}
