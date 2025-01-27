@@ -7,7 +7,7 @@ import ReviewsSlice from './ReviewsSlice.js';
 
 const STORE = configureStore({
   reducer: {
-    Reviews: ReviewsSlice.reducer,
+    ReviewsData: ReviewsSlice.reducer,
     Product: ProductSlice.reducer,
     Related: RelatedSlice.reducer,
     Overview: OverviewSlice.reducer,
