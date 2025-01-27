@@ -1,11 +1,14 @@
+/*global process*/
+/*eslint no-undef: "error"*/
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from  'react';
 import axios from 'axios';
 import {QAActions} from '../../store/QASlice.js';
+import Questions from './Q&AComponents/Questions.jsx';
+import SearchQuestions from './Q&AComponents/SearchQuestions.jsx';
 const QA = () => {
   const Product = useSelector(store => store.Product);
-  const QAData = useSelector(store => store.QAData);
   const dispatch = useDispatch();
   useEffect(() => {
     if (Product.product.id) {
@@ -19,6 +22,10 @@ const QA = () => {
 
   return (
   <div data-testid="qa">
+    <h3>Questions & Answers</h3>
+    <SearchQuestions/>
+    <br/>
+    <Questions/>
   </div>
   );
 };
