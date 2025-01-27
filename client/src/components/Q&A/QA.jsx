@@ -5,7 +5,7 @@ import axios from 'axios';
 import {QAActions} from '../../store/QASlice.js';
 const QA = () => {
   const Product = useSelector(store => store.Product);
-  const QA = useSelector(store => store.QA);
+  const QAData = useSelector(store => store.QAData);
   const dispatch = useDispatch();
   useEffect(() => {
     if (Product.product.id) {
