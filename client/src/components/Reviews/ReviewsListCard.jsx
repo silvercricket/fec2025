@@ -5,6 +5,7 @@ import {ReviewsActions} from '../../store/ReviewsSlice.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faRegularStar } from '@fortawesome/free-regular-svg-icons';
+import ReviewsListCardPhotos from './ReviewsListCardPhotos.jsx';
 
 const ReviewsListCard = ({ review }) => {
   console.log(review);
@@ -46,6 +47,14 @@ const ReviewsListCard = ({ review }) => {
     const formattedDate = `${month} ${day}, ${year}`;
     return formattedDate;
   }
+  const handleMap = () => {
+    var currPhotos = 2;
+    console.log(review.photos);
+    if(!Array.isArray(review.photos)) {
+      return '###'
+    }
+    return (review.photos.slice(0, currPhotos).map(photo => { return <ReviewsListCardPhotos photo={photo} />}))
+  }
 
   return (
     <div>
@@ -53,6 +62,9 @@ const ReviewsListCard = ({ review }) => {
       <small>{review.reviewer_name}, {handleTime()}</small>
       <h3>{review.summary}</h3>
       <p>{review.response}</p>
+      <div>
+        {handleMap()}
+      </div>
       <small className='spacious'>
         Helpful?
         <button className='helpButton'>Yes</button>
