@@ -12,7 +12,7 @@ const ReviewsSidebar = () => {
       emptyStar: <FontAwesomeIcon icon={faRegularStar} />,
       halfStar: <FontAwesomeIcon icon={faStarHalf} />,
     }
-  console.log(ReviewsData.Meta);
+
   const handleAvgStars = (Reviews) => {
     let avgStars = 0;
     let totalStars = 0;
@@ -56,7 +56,6 @@ const ReviewsSidebar = () => {
         ratingEle.push(stars.emptyStar);
       }
     }
-    console.log(ratingEle);
     return ratingEle;
   }
 

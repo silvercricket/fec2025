@@ -7,9 +7,10 @@
 
 const config = {
   verbose : true,
-  testEnvironment : 'jsdom-worker',
-  setupFiles : ['./client/src/tests/App.test.jsx'],
 
+  moduleNameMapper: {
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+  },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -199,7 +200,11 @@ const config = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
-  testEnvironment: 'jsdom'
+  testEnvironment: 'jsdom',
+  transform: {
+    "\\.[jt]sx?$": "babel-jest",
+    '^.+\\.css$': 'jest-transform-css'
+  }
 };
 
 
