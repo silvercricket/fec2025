@@ -5,12 +5,12 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const StarChart = () => {
   const chartRef = React.useRef(null);
-
+  
   React.useEffect(() => {
-    const chartInstance = chartRef.current;
+    const chartInstance = chartRef.current?.chartInstance;
     return () => {
-      if (chartInstance && chartInstance.chartInstance) {
-        chartInstance.chartInstance.destroy();
+      if (chartInstance) {
+        chartInstance.destroy();
       }
     };
   }, []);
