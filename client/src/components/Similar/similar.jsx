@@ -1,10 +1,11 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
-import Slider from 'react-slick';
-import '../../input.css';
+// import Slider from 'react-slick';
+import '../../../assets/styles.css';
 import {RelatedActions} from '../../store/RelatedSlice.js';
 import {ProductActions} from '../../store/ProductSlice.js';
+import Carousel from './Carousel.jsx';
 
 
 const Similar = () => {
@@ -23,8 +24,10 @@ const Similar = () => {
    }
 
     React.useEffect(() => {
-      getProducts()
-    }, []);
+      if (Product.product.id) {
+        getProducts();
+      }
+    }, [Product.product.id]);
 
 
     const handleCardClick = (product) => {
@@ -36,59 +39,30 @@ const Similar = () => {
       console.log('star click', currentProduct, compareProduct);
     }
 
-    var settings = {
-      arrows: true,
-      infinite: true,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      pauseOnHover: true,
-      speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 1
-    };
-    var settings2 = {
-      speed: 500,
-      infinite: false,
-      slidesToShow: 1,
-      slidesToScroll: 1
-    };
+
 
 
   return (
-    <>
+    <div data-testid="similar">
       <div>
         Similar products go here!
       </div>
-      <div className="slider-container">
-        <button className="prev">Last</button>
-        <Slider {...settings}>
-            {Related.related.map((product) => (
-              <div
-                key={product.id}
-                className="similarCard"
-                onClick={() => handleCardClick(product)}>
-                  <button
-                    className="star-button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleStarClick(Product.product, product)}}>
-                  </button>
-                <h3>{product.name}</h3>
-              </div>
-            ))}
-        </Slider>
-        <button className="next">Next</button>
-      </div>
-      <div className="slider-container">
-        <button className="prev">Last</button>
-        <Slider {...settings2}>
-          <div className="outfitCard">
-            <button>Add to Outfit</button>
-          </div>
-        </Slider>
-        <button className="next">Next</button>
-      </div>
-    </>
+        <Carousel
+          items={Related.related.map((product) => (
+            <div
+              key={product.id}
+              className="similar-card"
+              onClick={() => handleCardClick(product)}>
+                <button
+                  className="star-button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleStarClick(Product.product, product);
+                  }}>⭐</button>
+                  <h3>{product.name}</h3>
+            </div>
+          ))}/>
+    </div>
   );
 };
 
