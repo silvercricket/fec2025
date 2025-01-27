@@ -13,7 +13,7 @@ const Reviews = () => {
 
   useEffect(() => {
     if (Product.product.id) {
-      axios.get(process.env.API_URL + `reviews/`,{params: { product_id: Product.product.id }, headers: {Authorization:process.env.AUTH_SECRET} })
+      axios.get(process.env.API_URL + `/reviews/`,{params: { product_id: Product.product.id }, headers: {Authorization:process.env.AUTH_SECRET} })
       .then((response)=>{
         dispatch(ReviewsActions.setReviews(response.data.results));
       })
@@ -21,7 +21,7 @@ const Reviews = () => {
         console.log(err);
       })
 
-      axios.get(process.env.API_URL + `reviews/meta`,{params: { product_id: Product.product.id }, headers: {Authorization:process.env.AUTH_SECRET} })
+      axios.get(process.env.API_URL + `/reviews/meta`,{params: { product_id: Product.product.id }, headers: {Authorization:process.env.AUTH_SECRET} })
       .then((response)=>{
         dispatch(ReviewsActions.setMeta(response.data));
       })
