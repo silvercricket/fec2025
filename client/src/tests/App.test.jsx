@@ -3,6 +3,7 @@ import React from 'react';
 import {render} from '@testing-library/react';
 import App from '../components/App.jsx';
 import '@testing-library/jest-dom'
+import '../../dist/output.css'
 import STORE from '../store/Store.js';
 import {Provider} from 'react-redux';
 
@@ -14,6 +15,7 @@ describe('App',()=>{
         <App/>
       </Provider>
     );
+    console.log('here');
 
     expect(Apple.getByTestId('app')).toBeDefined();
 

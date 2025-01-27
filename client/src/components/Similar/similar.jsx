@@ -2,7 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 // import Slider from 'react-slick';
-import '../../../assets/styles.css';
+import '../../input.css';
 import {RelatedActions} from '../../store/RelatedSlice.js';
 import {ProductActions} from '../../store/ProductSlice.js';
 import Carousel from './Carousel.jsx';
@@ -73,6 +73,7 @@ export default Similar;
 // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344
 // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/related
 // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/styles
+// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=40344&page=2
 
 // product[0] = {
 //   campus: "hr-rfp"
