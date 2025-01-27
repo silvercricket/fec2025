@@ -9,6 +9,7 @@ import ReviewsListCardPhotos from './ReviewsListCardPhotos.jsx';
 
 const ReviewsListCard = ({ review }) => {
   console.log(review);
+  console.log(typeof review.review_id);
   const stars = {
     fullStar: <FontAwesomeIcon icon={faStar} />,
     emptyStar: <FontAwesomeIcon icon={faRegularStar} />,
@@ -37,6 +38,21 @@ const ReviewsListCard = ({ review }) => {
     }
     console.log(ratingEle);
     return ratingEle;
+  }
+  const handleHelpfullness = () => {
+    axios.put(`${process.env.API_URL}/reviews/${review.review_id}/helpful`,
+    {
+      review_id: review.review_id,
+    },
+    {
+      headers: {
+      Authorization:process.env.AUTH_SECRET
+      }
+    }
+  )
+    .then(res => {
+      console.log('RESPOSE: ', res);
+    })
   }
   const handleTime = () => {
     const dateString = review.date;
@@ -67,7 +83,7 @@ const ReviewsListCard = ({ review }) => {
       </div>
       <small className='spacious'>
         Helpful?
-        <button className='helpButton'>Yes</button>
+        <button className='helpButton' onClick={() => handleHelpfullness()}>Yes</button>
         ({review.helpfulness})<span className='separator'> | </span>
         <button className='helpButton'>Report</button>
         </small>
