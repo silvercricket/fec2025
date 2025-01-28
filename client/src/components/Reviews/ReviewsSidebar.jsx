@@ -6,13 +6,17 @@ import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faRegularStar } from '@fortawesome/free-regular-svg-icons';
 
 const ReviewsSidebar = () => {
+<<<<<<< HEAD
   const Reviews = useSelector(store => store.ReviewsData);
+=======
+  const ReviewsData = useSelector(store => store.ReviewsData);
+>>>>>>> origin
   const stars = {
       fullStar: <FontAwesomeIcon icon={faStar} />,
       emptyStar: <FontAwesomeIcon icon={faRegularStar} />,
       halfStar: <FontAwesomeIcon icon={faStarHalf} />,
     }
-  console.log(Reviews.Meta);
+
   const handleAvgStars = (Reviews) => {
     let avgStars = 0;
     let totalStars = 0;
@@ -26,7 +30,7 @@ const ReviewsSidebar = () => {
     return Math.round((avgStars/totalStars) * 2) / 2;
   }
   const handlePercentReviews = () => {
-    var recommended = Reviews.Meta.recommended
+    var recommended = ReviewsData.Meta.recommended
     if(!recommended) {
       return '###'
     }
@@ -56,13 +60,12 @@ const ReviewsSidebar = () => {
         ratingEle.push(stars.emptyStar);
       }
     }
-    console.log(ratingEle);
     return ratingEle;
   }
 
   const handleCharacteristics = () => {
     let productBreakdown = [];
-    let characteristics = Reviews.Meta.characteristics;
+    let characteristics = ReviewsData.Meta.characteristics;
     if (!characteristics) {
       return '###';
     } else {
@@ -80,7 +83,7 @@ const ReviewsSidebar = () => {
   return (
     <div id='metaData'>
       <h3>Ratings & Reviews</h3>
-      <h1>{handleRating(handleAvgStars(Reviews.Meta.ratings))}</h1>
+      <h1>{handleRating(handleAvgStars(ReviewsData.Meta.ratings))}</h1>
       <h5>{handlePercentReviews()}% of reviews recommend this product</h5>
       <div style={{  width: "300px", height: "200px" }}>
         <StarChart />

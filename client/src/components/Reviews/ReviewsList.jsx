@@ -5,21 +5,25 @@ import {ReviewsActions} from '../../store/ReviewsSlice.js';
 import ReviewsListCard from './ReviewsListCard.jsx'
 
 const ReviewsList = () => {
+<<<<<<< HEAD
   const Reviews = useSelector(store => store.ReviewsData);
+=======
+  const ReviewsData = useSelector(store => store.ReviewsData);
+>>>>>>> origin
 
   const handleSize = () => {
-    if(!Array.isArray(Reviews.Reviews)) {
+    if(!Array.isArray(ReviewsData.Reviews)) {
       return '###'
     }
-    return Reviews.Reviews.length
+    return ReviewsData.Reviews.length
   }
   const handleMap = () => {
     var currCards = 2;
-    console.log(Reviews.Reviews);
-    if(!Array.isArray(Reviews.Reviews)) {
+    console.log(ReviewsData.Reviews);
+    if(!Array.isArray(ReviewsData.Reviews)) {
       return '###'
     }
-    return (Reviews.Reviews.slice(0, currCards).map(review => { return <ReviewsListCard review={review} />}))
+    return (ReviewsData.Reviews.slice(0, currCards).map(review => { return <ReviewsListCard review={review} />}))
   }
 
   return (

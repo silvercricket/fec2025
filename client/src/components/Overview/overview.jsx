@@ -7,12 +7,16 @@ import Share from './overviewComponents/Share.jsx'
 import Gallery from './overviewComponents/Gallery.jsx';
 import Checkout from './overviewComponents/Checkout.jsx'
 
-
 const Overview = () => {
   // const dispatch = useDispatch();
   const Product = useSelector(store => store.Product);
+<<<<<<< HEAD
   const OverviewData = useSelector(store => store.OverviewData);
   // dispatch(OverviewActions.setOverview('AHHHHHHHHHHHHH'));
+=======
+  const OverviewData = useSelector(store => store.Overview);
+  dispatch(OverviewActions.setOverview('AHHHHHHHHHHHHH'));
+>>>>>>> origin
   console.log(Product.product);
   console.log(OverviewData);
   return(
