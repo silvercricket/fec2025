@@ -21,7 +21,7 @@ const App = () => {
   return(
   <div data-testid="app">
     <Overview/>
-    {/* <Similar/> */}
+    <Similar/>
     <QA/>
     <Reviews/>
   </div>

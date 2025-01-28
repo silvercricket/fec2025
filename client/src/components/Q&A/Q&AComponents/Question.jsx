@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Answers from './Answers.jsx';
 const Question = ({question}) => {
   const [answers, setAnswers] = React.useState([]);
 
@@ -15,7 +16,8 @@ const Question = ({question}) => {
 
   return (
     <div data-testid="question">
-      {console.log(answers)}
+      Q: {question.question_body}
+      <Answers answers={answers}/>
     </div>
   );
 };
