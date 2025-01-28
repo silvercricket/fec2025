@@ -5,11 +5,10 @@ const QuestionsSlice = createSlice({
   initialState: [],
   reducers: {
     setQuestions: (state, action) => {
-      const updatedQuestions = [state.questions, ...action.payload];
-      return updatedQuestions;
+      return action.payload;
     },
     addQuestions: (state, action) => {
-      const updatedQuestions = [state.questions, action.payload];
+      const updatedQuestions = [...state.questions, action.payload];
       return updatedQuestions;
     }
   }
