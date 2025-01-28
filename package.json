@@ -5,7 +5,7 @@
   "scripts": {
     "server-dev": "npx nodemon --watch server server.js",
     "client-dev": "npx webpack --watch",
-    "test": "jest test --env=jsdom",
+    "test": "jest test --env=jsdom --setupFiles dotenv/config",
     "deploy": "npx webpack && node server.js"
   },
   "dependencies": {
@@ -59,6 +59,7 @@
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
     "autoprefixer": "^10.4.20",
     "babel-jest": "^29.7.0",
     "babel-loader": "^9.2.1",

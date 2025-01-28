@@ -8,6 +8,7 @@ import {QuestionsActions} from '../../store/QuestionsSlice.js';
 import Questions from './Q&AComponents/Questions.jsx';
 import SearchQuestions from './Q&AComponents/SearchQuestions.jsx';
 const QA = () => {
+  const [refresh, setRefresh] = React.useState({});
   const Product = useSelector(store => store.Product);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -18,14 +19,14 @@ const QA = () => {
       })
       .catch(() => alert('error while retrieving questions'))
     }
-  },[Product.product.id])
+  },[Product.product.id, refresh])
 
   return (
   <div data-testid="qa">
     <h3>Questions & Answers</h3>
     <SearchQuestions/>
     <br/>
-    <Questions/>
+    <Questions setRefresh={setRefresh}/>
   </div>
   );
 };
