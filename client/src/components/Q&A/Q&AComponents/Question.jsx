@@ -12,11 +12,12 @@ const Question = ({question}) => {
       .then((result) => {
         setAnswers(result.data.results);
       })
+      .catch(() => alert('error while retrieving answers'));
   }, []);
 
   return (
     <div data-testid="question">
-      Q: {question.question_body}
+      <h3><b>Q: {question.question_body}</b></h3>
       <Answers answers={answers}/>
     </div>
   );

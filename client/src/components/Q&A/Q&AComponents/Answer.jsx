@@ -1,14 +1,19 @@
 /*global */
 /*eslint no-undef: "error"*/
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Answer = () => {
+const Answer = ({answer}) => {
 
   return (
   <div data-testid="answer">
-    answer goes here
+    {answer.body}
   </div>
   );
+};
+
+Answer.propTypes = {
+  answer: PropTypes.object.isRequired,
 };
 
 
