@@ -1,7 +1,8 @@
+/*global process*/
+/*eslint no-undef: "error"*/
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
-// import Slider from 'react-slick';
 import '../../input.css';
 import {RelatedActions} from '../../store/RelatedSlice.js';
 import {ProductActions} from '../../store/ProductSlice.js';
@@ -13,22 +14,87 @@ const Similar = () => {
   const Related = useSelector(store => store.Related);
   const dispatch = useDispatch();
 
-  const getProducts = () => {
-    axios.get(process.env.API_URL + `/products/?product_id=${Product.product.id}`, {headers: {Authorization: process.env.AUTH_SECRET}})
+  const [currentProduct, setCurrentProduct] = React.useState(null);
+  const [styles, setStyles] = React.useState([]);
+  const [products, setProducts] = React.useState([]);
+  const [combinedData, setCombinedData] = React.useState([]);
+
+  const getStyles = (productIds) => {
+    if (!productIds || productIds.length === 0) {
+      console.error('Product Id undefined in Similar Styles');
+      return;
+    }
+    const styleRequests = productIds.map((pid) =>
+      axios.get(`${process.env.API_URL}/products/${pid}/styles`, {headers: {Authorization: process.env.AUTH_SECRET}}));
+    Promise.all(styleRequests)
+      .then((responses) => {
+        const allStyles = responses.map((response, index) => ({
+          id: productIds[index],
+          results: response.data.results
+        }));
+        setStyles(allStyles);
+      })
+      .catch((err) => {
+        console.error('Styles GET failed', err);
+      })
+  };
+
+  const getProducts = (productIds) => {
+    if (!productIds || productIds.length === 0) {
+      console.error('Product Id undefined in Similar Products');
+      return;
+    }
+    const productRequests = productIds.map((pid) =>
+      axios.get(`${process.env.API_URL}/products/${pid}`, {headers: {Authorization: process.env.AUTH_SECRET}}));
+    Promise.all(productRequests)
+      .then((responses) => {
+        const allRelatedProducts = responses.map((response, index) => ({
+          id: productIds[index],
+          ...response.data
+        }));
+        setProducts(allRelatedProducts);
+      })
+      .catch((err) => {
+        console.error('Styles GET failed', err);
+      })
+  }
+
+  const getRelated = () => {
+    if (!Product.product.id) {
+      console.error('Product Id undefined in Similar Product');
+      return;
+    }
+    axios.get(`${process.env.API_URL}/products/${Product.product.id}/related`, {headers: {Authorization: process.env.AUTH_SECRET}})
     .then((response) => {
+      const relatedProductIds = response.data;
       dispatch(RelatedActions.setRelated(response.data));
+      getStyles(relatedProductIds);
+      getProducts(relatedProductIds);
     })
     .catch((err) => {
       console.error('Related GET failed', err);
     })
-   }
+   };
 
     React.useEffect(() => {
       if (Product.product.id) {
-        getProducts();
+        setCurrentProduct(Product.product.id);
+        getRelated();
       }
     }, [Product.product.id]);
 
+    React.useEffect(() => {
+      if (products.length > 0 && styles.length > 0) {
+        const combined = products.map((product) => {
+          const style = styles.find((s) => s.id === product.id);
+          return {
+            ...product,
+            ...style
+          };
+        });
+        setCombinedData(combined);
+      }
+    }, [products, styles]);
 
     const handleCardClick = (product) => {
       console.log(Product.product.id)
@@ -47,24 +113,19 @@ const Similar = () => {
       <div>
         Similar products go here!
       </div>
-        <Carousel
-          items={Related.related.map((product) => (
-            <div
-              key={product.id}
-              className="similar-card"
-              onClick={() => handleCardClick(product)}>
-                <button
-                  className="star-button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleStarClick(Product.product, product);
-                  }}>⭐</button>
-                  <h3>{product.name}</h3>
-            </div>
-          ))}/>
-    </div>
+        {combinedData.length > 0 ? (
+          <Carousel
+          items={combinedData}
+          handleCardClick={handleCardClick}
+          handleStarClick={handleStarClick}
+          currentProduct={currentProduct} />
+        ) : (
+          <div>Loading related products...</div>
+        )}
+      </div>
   );
 };
+
 
 
 export default Similar;
@@ -87,4 +148,95 @@ export default Similar;
 //   name: "Camo Onesie"
 //   slogan: "Blend in to your crowd"
 //   updated_at: "2021-08-13T14:38:44.509Z"
+// }
+
+// /id
+// {
+// 	"id": 11,
+// 	"name": "Air Minis 250",
+// 	"slogan": "Full court support",
+// 	"description": "This optimized air cushion pocket reduces impact but keeps a perfect balance underfoot.",
+// 	"category": "Basketball Shoes",
+// 	"default_price": "0",
+// 	"features": [
+//   	{
+// 			"feature": "Sole",
+// 			"value": "Rubber"
+// 		},
+//   	{
+// 			"feature": "Material",
+// 			"value": "FullControlSkin"
+// 		},
+//   	// ...
+// 	],
+// }
+
+
+// /styles
+// {
+// 	"product_id": "1",
+// 	"results": [
+//   	{
+// 			"style_id": 1,
+// 			"name": "Forest Green & Black",
+// 			"original_price": "140",
+// 			"sale_price": "0",
+// 			"default?": true,
+// 			"photos": [
+//   			{
+// 					"thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg", **img**
+// 					"url": "urlplaceholder/style_1_photo_number.jpg"
+// 				},
+//   			{
+// 					"thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
+// 					"url": "urlplaceholder/style_1_photo_number.jpg"
+// 				}
+//   			// ...
+// 			],
+// 		"skus": {
+//                 	"37": {
+//                     		"quantity": 8,
+//                     		"size": "XS"
+//                 	},
+//                 	"38": {
+//                     		"quantity": 16,
+//                     		"size": "S"
+//                 	},
+//                 	"39": {
+//                     		"quantity": 17,
+//                     		"size": "M"
+//                 	},
+// 			//...
+//             	}
+// 	},
+//   {
+// 		"style_id": 2,
+// 		"name": "Desert Brown & Tan",
+// 		"original_price": "140",
+// 		"sale_price": "0",
+// 		"default?": false,
+// 		"photos": [
+//   			{
+// 					"thumbnail_url": "urlplaceholder/style_2_photo_number_thumbnail.jpg",
+// 					"url": "urlplaceholder/style_2_photo_number.jpg"
+//         }
+//       // ...
+// 			],
+// 		"skus": {
+//                 	"37": {
+//                     		"quantity": 8,
+//                     		"size": "XS"
+//                 	},
+//                 	"38": {
+//                     		"quantity": 16,
+//                     		"size": "S"
+//                 	},
+//                 	"39": {
+//                     		"quantity": 17,
+//                     		"size": "M"
+//                 	},
+// 			//...
+//             	}
+// 	},
+//   // ...
 // }
