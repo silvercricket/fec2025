@@ -4,6 +4,8 @@ import OverviewSlice from './OverviewSlice.js';
 import RelatedSlice from './RelatedSlice.js';
 import QASlice from './QASlice.js';
 import ReviewsSlice from './ReviewsSlice.js';
+import GallerySlice from './GallerySlice.js';
+import PictureSlice from './PictureSlice.js';
 
 const STORE = configureStore({
   reducer: {
@@ -11,6 +13,8 @@ const STORE = configureStore({
     Product: ProductSlice.reducer,
     RelatedData: RelatedSlice.reducer,
     OverviewData: OverviewSlice.reducer,
+    GalleryData: GallerySlice.reducer,
+    PictureData: PictureSlice.reducer,
     QAData: QASlice.reducer
   }
 })
