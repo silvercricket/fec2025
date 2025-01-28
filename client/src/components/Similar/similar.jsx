@@ -9,7 +9,7 @@ import Carousel from './Carousel.jsx';
 
 const Similar = () => {
   const Product = useSelector(store => store.Product);
-  const Related = useSelector(store => store.Related);
+  // const Related = useSelector(store => store.Related);
   const dispatch = useDispatch();
 
   const [currentProduct, setCurrentProduct] = React.useState(null);
@@ -95,7 +95,7 @@ const Similar = () => {
     }, [products, styles]);
 
     const handleCardClick = (product) => {
-      console.log(Product.product.id)
+      console.log(Product.product)
       dispatch(ProductActions.setProduct(product));
     };
 
