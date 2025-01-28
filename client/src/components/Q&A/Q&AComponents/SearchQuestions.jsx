@@ -11,7 +11,7 @@ const SearchQuestions = () => {
   return (
   <form className="input-container" data-testid="search-questions" action={handleSearch}>
     <input name="query" className="input-box" type="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." style={{ width: '1000px' }}></input>
-    <button type="submit"><FontAwesomeIcon classname="placeholder" icon={faMagnifyingGlass} /></button>
+    <button type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
   </form>
   );
 };
