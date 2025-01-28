@@ -48,6 +48,15 @@
     --ring: 216 34% 17%;
   }
 
+
+  #mainDisplay {
+    width: 600px;
+    height: 600px;
+  }
+  .galleryPicture{
+    width: 200px;
+    height: 200px;
+    
   .carousel-container {
     /* overflow: hidden; */
     width: 100%;
