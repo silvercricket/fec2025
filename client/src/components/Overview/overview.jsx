@@ -10,11 +10,11 @@ import Checkout from './overviewComponents/Checkout.jsx'
 
 const Overview = () => {
   // const dispatch = useDispatch();
-  // const Product = useSelector(store => store.Product);
-  // const Overview = useSelector(store => store.Overview);
+  const Product = useSelector(store => store.Product);
+  const OverviewData = useSelector(store => store.OverviewData);
   // dispatch(OverviewActions.setOverview('AHHHHHHHHHHHHH'));
   console.log(Product.product);
-  console.log(Overview);
+  console.log(OverviewData);
   return(
   <div data-testid="overview">
     Overview goes here!

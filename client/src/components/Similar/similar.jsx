@@ -1,68 +1,73 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
-// import Slider from 'react-slick';
+import Slider from 'react-slick';
 import '../../../assets/styles.css';
 import {RelatedActions} from '../../store/RelatedSlice.js';
-import {ProductActions} from '../../store/ProductSlice.js';
-import Carousel from './Carousel.jsx';
 
 
 const Similar = () => {
-  const Product = useSelector(store => store.Product);
-  const Related = useSelector(store => store.Related);
+
+  const Related = useSelector(store => store.RelatedData);
   const dispatch = useDispatch();
 
   const getProducts = () => {
-    axios.get(process.env.API_URL + `/products/?product_id=${Product.product.id}`, {headers: {Authorization: process.env.AUTH_SECRET}})
+    axios.get(process.env.API_URL + '/products/?page=1', {headers: {Authorization: process.env.AUTH_SECRET}})
     .then((response) => {
       dispatch(RelatedActions.setRelated(response.data));
     })
     .catch((err) => {
       console.error('Related GET failed', err);
     })
-   }
+  }
 
     React.useEffect(() => {
-      if (Product.product.id) {
-        getProducts();
-      }
-    }, [Product.product.id]);
+      getProducts()
+    }, []);
 
-
-    const handleCardClick = (product) => {
-      console.log(Product.product.id)
-      dispatch(ProductActions.setProduct(product));
+    var settings = {
+      arrows: true,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      pauseOnHover: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 1
+    };
+    var settings2 = {
+      speed: 500,
+      infinite: false,
+      slidesToShow: 1,
+      slidesToScroll: 1
     };
 
-    const handleStarClick = (currentProduct, compareProduct) => {
-      console.log('star click', currentProduct, compareProduct);
-    }
-
-
-
-
   return (
-    <div data-testid="similar">
+    <>
       <div>
         Similar products go here!
       </div>
-        <Carousel
-          items={Related.related.map((product) => (
-            <div
-              key={product.id}
-              className="similar-card"
-              onClick={() => handleCardClick(product)}>
-                <button
-                  className="star-button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleStarClick(Product.product, product);
-                  }}>⭐</button>
-                  <h3>{product.name}</h3>
-            </div>
-          ))}/>
-    </div>
+      <div className="slider-container">
+        <button className="prev">Last</button>
+        <Slider {...settings}>
+            {Related.related.map((product) => (
+              <div key={product.id} className="similarCard">
+                <h3>{product.name}</h3>
+              </div>
+            ))}
+        </Slider>
+        <button className="next">Next</button>
+      </div>
+      <div className="slider-container">
+        <button className="prev">Last</button>
+        <Slider {...settings2}>
+          <div className="outfitCard">
+            <button>Add to Outfit</button>
+          </div>
+        </Slider>
+        <button className="next">Next</button>
+      </div>
+    </>
   );
 };
 

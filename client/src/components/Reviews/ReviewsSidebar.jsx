@@ -6,7 +6,7 @@ import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faRegularStar } from '@fortawesome/free-regular-svg-icons';
 
 const ReviewsSidebar = () => {
-  const Reviews = useSelector(store => store.Reviews);
+  const Reviews = useSelector(store => store.ReviewsData);
   const stars = {
       fullStar: <FontAwesomeIcon icon={faStar} />,
       emptyStar: <FontAwesomeIcon icon={faRegularStar} />,

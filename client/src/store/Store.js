@@ -7,11 +7,11 @@ import ReviewsSlice from './ReviewsSlice.js';
 
 const STORE = configureStore({
   reducer: {
-    Reviews: ReviewsSlice.reducer,
+    ReviewsData: ReviewsSlice.reducer,
     Product: ProductSlice.reducer,
-    Related: RelatedSlice.reducer,
-    Overview: OverviewSlice.reducer,
-    QA: QASlice.reducer
+    RelatedData: RelatedSlice.reducer,
+    OverviewData: OverviewSlice.reducer,
+    QAData: QASlice.reducer
   }
 })
 

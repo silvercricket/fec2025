@@ -5,7 +5,7 @@ import {ReviewsActions} from '../../store/ReviewsSlice.js';
 import ReviewsListCard from './ReviewsListCard.jsx'
 
 const ReviewsList = () => {
-  const Reviews = useSelector(store => store.Reviews);
+  const Reviews = useSelector(store => store.ReviewsData);
 
   const handleSize = () => {
     if(!Array.isArray(Reviews.Reviews)) {
