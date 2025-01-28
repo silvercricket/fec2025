@@ -5,6 +5,7 @@ import '../../input.css';
 const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) => {
 
   const [index, setIndex] = useState(0);
+
   const slidesToShow = 4;
 
   // const slidesToShow2 = 1;
@@ -42,7 +43,15 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) =
               onClick={(e) => {
                 e.stopPropagation();
                 handleStarClick(currentProduct, product);
-              }}>⭐</button>{product.name}</div>
+              }}>⭐</button>
+              <img src={product.results[0].photos[0].thumbnail_url} alt={product.name}/>
+              <div className="card-content">
+              <h6>{product.category}</h6>
+              <h3>{product.name}</h3>
+              <h5>{product.default_price}</h5>
+              <h5>star rating</h5>
+              </div>
+          </div>
         ))}
       </div>
         <button
