@@ -1,4 +1,5 @@
-
+/*global module, require*/
+/*eslint no-undef: "error"*/
 const plugin = require('tailwindcss/plugin')
 
 module.exports = {

@@ -67,7 +67,6 @@ const ReviewsSidebar = () => {
     } else {
       for (var char in characteristics) {
         let value = characteristics[char].value
-        console.log(value);
         productBreakdown.push( <div>
         <label htmlFor="file">{char}</label>
         <progress id='file' max='5' value={`${value}`}>{`${char}`}</progress>
@@ -82,7 +81,7 @@ const ReviewsSidebar = () => {
       <h1>{handleRating(handleAvgStars(ReviewsData.Meta.ratings))}</h1>
       <h5>{handlePercentReviews()}% of reviews recommend this product</h5>
       <div style={{  width: "300px", height: "200px" }}>
-        <StarChart />
+        <StarChart ratings={ReviewsData.Meta.ratings}/>
       </div>
       <div>
         <div>

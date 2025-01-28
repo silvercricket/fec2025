@@ -48,6 +48,15 @@
     --ring: 216 34% 17%;
   }
 
+
+  #mainDisplay {
+    width: 600px;
+    height: 600px;
+  }
+  .galleryPicture{
+    width: 200px;
+    height: 200px;
+    
   .carousel-container {
     /* overflow: hidden; */
     width: 100%;
@@ -106,4 +115,26 @@
 @layer base {
   body {
  }
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid gray;
+  padding: 5px;
+}
+
+.placeholder {
+  color: lightgray;
+  padding: 0 5px;
+}
+
+.input-box {
+  border: none;
+  outline: none;
+  flex: 1;
+}
+
+textarea {
+  resize: none;
 }

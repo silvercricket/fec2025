@@ -1,3 +1,5 @@
+/*global module*/
+/*eslint no-undef: "error"*/
 module.exports = {
   presets: [
     '@babel/preset-env',
