@@ -13,6 +13,12 @@ import Checkout from './overviewComponents/Checkout.jsx'
 const Overview = () => {
   const dispatch = useDispatch();
   const Product = useSelector(store => store.Product);
+<<<<<<< HEAD
+  const OverviewData = useSelector(store => store.Overview);
+  dispatch(OverviewActions.setOverview('AHHHHHHHHHHHHH'));
+  //console.log(Product.product);
+  //console.log(Overview);
+=======
   // const OverviewData = useSelector(store => store.Overview);
   const PictureData = useSelector(store => store.PictureData);
 
@@ -36,6 +42,7 @@ const Overview = () => {
         })
     }
   },[Product]);
+>>>>>>> 9e7463ea7cfa9cec8cf37ecd39d33963a08dfb91
   return(
   <div data-testid="overview">
     Overview goes here!
