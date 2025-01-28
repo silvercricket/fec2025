@@ -1,7 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
-// import Slider from 'react-slick';
 import '../../input.css';
 import {RelatedActions} from '../../store/RelatedSlice.js';
 import {ProductActions} from '../../store/ProductSlice.js';
@@ -48,20 +47,10 @@ const Similar = () => {
         Similar products go here!
       </div>
         <Carousel
-          items={Related.related.map((product) => (
-            <div
-              key={product.id}
-              className="similar-card"
-              onClick={() => handleCardClick(product)}>
-                <button
-                  className="star-button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleStarClick(Product.product, product);
-                  }}>⭐</button>
-                  <h3>{product.name}</h3>
-            </div>
-          ))}/>
+          items={Related.related}
+          handleCardClick={handleCardClick}
+          handleStarClick={handleStarClick}
+          currentProduct={Product.product} />
     </div>
   );
 };
