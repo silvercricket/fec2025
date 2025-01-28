@@ -8,8 +8,9 @@ import { faStar as faRegularStar } from '@fortawesome/free-regular-svg-icons';
 import ReviewsListCardPhotos from './ReviewsListCardPhotos.jsx';
 
 const ReviewsListCard = ({ review }) => {
-  console.log(review);
-  console.log(typeof review.review_id);
+  const [clickedHelp, setClickedHelp] = React.useState(false);
+  const [clickedReport, setClickedReport] = React.useState(false);
+  const [helpful, setHelpful] = React.useState(review.helpfulness);
   const stars = {
     fullStar: <FontAwesomeIcon icon={faStar} />,
     emptyStar: <FontAwesomeIcon icon={faRegularStar} />,
@@ -36,10 +37,14 @@ const ReviewsListCard = ({ review }) => {
         ratingEle.push(stars.emptyStar);
       }
     }
-    console.log(ratingEle);
     return ratingEle;
   }
   const handleHelpfullness = () => {
+    if (clickedHelp) {
+      return;
+    }
+    setClickedHelp(true);
+    setHelpful(helpful + 1);
     axios.put(`${process.env.API_URL}/reviews/${review.review_id}/helpful`,
     {
       review_id: review.review_id,
@@ -50,10 +55,31 @@ const ReviewsListCard = ({ review }) => {
       }
     }
   )
-    .then(res => {
-      console.log('RESPOSE: ', res);
-    })
+  .then(res => {
+    console.log('RESPOSE: ', res);
+  })
   }
+
+  const handleReport = () => {
+    if (clickedReport) {
+      return;
+    }
+    setClickedReport(true);
+    axios.put(`${process.env.API_URL}/reviews/${review.review_id}/report`,
+    {
+      review_id: review.review_id,
+    },
+    {
+      headers: {
+      Authorization:process.env.AUTH_SECRET
+      }
+    }
+  )
+  .then(res => {
+    console.log('RESPOSE: ', res);
+  })
+  }
+
   const handleTime = () => {
     const dateString = review.date;
     const date = new Date(dateString);
@@ -65,7 +91,6 @@ const ReviewsListCard = ({ review }) => {
   }
   const handleMap = () => {
     var currPhotos = 2;
-    console.log(review.photos);
     if(!Array.isArray(review.photos)) {
       return '###'
     }
@@ -84,8 +109,8 @@ const ReviewsListCard = ({ review }) => {
       <small className='spacious'>
         Helpful?
         <button className='helpButton' onClick={() => handleHelpfullness()}>Yes</button>
-        ({review.helpfulness})<span className='separator'> | </span>
-        <button className='helpButton'>Report</button>
+        ({helpful})<span className='separator'> | </span>
+        <button className='helpButton' onClick={() => handleReport()} >Report</button>
         </small>
         <br></br>
         <small>____________________________________________________________________________________________________</small>

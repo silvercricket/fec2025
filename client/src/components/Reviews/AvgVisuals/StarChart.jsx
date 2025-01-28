@@ -3,9 +3,13 @@ import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const StarChart = () => {
+const StarChart = ({ ratings }) => {
+  if (!ratings) {
+    return;
+  }
+
   const chartRef = React.useRef(null);
-  
+
   React.useEffect(() => {
     const chartInstance = chartRef.current?.chartInstance;
     return () => {
@@ -20,7 +24,7 @@ const StarChart = () => {
     datasets: [
       {
         barThickness: 10,
-        data: [6, 10, 4, 7, 9],
+        data: [ratings[5], ratings[4], ratings[3], ratings[2], ratings[1]],
         backgroundColor: 'rgb(128, 128, 128)',
       },
     ],

@@ -7,11 +7,20 @@ import ReviewsList from './ReviewsList.jsx';
 
 const Reviews = () => {
   const Product = useSelector(store => store.Product);
+  const [currPage, setCurrPage] = React.useState(1);
+  const [sort, setSort] = React.useState("relevant");
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (Product.product.id) {
-      axios.get(process.env.API_URL + `/reviews/`,{params: { product_id: Product.product.id }, headers: {Authorization:process.env.AUTH_SECRET} })
+      axios.get(process.env.API_URL + `/reviews/`,{params: {
+        product_id: Product.product.id,
+        page: currPage,
+        sort: sort,
+      },
+      headers: {
+        Authorization:process.env.AUTH_SECRET
+      } })
       .then((response)=>{
         dispatch(ReviewsActions.setReviews(response.data.results));
       })
@@ -19,7 +28,9 @@ const Reviews = () => {
         console.log(err);
       })
 
-      axios.get(process.env.API_URL + `/reviews/meta`,{params: { product_id: Product.product.id }, headers: {Authorization:process.env.AUTH_SECRET} })
+      axios.get(process.env.API_URL + `/reviews/meta`,{params: {
+        product_id: Product.product.id,
+      }, headers: {Authorization:process.env.AUTH_SECRET} })
       .then((response)=>{
         dispatch(ReviewsActions.setMeta(response.data));
       })
@@ -28,7 +39,7 @@ const Reviews = () => {
       })
     }
 
-  },[Product.product.id]);
+  },[Product.product.id, currPage]);
 
   return (
     <div data-testid="review">
@@ -36,7 +47,7 @@ const Reviews = () => {
         <ReviewsSidebar />
       </div>
       <div id='reviewCards'>
-        <ReviewsList />
+        <ReviewsList setCurrPage={setCurrPage} currPage={currPage} setSort={setSort} sort={sort}/>
       </div>
     </div>
   )
