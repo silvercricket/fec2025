@@ -19,7 +19,7 @@ const CreateQuestion = () => {
     }
     axios.post(process.env.API_URL + '/qa/questions', {body, name, email, product_id: Product.product.id},{headers: {Authorization:process.env.AUTH_SECRET} })
       .then((result) => {
-        console.log(result.data)
+        // console.log(result.data)
         setOpen(false);
         alert('Successfully submitted!!! 🎉')
       })
@@ -30,7 +30,7 @@ const CreateQuestion = () => {
     <button onClick={handleOpen}>Create Question</button>
     <Modal isOpen={open} onClose={handleClose}>
       <>
-        {console.log(Product)}
+        {/* {console.log(Product)} */}
         <h1>Ask Your Question</h1>
         <h3>About the {Product.product.name}</h3>
         <form action={handleSubmit}>

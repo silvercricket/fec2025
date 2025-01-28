@@ -53,10 +53,11 @@
     width: 600px;
     height: 600px;
   }
-  .galleryPicture{
+  .galleryPicture {
     width: 200px;
     height: 200px;
-    
+  }
+
   .carousel-container {
     /* overflow: hidden; */
     width: 100%;

@@ -11,7 +11,7 @@ const MainDisplay = () => {
 
   useEffect(() => {
     if(PictureData){
-      console.log(PictureData);
+      // console.log(PictureData);
 
     }
   },[PictureData]);
