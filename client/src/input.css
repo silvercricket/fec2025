@@ -53,3 +53,21 @@
   body {
  }
 }
+
+.input-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid gray;
+  padding: 5px;
+}
+
+.placeholder {
+  color: lightgray;
+  padding: 0 5px;
+}
+
+.input-box {
+  border: none;
+  outline: none;
+  flex: 1;
+}

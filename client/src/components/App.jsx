@@ -1,6 +1,7 @@
-
+/*global process*/
+/*eslint no-undef: "error"*/
 import React, {useEffect}  from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import axios from 'axios';
 import Overview from './Overview/overview.jsx';
 import QA from './Q&A/QA.jsx';
@@ -21,8 +22,8 @@ const App = () => {
   <div data-testid="app">
     <Overview/>
     <Similar/>
-    <Reviews/>
     <QA/>
+    <Reviews/>
   </div>
 );
 }
