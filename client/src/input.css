@@ -71,3 +71,7 @@
   outline: none;
   flex: 1;
 }
+
+textarea {
+  resize: none;
+}

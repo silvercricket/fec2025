@@ -16,7 +16,7 @@ const QA = () => {
       .then((result)=>{
         dispatch(QuestionsActions.setQuestions(result.data.results));
       })
-      .catch((err) => console.error(err))
+      .catch(() => alert('error while retrieving questions'))
     }
   },[Product.product.id])
 
