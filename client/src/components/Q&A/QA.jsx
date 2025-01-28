@@ -10,10 +10,9 @@ import SearchQuestions from './Q&AComponents/SearchQuestions.jsx';
 const QA = () => {
   const Product = useSelector(store => store.Product);
   const dispatch = useDispatch();
-  console.log(process.env.API_URL + '/qa/questions?count=4&product_id=' + Product.product.id);
   useEffect(() => {
     if (Product.product.id) {
-      axios.get(process.env.API_URL + '/qa/questions?count=4&product_id=' + 44500,{headers: {Authorization:process.env.AUTH_SECRET} })
+      axios.get(process.env.API_URL + `/qa/questions?count=4&product_id=${Product.product.id}`,{headers: {Authorization:process.env.AUTH_SECRET} })
       .then((result)=>{
         dispatch(QuestionsActions.setQuestions(result.data.results));
       })

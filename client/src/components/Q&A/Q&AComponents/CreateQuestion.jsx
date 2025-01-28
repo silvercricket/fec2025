@@ -6,7 +6,7 @@ const CreateQuestion = () => {
 
   return (
   <div data-testid="create-question">
-    <input type="submit">Create question here</input>
+    <button type="submit">Ask Question</button>
   </div>
   );
 };
