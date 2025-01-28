@@ -9,33 +9,25 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
   const ReviewsData = useSelector(store => store.ReviewsData);
   const [numOfReviewCards, setNumOfReviewCards] = useState(0);
   const [formRating, setFormRating] = useState(1);
-  const [modalIsOpen, setModalIsOpen] = useState(false); // Controls modal visibility
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleOpenModal = () => {
-    setModalIsOpen(true); // Open modal when button is clicked
+    setModalIsOpen(true);
   };
 
   const handleCloseModal = () => {
-    setModalIsOpen(false); // Close modal
+    setModalIsOpen(false);
   };
-
-  // const handleAddReview = () => {
-  //   return (
-  //     <>
-  //       {/* Render button if modal is closed */}
-  //       {!modalIsOpen ? (
-  //         <button onClick={() => setModalIsOpen(true)}>+ ADD REVIEW</button>
-  //       ) : (
-  //         // Pass modalIsOpen and closeModal as props to child component
-  //         <AddReviewModule closeModal={() => setModalIsOpen(false)} />
-  //       )}
-  //     </>
-  //   );
-  // };
 
   const handleReviewCardList = () => {
     if (ReviewsData.Reviews.length > 2) {
-      return <button onClick={() => setNumOfReviewCards(Math.min(numOfReviewCards + 2), 5)}>MORE REVIEWS</button>;
+      return <button onClick={() => {
+        if (numOfReviewCards > 5) {
+          setNumOfReviewCards(0);
+          setCurrPage(currPage + 1);
+        }
+        setNumOfReviewCards(numOfReviewCards + 2)
+      }}>MORE REVIEWS</button>;
     } else {
       return null;
     }
@@ -49,10 +41,6 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
   };
 
   const handleMap = (extra) => {
-    if (numOfReviewCards > 5) {
-      setNumOfReviewCards(0);
-      setCurrPage(currPage + 1);
-    }
     const currCards = Math.min(2 + extra, ReviewsData.Reviews.length);
     if (!Array.isArray(ReviewsData.Reviews)) {
       return '###';
@@ -63,7 +51,15 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
   return (
     <div>
       <h3>{handleSize()} reviews, sorted by SOMETHING page: {currPage}</h3>
-      {handleMap(numOfReviewCards)}
+      <div
+        style={{
+          height: '500px',      // Ensures the container has a fixed height
+          overflow: 'auto',     // Allows scrolling within the container
+          backgroundColor: 'white',  // Optional: to make sure the container is visible and stands out
+        }}
+      >
+        {handleMap(numOfReviewCards)}
+      </div>
       <div>
         {handleReviewCardList()}
         <button onClick={handleOpenModal}>+ ADD REVIEW</button>
@@ -71,8 +67,8 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
         <AddReviewModule
           modalIsOpen={modalIsOpen}
           closeModal={handleCloseModal}
-          setFormRating={setFormRating} // Pass state setter to Modal
-          formRating={formRating} // Pass current rating state
+          setFormRating={setFormRating}
+          formRating={formRating}
         />
       )}
       </div>
