@@ -11,6 +11,7 @@ import STORE from '../../store/Store.js';
 import {Provider} from 'react-redux';
 import Answers from '../../components/Q&A/Q&AComponents/Answers.jsx';
 import SearchQuestions from '../../components/Q&A/Q&AComponents/SearchQuestions.jsx';
+
 describe('Q&A',()=>{
 
   it('Should render all non-conditional components of QA', () => {
@@ -29,32 +30,34 @@ describe('Q&A',()=>{
 
   it('Should render question if given a question and answer', () => {
     const question = render(
-      <Question question={{
-        "question_id": 38,
-        "question_body": "How long does it last?",
-        "question_date": "2019-06-28T00:00:00.000Z",
-        "asker_name": "funnygirl",
-        "question_helpfulness": 2,
-        "reported": false,
-        "answers": {
-          70: {
-            "id": 70,
-            "body": "Some of the seams started splitting the first time I wore it!",
-            "date": "2019-11-28T00:00:00.000Z",
-            "answerer_name": "sillyguy",
-            "helpfulness": 6,
-            "photos": [],
-          },
-          78: {
-            "id": 78,
-            "body": "9 lives",
-            "date": "2019-11-12T00:00:00.000Z",
-            "answerer_name": "iluvdogz",
-            "helpfulness": 31,
-            "photos": [],
+      <Provider store={STORE}>
+        <Question question={{
+          "question_id": 38,
+          "question_body": "How long does it last?",
+          "question_date": "2019-06-28T00:00:00.000Z",
+          "asker_name": "funnygirl",
+          "question_helpfulness": 2,
+          "reported": false,
+          "answers": {
+            70: {
+              "id": 70,
+              "body": "Some of the seams started splitting the first time I wore it!",
+              "date": "2019-11-28T00:00:00.000Z",
+              "answerer_name": "sillyguy",
+              "helpfulness": 6,
+              "photos": [],
+            },
+            78: {
+              "id": 78,
+              "body": "9 lives",
+              "date": "2019-11-12T00:00:00.000Z",
+              "answerer_name": "iluvdogz",
+              "helpfulness": 31,
+              "photos": [],
+            }
           }
-        }
-      }}/>
+        }}/>
+      </Provider>
     );
 
     expect(question.getByTestId('question')).toBeDefined();
@@ -65,15 +68,17 @@ describe('Q&A',()=>{
 
   it('Should render question if given just a question with no answer', () => {
     const question = render(
-      <Question question={{
-        "question_id": 38,
-        "question_body": "How long does it last?",
-        "question_date": "2019-06-28T00:00:00.000Z",
-        "asker_name": "funnygirl",
-        "question_helpfulness": 2,
-        "reported": false,
-        "answers": {}
-      }}/>
+      <Provider store={STORE}>
+        <Question question={{
+          "question_id": 38,
+          "question_body": "How long does it last?",
+          "question_date": "2019-06-28T00:00:00.000Z",
+          "asker_name": "funnygirl",
+          "question_helpfulness": 2,
+          "reported": false,
+          "answers": {}
+        }}/>
+    </Provider>
     );
 
     expect(question.getByTestId('question')).toBeDefined();

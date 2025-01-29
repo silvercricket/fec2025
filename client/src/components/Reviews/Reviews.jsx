@@ -11,7 +11,6 @@ const Reviews = () => {
   const Product = useSelector(store => store.Product);
   const [currPage, setCurrPage] = React.useState(1);
   const [sort, setSort] = React.useState("relevant");
-  const Reviews = useSelector(store => store.ReviewsData);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,7 +24,8 @@ const Reviews = () => {
         Authorization:process.env.AUTH_SECRET
       } })
       .then((response)=>{
-        dispatch(ReviewsActions.setReviews(Array.isArray(Reviews.Reviews) ? Reviews.Reviews.concat(response.data.results): response.data.results));
+        console.log(response);
+        dispatch(ReviewsActions.setReviews(response.data.results));
       })
       .catch((err)=> {
         console.log(err);
@@ -42,10 +42,10 @@ const Reviews = () => {
       })
     }
 
-  },[Product.product.id, currPage]);
+  },[Product.product.id, currPage, sort]);
 
   return (
-    <div data-testid="review">
+    <div id="review-view">
       <div id='metaData'>
         <ReviewsSidebar />
       </div>

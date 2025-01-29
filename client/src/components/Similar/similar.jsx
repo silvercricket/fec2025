@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
-// import '../../../../dist/output.css';
+import '../../../dist/styles/index.css';
 import {RelatedActions} from '../../store/RelatedSlice.js';
 import {ProductActions} from '../../store/ProductSlice.js';
 import Carousel from './Carousel.jsx';
@@ -82,8 +82,9 @@ const Similar = () => {
 
     useEffect(() => {
       if (Product.product.id) {
-        setCurrentProduct(Product.product.id);
+        setCurrentProduct(Product.product);
         getRelated();
+        console.log(Product.product);
       }
     }, [Product.product.id]);
 
@@ -136,7 +137,7 @@ const Similar = () => {
             starClicked={starClicked}
             onClose={handleCloseModal} />
         )}
-        <Outfit />
+        <Outfit currentProduct={currentProduct}/>
       </div>
   );
 };
@@ -150,6 +151,7 @@ export default Similar;
 // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/related
 // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/styles
 // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=40344&page=2
+// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=40344&sort=newest
 
 // product[0] = {
 //   campus: "hr-rfp"

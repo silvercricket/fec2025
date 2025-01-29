@@ -21,17 +21,18 @@ const Modal = ({ isOpen, onClose, children }) => {
             <div
                 style={{
                     background: "white",
-                    height: 625,
+                    height: 600,
                     width: 500,
                     margin: "auto",
                     padding: "2%",
                     border: "2px solid #000",
                     borderRadius: "10px",
                     boxShadow: "2px solid black",
+                    overflowY: "auto",
                 }}
             >
                 {children}
-                <button onClick={onClose}>Cancel Entry</button>
+                <button onClick={onClose}>Cancel Review</button>
             </div>
         </div>
     );
