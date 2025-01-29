@@ -18,15 +18,17 @@ const Gallery = () => {
 
     }
   },[GalleryData]);
-  return(
-  <div>
-    {GalleryData.Gallery.map((pic, index)=>(
-      <GalleryElement  image={pic.thumbnail_url} index={index}/>
-    ))
-    }
+  if(GalleryData.Gallery.photos !== undefined){
+    return(
+      <div id='gallery'>
+        {GalleryData.Gallery.photos.map((pic, index)=>(
+          <GalleryElement  image={pic.thumbnail_url} index={index}/>
+        ))
+        }
 
-  </div>
-);
+      </div>
+    );
+  }
 }
 
 export default Gallery;

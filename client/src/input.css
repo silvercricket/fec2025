@@ -48,13 +48,41 @@
     --ring: 216 34% 17%;
   }
 
+  #display {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
   #mainDisplay {
+    position: relative;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    margin-right: 2%;
     width: 600px;
-    height: 600px;
+    background: transparent no-repeat center;
+    background-size: cover;
+    float: left;
+  }
+  #styles {
+    float: left;
+  }
+  .clearfix{
+    clear:both
+}
+  .stylePicture{
+    border-radius: 100000px;
+    width: 60px;
+    height: 60px;
+  }
+  #gallery{
+    position: absolute;
   }
   .galleryPicture{
-    width: 200px;
-    height: 200px;
+    position:relative;
+    left: 0;
+    width: 30%;
+    height: 30%;
   }
 }
 
