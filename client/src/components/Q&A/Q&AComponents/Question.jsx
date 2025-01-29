@@ -21,7 +21,7 @@ const Question = ({question, refresh, setRefresh}) => {
           alert('error while retrieving answers');
         }
       });
-  }, []);
+  }, [refresh]);
 
   /*
   <div id="HASH" class="blue-msg">
@@ -31,10 +31,10 @@ const Question = ({question, refresh, setRefresh}) => {
   return (
     <div data-testid="question">
       <div id="question">
-        <h3 data-testid="question-body"><b>Q: {question.question_body}</b></h3>
+        <h3 style={{margin: '.5em 0'}} data-testid="question-body"><b>Q: {question.question_body}</b></h3>
         <CreateAnswer question={question} setRefresh={setRefresh}/>
       </div>
-      <Answers answers={answers} setAnswers={setAnswers} question={question}/>
+      <Answers answers={answers} setAnswers={setAnswers} question={question} setRefresh={setRefresh}/>
     </div>
   );
 };

@@ -16,15 +16,12 @@ const CreateAnswer = ({question, setRefresh}) => {
     const body = formData.get("body");
     const name = formData.get("name");
     const email = formData.get("email");
-    const image = formData.get("image");
+    const image = formData.get("image") || [];
     console.log(image);
-    if (true) {
-      return;
-    }
     if (!body || !name || !email) {
       alert('One or more of the fields are empty');
     }
-    axios.post(process.env.API_URL + `/qa/questions/${question.question_id}`, {body, name, email, image},{headers: {Authorization:process.env.AUTH_SECRET} })
+    axios.post(process.env.API_URL + `/qa/questions/${question.question_id}/answers`, {body, name, email, image},{headers: {Authorization:process.env.AUTH_SECRET} })
       .then(() => {
         setOpen(false);
         setRefresh({});

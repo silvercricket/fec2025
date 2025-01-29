@@ -4,11 +4,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Answer from './Answer.jsx';
 import axios from 'axios';
-const Answers = ({answers, setAnswers, question}) => {
+const Answers = ({answers, setAnswers, question, setRefresh}) => {
+  const [clicked, setClicked] = React.useState(false);
   const handleAnswers = () => {
     axios.get(process.env.API_URL + `/qa/questions/${question.question_id}/answers?count=2147483647`,{headers: {Authorization:process.env.AUTH_SECRET} })
     .then((result) => {
-      console.log(result.data.results);
+      setClicked(true);
       setAnswers(result.data.results);
     })
     .catch((err) => {
@@ -18,8 +19,10 @@ const Answers = ({answers, setAnswers, question}) => {
   }
   return (
   <div data-testid="answers">
-    {answers.map((answer) => <Answer key={answer.answer_id} answer={answer}/>)}
-    {answers.length === 2 ? <small onClick={handleAnswers}><b>Load More Answers</b></small> : null}
+    {answers.length > 0 ? <h3 style={{margin: '.5em 0'}} data-testid="answer-body"><b>A: </b></h3> : <h3>No answers unfortunately 😞</h3>}
+    {answers.map((answer) => <Answer key={answer.answer_id} answer={answer} setRefresh={setRefresh} isClicked={setClicked}/>)}
+    <br/>
+    {Object.keys(question.answers).length > 2 && !clicked ? <small onClick={handleAnswers}><b>Load More Answers</b></small> : null}
   </div>
   );
 };
@@ -27,7 +30,8 @@ const Answers = ({answers, setAnswers, question}) => {
 Answers.propTypes = {
   answers: PropTypes.array.isRequired,
   setAnswers: PropTypes.func.isRequired,
-  question: PropTypes.object.isRequired
+  question: PropTypes.object.isRequired,
+  setRefresh: PropTypes.func.isRequired
 };
 
 export default Answers;
