@@ -6,7 +6,7 @@ import axios from 'axios';
 import Answers from './Answers.jsx';
 import CreateAnswer from './CreateAnswer.jsx';
 
-const Question = ({question}) => {
+const Question = ({question, setRefresh}) => {
   const [answers, setAnswers] = React.useState([]);
 
   React.useEffect(() => {
@@ -29,16 +29,16 @@ const Question = ({question}) => {
     <div data-testid="question">
       <div id="question">
         <h3 data-testid="question-body"><b>Q: {question.question_body}</b></h3>
-        <p>Test</p>
+        <CreateAnswer question={question} setRefresh={setRefresh}/>
       </div>
       <Answers answers={answers}/>
-      <CreateAnswer/>
     </div>
   );
 };
 
 Question.propTypes = {
   question: PropTypes.object.isRequired,
+  setRefresh: PropTypes.func.isRequired
 };
 
 export default Question;
