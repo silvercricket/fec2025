@@ -6,6 +6,7 @@ import QuestionsSlice from './QuestionsSlice.js';
 import ReviewsSlice from './ReviewsSlice.js';
 import GallerySlice from './GallerySlice.js';
 import PictureSlice from './PictureSlice.js';
+import StylesSlice from './StylesSlice.js';
 
 const STORE = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ const STORE = configureStore({
     OverviewData: OverviewSlice.reducer,
     GalleryData: GallerySlice.reducer,
     PictureData: PictureSlice.reducer,
+    StylesData: StylesSlice.reducer,
     QuestionsData: QuestionsSlice.reducer
   }
 })
