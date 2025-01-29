@@ -1,12 +1,13 @@
 /*global process*/
 /*eslint no-undef: "error"*/
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import '../../input.css';
 import {RelatedActions} from '../../store/RelatedSlice.js';
 import {ProductActions} from '../../store/ProductSlice.js';
 import Carousel from './Carousel.jsx';
+import Outfit from './Outfit.jsx';
 
 
 const Similar = () => {
@@ -14,10 +15,10 @@ const Similar = () => {
   // const Related = useSelector(store => store.Related);
   const dispatch = useDispatch();
 
-  const [currentProduct, setCurrentProduct] = React.useState(null);
-  const [styles, setStyles] = React.useState([]);
-  const [products, setProducts] = React.useState([]);
-  const [combinedData, setCombinedData] = React.useState([]);
+  const [currentProduct, setCurrentProduct] = useState(null);
+  const [styles, setStyles] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [combinedData, setCombinedData] = useState([]);
 
   const getStyles = (productIds) => {
     if (!productIds || productIds.length === 0) {
@@ -76,14 +77,14 @@ const Similar = () => {
     })
    };
 
-    React.useEffect(() => {
+    useEffect(() => {
       if (Product.product.id) {
         setCurrentProduct(Product.product.id);
         getRelated();
       }
     }, [Product.product.id]);
 
-    React.useEffect(() => {
+    useEffect(() => {
       if (products.length > 0 && styles.length > 0) {
         const combined = products.map((product) => {
           const style = styles.find((s) => s.id === product.id);
@@ -110,9 +111,7 @@ const Similar = () => {
 
   return (
     <div data-testid="similar">
-      <div>
-        Similar products go here!
-      </div>
+      <h3>Related Products</h3>
         {combinedData.length > 0 ? (
           <Carousel
           items={combinedData}
@@ -122,6 +121,7 @@ const Similar = () => {
         ) : (
           <div>Loading related products...</div>
         )}
+        <Outfit />
       </div>
   );
 };

@@ -111,6 +111,42 @@
     cursor: pointer;
     font-size: 16px;
   }
+
+  .outfit-container {
+   /* overflow: hidden; */
+   width: 100%;
+  }
+
+  .outfit-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 20%;
+    height: 300px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+  }
+
+  .empty-card {
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 1px dashed #ccc;
+  }
+
+  .add-button {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    cursor: pointer;
+  }
 }
 
 @layer base {
