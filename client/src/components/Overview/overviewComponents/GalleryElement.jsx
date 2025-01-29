@@ -18,11 +18,13 @@ const GalleryElement = ({image, index}) => {
     }
   },[GalleryData]);
   return(
+    <div>
+      <img className='galleryPicture' onClick={()=>{
+        console.log(GalleryData.Gallery.photos[index].url);
+        dispatch(PictureActions.setPicture(GalleryData.Gallery.photos[index].url));
 
-      <img class='galleryPicture' onClick={()=>{
-        dispatch(PictureActions.setPicture(GalleryData.Gallery[index].url));
       }} src={image}/>
-
+    </div>
 );
 }
 
