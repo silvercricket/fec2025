@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../../input.css';
+import PropTypes from 'prop-types';
 
 
 const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) => {
@@ -63,6 +64,13 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) =
           disabled={index >= items.length - 1}>Next</button>
     </div>
   )
+};
+
+Carousel.propTypes = {
+  items: PropTypes.object.isRequired,
+  currentProduct: PropTypes.object.isRequired,
+  handleCardClick: PropTypes.func.isRequired,
+  handleStarClick: PropTypes.func.isRequired
 };
 
 export default Carousel;

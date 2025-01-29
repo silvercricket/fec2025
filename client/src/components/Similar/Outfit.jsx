@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../../input.css';
+import PropTypes from 'prop-types';
 
 const Outfit = ({ currentProduct }) => {
 
@@ -87,6 +88,10 @@ const Outfit = ({ currentProduct }) => {
       </div>
     </div>
   );
+};
+
+Outfit.propTypes = {
+  currentProduct: PropTypes.object.isRequired,
 };
 
 export default Outfit;
