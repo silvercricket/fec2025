@@ -31,12 +31,14 @@ const Outfit = ({ currentProduct }) => {
     <div>
       <h3>Your Outfit</h3>
       <div className="outfit-container">
-        <div
+        {outfit.length === 0 && (
+          <div
           className="outfit-card empty-card"
           onClick={handleAdd}>
           <button className="add-button">+</button>
           <h5>Add to Outfit</h5>
         </div>
+        )}
         {outfit.length > 0 && (
           <div className="carousel-container">
           <div
@@ -45,7 +47,6 @@ const Outfit = ({ currentProduct }) => {
               display: 'flex',
               transform: `translateX(-${index * (100 / slidesToShow)}%)`,
               transition: 'transform 0.3s ease-in-out',
-              width: `${(outfit.length * 100) / slidesToShow}%`
               }}>
                 {outfit.map((product) => (
                   <div key={product.id}
@@ -55,7 +56,7 @@ const Outfit = ({ currentProduct }) => {
                     boxSizing: 'border-box'
                   }}>
                     <button
-                      className="remove-button"
+                      className="close-button"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleRemove(product.id);
