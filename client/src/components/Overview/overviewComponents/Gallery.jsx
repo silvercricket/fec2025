@@ -11,22 +11,24 @@ const Gallery = () => {
   const GalleryData = useSelector(store => store.GalleryData);
 
   useEffect(() => {
-    console.log("pics go here");
+    // console.log("pics go here");
     if(true){
-      console.log('riiiiiight here:');
-      console.log(GalleryData);
+      // console.log('riiiiiight here:');
+      // console.log(GalleryData);
 
     }
   },[GalleryData]);
-  return(
-  <div>
-    {GalleryData.Gallery.map((pic, index)=>(
-      <GalleryElement  image={pic.thumbnail_url} index={index}/>
-    ))
-    }
+  if(GalleryData.Gallery.photos !== undefined){
+    return(
+      <div id='gallery'>
+        {GalleryData.Gallery.photos.map((pic, index)=>(
+          <GalleryElement  image={pic.thumbnail_url} index={index}/>
+        ))
+        }
 
-  </div>
-);
+      </div>
+    );
+  }
 }
 
 export default Gallery;

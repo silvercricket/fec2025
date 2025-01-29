@@ -8,21 +8,23 @@ const GalleryElement = ({image, index}) => {
   const GalleryData = useSelector(store => store.GalleryData);
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log(GalleryData);
+    // console.log(GalleryData);
     if(GalleryData.Gallery.length !== undefined){
-      console.log('riiiiiight here:');
-      console.log(image);
-      console.log('gallery below');
-      console.log(GalleryData.Gallery[1].url);
+      // console.log('riiiiiight here:');
+      // console.log(image);
+      // console.log('gallery below');
+      // console.log(GalleryData.Gallery[1].url);
 
     }
   },[GalleryData]);
   return(
+    <div>
+      <img className='galleryPicture' onClick={()=>{
+        console.log(GalleryData.Gallery.photos[index].url);
+        dispatch(PictureActions.setPicture(GalleryData.Gallery.photos[index].url));
 
-      <img class='galleryPicture' onClick={()=>{
-        dispatch(PictureActions.setPicture(GalleryData.Gallery[index].url));
       }} src={image}/>
-
+    </div>
 );
 }
 

@@ -4,8 +4,9 @@ import React from 'react';
 import Modal from './Modal.jsx';
 import axios from 'axios';
 import {useSelector} from 'react-redux';
+import PropTypes from 'prop-types';
 
-const CreateQuestion = () => {
+const CreateQuestion = ({setRefresh}) => {
   const Product = useSelector(store => store.Product);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -18,38 +19,43 @@ const CreateQuestion = () => {
       alert('One or more of the fields are empty');
     }
     axios.post(process.env.API_URL + '/qa/questions', {body, name, email, product_id: Product.product.id},{headers: {Authorization:process.env.AUTH_SECRET} })
-      .then((result) => {
-        console.log(result.data)
+      .then(() => {
         setOpen(false);
-        alert('Successfully submitted!!! 🎉')
+        setRefresh({});
+        alert('Successfully submitted!!! 🎉');
       })
-      .catch(() => alert('Error while submitting'))
+      .catch(() => {
+        alert('Error while submitting');
+      })
   }
   return (
   <div data-testid="create-question">
     <button onClick={handleOpen}>Create Question</button>
     <Modal isOpen={open} onClose={handleClose}>
       <>
-        {console.log(Product)}
         <h1>Ask Your Question</h1>
         <h3>About the {Product.product.name}</h3>
         <form action={handleSubmit}>
-          <label>Question:</label>
+          <label>Your Question*</label>
           <br/>
-          <textarea name="body" maxLength="1000" minLength="1" rows="15" cols="30"></textarea>
+          <textarea name="body" placeholder="Why did you like the product or not?" maxLength="1000" minLength="1" rows="5" cols="65"></textarea>
           <br/>
           <br/>
-          <label>Nickname:</label>
+          <label> What is your nickname*</label>
           <br/>
           <input placeholder="Example: jackson11!" name="name" maxLength="60" minLength="5"></input>
           <br/>
+          <small>For privacy reasons, do not use your full name or email address</small>
           <br/>
-          <label>Email:</label>
           <br/>
-          <input type="email" placeholder="Why did you like the product or not?" name="email" maxLength="60" minLength="3"></input>
+          <label>Your email*</label>
           <br/>
-          <p>For authentication reasons, you will not be emailed</p>
-          <button type="submit">Submit Question</button>
+          <input type="email" placeholder="Example: john@gmail.com" name="email" maxLength="60" minLength="3"></input>
+          <br/>
+          <small>For authentication reasons, you will not be emailed</small>
+          <br/>
+          <br/>
+          <button type="submit">Submit question</button>
         </form>
         <br/>
       </>
@@ -58,5 +64,8 @@ const CreateQuestion = () => {
   );
 };
 
+CreateQuestion.propTypes = {
+  setRefresh: PropTypes.func.isRequired,
+};
 
 export default CreateQuestion;

@@ -20,6 +20,7 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) =
       Math.max(prevIndex - 1, 0));
   };
 
+
   return (
     <div className="carousel-container">
       <div
