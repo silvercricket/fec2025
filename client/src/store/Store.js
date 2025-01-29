@@ -7,7 +7,7 @@ import ReviewsSlice from './ReviewsSlice.js';
 import GallerySlice from './GallerySlice.js';
 import PictureSlice from './PictureSlice.js';
 import StylesSlice from './StylesSlice.js';
-import QASlice from './QuestionsSlice.js';
+
 const STORE = configureStore({
   reducer: {
     ReviewsData: ReviewsSlice.reducer,
@@ -17,7 +17,6 @@ const STORE = configureStore({
     GalleryData: GallerySlice.reducer,
     PictureData: PictureSlice.reducer,
     StylesData: StylesSlice.reducer,
-    QAData: QASlice.reducer,
     QuestionsData: QuestionsSlice.reducer
   }
 })
