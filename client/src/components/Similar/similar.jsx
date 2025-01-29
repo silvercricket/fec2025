@@ -8,6 +8,7 @@ import {RelatedActions} from '../../store/RelatedSlice.js';
 import {ProductActions} from '../../store/ProductSlice.js';
 import Carousel from './Carousel.jsx';
 import Outfit from './Outfit.jsx';
+import Compare from './Compare.jsx';
 
 
 const Similar = () => {
@@ -19,6 +20,8 @@ const Similar = () => {
   const [styles, setStyles] = useState([]);
   const [products, setProducts] = useState([]);
   const [combinedData, setCombinedData] = useState([]);
+  const [starClicked, setStarClicked] = useState(null);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   const getStyles = (productIds) => {
     if (!productIds || productIds.length === 0) {
@@ -102,9 +105,15 @@ const Similar = () => {
       dispatch(ProductActions.setProduct(product));
     };
 
-    const handleStarClick = (currentProduct, compareProduct) => {
-      console.log('star click', currentProduct, compareProduct);
-    }
+    const handleStarClick = (product) => {
+      setStarClicked(product);
+      setIsOpen(true);
+    };
+
+    const handleCloseModal = () => {
+      setStarClicked(null);
+      setIsOpen(false);
+    };
 
 
 
@@ -120,6 +129,12 @@ const Similar = () => {
           currentProduct={currentProduct} />
         ) : (
           <div>Loading related products...</div>
+        )}
+        {modalIsOpen && (
+          <Compare
+            currentProduct={currentProduct}
+            starClicked={starClicked}
+            onClose={handleCloseModal} />
         )}
         <Outfit />
       </div>
