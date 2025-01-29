@@ -28,12 +28,12 @@ const Compare = ({ currentProduct, starClicked, onClose }) => {
               const starFeature = (starClicked.features || []).find((f) => f.feature === property);
               return (
                 <tr key={property}>
-                <td>{currentFeature ? "check" : ""}</td>
+                <td>{currentFeature ? "✓" : ""}</td>
                 <td>
                   {property}
                   {currentFeature?.value || starFeature?.value ? `: ${currentFeature?.value || starFeature?.value}` : ""}
                 </td>
-                <td>{starFeature ? "check" : ""}</td>
+                <td>{starFeature ? "✓" : ""}</td>
               </tr>
               )
             })}
