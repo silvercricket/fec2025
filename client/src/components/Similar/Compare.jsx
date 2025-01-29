@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../input.css';
+import '../../../dist/styles/index.css';
 
 const Compare = ({ currentProduct, starClicked, onClose }) => {
 
