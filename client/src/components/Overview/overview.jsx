@@ -12,7 +12,6 @@ import {StylesActions} from '../../store/StylesSlice.js';
 import MainDisplay from './overviewComponents/MainDisplay.jsx'
 import Share from './overviewComponents/Share.jsx'
 import Gallery from './overviewComponents/Gallery.jsx';
-import Checkout from './overviewComponents/Checkout.jsx';
 import Styles from './overviewComponents/Styles.jsx';
 import ProductForm from './overviewComponents/ProductForm.jsx';
 const Overview = () => {
@@ -31,12 +30,9 @@ const Overview = () => {
 
   useEffect(() => {
     if(Product.product.id){
-      // console.log(Product.product);
       axios.get(process.env.API_URL + `/products/${Product.product.id}/styles`,{headers: {Authorization:process.env.AUTH_SECRET} })
         .then((result)=>{
-          // console.log('______PRODUCT STYLES BELOW:________')
-          // console.log(result.data.results[0]);
-          // dispatch(OverviewActions.setOverview(result.data.results[0]));
+
           dispatch(GalleryActions.setGallery(result.data.results[0]));
           dispatch(PictureActions.setPicture(result.data.results[0].photos[0].url));
           dispatch(StylesActions.setStyles(result.data.results));
@@ -50,11 +46,9 @@ const Overview = () => {
   },[Product]);
 
   useEffect(() => {
-    // console.log('sale?');
-    // console.log(GalleryData.Gallery);
+
     setPrice('$' + Product.product.default_price);
     if(GalleryData.Gallery.sale_price){
-      // console.log('you\'ve got sale!');
       setPrice(
       <p style={{color:'red'}}><s>{Product.product.default_price}</s>&nbsp;
       {GalleryData.Gallery.sale_price} </p>
@@ -65,7 +59,6 @@ const Overview = () => {
 
   return(
   <div data-testid="overview">
-    Overview goes here!
     <div id='display'>
       <MainDisplay />
       <Gallery />

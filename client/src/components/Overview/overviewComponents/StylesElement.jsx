@@ -8,14 +8,6 @@ const StylesElement = ({style, index}) => {
   const StylesData = useSelector(store => store.StylesData);
   const image = style.photos[0].thumbnail_url;
   const dispatch = useDispatch();
-  useEffect(() => {
-    // console.log(StylesData);
-    if(StylesData.Styles.length !== undefined){
-      // console.log(StylesData.Styles);
-
-
-    }
-  },[StylesData]);
   return(
 
       <img className='stylePicture' onClick={()=>{
