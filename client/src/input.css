@@ -48,11 +48,15 @@
     --ring: 216 34% 17%;
   }
 
+<<<<<<< HEAD
   #display {
     position: relative;
     top: 0;
     left: 0;
   }
+=======
+
+>>>>>>> a914fe8732dfc7d68820bdbf136441e096d15f91
   #mainDisplay {
     position: relative;
     top: 0;
@@ -79,14 +83,94 @@
     position: absolute;
   }
   .galleryPicture{
+<<<<<<< HEAD
     position:relative;
     left: 0;
     width: 30%;
     height: 30%;
+=======
+    width: 200px;
+    height: 200px;
+    
+  .carousel-container {
+    /* overflow: hidden; */
+    width: 100%;
+  }
+
+  .carousel-track {
+    /* display: flex;
+    transition: transform 0.3s ease-in-out; */
+  }
+
+  .carousel-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 20%;
+    height: 300px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+  }
+
+  .carousel-card img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .carousel-card .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50%;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .star-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+>>>>>>> a914fe8732dfc7d68820bdbf136441e096d15f91
   }
 }
 
 @layer base {
   body {
  }
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid gray;
+  padding: 5px;
+}
+
+.placeholder {
+  color: lightgray;
+  padding: 0 5px;
+}
+
+.input-box {
+  border: none;
+  outline: none;
+  flex: 1;
+}
+
+textarea {
+  resize: none;
 }
