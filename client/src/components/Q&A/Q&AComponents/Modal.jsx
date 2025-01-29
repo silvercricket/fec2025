@@ -31,7 +31,7 @@ const Modal = ({ isOpen, onClose, children }) => {
                 }}
             >
                 {children}
-                <button onClick={onClose}>Cancel Question</button>
+                <button onClick={onClose}>Cancel Entry</button>
             </div>
         </div>
     );
