@@ -10,6 +10,14 @@ import {GalleryActions} from '../../../store/GallerySlice.js';
 const Gallery = () => {
   const GalleryData = useSelector(store => store.GalleryData);
 
+<<<<<<< HEAD
+=======
+  useEffect(() => {
+    // console.log("pics go here");
+    if(true){
+      // console.log('riiiiiight here:');
+      // console.log(GalleryData);
+>>>>>>> 6e9a289360e30508b4a4e3336e43df3130f82344
 
   if(GalleryData.Gallery.photos !== undefined){
     return(

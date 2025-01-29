@@ -4,7 +4,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Answers from './Answers.jsx';
-const Question = ({question}) => {
+import CreateAnswer from './CreateAnswer.jsx';
+
+const Question = ({question, setRefresh}) => {
   const [answers, setAnswers] = React.useState([]);
 
   React.useEffect(() => {
@@ -12,12 +14,23 @@ const Question = ({question}) => {
       .then((result) => {
         setAnswers(result.data.results);
       })
-      .catch(() => alert('error while retrieving answers'));
+      .catch((err) => {
+        console.error(err);
+        alert('error while retrieving answers')
+      });
   }, []);
 
+  /*
+  <div id="HASH" class="blue-msg">
+<span id="time-HASH" class="smalltext">9 months 2 weeks ago</span>
+<span class="ios-circle">MESSAGE HERE</span>
+</div>*/
   return (
     <div data-testid="question">
-      <h3><b>Q: {question.question_body}</b></h3>
+      <div id="question">
+        <h3 data-testid="question-body"><b>Q: {question.question_body}</b></h3>
+        <CreateAnswer question={question} setRefresh={setRefresh}/>
+      </div>
       <Answers answers={answers}/>
     </div>
   );
@@ -25,6 +38,7 @@ const Question = ({question}) => {
 
 Question.propTypes = {
   question: PropTypes.object.isRequired,
+  setRefresh: PropTypes.func.isRequired
 };
 
 export default Question;
