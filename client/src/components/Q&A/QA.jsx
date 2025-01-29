@@ -25,7 +25,7 @@ const QA = () => {
   return (
   <div data-testid="qa">
     <h3>Questions & Answers</h3>
-    <SearchQuestions/>
+    <SearchQuestions setRefresh={setRefresh}/>
     <br/>
     <Questions setRefresh={setRefresh}/>
   </div>
