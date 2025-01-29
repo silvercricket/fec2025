@@ -10,6 +10,9 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
   const [numOfReviewCards, setNumOfReviewCards] = useState(0);
   const [formRating, setFormRating] = useState(1);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const handleSort = () => {
+    setSort(document.getElementById('sort').value);
+  }
 
   const handleOpenModal = () => {
     setModalIsOpen(true);
@@ -50,7 +53,16 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
 
   return (
     <div>
-      <h3>{handleSize()} reviews, sorted by SOMETHING page: {currPage}</h3>
+      <h3>{handleSize()} reviews, {
+        <section>
+        <label htmlFor='sort'>Sorted on</label>
+        <select onChange={handleSort} name="sort" id="sort">
+          <option value="Relevent">Relevent</option>
+          <option value="Helpful">Helpful</option>
+          <option value="Newest">Newest</option>
+        </select>
+        </section>
+        } page: {currPage}</h3>
       <div
         style={{
           height: '500px',      // Ensures the container has a fixed height

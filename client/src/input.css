@@ -56,7 +56,7 @@
   .galleryPicture{
     width: 200px;
     height: 200px;
-    
+
   .carousel-container {
     /* overflow: hidden; */
     width: 100%;
@@ -137,4 +137,5 @@
 
 textarea {
   resize: none;
+}
 }
