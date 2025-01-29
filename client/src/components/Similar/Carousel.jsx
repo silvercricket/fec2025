@@ -8,8 +8,6 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) =
 
   const slidesToShow = 4;
 
-  // const slidesToShow2 = 1;
-
   const handleNext = () => {
     setIndex((prevIndex) =>
       Math.min(prevIndex + 1, items.length - 1));
