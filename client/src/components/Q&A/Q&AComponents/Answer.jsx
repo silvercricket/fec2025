@@ -7,7 +7,7 @@ const Answer = ({answer}) => {
 
   return (
   <div data-testid="answer">
-    {answer.body}
+    <h3 data-testid="answer-body"><b>A: </b></h3><p>{answer.answer_body}</p>
   </div>
   );
 };

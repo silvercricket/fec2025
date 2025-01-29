@@ -15,7 +15,6 @@ const STORE = configureStore({
     OverviewData: OverviewSlice.reducer,
     GalleryData: GallerySlice.reducer,
     PictureData: PictureSlice.reducer,
-    QAData: QASlice.reducer,
     QuestionsData: QuestionsSlice.reducer
   }
 })

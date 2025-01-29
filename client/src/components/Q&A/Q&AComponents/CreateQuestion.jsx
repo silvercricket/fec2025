@@ -4,8 +4,9 @@ import React from 'react';
 import Modal from './Modal.jsx';
 import axios from 'axios';
 import {useSelector} from 'react-redux';
+import PropTypes from 'prop-types';
 
-const CreateQuestion = () => {
+const CreateQuestion = ({setRefresh}) => {
   const Product = useSelector(store => store.Product);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -18,19 +19,20 @@ const CreateQuestion = () => {
       alert('One or more of the fields are empty');
     }
     axios.post(process.env.API_URL + '/qa/questions', {body, name, email, product_id: Product.product.id},{headers: {Authorization:process.env.AUTH_SECRET} })
-      .then((result) => {
-        console.log(result.data)
+      .then(() => {
         setOpen(false);
-        alert('Successfully submitted!!! 🎉')
+        setRefresh({});
+        alert('Successfully submitted!!! 🎉');
       })
-      .catch(() => alert('Error while submitting'))
+      .catch(() => {
+        alert('Error while submitting');
+      })
   }
   return (
   <div data-testid="create-question">
     <button onClick={handleOpen}>Create Question</button>
     <Modal isOpen={open} onClose={handleClose}>
       <>
-        {console.log(Product)}
         <h1>Ask Your Question</h1>
         <h3>About the {Product.product.name}</h3>
         <form action={handleSubmit}>
@@ -58,5 +60,8 @@ const CreateQuestion = () => {
   );
 };
 
+CreateQuestion.propTypes = {
+  setRefresh: PropTypes.func.isRequired,
+};
 
 export default CreateQuestion;
