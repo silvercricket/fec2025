@@ -17,16 +17,16 @@ const ProductForm = () => {
   const GalleryData = useSelector(store => store.GalleryData);
 
   useEffect(() => {
-    console.log(GalleryData);
+    // console.log(GalleryData);
 
     if(GalleryData.Gallery.name){
-      console.log(GalleryData.Gallery.skus);
+      // console.log(GalleryData.Gallery.skus);
       // Object.keys(GalleryData.Gallery.skus).map((key) => [GalleryData.Gallery.skus[key]]);
       // var skus = GalleryData.Gallery.skus.forEach((sku)=>{
       //   return sku.size;
       // })
       setSizes([{size:'select size'},...Object.keys(GalleryData.Gallery.skus).map((key) => GalleryData.Gallery.skus[key])]);
-      console.log(sizes);
+      // console.log(sizes);
     }
   },[GalleryData]);
 
@@ -44,11 +44,11 @@ const ProductForm = () => {
               sku = key;
             })
           //send sku to cart for each quantity (I saw no way to send them en masse).
-          console.log(sku);
+          // console.log(sku);
           for(var i = 0; i < quantity; i++){
             axios.post(process.env.API_URL + '/cart'  ,{sku_id:sku}, {headers: {Authorization:process.env.AUTH_SECRET} })
             .then((res)=>{
-              console.log(res.status);
+              // console.log(res.status);
             })
             .catch((err)=>{
               console.log(err);
@@ -57,7 +57,7 @@ const ProductForm = () => {
 
 
         } else {
-          console.log(size);
+          // console.log(size);
           setNotify('please select a size');
         }
       }}>add to cart</button>)
@@ -70,10 +70,10 @@ const ProductForm = () => {
       <form>
         <p>{notify}</p>
         <select name="sizes" onChange={(e)=>{
-          console.log(e.target.value);
+          // console.log(e.target.value);
           setSize(e.target.value);
-          console.log('size set?');
-          console.log(size);
+          // console.log('size set?');
+          // console.log(size);
           var index = -1;
           for(var i = 0; i < sizes.length; i++) {
             if(sizes[i].size === e.target.value){
