@@ -11,10 +11,10 @@ const Gallery = () => {
   const GalleryData = useSelector(store => store.GalleryData);
 
   useEffect(() => {
-    console.log("pics go here");
+    // console.log("pics go here");
     if(true){
-      console.log('riiiiiight here:');
-      console.log(GalleryData);
+      // console.log('riiiiiight here:');
+      // console.log(GalleryData);
 
     }
   },[GalleryData]);

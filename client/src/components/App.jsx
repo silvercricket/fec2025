@@ -13,11 +13,11 @@ const App = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log('HELP');
+    // console.log('HELP');
     axios.get(process.env.API_URL + '/products',{headers: {Authorization:process.env.AUTH_SECRET} })
       .then((result)=>{
         dispatch(ProductActions.setProduct(result.data[0]));
-        console.log(result.data[0]);
+        // console.log(result.data[0]);
       })
   },[])
 

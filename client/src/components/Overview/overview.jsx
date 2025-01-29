@@ -16,21 +16,21 @@ const Overview = () => {
   // const OverviewData = useSelector(store => store.Overview);
   const PictureData = useSelector(store => store.PictureData);
 
-  console.log('Product details:')
-  console.log(Product.product);
+  // console.log('Product details:')
+  // console.log(Product.product);
   // console.log(OverviewData);
 
   useEffect(() => {
     if(Product.product.id){
-      console.log(Product.product);
+      // console.log(Product.product);
       axios.get(process.env.API_URL + `/products/${Product.product.id}/styles`,{headers: {Authorization:process.env.AUTH_SECRET} })
         .then((result)=>{
-          console.log('______PRODUCT STYLES BELOW:________')
-          console.log(result.data.results[0]);
+          // console.log('______PRODUCT STYLES BELOW:________')
+          // console.log(result.data.results[0]);
           // dispatch(OverviewActions.setOverview(result.data.results[0]));
           dispatch(GalleryActions.setGallery(result.data.results[0].photos));
           dispatch(PictureActions.setPicture(result.data.results[0].photos[0].url));
-          console.log(result.data.results[0].photos[0].url);
+          // console.log(result.data.results[0].photos[0].url);
           //dispatch(ProductActions.setProduct(result.data[0]));
 
         })

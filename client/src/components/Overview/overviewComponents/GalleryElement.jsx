@@ -8,12 +8,12 @@ const GalleryElement = ({image, index}) => {
   const GalleryData = useSelector(store => store.GalleryData);
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log(GalleryData);
+    // console.log(GalleryData);
     if(GalleryData.Gallery.length !== undefined){
-      console.log('riiiiiight here:');
-      console.log(image);
-      console.log('gallery below');
-      console.log(GalleryData.Gallery[1].url);
+      // console.log('riiiiiight here:');
+      // console.log(image);
+      // console.log('gallery below');
+      // console.log(GalleryData.Gallery[1].url);
 
     }
   },[GalleryData]);
