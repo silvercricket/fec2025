@@ -25,7 +25,7 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
   const handleReviewCardList = () => {
     if (ReviewsData.Reviews.length > 2) {
       return <button onClick={() => {
-        if (numOfReviewCards > 5) {
+        if (Math.floor((numOfReviewCards / 5)) === currPage) {
           setNumOfReviewCards(0);
           setCurrPage(currPage + 1);
         }
