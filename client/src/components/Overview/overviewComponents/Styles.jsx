@@ -12,13 +12,7 @@ const Styles = () => {
   const GalleryData = useSelector(store => store.GalleryData);
   var Style = GalleryData.Gallery.name || 'none';
   useEffect(() => {
-    // console.log(GalleryData);
     Style = GalleryData.name;
-    if(true){
-      // console.log('riiiiiight here:');
-      // console.log(StylesData);
-
-    }
   },[StylesData]);
   if(GalleryData.Gallery.name !== undefined){
     return(

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../input.css';
+
 import PropTypes from 'prop-types';
 import '../../../dist/styles/index.css';
 
