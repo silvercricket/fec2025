@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Modal from 'react-modal';
+import Modal from './ReviewModal.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faRegularStar } from '@fortawesome/free-regular-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import FileUpload from './fileUpload.jsx';
-Modal.setAppElement('#root');
 
 const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) => {
   const Product = useSelector(store => store.Product);
@@ -408,7 +407,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
     return formFields;
   }
   return (
-    <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+    <Modal isOpen={modalIsOpen} onClose={closeModal}>
       <form action={() => handleSubmit()}>
       <h2>Please Rate:</h2>
       <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -447,23 +446,24 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
       </section>
       {handleCharacteristics()}
        <section>
+        <h4>Summary: </h4>
         <input id='form-summary' size='60' maxLength="60" required={true} placeholder={'Example: Best purchase ever!'}></input>
       </section>
-      <textarea id='form-body' rows='15' cols='98' maxLength="1000" required={true} placeholder={'Why did you like the product or not?'} onChange={e => setBodyText(e.target.value)} ></textarea>
+      <h4>Full Review:</h4>
+      <textarea id='form-body' rows='15' cols='65' maxLength="1000" required={true} placeholder={'Why did you like the product or not?'} onChange={e => setBodyText(e.target.value)} ></textarea>
       <div>
       <small>Minimum required characters left: [{handleMinText()}]</small>
       </div>
       <FileUpload files={files} setFiles={setFiles}/>
       <div>
+      <h4>Nickname:</h4>
       <input id='nickname-form' name='nickname' placeholder='Nickname...' required={true} ></input>
       </div>
       <div>
+      <h4>Email:</h4>
       <input id='email-form' name='email' placeholder='Enter Email...' required={true} ></input>
       </div>
       <button type='submit' value='Submit Review'>Submit Review</button>
-      <button type="button" onClick={closeModal}>
-        Close Modal
-      </button>
     </form>
     </Modal>
   );

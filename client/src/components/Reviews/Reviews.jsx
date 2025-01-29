@@ -45,7 +45,7 @@ const Reviews = () => {
   },[Product.product.id, currPage, sort]);
 
   return (
-    <div data-testid="review">
+    <div id="review-view">
       <div id='metaData'>
         <ReviewsSidebar />
       </div>
