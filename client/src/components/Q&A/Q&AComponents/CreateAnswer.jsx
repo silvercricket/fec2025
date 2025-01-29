@@ -45,21 +45,26 @@ const CreateAnswer = ({question, setRefresh}) => {
           <h1>Submit your Answer</h1>
           <h3>{Product.product.name}: {question.question_body}</h3>
           <form action={handleSubmit}>
-            <label>Question:</label>
+            <label>Your Answer*</label>
             <br/>
-            <textarea name="body" maxLength="1000" minLength="1" rows="15" cols="30"></textarea>
-            <br/>
-            <br/>
-            <label>Nickname:</label>
-            <br/>
-            <input placeholder="Example: jackson11!" name="name" maxLength="60" minLength="5"></input>
+            <textarea name="body" placeholder="Your answer to the question above" maxLength="1000" minLength="1" rows="5" cols="65"></textarea>
             <br/>
             <br/>
-            <label>Email:</label>
+            <label> What is your nickname*</label>
             <br/>
-            <input type="email" placeholder="Why did you like the product or not?" name="email" maxLength="60" minLength="3"></input>
+            <input placeholder="Example: jack543!" name="name" maxLength="60" minLength="5"></input>
             <br/>
-            <p>For authentication reasons, you will not be emailed</p>
+            <small>For privacy reasons, do not use your full name or email address</small>
+            <br/>
+            <br/>
+            <label>Your email*</label>
+            <br/>
+            <input type="email" placeholder="Example: jack@email.com" name="email" maxLength="60" minLength="3"></input>
+            <br/>
+            <small>For authentication reasons, you will not be emailed</small>
+            <br/>
+            <br/>
+            {/*Add images here*/}
             <button type="submit">Submit Answer</button>
           </form>
           <br/>
