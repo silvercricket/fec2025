@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Outfit = ({ currentProduct }) => {
+const Outfit = ({ currentProduct, currentStyle }) => {
 
   const [outfit, setOutfit] = useState([]);
   const [index, setIndex] = useState(0);
@@ -61,7 +61,7 @@ const Outfit = ({ currentProduct }) => {
                         e.stopPropagation();
                         handleRemove(product.id);
                       }}>X</button>
-                      <img src={product}/>
+                      <img src={currentStyle.results[0].photos[0].thumbnail_url}/>
                       <div className="card-content">
                         <h6>{product.category}</h6>
                         <h3>{product.name}</h3>
@@ -92,6 +92,7 @@ const Outfit = ({ currentProduct }) => {
 
 Outfit.propTypes = {
   currentProduct: PropTypes.object.isRequired,
+  currentStyle: PropTypes.object.isRequired
 };
 
 export default Outfit;

@@ -41,7 +41,7 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) =
               className="star-button"
               onClick={(e) => {
                 e.stopPropagation();
-                handleStarClick(currentProduct, product);
+                handleStarClick(product);
               }}>⭐</button>
               <img src={product.results[0].photos[0].thumbnail_url} alt={product.name}/>
               <div className="card-content">
