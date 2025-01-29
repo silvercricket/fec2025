@@ -7,7 +7,7 @@ const ReviewsSlice = createSlice({
       init: [],
     },
     Meta: {
-      data: null,
+      data: {},
     },
   },
   reducers: {
