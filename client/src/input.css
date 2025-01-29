@@ -48,15 +48,14 @@
     --ring: 216 34% 17%;
   }
 
-<<<<<<< HEAD
   #display {
     position: relative;
     top: 0;
     left: 0;
   }
-=======
 
->>>>>>> a914fe8732dfc7d68820bdbf136441e096d15f91
+}
+
   #mainDisplay {
     position: relative;
     top: 0;
@@ -82,16 +81,15 @@
   #gallery{
     position: absolute;
   }
+
   .galleryPicture{
-<<<<<<< HEAD
     position:relative;
     left: 0;
     width: 30%;
     height: 30%;
-=======
-    width: 200px;
-    height: 200px;
-    
+  }
+
+
   .carousel-container {
     /* overflow: hidden; */
     width: 100%;
@@ -144,7 +142,75 @@
     border: none;
     cursor: pointer;
     font-size: 16px;
->>>>>>> a914fe8732dfc7d68820bdbf136441e096d15f91
+  }
+
+  .outfit-container {
+   /* overflow: hidden; */
+   width: 100%;
+  }
+
+  .outfit-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 20%;
+    height: 300px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+  }
+
+  .empty-card {
+    display: flex;
+    width: 20%;
+    height: 300px;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 1px dashed #ccc;
+  }
+
+  .add-button {
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+  }
+
+  .modal-popup {
+    position: fixed;
+    top: 340px;
+    left: 8px;
+    width: 512px;
+    height: 416px;
+    background-color: #f9f9f9;
+    border: #d8d8d8;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    text-align: center;
   }
 }
 
@@ -173,4 +239,9 @@
 
 textarea {
   resize: none;
+}
+
+#question {
+  display: flex;
+  justify-content: space-between;
 }
