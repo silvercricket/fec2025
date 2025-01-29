@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import '../../input.css';
+import PropTypes from 'prop-types';
 import '../../../dist/styles/index.css';
 
 const Compare = ({ currentProduct, starClicked, onClose }) => {
@@ -12,6 +14,12 @@ const Compare = ({ currentProduct, starClicked, onClose }) => {
       </div>
     </div>
   )
+};
+
+Compare.propTypes = {
+  currentProduct: PropTypes.object.isRequired,
+  starClicked: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired
 };
 
 export default Compare;

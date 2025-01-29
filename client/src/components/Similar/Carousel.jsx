@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import '../../input.css';
+import PropTypes from 'prop-types';
 import '../../../dist/styles/index.css';
 
 
@@ -7,8 +9,6 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) =
   const [index, setIndex] = useState(0);
 
   const slidesToShow = 4;
-
-  // const slidesToShow2 = 1;
 
   const handleNext = () => {
     setIndex((prevIndex) =>
@@ -65,6 +65,13 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) =
           disabled={index >= items.length - 1}>Next</button>
     </div>
   )
+};
+
+Carousel.propTypes = {
+  items: PropTypes.object.isRequired,
+  currentProduct: PropTypes.object.isRequired,
+  handleCardClick: PropTypes.func.isRequired,
+  handleStarClick: PropTypes.func.isRequired
 };
 
 export default Carousel;

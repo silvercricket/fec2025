@@ -11,7 +11,7 @@ const StylesElement = ({style, index}) => {
   useEffect(() => {
     // console.log(StylesData);
     if(StylesData.Styles.length !== undefined){
-      console.log(StylesData.Styles);
+      // console.log(StylesData.Styles);
 
 
     }

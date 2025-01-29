@@ -22,8 +22,8 @@ const Overview = () => {
   const PictureData = useSelector(store => store.PictureData);
   const GalleryData = useSelector(store => store.GalleryData);
   const [price, setPrice] = useState('');
-  console.log('Product details:')
-  console.log(Product.product);
+  // console.log('Product details:')
+  // console.log(Product.product);
 
   // console.log('Product details:')
   // console.log(Product.product);
@@ -50,11 +50,11 @@ const Overview = () => {
   },[Product]);
 
   useEffect(() => {
-    console.log('sale?');
-    console.log(GalleryData.Gallery);
+    // console.log('sale?');
+    // console.log(GalleryData.Gallery);
     setPrice('$' + Product.product.default_price);
     if(GalleryData.Gallery.sale_price){
-      console.log('you\'ve got sale!');
+      // console.log('you\'ve got sale!');
       setPrice(
       <p style={{color:'red'}}><s>{Product.product.default_price}</s>&nbsp;
       {GalleryData.Gallery.sale_price} </p>
