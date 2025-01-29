@@ -30,18 +30,9 @@ const Overview = () => {
 
   useEffect(() => {
     if(Product.product.id){
-<<<<<<< HEAD
       axios.get(process.env.API_URL + `/products/${Product.product.id}/styles`,{headers: {Authorization:process.env.AUTH_SECRET} })
         .then((result)=>{
 
-=======
-      // console.log(Product.product);
-      axios.get(process.env.API_URL + `/products/${Product.product.id}/styles`,{headers: {Authorization:process.env.AUTH_SECRET} })
-        .then((result)=>{
-          // console.log('______PRODUCT STYLES BELOW:________')
-          // console.log(result.data.results[0]);
-          // dispatch(OverviewActions.setOverview(result.data.results[0]));
->>>>>>> 6e9a289360e30508b4a4e3336e43df3130f82344
           dispatch(GalleryActions.setGallery(result.data.results[0]));
           dispatch(PictureActions.setPicture(result.data.results[0].photos[0].url));
           dispatch(StylesActions.setStyles(result.data.results));
