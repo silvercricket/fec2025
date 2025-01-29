@@ -6,7 +6,7 @@ import axios from 'axios';
 import Answers from './Answers.jsx';
 import CreateAnswer from './CreateAnswer.jsx';
 
-const Question = ({question, setRefresh}) => {
+const Question = ({question, refresh, setRefresh}) => {
   const [answers, setAnswers] = React.useState([]);
 
   React.useEffect(() => {
@@ -15,10 +15,13 @@ const Question = ({question, setRefresh}) => {
         setAnswers(result.data.results);
       })
       .catch((err) => {
-        console.error(err);
-        alert('error while retrieving answers')
+        if (err.response.status === 429) {
+          alert('Sorry traffic is full please refresh your browser');
+        } else {
+          alert('error while retrieving answers');
+        }
       });
-  }, []);
+  }, [refresh]);
 
   /*
   <div id="HASH" class="blue-msg">
@@ -28,16 +31,17 @@ const Question = ({question, setRefresh}) => {
   return (
     <div data-testid="question">
       <div id="question">
-        <h3 data-testid="question-body"><b>Q: {question.question_body}</b></h3>
+        <h3 style={{margin: '.5em 0'}} data-testid="question-body"><b>Q: {question.question_body}</b></h3>
         <CreateAnswer question={question} setRefresh={setRefresh}/>
       </div>
-      <Answers answers={answers}/>
+      <Answers answers={answers} setAnswers={setAnswers} question={question} setRefresh={setRefresh}/>
     </div>
   );
 };
 
 Question.propTypes = {
   question: PropTypes.object.isRequired,
+  refresh: PropTypes.object.isRequired,
   setRefresh: PropTypes.func.isRequired
 };
 
