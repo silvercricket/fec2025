@@ -20,6 +20,13 @@ const App = () => {
         dispatch(ProductActions.setProduct(result.data[0]));
         // console.log(result.data[0]);
       })
+      .catch((err) => {
+        if (err.response.status === 429) {
+          alert('Sorry traffic is full please refresh your browser');
+        } else {
+          alert('Error while loading browser')
+        }
+      })
   },[])
 
   return(

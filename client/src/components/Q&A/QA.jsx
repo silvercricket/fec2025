@@ -14,11 +14,17 @@ const QA = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (Product.product.id) {
-      axios.get(process.env.API_URL + `/qa/questions?count=4&product_id=${44500}`,{headers: {Authorization:process.env.AUTH_SECRET} })
+      axios.get(process.env.API_URL + `/qa/questions?count=4&product_id=${40500}`,{headers: {Authorization:process.env.AUTH_SECRET} })
       .then((result)=>{
         dispatch(QuestionsActions.setQuestions(result.data.results));
       })
-      .catch(() => alert('error while retrieving questions'))
+      .catch((err) => {
+        if (err.response.status === 429) {
+          alert('Sorry traffic is full please refresh your browser');
+        } else {
+          alert('error while retrieving questions');
+        }
+      })
     }
   },[Product.product.id, refresh])
 
@@ -27,7 +33,7 @@ const QA = () => {
     <h3>Questions & Answers</h3>
     <SearchQuestions setRefresh={setRefresh}/>
     <br/>
-    <Questions setRefresh={setRefresh}/>
+    <Questions refresh={refresh} setRefresh={setRefresh}/>
   </div>
   );
 };
