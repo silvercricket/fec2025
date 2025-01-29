@@ -19,6 +19,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "axios": "^1.7.9",
     "babel": "^6.23.0",
+    "browser-image-compression": "^2.0.2",
     "chart.js": "^4.4.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

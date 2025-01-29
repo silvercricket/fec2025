@@ -65,9 +65,9 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
         } page: {currPage}</h3>
       <div
         style={{
-          height: '500px',      // Ensures the container has a fixed height
-          overflow: 'auto',     // Allows scrolling within the container
-          backgroundColor: 'white',  // Optional: to make sure the container is visible and stands out
+          height: '500px',
+          overflow: 'auto',
+          backgroundColor: 'white',
         }}
       >
         {handleMap(numOfReviewCards)}
