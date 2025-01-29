@@ -137,15 +137,20 @@
 
   .empty-card {
     display: flex;
+    width: 20%;
+    height: 300px;
     justify-content: center;
     background-color: #ffffff;
     border: 1px dashed #ccc;
   }
 
   .add-button {
-    background-color: transparent;
-    border: 1px solid #ddd;
+    border: none;
+    border-radius: 50%;
     cursor: pointer;
+    width: 30px;
+    height: 30px;
+    text-align: center;
   }
 
   .modal-popup {

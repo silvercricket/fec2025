@@ -101,7 +101,7 @@ const Similar = () => {
     }, [products, styles]);
 
     const handleCardClick = (product) => {
-      console.log(Product.product)
+      console.log(product)
       dispatch(ProductActions.setProduct(product));
     };
 
