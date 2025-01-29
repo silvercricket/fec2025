@@ -84,7 +84,7 @@ const Similar = () => {
       if (Product.product.id) {
         setCurrentProduct(Product.product);
         getRelated();
-        console.log(Product.product);
+        // console.log(Product.product);
       }
     }, [Product.product.id]);
 
