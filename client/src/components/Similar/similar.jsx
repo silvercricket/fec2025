@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
-import '../../input.css';
+import '../../../dist/styles/index.css';
 import {RelatedActions} from '../../store/RelatedSlice.js';
 import {ProductActions} from '../../store/ProductSlice.js';
 import Carousel from './Carousel.jsx';

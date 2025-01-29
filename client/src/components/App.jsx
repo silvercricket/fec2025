@@ -7,6 +7,7 @@ import Overview from './Overview/overview.jsx';
 import QA from './Q&A/QA.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 import Similar from './Similar/similar.jsx';
+
 import {ProductActions} from '../store/ProductSlice.js';
 
 const App = () => {

@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 215 20.2% 65.1%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 216 34% 17%;
+  }
+
+  #display {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+
+  #mainDisplay {
+    position: relative;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    margin-right: 2%;
+    width: 600px;
+    background: transparent no-repeat center;
+    background-size: cover;
+    float: left;
+  }
+  #styles {
+    float: left;
+  }
+  .clearfix{
+    clear:both
+  }
+  .stylePicture{
+    border-radius: 100000px;
+    width: 60px;
+    height: 60px;
+  }
+  #gallery{
+    position: absolute;
+  }
+
+  .galleryPicture{
+    position:relative;
+    left: 0;
+    width: 30%;
+    height: 30%;
+  }
+
+
+  .carousel-container {
+    /* overflow: hidden; */
+    width: 100%;
+  }
+
+  .carousel-track {
+    /* display: flex;
+    transition: transform 0.3s ease-in-out; */
+  }
+
+  .carousel-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 20%;
+    height: 300px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+  }
+
+  .carousel-card img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .carousel-card .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50%;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .star-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .outfit-container {
+   /* overflow: hidden; */
+   width: 100%;
+  }
+
+  .outfit-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 20%;
+    height: 300px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+  }
+
+  .empty-card {
+    display: flex;
+    width: 20%;
+    height: 300px;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 1px dashed #ccc;
+  }
+
+  .add-button {
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+  }
+
+  .modal-popup {
+    position: fixed;
+    top: 340px;
+    left: 8px;
+    width: 512px;
+    height: 416px;
+    background-color: #f9f9f9;
+    border: #d8d8d8;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid gray;
+    padding: 5px;
+  }
+
+  .placeholder {
+    color: lightgray;
+    padding: 0 5px;
+  }
+
+  .input-box {
+    border: none;
+    outline: none;
+    flex: 1;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  #question {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@layer base {
+  body {
+ }
+}
+
