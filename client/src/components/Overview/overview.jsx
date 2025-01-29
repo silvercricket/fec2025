@@ -49,8 +49,6 @@ const Overview = () => {
     }
   },[Product]);
 
-
-
   useEffect(() => {
     console.log('sale?');
     console.log(GalleryData.Gallery);
@@ -64,6 +62,7 @@ const Overview = () => {
       //setPrice(<s>price</s>  GalleryData.Gallery.sale_price)
     }
   },[GalleryData]);
+
   return(
   <div data-testid="overview">
     Overview goes here!
