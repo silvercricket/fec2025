@@ -56,11 +56,11 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) =
         <button
           className="prev"
           onClick={handlePrev}
-          disabled={index === 0}>Previous</button>
+          disabled={index === 0}>←</button>
         <button
           className="next"
           onClick={handleNext}
-          disabled={index >= items.length - 1}>Next</button>
+          disabled={index >= items.length - 1}>→</button>
     </div>
   )
 };
