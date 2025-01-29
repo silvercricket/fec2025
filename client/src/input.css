@@ -47,7 +47,7 @@
     --destructive-foreground: 210 40% 98%;
     --ring: 216 34% 17%;
   }
-
+}
 
   #mainDisplay {
     width: 600px;
@@ -57,6 +57,7 @@
     width: 200px;
     height: 200px;
   }
+
 
   .carousel-container {
     /* overflow: hidden; */
