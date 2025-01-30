@@ -23,7 +23,7 @@ const Answers = ({answers, setAnswers, question, setRefresh}) => {
   }
   return (
   <div data-testid="answers">
-    {answers.length > 0 ? <h3 style={{margin: '.5em 0'}} data-testid="answer-body"><b>A: </b></h3> : <h3>No answers unfortunately 😞</h3>}
+    {answers.length > 0 ? <h3 style={{margin: '.5em 0'}}><b>A: </b></h3> : <h3>No answers unfortunately 😞</h3>}
     {answers.map((answer) => <Answer key={answer.answer_id} answer={answer} setRefresh={setRefresh} isClicked={setClicked}/>)}
     <br/>
     {Object.keys(question.answers).length > 2 && !clicked ? <small onClick={handleAnswers}><b>Load More Answers</b></small> : (clicked ? <small onClick={handleClose}><b>Collapse Answers</b></small> : null)}

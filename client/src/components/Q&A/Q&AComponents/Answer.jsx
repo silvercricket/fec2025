@@ -35,7 +35,7 @@ const Answer = ({answer, setRefresh, isClicked}) => {
     }
   return (
     <div data-testid="answer">
-      <p>{answer.body}</p>
+      <p data-testid="answer-body">{answer.body}</p>
       <small>by {answer.answerer_name}, {new Date(answer.date).toLocaleString(undefined, {year: 'numeric',  day: 'numeric', month: 'long'})} | Helpful?  <u onClick={handleYes}>Yes</u> {'(' + answer.helpfulness + ')'} | <u onClick={handleReport}>Report</u></small>
     </div>
   );
