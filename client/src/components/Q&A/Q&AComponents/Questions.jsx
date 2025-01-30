@@ -14,7 +14,6 @@ const Questions = ({refresh, setRefresh}) => {
       // console.log(typeof question);
       return (<Question key={question.question_id} question={question} refresh={refresh} setRefresh={setRefresh}/>)
     }) : <p><b>No questions here but feel free to add one</b></p>}
-    <br/>
     <CreateQuestion setRefresh={setRefresh}/>
   </div>
   );

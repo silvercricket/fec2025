@@ -29,12 +29,15 @@ const QA = () => {
   },[Product.product.id, refresh])
 
   return (
-  <div data-testid="qa">
-    <h3>Questions & Answers</h3>
-    <SearchQuestions setRefresh={setRefresh}/>
-    <br/>
-    <Questions refresh={refresh} setRefresh={setRefresh}/>
-  </div>
+    <>
+      <div data-testid="qa">
+        <h3>Questions & Answers</h3>
+        <SearchQuestions setRefresh={setRefresh}/>
+        <br/>
+        <Questions refresh={refresh} setRefresh={setRefresh}/>
+      </div>
+      <br/>
+    </>
   );
 };
 
