@@ -22,21 +22,21 @@ const Overview = () => {
   const GalleryData = useSelector(store => store.GalleryData);
   const [price, setPrice] = useState('');
   // console.log('Product details:')
-  // console.log(Product.product);
+  // console.log(Product);
 
   // console.log('Product details:')
-  // console.log(Product.product);
+  // console.log(Product);
   // console.log(OverviewData);
 
   useEffect(() => {
-    if(Product.product.id){
-      axios.get(process.env.API_URL + `/products/${Product.product.id}/styles`,{headers: {Authorization:process.env.AUTH_SECRET} })
+    if(Product.id){
+      axios.get(process.env.API_URL + `/products/${Product.id}/styles`,{headers: {Authorization:process.env.AUTH_SECRET} })
         .then((result)=>{
 
           dispatch(GalleryActions.setGallery(result.data.results[0]));
           dispatch(PictureActions.setPicture(result.data.results[0].photos[0].url));
           dispatch(StylesActions.setStyles(result.data.results));
-          setPrice('$' + Product.product.default_price);
+          setPrice('$' + Product.default_price);
           // console.log(result.data.results[0]);
           // console.log(result.data.results[0].photos[0].url);
           //dispatch(ProductActions.setProduct(result.data[0]));
@@ -47,10 +47,10 @@ const Overview = () => {
 
   useEffect(() => {
 
-    setPrice('$' + Product.product.default_price);
+    setPrice('$' + Product.default_price);
     if(GalleryData.Gallery.sale_price){
       setPrice(
-      <p style={{color:'red'}}><s>{Product.product.default_price}</s>&nbsp;
+      <p style={{color:'red'}}><s>{Product.default_price}</s>&nbsp;
       {GalleryData.Gallery.sale_price} </p>
     )
       //setPrice(<s>price</s>  GalleryData.Gallery.sale_price)
@@ -64,8 +64,8 @@ const Overview = () => {
       <Gallery />
     </div>
     <h3>!!!star rating goes here!!!</h3>
-    <h3>{Product.product.category}</h3>
-    <h2>{Product.product.name}</h2>
+    <h3>{Product.category}</h3>
+    <h2>{Product.name}</h2>
     {/* <p>price: {price}</p> */}
     {price}
     <Styles  id='styles' />
@@ -73,8 +73,8 @@ const Overview = () => {
     <div className="clearfix"></div>
 
 
-    <p>{Product.product.slogan}</p>
-    <p>{Product.product.description}</p>
+    <p>{Product.slogan}</p>
+    <p>{Product.description}</p>
 
 
     <Share />

@@ -14,7 +14,7 @@ const App = () => {
   const Product = useSelector(store => store.Product);
   const dispatch = useDispatch();
 
-  var product = Product.product.id ||  40344;
+  var product = Product.id ||  40344;
 
   useEffect(() => {
     axios.get(`${process.env.API_URL}/products/${product}`,{headers: {Authorization:process.env.AUTH_SECRET} })
@@ -28,7 +28,7 @@ const App = () => {
           alert('Error while loading browser')
         }
       })
-  },[Product.product.id])
+  },[Product.id])
 
   return(
   <div data-testid="app">
