@@ -11,23 +11,17 @@ import PropTypes from 'prop-types';
 
 const SearchQuestions = ({setRefresh}) => {
   const Product = useSelector(store => store.Product);
+  const QuestionsData = useSelector(store => store.QuestionsData)
   const dispatch = useDispatch();
+  console.log(QuestionsData.length);
   const handleSearch = (formData) => {
     const query = formData.get("query");
-    if (query.length < 3) {
-      setRefresh({})
-    } else {
-      axios.get(process.env.API_URL + `/qa/questions?count=4&product_id=${44500}`,{headers: {Authorization:process.env.AUTH_SECRET} })
-      .then((result)=>{
-        var filtered = result.data.results.filter((question) => question.question_body.includes(query));
-        if (filtered.length === 0) {
-          alert('No questions found, if you need help please feel free to leave a question addressing your concern');
-          return;
-        }
-        dispatch(QuestionsActions.setQuestions(filtered));
-      })
-      .catch(() => alert('error while retrieving questions'))
+    var filtered = QuestionsData.filter((question) => question.question_body.includes(query));
+    if (filtered.length === 0) {
+      alert('No questions found, if you need help please feel free to leave a question addressing your concern');
+      return;
     }
+    dispatch(QuestionsActions.setQuestions(filtered));
   }
   return (
   <form className="input-container" data-testid="search-questions" action={handleSearch}>
