@@ -72,7 +72,7 @@ const Similar = () => {
     axios.get(`${process.env.API_URL}/products/${Product.id}/related`, {headers: {Authorization: process.env.AUTH_SECRET}})
     .then((response) => {
       const relatedProductIds = response.data;
-      dispatch(RelatedActions.setRelated(response.data));
+      // dispatch(RelatedActions.setRelated(response.data));
       getStyles(relatedProductIds);
       getProducts(relatedProductIds);
     })
