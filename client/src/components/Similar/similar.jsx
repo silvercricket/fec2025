@@ -22,6 +22,7 @@ const Similar = () => {
   const [combinedData, setCombinedData] = useState([]);
   const [starClicked, setStarClicked] = useState(null);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [currentStyle, setCurrentStyle] = useState(null);
 
   const getStyles = (productIds) => {
     if (!productIds || productIds.length === 0) {
@@ -80,11 +81,21 @@ const Similar = () => {
     })
    };
 
+   const getCurrentDetails = (currentId) => {
+    axios.get(`${process.env.API_URL}/products/${currentId}/styles`, {headers: {Authorization: process.env.AUTH_SECRET}})
+      .then((response) => {
+        setCurrentStyle(response.data);
+      })
+      .catch((err) => {
+        console.error('current style GET error', err);
+      })
+    }
+
     useEffect(() => {
       if (Product.product.id) {
         setCurrentProduct(Product.product);
         getRelated();
-        console.log(Product.product);
+        getCurrentDetails(Product.product.id);
       }
     }, [Product.product.id]);
 
@@ -134,10 +145,13 @@ const Similar = () => {
         {modalIsOpen && (
           <Compare
             currentProduct={currentProduct}
+            currentStyle={currentStyle}
             starClicked={starClicked}
             onClose={handleCloseModal} />
         )}
-        <Outfit currentProduct={currentProduct}/>
+        <Outfit
+          currentProduct={currentProduct}
+          currentStyle={currentStyle} />
       </div>
   );
 };

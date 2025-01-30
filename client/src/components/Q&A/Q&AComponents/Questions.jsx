@@ -12,9 +12,8 @@ const Questions = ({setRefresh}) => {
   <div data-testid="questions">
     {QuestionsData.length > 0 ? [...QuestionsData].map((question) => {
       // console.log(typeof question);
-      return (<Question key={question.question_id} question={question}/>)
+      return (<Question key={question.question_id} question={question} setRefresh={setRefresh}/>)
     }) : <p><b>No questions here but feel free to add one</b></p>}
-    <br/>
     <CreateQuestion setRefresh={setRefresh}/>
   </div>
   );
