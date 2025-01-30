@@ -65,11 +65,11 @@ const Similar = () => {
   }
 
   const getRelated = () => {
-    if (!Product.product.id) {
+    if (!Product.id) {
       console.error('Product Id undefined in Similar Product');
       return;
     }
-    axios.get(`${process.env.API_URL}/products/${Product.product.id}/related`, {headers: {Authorization: process.env.AUTH_SECRET}})
+    axios.get(`${process.env.API_URL}/products/${Product.id}/related`, {headers: {Authorization: process.env.AUTH_SECRET}})
     .then((response) => {
       const relatedProductIds = response.data;
       dispatch(RelatedActions.setRelated(response.data));
@@ -92,12 +92,12 @@ const Similar = () => {
     }
 
     useEffect(() => {
-      if (Product.product.id) {
-        setCurrentProduct(Product.product);
+      if (Product.id) {
+        setCurrentProduct(Product);
         getRelated();
-        getCurrentDetails(Product.product.id);
+        getCurrentDetails(Product.id);
       }
-    }, [Product.product.id]);
+    }, [Product.id]);
 
     useEffect(() => {
       if (products.length > 0 && styles.length > 0) {

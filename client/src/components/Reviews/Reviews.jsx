@@ -14,9 +14,9 @@ const Reviews = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (Product.product.id) {
+    if (Product.id) {
       axios.get(process.env.API_URL + `/reviews/`,{params: {
-        product_id: Product.product.id,
+        product_id: Product.id,
         page: currPage,
         sort: sort,
       },
@@ -31,7 +31,7 @@ const Reviews = () => {
       })
 
       axios.get(process.env.API_URL + `/reviews/meta`,{params: {
-        product_id: Product.product.id,
+        product_id: Product.id,
       }, headers: {Authorization:process.env.AUTH_SECRET} })
       .then((response)=>{
         dispatch(ReviewsActions.setMeta(response.data));
@@ -41,7 +41,7 @@ const Reviews = () => {
       })
     }
 
-  },[Product.product.id, currPage, sort]);
+  },[Product.id, currPage, sort]);
 
   return (
     <div data-testid="review-view">
@@ -49,7 +49,7 @@ const Reviews = () => {
         <ReviewsSidebar />
       </div>
       <div data-testid='reviewCards-view'>
-        <ReviewsList key={Product.product.id} setCurrPage={setCurrPage} currPage={currPage} setSort={setSort} sort={sort}/>
+        <ReviewsList key={Product.id} setCurrPage={setCurrPage} currPage={currPage} setSort={setSort} sort={sort}/>
       </div>
     </div>
   )
