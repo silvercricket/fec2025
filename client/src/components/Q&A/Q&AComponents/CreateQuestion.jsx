@@ -15,7 +15,7 @@ const CreateQuestion = ({setRefresh}) => {
   const [questions, setQuestions] = React.useState([]);
   React.useEffect(() => {
     if (Product.product.id) {
-      axios.get(process.env.API_URL + `/qa/questions?count=2147483647&product_id=${Product.product.id}`,{headers: {Authorization:process.env.AUTH_SECRET} })
+      axios.get(process.env.API_URL + `/qa/questions?count=2147483647&product_id=${40499}`,{headers: {Authorization:process.env.AUTH_SECRET} })
         .then((result)=>{
           console.log(result.data.results)
           setQuestions(result.data.results);

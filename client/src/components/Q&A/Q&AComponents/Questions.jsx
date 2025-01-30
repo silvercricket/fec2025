@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 const Questions = ({setRefresh}) => {
   const QuestionsData = useSelector(store => store.QuestionsData);
   return (
-  <div style={{maxHeight: `${window.innerHeight}px`, overflow: 'auto'}} data-testid="questions">
+  <div style={{maxHeight: `${window.innerHeight - 200}px`, overflow: 'auto'}} data-testid="questions">
     {QuestionsData.length > 0 ? [...QuestionsData].map((question) => {
       // console.log(typeof question);
       return (<Question key={question.question_id} question={question} setRefresh={setRefresh}/>)
