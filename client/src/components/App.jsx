@@ -22,9 +22,13 @@ const App = () => {
         dispatch(ProductActions.setProduct(result.data));
       })
       .catch((err) => {
-        console.error('App GET error', err);
-      });
-  },[Product.product.id]);
+        if (err.response.status === 429) {
+          alert('Sorry traffic is full please refresh your browser');
+        } else {
+          alert('Error while loading browser')
+        }
+      })
+  },[Product.product.id])
 
   return(
   <div data-testid="app">

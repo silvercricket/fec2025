@@ -9,21 +9,19 @@ import PropTypes from 'prop-types';
 const CreateAnswer = ({question, setRefresh}) => {
   const Product = useSelector(store => store.Product);
   const [open, setOpen] = React.useState(false);
+  const [clicked, setClicked] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleSubmit= (formData) => {
     const body = formData.get("body");
     const name = formData.get("name");
     const email = formData.get("email");
-    const image = formData.get("image");
+    const image = formData.get("image") || [];
     console.log(image);
-    if (true) {
-      return;
-    }
     if (!body || !name || !email) {
       alert('One or more of the fields are empty');
     }
-    axios.post(process.env.API_URL + `/qa/questions/${question.question_id}`, {body, name, email, image},{headers: {Authorization:process.env.AUTH_SECRET} })
+    axios.post(process.env.API_URL + `/qa/questions/${question.question_id}/answers`, {body, name, email, image},{headers: {Authorization:process.env.AUTH_SECRET} })
       .then(() => {
         setOpen(false);
         setRefresh({});
@@ -34,7 +32,17 @@ const CreateAnswer = ({question, setRefresh}) => {
       })
   }
   const handleYes = () => {
-    console.log('yes');
+    if (!clicked) {
+      axios.put(process.env.API_URL + `/qa/questions/${question.question_id}/helpful`, {}, {headers: {Authorization:process.env.AUTH_SECRET} })
+        .then( () => {
+          setClicked(true);
+          setRefresh({});
+          alert('Thank you for your help!!! 🤩');
+        })
+        .catch(() => alert('error while marking question as helpful'))
+    } else {
+      alert('You cannot mark a question as helpful more than once ❌')
+    }
   }
   return (
   <div data-testid="create-answer">
