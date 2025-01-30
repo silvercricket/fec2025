@@ -24,7 +24,6 @@ const Reviews = () => {
         Authorization:process.env.AUTH_SECRET
       } })
       .then((response)=>{
-        console.log(response);
         dispatch(ReviewsActions.setReviews(response.data.results));
       })
       .catch((err)=> {
@@ -45,12 +44,12 @@ const Reviews = () => {
   },[Product.product.id, currPage, sort]);
 
   return (
-    <div id="review-view">
-      <div id='metaData'>
+    <div data-testid="review-view">
+      <div data-testid='metaData-view'>
         <ReviewsSidebar />
       </div>
-      <div id='reviewCards'>
-        <ReviewsList setCurrPage={setCurrPage} currPage={currPage} setSort={setSort} sort={sort}/>
+      <div data-testid='reviewCards-view'>
+        <ReviewsList key={Product.product.id} setCurrPage={setCurrPage} currPage={currPage} setSort={setSort} sort={sort}/>
       </div>
     </div>
   )
