@@ -113,7 +113,6 @@ const Similar = () => {
     }, [products, styles]);
 
     const handleCardClick = (product) => {
-      console.log(product)
       dispatch(ProductActions.setProduct(product));
     };
 
@@ -126,7 +125,6 @@ const Similar = () => {
       setStarClicked(null);
       setIsOpen(false);
     };
-
 
 
 

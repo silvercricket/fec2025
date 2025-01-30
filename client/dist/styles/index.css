@@ -121,6 +121,7 @@
     box-sizing: border-box;
     transition: transform 0.3s ease;
     overflow: hidden;
+    cursor: pointer;
   }
 
   .carousel-card img {
@@ -140,8 +141,8 @@
     font-size: 12px;
   }
 
-  .carousel-button:disabled {
-
+  .carousel-button {
+    cursor: pointer;
   }
 
   .card-content h3 {

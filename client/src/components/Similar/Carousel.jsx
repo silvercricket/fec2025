@@ -33,29 +33,29 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) =
             transform: `translateX(-${index * (100 / slidesToShow)}%)`,
             transition: 'transform 0.3s ease-in-out'
             }}>
-          {items.map((product) => (
-            <div key={product.id}
-            className="carousel-card"
-            style={{
-              flex: `0 0 ${100 / slidesToShow}%`,
-              boxSizing: 'border-box'
-            }}
-            onClick={() => handleCardClick(product)}>
-              <button
-                className="star-button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleStarClick(product);
-                }}>⭐</button>
-                <img src={product.results[0].photos[0].thumbnail_url} alt={product.name}/>
-                <div className="card-content">
-                <h6>{product.category}</h6>
-                <h3>{product.name}</h3>
-                <h5>{product.default_price}</h5>
-                <h5>star rating</h5>
-                </div>
-            </div>
-          ))}
+              {items.length > 0 && items.map((product) => (
+                  <div key={product.id}
+                  className="carousel-card"
+                  onClick={() => handleCardClick(product)}
+                  style={{
+                    flex: `0 0 ${100 / slidesToShow}%`,
+                    boxSizing: 'border-box'
+                  }}>
+                    <button
+                      className="star-button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleStarClick(product);
+                      }}>⭐</button>
+                      <img src={product.results[0].photos[0].thumbnail_url} />
+                      <div className="card-content">
+                      <h6>{product.category}</h6>
+                      <h3>{product.name}</h3>
+                      <h5>{product.default_price}</h5>
+                      <h5>star rating</h5>
+                      </div>
+                  </div>
+                ))}
         </div>
       </div>
         <button
