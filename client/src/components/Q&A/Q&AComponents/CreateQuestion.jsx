@@ -17,7 +17,6 @@ const CreateQuestion = ({setRefresh}) => {
     if (Product.id) {
       axios.get(process.env.API_URL + `/qa/questions?count=2147483647&product_id=${Product.id}`,{headers: {Authorization:process.env.AUTH_SECRET} })
         .then((result)=>{
-          console.log(result.data.results)
           setQuestions(result.data.results);
         })
         .catch((err) => {
@@ -58,7 +57,6 @@ const CreateQuestion = ({setRefresh}) => {
   };
   return (
   <div data-testid="create-question">
-    {console.log(Product)}
     {questions.length > 4 && !clicked ? <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleQuestions}>MORE ANSWERED QUESTIONS</h3> : (clicked ? <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleCollapse}>Collapse Questions</h3> : null)}
 
     <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleOpen}>ADD A QUESTION ➕</h3>
