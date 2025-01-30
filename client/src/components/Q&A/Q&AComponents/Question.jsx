@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Answers from './Answers.jsx';
 import CreateAnswer from './CreateAnswer.jsx';
+import {useSelector} from 'react-redux';
 
-const Question = ({question, refresh, setRefresh}) => {
+const Question = ({question, setRefresh}) => {
   const [answers, setAnswers] = React.useState([]);
-
+  const QuestionsData = useSelector(store => store.QuestionsData);
   React.useEffect(() => {
     axios.get(process.env.API_URL + `/qa/questions/${question.question_id}/answers?count=2`,{headers: {Authorization:process.env.AUTH_SECRET} })
       .then((result) => {
@@ -21,7 +22,7 @@ const Question = ({question, refresh, setRefresh}) => {
           alert('error while retrieving answers');
         }
       });
-  }, [refresh]);
+  }, [QuestionsData]);
 
   /*
   <div id="HASH" class="blue-msg">
@@ -41,7 +42,6 @@ const Question = ({question, refresh, setRefresh}) => {
 
 Question.propTypes = {
   question: PropTypes.object.isRequired,
-  refresh: PropTypes.object.isRequired,
   setRefresh: PropTypes.func.isRequired
 };
 
