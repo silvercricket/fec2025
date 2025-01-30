@@ -62,7 +62,7 @@ const CreateAnswer = ({question, setRefresh}) => {
       <Modal isOpen={open} onClose={handleClose}>
         <>
           <h1>Submit your Answer</h1>
-          <h3>{Product.product.name}: {question.question_body}</h3>
+          <h3>{Product.name}: {question.question_body}</h3>
           <form action={handleSubmit}>
             <label>Your Answer*</label>
             <br/>

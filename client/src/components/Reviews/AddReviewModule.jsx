@@ -73,7 +73,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
     var formEmail = document.getElementById('email-form').value;
     axios.post(process.env.API_URL + `/reviews/`,{
       body: {
-      product_id: Product.product.id,
+      product_id: Product.id,
       rating: formRating,
       summary: formSummary,
       body: bodyText,

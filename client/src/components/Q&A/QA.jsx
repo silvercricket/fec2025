@@ -8,14 +8,13 @@ import {QuestionsActions} from '../../store/QuestionsSlice.js';
 import Questions from './Q&AComponents/Questions.jsx';
 import SearchQuestions from './Q&AComponents/SearchQuestions.jsx';
 import CreateQuestion from './Q&AComponents/CreateQuestion.jsx';
-//Product.product.id
 const QA = () => {
   const [refresh, setRefresh] = React.useState({});
   const Product = useSelector(store => store.Product);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (Product.product.id) {
-      axios.get(process.env.API_URL + `/qa/questions?count=4&product_id=${40499}`,{headers: {Authorization:process.env.AUTH_SECRET} })
+    if (Product.id) {
+      axios.get(process.env.API_URL + `/qa/questions?count=4&product_id=${Product.id}`,{headers: {Authorization:process.env.AUTH_SECRET} })
       .then((result)=>{
         console.log(result.data.results);
         dispatch(QuestionsActions.setQuestions(result.data.results));
@@ -28,7 +27,7 @@ const QA = () => {
         }
       })
     }
-  },[Product.product.id, refresh])
+  },[Product.id, refresh])
 
   return (
     <>

@@ -14,8 +14,8 @@ const CreateQuestion = ({setRefresh}) => {
   const [clicked, setClicked] = React.useState(false);
   const [questions, setQuestions] = React.useState([]);
   React.useEffect(() => {
-    if (Product.product.id) {
-      axios.get(process.env.API_URL + `/qa/questions?count=2147483647&product_id=${40499}`,{headers: {Authorization:process.env.AUTH_SECRET} })
+    if (Product.id) {
+      axios.get(process.env.API_URL + `/qa/questions?count=2147483647&product_id=${Product.id}`,{headers: {Authorization:process.env.AUTH_SECRET} })
         .then((result)=>{
           console.log(result.data.results)
           setQuestions(result.data.results);
@@ -38,7 +38,7 @@ const CreateQuestion = ({setRefresh}) => {
     if (!body || !name || !email) {
       alert('One or more of the fields are empty');
     }
-    axios.post(process.env.API_URL + '/qa/questions', {body, name, email, product_id: Product.product.id},{headers: {Authorization:process.env.AUTH_SECRET} })
+    axios.post(process.env.API_URL + '/qa/questions', {body, name, email, product_id: Product.id},{headers: {Authorization:process.env.AUTH_SECRET} })
       .then(() => {
         setOpen(false);
         setRefresh({});
@@ -65,11 +65,11 @@ const CreateQuestion = ({setRefresh}) => {
     <Modal isOpen={open} onClose={handleClose}>
       <>
         <h1>Ask Your Question</h1>
-        <h3>About the {Product.product.name}</h3>
+        <h3>About the {Product.name}</h3>
         <form action={handleSubmit}>
           <label>Your Question*</label>
           <br/>
-          <textarea name="body" placeholder="Why did you like the product or not?" maxLength="1000" minLength="1" rows="5" cols="65"></textarea>
+          <textarea name="body" placeholder="Why did you like the product or not?" maxLength="1000" minLength="1" rows="5" cols="60"></textarea>
           <br/>
           <br/>
           <label> What is your nickname*</label>
