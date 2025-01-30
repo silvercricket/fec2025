@@ -1,3 +1,5 @@
+/*global process*/
+/*eslint no-undef: "error"*/
 import React, { useState } from 'react';
 import axios from 'axios';
 import Modal from './ReviewModal.jsx';
