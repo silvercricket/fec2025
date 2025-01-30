@@ -7,6 +7,7 @@ import axios from 'axios';
 import {QuestionsActions} from '../../store/QuestionsSlice.js';
 import Questions from './Q&AComponents/Questions.jsx';
 import SearchQuestions from './Q&AComponents/SearchQuestions.jsx';
+import CreateQuestion from './Q&AComponents/CreateQuestion.jsx';
 //Product.product.id
 const QA = () => {
   const [refresh, setRefresh] = React.useState({});
@@ -14,8 +15,9 @@ const QA = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (Product.product.id) {
-      axios.get(process.env.API_URL + `/qa/questions?count=4&product_id=${40500}`,{headers: {Authorization:process.env.AUTH_SECRET} })
+      axios.get(process.env.API_URL + `/qa/questions?count=4&product_id=${Product.product.id}`,{headers: {Authorization:process.env.AUTH_SECRET} })
       .then((result)=>{
+        console.log(result.data.results);
         dispatch(QuestionsActions.setQuestions(result.data.results));
       })
       .catch((err) => {
@@ -35,6 +37,7 @@ const QA = () => {
         <SearchQuestions setRefresh={setRefresh}/>
         <br/>
         <Questions refresh={refresh} setRefresh={setRefresh}/>
+        <CreateQuestion setRefresh={setRefresh}/>
       </div>
       <br/>
     </>
