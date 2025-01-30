@@ -4,6 +4,8 @@ import {ProductActions} from '../../../store/ProductSlice.js';
 import {GalleryActions} from '../../../store/GallerySlice.js';
 import {StylesActions} from '../../../store/StylesSlice.js';
 import {PictureActions} from '../../../store/PictureSlice.js';
+import PropTypes from 'prop-types';
+
 const StylesElement = ({style, index}) => {
   const StylesData = useSelector(store => store.StylesData);
   const image = style.photos[0].thumbnail_url;
@@ -18,5 +20,11 @@ const StylesElement = ({style, index}) => {
 
 );
 }
+
+
+StylesElement.propTypes = {
+  style: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
+};
 
 export default StylesElement;

@@ -19,7 +19,7 @@ const Styles = () => {
       <div>
         <h3>style: { Style}</h3>
         {StylesData.Styles.map((style, index)=>(
-          <StylesElement  style={style} index={index}/>
+          <StylesElement  style={style} index={index} key={index}/>
         ))
         }
 
