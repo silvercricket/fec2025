@@ -72,7 +72,6 @@ const CreateAnswer = ({question, setRefresh}) => {
             <small>For authentication reasons, you will not be emailed</small>
             <br/>
             <br/>
-            {/*Add images here*/}
             <button type="submit">Submit Answer</button>
           </form>
           <br/>
