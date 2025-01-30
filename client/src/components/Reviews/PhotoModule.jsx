@@ -1,7 +1,5 @@
 import React from 'react';
-import Modal from 'react-modal';
-
-Modal.setAppElement('#root')
+import Modal from './PhotoModal.jsx';
 
 const ModalComponent = ({url, handleSize}) => {
   const [modalIsOpen, setIsOpen] = React.useState(true);
@@ -15,10 +13,14 @@ const ModalComponent = ({url, handleSize}) => {
   <div >
     <Modal
       isOpen={modalIsOpen}
-      onRequestClose={closeModal}
+      onClose={closeModal}
       imageSrc={selectedImage}
     ><img
-    style={{ height: '99%'}}
+    style={{
+      maxWidth: '100%',
+      maxHeight: '80vh',
+      objectFit: 'contain',  // Ensures the image maintains its aspect ratio
+  }}
     src={url}
     />
     </Modal>

@@ -48,11 +48,11 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
     if (!Array.isArray(ReviewsData.Reviews)) {
       return '###';
     }
-    return ReviewsData.Reviews.slice(0, currCards).map(review => <ReviewsListCard review={review} />);
+    return ReviewsData.Reviews.slice(0, currCards).map((review, index) => <ReviewsListCard review={review} key={`${review.id} - ${index}`} />);
   };
 
   return (
-    <div>
+    <div data-testid="list-view" id='list-view'>
       <h3>{handleSize()} reviews, {
         <section>
         <label htmlFor='sort'>Sorted on</label>
