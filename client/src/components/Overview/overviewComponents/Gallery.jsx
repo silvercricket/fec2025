@@ -15,7 +15,7 @@ const Gallery = () => {
     return(
       <div id='gallery'>
         {GalleryData.Gallery.photos.map((pic, index)=>(
-          <GalleryElement  image={pic.thumbnail_url} index={index}/>
+          <GalleryElement image={pic.thumbnail_url} index={index} key={index}/>
         ))
         }
 
@@ -23,5 +23,7 @@ const Gallery = () => {
     );
   }
 }
+
+
 
 export default Gallery;

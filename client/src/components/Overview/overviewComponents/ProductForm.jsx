@@ -19,8 +19,20 @@ const ProductForm = () => {
   useEffect(() => {
 
     if(GalleryData.Gallery.name){
-
-      setSizes([{size:'select size'},...Object.keys(GalleryData.Gallery.skus).map((key) => GalleryData.Gallery.skus[key])]);
+      var tempSizes = [{size:'select size'},...Object.keys(GalleryData.Gallery.skus).map((key) => GalleryData.Gallery.skus[key])];
+      var tempSizesUpdated = [];
+      var tempSizesListed = {};
+      for(var i = 0; i < tempSizes.length; i++){
+        if(tempSizesListed[tempSizes[i].size]){
+          //add to where that size was
+          tempSizesUpdated[tempSizesListed[tempSizes[i].size]].quantity+=tempSizes[i].quantity;
+        } else {
+          tempSizesListed[tempSizes[i].size] = i;
+          tempSizesUpdated.push({size:tempSizes[i].size,quantity:tempSizes[i].quantity})
+        }
+      }
+      console.log(tempSizesUpdated);
+      setSizes(tempSizesUpdated);
     }
   },[GalleryData]);
 
@@ -41,7 +53,7 @@ const ProductForm = () => {
           for(var i = 0; i < quantity; i++){
             axios.post(process.env.API_URL + '/cart'  ,{sku_id:sku}, {headers: {Authorization:process.env.AUTH_SECRET} })
             .then((res)=>{
-              // console.log(res.status);
+              console.log(res.status);
             })
             .catch((err)=>{
               console.log(err);
@@ -60,7 +72,7 @@ const ProductForm = () => {
   },[size])
   if(GalleryData.Gallery.name !== undefined){
     return(
-      <form>
+      <form data-testid="productForm">
         <p>{notify}</p>
         <select name="sizes" onChange={(e)=>{
 
@@ -86,16 +98,17 @@ const ProductForm = () => {
           }
         }} >
 
-          {sizes.map((size)=>(
-            <option value={size.size}> {size.size} </option>
-          ))}
+          {sizes.map((size)=>{
+            return(
+            <option value={size.size} key={GalleryData.Gallery.name + size.size}> {size.size} </option>
+          )})}
         </select>
 
         <select name="quantity"onChange={(e)=>{
           setQuantity(e.target.value);
         }} >
           {quantities.map((amount)=>(
-            <option value={amount}> {amount} </option>
+            <option value={amount} key={amount}> {amount} </option>
           ))}
         </select>
         {purchase}

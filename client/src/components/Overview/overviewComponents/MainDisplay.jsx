@@ -11,7 +11,7 @@ const MainDisplay = () => {
   return(
 
 
-    <img id='mainDisplay'   src={PictureData.Picture}/>
+    <img  id='mainDisplay' data-testid="mainDisplay" src={PictureData.Picture}/>
 
 );
 }

@@ -7,7 +7,7 @@ import {OverviewActions} from '../../../store/OverviewSlice.js';
 const Share = () => {
 
   return(
-  <div>
+  <div data-testid="share">
     share on:&nbsp;
     <a href="https://twitter.com/intent/tweet ">Twitter </a>&nbsp;
     <a href=" https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fparse.com "> Facebook </a>&nbsp;

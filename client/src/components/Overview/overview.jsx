@@ -60,7 +60,7 @@ const Overview = () => {
   return(
   <div data-testid="overview">
     <div id='display'>
-      <MainDisplay />
+      <MainDisplay data-testid="mainDisplay" />
       <Gallery />
     </div>
     <h3>!!!star rating goes here!!!</h3>
