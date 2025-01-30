@@ -50,7 +50,7 @@ const Outfit = ({ currentProduct, currentStyle }) => {
               }}>
                 {outfit.map((product) => (
                   <div key={product.id}
-                  className="outfit-card"
+                  className="carousel-card"
                   style={{
                     flex: `0 0 ${100 / slidesToShow}%`,
                     boxSizing: 'border-box'
