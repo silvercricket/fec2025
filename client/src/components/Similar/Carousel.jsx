@@ -2,24 +2,26 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Hover from './Hover.jsx';
 
-const Carousel = ({ items, handleCardClick, handleStarClick, currentStyle }) => {
+const Carousel = ({ items, handleCardClick, handleStarClick }) => {
 
   const [index, setIndex] = useState(0);
 
-  const slidesToShow = 4;
+  const slidesToShow = 5;
+
+  if (!items) {
+    return <div>Loading...</div>;
+  }
 
   const handleNext = () => {
-    setIndex((prevIndex) =>
-      Math.min(prevIndex + 1, items.length - 1));
+    setIndex((prevIndex) => prevIndex + 1);
   };
 
   const handlePrev = () => {
-    setIndex((prevIndex) =>
-      Math.max(prevIndex - 1, 0));
+    setIndex((prevIndex) => prevIndex - 1);
   };
 
   const displayPrice = (product) => {
-    const { sale_price, original_price } = product.results[2];
+    const { sale_price, original_price } = product.results[0];
 
     return sale_price ?
     (<span>
@@ -36,7 +38,7 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentStyle }) => 
       className="carousel-wrapper"
       data-testid="carousel">
       <button
-          className="carousel-button"
+          className="carousel-button prev"
           onClick={handlePrev}
           disabled={index === 0}>←</button>
       <div className="carousel-container">
@@ -50,7 +52,6 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentStyle }) => 
               {items.length > 0 && items.map((product) => (
                   <div key={product.id}
                   className="carousel-card"
-                  // onClick={() => handleCardClick(product)}
                   style={{
                     flex: `0 0 ${100 / slidesToShow}%`,
                     boxSizing: 'border-box'
@@ -64,7 +65,8 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentStyle }) => 
                       }}>⭐</button>
                       <img
                         src={product.results[0].photos[0].thumbnail_url}
-                        className="carousel-card-image"/>
+                        className="carousel-card-image"
+                        onClick={() => handleCardClick(product)}/>
                       <Hover currentStyle={product} />
                       <div className="card-content">
                       <h6>{product.category}</h6>
@@ -77,9 +79,9 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentStyle }) => 
         </div>
       </div>
         <button
-          className="carousel-button"
+          className="carousel-button next"
           onClick={handleNext}
-          disabled={index >= items.length - 1}>→</button>
+          disabled={index >= items.length - slidesToShow}>→</button>
     </div>
   )
 };
