@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
+import { faStar as faRegularStar } from '@fortawesome/free-regular-svg-icons';
 import PropTypes from 'prop-types';
 import Hover from './Hover.jsx';
+import StarRatings from '../Reviews/StarRatings.jsx';
+
 
 const Carousel = ({ items, handleCardClick, handleStarClick }) => {
 
@@ -8,7 +13,13 @@ const Carousel = ({ items, handleCardClick, handleStarClick }) => {
 
   const slidesToShow = 5;
 
-  if (!items) {
+  const stars = {
+        fullStar: <FontAwesomeIcon icon={faStar} />,
+        emptyStar: <FontAwesomeIcon icon={faRegularStar} />,
+        halfStar: <FontAwesomeIcon icon={faStarHalf} />,
+      }
+
+  if (items.length < 1) {
     return <div>Loading...</div>;
   }
 
@@ -21,6 +32,9 @@ const Carousel = ({ items, handleCardClick, handleStarClick }) => {
   };
 
   const displayPrice = (product) => {
+    if (!product) {
+      return <div>Loading...</div>;
+    }
     const { sale_price, original_price } = product.results[0];
 
     return sale_price ?
@@ -62,17 +76,18 @@ const Carousel = ({ items, handleCardClick, handleStarClick }) => {
                       onClick={(e) => {
                         e.stopPropagation();
                         handleStarClick(product);
-                      }}>⭐</button>
+                      }}>{stars.fullStar}</button>
                       <img
-                        src={product.results[0].photos[0].thumbnail_url}
+                        src={product.results ? product.results[0].photos[0].thumbnail_url : null}
                         className="carousel-card-image"
                         onClick={() => handleCardClick(product)}/>
                       <Hover currentStyle={product} />
                       <div className="card-content">
                       <h6>{product.category}</h6>
                       <h3>{product.name}</h3>
-                      <h5 className="card-price">{displayPrice(product)}</h5>
-                      <h5 className="card-star-rating">star rating</h5>
+                      <h5 className="card-price">{product ? displayPrice(product) : null}</h5>
+                      {/* <h5 className="card-star-rating">star rating</h5> */}
+                      <h5 className="card-star-rating"><StarRatings /></h5>
                       </div>
                   </div>
                 ))}
