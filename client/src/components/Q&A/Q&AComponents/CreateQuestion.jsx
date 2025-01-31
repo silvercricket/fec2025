@@ -6,28 +6,12 @@ import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import {QuestionsActions} from '../../../store/QuestionsSlice.js'
-const CreateQuestion = ({setRefresh}) => {
+const CreateQuestion = ({questions, setQuestions, setRefresh}) => {
   const dispatch = useDispatch();
   const Product = useSelector(store => store.Product);
-  const QuestionsData = useSelector(store => store.QuestionsData)
+  const QuestionsData = useSelector(store => store.QuestionsData);
   const [open, setOpen] = React.useState(false);
   const [clicked, setClicked] = React.useState(false);
-  const [questions, setQuestions] = React.useState([]);
-  React.useEffect(() => {
-    if (Product.id) {
-      axios.get(process.env.API_URL + `/qa/questions?count=2147483647&product_id=${Product.id}`,{headers: {Authorization:process.env.AUTH_SECRET} })
-        .then((result)=>{
-          setQuestions(result.data.results);
-        })
-        .catch((err) => {
-          if (err.response.status === 429) {
-            alert('Sorry traffic is full please refresh your browser');
-          } else {
-            alert('error while retrieving questions');
-          }
-        })
-    }
-  }, [QuestionsData])
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleSubmit= (formData) => {
@@ -49,7 +33,9 @@ const CreateQuestion = ({setRefresh}) => {
   }
   const handleQuestions = () => {
     setClicked(true);
+    const temp = QuestionsData;
     dispatch(QuestionsActions.setQuestions(questions));
+    setQuestions(temp);
   }
   const handleCollapse = () => {
     setClicked(false);
@@ -94,6 +80,8 @@ const CreateQuestion = ({setRefresh}) => {
 };
 
 CreateQuestion.propTypes = {
+  questions: PropTypes.array.isRequired,
+  setQuestions: PropTypes.func.isRequired,
   setRefresh: PropTypes.func.isRequired,
 };
 

@@ -10,30 +10,24 @@ import SearchQuestions from './Q&AComponents/SearchQuestions.jsx';
 import CreateQuestion from './Q&AComponents/CreateQuestion.jsx';
 const QA = () => {
   const [refresh, setRefresh] = React.useState({});
-  const [count, setCount] = React.useState(4);
   const Product = useSelector(store => store.Product);
+  const [questions, setQuestions] = React.useState([])
   const dispatch = useDispatch();
   useEffect(() => {
     if (Product.id) {
-      axios.get(process.env.API_URL + `/qa/questions?count=${count}&product_id=${Product.id}`,{headers: {Authorization:process.env.AUTH_SECRET} })
-      .then((result)=>{
-        if (result.data.results.length === 4) {
-          dispatch(QuestionsActions.setQuestions(result.data.results));
-        } else if (result.data.results.length < 4) {
-          setCount(count + 4 - result.data.results.length);
-          setTimeout(setRefresh({}), 100);
-        } else {
-          setCount(4);
-          setTimeout(setRefresh({}), 100);
-        }
-      })
-      .catch((err) => {
-        if (err.response.status === 429) {
-          alert('Sorry traffic is full please refresh your browser');
-        } else {
-          alert('error while retrieving questions');
-        }
-      })
+      axios.get(process.env.API_URL + `/qa/questions?count=2147483647&product_id=${Product.id}`,{headers: {Authorization:process.env.AUTH_SECRET} })
+        .then((result)=>{
+          setQuestions(result.data.results);
+          const action = result.data.results.slice(0, 4);
+          dispatch(QuestionsActions.setQuestions(action));
+        })
+        .catch((err) => {
+          if (err.response && err.response.status === 429) {
+            alert('Sorry traffic is full please refresh your browser');
+          } else {
+            alert('error while retrieving questions');
+          }
+        })
     }
   },[Product.id, refresh])
 
@@ -44,7 +38,7 @@ const QA = () => {
         <SearchQuestions setRefresh={setRefresh}/>
         <br/>
         <Questions refresh={refresh} setRefresh={setRefresh}/>
-        <CreateQuestion setRefresh={setRefresh}/>
+        <CreateQuestion questions={questions} setQuestions={setQuestions} setRefresh={setRefresh}/>
       </div>
       <br/>
     </>
