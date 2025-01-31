@@ -121,14 +121,14 @@
     box-sizing: border-box;
     transition: transform 0.3s ease;
     overflow: hidden;
-    cursor: pointer;
   }
 
-  .carousel-card img {
+  .carousel-card-image {
     width: 100%;
     height: 75%;
     object-fit: cover;
     border-radius: 8px 8px 8px 8px;
+    position: relative;
   }
 
   .carousel-card .card-content {
@@ -142,7 +142,12 @@
   }
 
   .carousel-button {
+    border: none;
+    border-radius: 50%;
     cursor: pointer;
+    width: 30px;
+    height: 30px;
+    text-align: center;
   }
 
   .card-content h3 {
@@ -156,6 +161,16 @@
     margin: 2px 0;
   }
 
+  .card-price {
+    position: absolute;
+    bottom: 28px;
+  }
+
+  .card-star-rating {
+    position: absolute;
+    bottom: 8px;
+  }
+
   .star-button {
     position: absolute;
     top: 8px;
@@ -164,6 +179,94 @@
     border: none;
     cursor: pointer;
     font-size: 16px;
+    z-index: 20;
+  }
+
+  .hover-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    bottom: 25%;
+    left: 0;
+    visibility: hidden;
+  }
+
+  .carousel-card:hover .hover-wrapper{
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .hover-container {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    padding: 2px;
+    display: flex;
+  }
+
+  .hover-track {
+    gap: 2px;
+    width: 100%;
+    display: flex;
+  }
+
+  .hover-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 75%;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .card-photo-thumbs {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+  .hover-button {
+    position: absolute;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    top: 50%;
+    z-index: 10;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .hover-button.prev {
+    left: 8px;
+  }
+
+  .hover-button.next {
+    right: 8px;
+  }
+
+  .hover-wrapper:hover .hover-button{
+    opacity: 1;
+    display: inline;
+    visibility: visible;
   }
 
   .outfit-container {
@@ -218,16 +321,20 @@
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     z-index: 1000;
-    overflow-y: auto;
+    overflow: hidden;
   }
 
   .modal-content {
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 20px;
     text-align: center;
+    height: 100%;
+    width: 100%;
   }
 
   .comparison-table {

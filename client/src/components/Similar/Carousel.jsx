@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Hover from './Hover.jsx';
 
-
-const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) => {
+const Carousel = ({ items, handleCardClick, handleStarClick, currentStyle }) => {
 
   const [index, setIndex] = useState(0);
 
@@ -18,9 +18,23 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) =
       Math.max(prevIndex - 1, 0));
   };
 
+  const displayPrice = (product) => {
+    const { sale_price, original_price } = product.results[2];
+
+    return sale_price ?
+    (<span>
+      <s style={{color:'grey'}}>{original_price}</s>&nbsp;
+      <span style={{color: 'red'}}>${sale_price}</span>
+    </span>)
+    :
+    (<span>${original_price}</span>);
+  };
+
 
   return (
-    <div className="carousel-wrapper">
+    <div
+      className="carousel-wrapper"
+      data-testid="carousel">
       <button
           className="carousel-button"
           onClick={handlePrev}
@@ -36,23 +50,27 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) =
               {items.length > 0 && items.map((product) => (
                   <div key={product.id}
                   className="carousel-card"
-                  onClick={() => handleCardClick(product)}
+                  // onClick={() => handleCardClick(product)}
                   style={{
                     flex: `0 0 ${100 / slidesToShow}%`,
                     boxSizing: 'border-box'
                   }}>
                     <button
+                      data-testid="star-button"
                       className="star-button"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleStarClick(product);
                       }}>⭐</button>
-                      <img src={product.results[0].photos[0].thumbnail_url} />
+                      <img
+                        src={product.results[0].photos[0].thumbnail_url}
+                        className="carousel-card-image"/>
+                      <Hover currentStyle={product} />
                       <div className="card-content">
                       <h6>{product.category}</h6>
                       <h3>{product.name}</h3>
-                      <h5>{product.default_price}</h5>
-                      <h5>star rating</h5>
+                      <h5 className="card-price">{displayPrice(product)}</h5>
+                      <h5 className="card-star-rating">star rating</h5>
                       </div>
                   </div>
                 ))}
