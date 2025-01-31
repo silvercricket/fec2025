@@ -39,7 +39,9 @@ const CreateQuestion = ({questions, setQuestions, setRefresh}) => {
   }
   const handleCollapse = () => {
     setClicked(false);
-    setRefresh({});
+    const temp = QuestionsData;
+    dispatch(QuestionsActions.setQuestions(questions));
+    setQuestions(temp);
   };
   return (
   <div data-testid="create-question">
