@@ -20,6 +20,7 @@ const CreateAnswer = ({question, setRefresh}) => {
     const email = formData.get("email");
     if (!body || !name || !email) {
       alert('One or more of the fields are empty');
+      return;
     }
     axios.post(process.env.API_URL + `/qa/questions/${question.question_id}/answers`, {body, name, email, photos},{headers: {Authorization:process.env.AUTH_SECRET} })
       .then(() => {
@@ -39,9 +40,9 @@ const CreateAnswer = ({question, setRefresh}) => {
           setRefresh({});
           alert('Thank you for your help!!! 🤩');
         })
-        .catch(() => alert('error while marking question as helpful'))
+        .catch(() => alert('error while marking answer as helpful'))
     } else {
-      alert('You cannot mark a question as helpful more than once ❌')
+      alert('You cannot mark an answer as helpful more than once ❌')
     }
   }
   const handleImages = (event) => {
