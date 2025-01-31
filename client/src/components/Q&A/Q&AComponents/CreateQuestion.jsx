@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import {QuestionsActions} from '../../../store/QuestionsSlice.js'
 const CreateQuestion = ({questions, setQuestions, setRefresh}) => {
   const dispatch = useDispatch();
+  const Search = useSelector(store => store.Search);
   const Product = useSelector(store => store.Product);
   const QuestionsData = useSelector(store => store.QuestionsData);
   const [open, setOpen] = React.useState(false);
@@ -45,7 +46,7 @@ const CreateQuestion = ({questions, setQuestions, setRefresh}) => {
   };
   return (
   <div data-testid="create-question">
-    {questions.length > 4 && !clicked ? <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleQuestions}>MORE ANSWERED QUESTIONS</h3> : (clicked ? <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleCollapse}>Collapse Questions</h3> : null)}
+    {questions.length > 4 && !clicked && !Search? <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleQuestions}>MORE ANSWERED QUESTIONS</h3> : (clicked && !Search ? <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleCollapse}>Collapse Questions</h3> : null)}
 
     <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleOpen}>ADD A QUESTION ➕</h3>
     <Modal isOpen={open} onClose={handleClose}>

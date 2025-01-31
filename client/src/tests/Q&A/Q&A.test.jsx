@@ -1,7 +1,7 @@
 /*global describe, it, expect*/
 /*eslint no-undef: "error"*/
 import React from 'react';
-import {render, fireEvent} from '@testing-library/react';
+import {render, fireEvent, waitFor} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import QA from '../../components/Q&A/QA.jsx';
 import Question from '../../components/Q&A/Q&AComponents/Question.jsx';
@@ -26,6 +26,7 @@ describe('Q&A',()=>{
     expect(Q_A.getByTestId('questions')).toBeDefined();
 
     expect(Q_A.getByTestId('create-question')).toBeDefined();
+
   });
 
   it('Should render question if given a question and answer', () => {
@@ -93,7 +94,7 @@ describe('Q&A',()=>{
       question: PropTypes.object.isRequired,
       setRefresh: PropTypes.func.isRequired*/
     const answers = render(
-      <Answers answers={[{"answer_id": 8,"body": "What a great question!","date": "2018-01-04T00:00:00.000Z","answerer_name": "metslover","helpfulness": 8,"photos": [],},{"answer_id": 5,"body": "Something pretty durable but I can't be sure","date": "2018-01-04T00:00:00.000Z","answerer_name": "metslover","helpfulness": 5,"photos": [{"id": 1,"url": "urlplaceholder/answer_5_photo_number_1.jpg"},{"id": 2,"url": "urlplaceholder/answer_5_photo_number_2.jpg"},]},]} setAnswers={() => {}} question={{answers: {1: 1, 2: 2}}} setRefresh={() =>{}}/>
+      <Answers answers={[{"id": 8,"body": "What a great question!","date": "2018-01-04T00:00:00.000Z","answerer_name": "metslover","helpfulness": 8,"photos": [],},{"id": 5,"body": "Something pretty durable but I can't be sure","date": "2018-01-04T00:00:00.000Z","answerer_name": "metslover","helpfulness": 5,"photos": [{"id": 1,"url": "urlplaceholder/answer_5_photo_number_1.jpg"},{"id": 2,"url": "urlplaceholder/answer_5_photo_number_2.jpg"},]},]} setAnswers={() => {}} question={{answers: {1: 1, 2: 2}}} setRefresh={() =>{}}/>
     );
 
     expect(answers.getByTestId('answers')).toBeDefined();
