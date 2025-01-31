@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const Hover = ({ currentStyle }) => {
-  console.log(currentStyle.results[0].photos);
 
   const [index, setIndex] = useState(0);
 
@@ -13,13 +12,11 @@ const Hover = ({ currentStyle }) => {
   }
 
   const handleNext = () => {
-    setIndex((prevIndex) =>
-      Math.min(prevIndex + 1, currentStyle.results[0].photos.length - 1));
+    setIndex((prevIndex) => prevIndex + 1);
   };
 
   const handlePrev = () => {
-    setIndex((prevIndex) =>
-      Math.max(prevIndex - 1, 0));
+    setIndex((prevIndex) => prevIndex - 1);
   };
 
   return (
@@ -41,7 +38,7 @@ const Hover = ({ currentStyle }) => {
               {currentStyle.results[0].photos.length > 0 && currentStyle.results[0].photos.map((photo, i) => (
                   <div key={i}
                   className="hover-card"
-                  onClick={console.log('update current product style')}
+                  onClick={() => console.log('update current product style')}
                   style={{
                     flex: `0 0 ${100 / slidesToShow}%`,
                     boxSizing: 'border-box'
@@ -54,7 +51,7 @@ const Hover = ({ currentStyle }) => {
         <button
           className="hover-button next"
           onClick={handleNext}
-          disabled={index >= currentStyle.results[0].photos.length - 1}>→</button>
+          disabled={index >= currentStyle.results[0].photos.length - slidesToShow}>→</button>
     </div>
   );
 

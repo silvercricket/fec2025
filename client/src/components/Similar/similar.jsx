@@ -136,7 +136,8 @@ const Similar = () => {
           items={combinedData}
           handleCardClick={handleCardClick}
           handleStarClick={handleStarClick}
-          currentProduct={currentProduct} />
+          currentProduct={currentProduct}
+          currentStyle={currentStyle} />
         ) : (
           <div>Loading related products...</div>
         )}
