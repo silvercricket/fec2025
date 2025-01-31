@@ -33,8 +33,6 @@ const ReviewsListCard = ({ review }) => {
 
     return ratingEle;
   };
-
-
   const handleHelpfullness = () => {
     if (clickedHelp) {
       return;
@@ -55,7 +53,6 @@ const ReviewsListCard = ({ review }) => {
     console.log('RESPOSE: ', res);
   })
   }
-
   const handleReport = () => {
     if (clickedReport) {
       return;
@@ -75,7 +72,6 @@ const ReviewsListCard = ({ review }) => {
     console.log('RESPOSE: ', res);
   })
   }
-
   const handleTime = () => {
     const dateString = review.date;
     const date = new Date(dateString);

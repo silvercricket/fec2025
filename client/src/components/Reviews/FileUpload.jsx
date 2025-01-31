@@ -5,23 +5,6 @@ import axios from 'axios';
 
 const FileUpload = ({ files, setFiles }) => {
 
-  const uploadImageToCloudinary = async (file) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', 'your_upload_preset');
-
-    try {
-      const response = await axios.post(
-        process.env.CLOUDINARY_URL,
-        formData
-      );
-      return response.data.secure_url;
-    } catch (error) {
-      console.error('Error uploading image to Cloudinary:', error);
-      return null;
-    }
-  };
-
   const handleFileChange = async (event) => {
     const selectedFiles = Array.from(event.target.files);
 
@@ -33,7 +16,7 @@ const FileUpload = ({ files, setFiles }) => {
     }
 
     for (let file of validImages) {
-      const imageUrl = await uploadImageToCloudinary(file);
+      const imageUrl = URL.createObjectURL(file);
       if (imageUrl) {
         setFiles(prevFiles => [
           ...prevFiles,

@@ -12,7 +12,7 @@ import FileUpload from './FileUpload.jsx';
 
 const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) => {
   const Product = useSelector(store => store.Product);
-  const ReviewsData = useSelector(store => store.ReviewsData);
+  const ReviewsMeta = useSelector(store => store.ReviewsMeta);
   const [sizeRec, setSizeRec] = useState([]);
   const [widthRec, setWidthRec] = useState([]);
   const [comfortRec, setComfortRec] = useState([]);
@@ -24,22 +24,22 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
   const [files, setFiles] = useState([]);
 
   const handleSizeChange = (event) => {
-    setSizeRec([ReviewsData.Meta.characteristics['Size'].id, event.target.value, event.target.id.slice(-1)]);
+    setSizeRec([ReviewsMeta.characteristics['Size'].id, event.target.value, event.target.id.slice(-1)]);
   };
   const handleWidthChange = (event) => {
-    setWidthRec([ReviewsData.Meta.characteristics['Width'].id, event.target.value, event.target.id.slice(-1)]);
+    setWidthRec([ReviewsMeta.characteristics['Width'].id, event.target.value, event.target.id.slice(-1)]);
   };
   const handleComfortChange = (event) => {
-    setComfortRec([ReviewsData.Meta.characteristics['Comfort'].id, event.target.value, event.target.id.slice(-1)]);
+    setComfortRec([ReviewsMeta.characteristics['Comfort'].id, event.target.value, event.target.id.slice(-1)]);
   };
   const handleQualityChange = (event) => {
-    setQualityRec([ReviewsData.Meta.characteristics['Quality'].id, event.target.value, event.target.id.slice(-1)]);
+    setQualityRec([ReviewsMeta.characteristics['Quality'].id, event.target.value, event.target.id.slice(-1)]);
   };
   const handleLengthChange = (event) => {
-    setLengthRec([ReviewsData.Meta.characteristics['Length'].id, event.target.value, event.target.id.slice(-1)]);
+    setLengthRec([ReviewsMeta.characteristics['Length'].id, event.target.value, event.target.id.slice(-1)]);
   };
   const handleFitChange = (event) => {
-    setFitRec([ReviewsData.Meta.characteristics['Fit'].id, event.target.value, event.target.id.slice(-1)]);
+    setFitRec([ReviewsMeta.characteristics['Fit'].id, event.target.value, event.target.id.slice(-1)]);
   };
   const [hoverRating, setHoverRating] = useState(0);
   const stars = {
@@ -68,33 +68,35 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
   };
 
   const handleSubmit = () => {
-    var formUrls = files;
-    console.log(formUrls);
+    var productChars = {
+      [sizeRec[0]]: Number(sizeRec[2]),
+      [widthRec[0]]: Number(widthRec[2]),
+      [comfortRec[0]]: Number(comfortRec[2]),
+      [qualityRec[0]]: Number(qualityRec[2]),
+      [lengthRec[0]]: Number(lengthRec[2]),
+      [fitRec[0]]: Number(fitRec[2]),
+    }
+    var filteredProductChars = Object.fromEntries(
+      Object.entries(productChars).filter(([key, value]) => !isNaN(value))
+    );
+    var formUrls = files.slice(5).map(file => file.thumbnail);
     var formSummary = document.getElementById('form-summary').value;
     var formName = document.getElementById('nickname-form').value;
     var formEmail = document.getElementById('email-form').value;
-    axios.post(process.env.API_URL + `/reviews/`,{
-      body: {
-      product_id: Product.id,
-      rating: formRating,
-      summary: formSummary,
-      body: bodyText,
-      recommend: recommend,
-      name: formName,
-      email: formEmail,
-      photos: formUrls,
-      characteristics: {
-        [sizeRec[0]]: sizeRec[2],
-        [widthRec[0]]: widthRec[2],
-        [comfortRec[0]]: comfortRec[2],
-        [qualityRec[0]]: qualityRec[2],
-        [lengthRec[0]]: lengthRec[2],
-        [fitRec[0]]: fitRec[2],
-      },
+
+    axios.post(process.env.API_URL + '/reviews', {
+        product_id: Product.id,
+        rating: formRating,
+        summary: formSummary,
+        body: bodyText,
+        recommend: recommend,
+        name: formName,
+        email: formEmail,
+        photos: formUrls,
+        characteristics: filteredProductChars,
+
     },
-    headers: {
-      Authorization:process.env.AUTH_SECRET
-    } })
+    { headers: { 'Authorization': process.env.AUTH_SECRET }})
     .then((res) => {
       console.log(res);
     })
@@ -404,7 +406,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
   </div>
               </fieldset>
     };
-    for (var characteristic in ReviewsData.Meta.characteristics) {
+    for (var characteristic in ReviewsMeta.characteristics) {
       formFields.push(listOfChars[characteristic]);
     }
     return formFields;

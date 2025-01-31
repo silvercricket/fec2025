@@ -6,6 +6,7 @@ import axios from 'axios';
 import ReviewsSidebar from './ReviewsSidebar.jsx'
 import {ReviewsActions} from '../../store/ReviewsSlice.js';
 import ReviewsList from './ReviewsList.jsx';
+import {ReviewsMetaActions} from '../../store/ReviewsMetaSlice.js';
 
 const Reviews = () => {
   const Product = useSelector(store => store.Product);
@@ -34,7 +35,7 @@ const Reviews = () => {
         product_id: Product.id,
       }, headers: {Authorization:process.env.AUTH_SECRET} })
       .then((response)=>{
-        dispatch(ReviewsActions.setMeta(response.data));
+        dispatch(ReviewsMetaActions.setReviewsMeta(response.data));
       })
       .catch((err)=> {
         console.log(err);

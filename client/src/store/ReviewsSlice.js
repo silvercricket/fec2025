@@ -1,22 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const ReviewsSlice = createSlice({
-  name: "Reviews",
-  initialState: {
-    Reviews: {
-      init: [],
-    },
-    Meta: {
-      data: {},
-    },
-  },
+  name: "ReviewsData",
+  initialState: {},
   reducers: {
     setReviews: (state, action) => {
-      state.Reviews = action.payload;
+      return action.payload;
     },
-    setMeta: (state, action) => {
-      state.Meta = action.payload;
-    }
   }
 });
 
