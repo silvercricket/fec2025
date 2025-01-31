@@ -9,7 +9,6 @@
 
 const config = {
   verbose : true,
-
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   },
