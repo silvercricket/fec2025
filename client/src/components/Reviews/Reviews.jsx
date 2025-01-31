@@ -6,6 +6,7 @@ import axios from 'axios';
 import ReviewsSidebar from './ReviewsSidebar.jsx'
 import {ReviewsActions} from '../../store/ReviewsSlice.js';
 import ReviewsList from './ReviewsList.jsx';
+import {ReviewsMetaActions} from '../../store/ReviewsMetaSlice.js';
 
 const Reviews = () => {
   const Product = useSelector(store => store.Product);
@@ -14,9 +15,9 @@ const Reviews = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (Product.product.id) {
+    if (Product.id) {
       axios.get(process.env.API_URL + `/reviews/`,{params: {
-        product_id: Product.product.id,
+        product_id: Product.id,
         page: currPage,
         sort: sort,
       },
@@ -31,25 +32,25 @@ const Reviews = () => {
       })
 
       axios.get(process.env.API_URL + `/reviews/meta`,{params: {
-        product_id: Product.product.id,
+        product_id: Product.id,
       }, headers: {Authorization:process.env.AUTH_SECRET} })
       .then((response)=>{
-        dispatch(ReviewsActions.setMeta(response.data));
+        dispatch(ReviewsMetaActions.setReviewsMeta(response.data));
       })
       .catch((err)=> {
         console.log(err);
       })
     }
 
-  },[Product.product.id, currPage, sort]);
-
+  },[Product.id, currPage, sort]);
+  
   return (
     <div data-testid="review-view">
       <div data-testid='metaData-view'>
         <ReviewsSidebar />
       </div>
       <div data-testid='reviewCards-view'>
-        <ReviewsList key={Product.product.id} setCurrPage={setCurrPage} currPage={currPage} setSort={setSort} sort={sort}/>
+        <ReviewsList key={Product.id} setCurrPage={setCurrPage} currPage={currPage} setSort={setSort} sort={sort}/>
       </div>
     </div>
   )

@@ -21,7 +21,7 @@ const CreateQuestion = ({setRefresh}) => {
     if (!body || !name || !email) {
       alert('One or more of the fields are empty');
     }
-    axios.post(process.env.API_URL + '/qa/questions', {body, name, email, product_id: Product.product.id},{headers: {Authorization:process.env.AUTH_SECRET} })
+    axios.post(process.env.API_URL + '/qa/questions', {body, name, email, product_id: Product.id},{headers: {Authorization:process.env.AUTH_SECRET} })
       .then(() => {
         setOpen(false);
         setRefresh({});
@@ -57,7 +57,7 @@ const CreateQuestion = ({setRefresh}) => {
     <Modal isOpen={open} onClose={handleClose}>
       <>
         <h1>Ask Your Question</h1>
-        <h3>About the {Product.product.name}</h3>
+        <h3>About the {Product.name}</h3>
         <form action={handleSubmit}>
           <label>Your Question*</label>
           <br/>

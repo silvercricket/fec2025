@@ -13,7 +13,6 @@ const SearchQuestions = ({setRefresh}) => {
   const Product = useSelector(store => store.Product);
   const QuestionsData = useSelector(store => store.QuestionsData)
   const dispatch = useDispatch();
-  console.log(QuestionsData.length);
   const handleSearch = (formData) => {
     const query = formData.get("query");
     var filtered = QuestionsData.filter((question) => question.question_body.includes(query));
