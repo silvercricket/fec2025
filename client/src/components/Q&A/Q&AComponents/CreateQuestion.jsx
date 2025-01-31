@@ -3,12 +3,15 @@
 import React from 'react';
 import Modal from './Modal.jsx';
 import axios from 'axios';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
-
+import {QuestionsActions} from '../../../store/QuestionsSlice.js'
 const CreateQuestion = ({setRefresh}) => {
+  const dispatch = useDispatch();
+  const QuestionsData = useSelector(store => store.QuestionsData);
   const Product = useSelector(store => store.Product);
   const [open, setOpen] = React.useState(false);
+  const [clicked, setClicked] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleSubmit= (formData) => {
@@ -28,9 +31,29 @@ const CreateQuestion = ({setRefresh}) => {
         alert('Error while submitting');
       })
   }
+  const handleQuestions = () => {
+    axios.get(process.env.API_URL + `/qa/questions?count=2147483647&product_id=${40500}`,{headers: {Authorization:process.env.AUTH_SECRET} })
+      .then((result)=>{
+        setClicked(true);
+        dispatch(QuestionsActions.setQuestions(result.data.results));
+      })
+      .catch((err) => {
+        if (err.response.status === 429) {
+          alert('Sorry traffic is full please refresh your browser');
+        } else {
+          alert('error while retrieving questions');
+        }
+      })
+  }
+  const handleCollapse = () => {
+    setClicked(false);
+    setRefresh({});
+  };
   return (
   <div data-testid="create-question">
-    <button onClick={handleOpen}>Create Question</button>
+    {Object.keys(QuestionsData).length > 2 && !clicked ? <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleQuestions}>MORE ANSWERED QUESTIONS</h3> : (clicked ? <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleCollapse}>Collapse Questions</h3> : null)}
+
+    <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleOpen}>ADD A QUESTION ➕</h3>
     <Modal isOpen={open} onClose={handleClose}>
       <>
         <h1>Ask Your Question</h1>

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-
 import PropTypes from 'prop-types';
-import '../../../dist/styles/index.css';
 
-const Outfit = ({ currentProduct }) => {
+const Outfit = ({ currentProduct, currentStyle }) => {
 
   const [outfit, setOutfit] = useState([]);
   const [index, setIndex] = useState(0);
@@ -33,12 +31,14 @@ const Outfit = ({ currentProduct }) => {
     <div>
       <h3>Your Outfit</h3>
       <div className="outfit-container">
-        <div
+        {outfit.length === 0 && (
+          <div
           className="outfit-card empty-card"
           onClick={handleAdd}>
           <button className="add-button">+</button>
           <h5>Add to Outfit</h5>
         </div>
+        )}
         {outfit.length > 0 && (
           <div className="carousel-container">
           <div
@@ -47,22 +47,21 @@ const Outfit = ({ currentProduct }) => {
               display: 'flex',
               transform: `translateX(-${index * (100 / slidesToShow)}%)`,
               transition: 'transform 0.3s ease-in-out',
-              width: `${(outfit.length * 100) / slidesToShow}%`
               }}>
                 {outfit.map((product) => (
                   <div key={product.id}
-                  className="outfit-card"
+                  className="carousel-card"
                   style={{
                     flex: `0 0 ${100 / slidesToShow}%`,
                     boxSizing: 'border-box'
                   }}>
                     <button
-                      className="remove-button"
+                      className="close-button"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleRemove(product.id);
                       }}>X</button>
-                      <img src={product}/>
+                      <img src={currentStyle.results[0].photos[0].thumbnail_url}/>
                       <div className="card-content">
                         <h6>{product.category}</h6>
                         <h3>{product.name}</h3>
@@ -93,6 +92,7 @@ const Outfit = ({ currentProduct }) => {
 
 Outfit.propTypes = {
   currentProduct: PropTypes.object.isRequired,
+  currentStyle: PropTypes.object.isRequired
 };
 
 export default Outfit;

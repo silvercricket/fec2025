@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-
 import PropTypes from 'prop-types';
-import '../../../dist/styles/index.css';
 
 
 const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) => {
@@ -22,47 +20,48 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) =
 
 
   return (
-    <div className="carousel-container">
-      <div
-        className="carousel-track"
-        style={{
-          display: 'flex',
-          transform: `translateX(-${index * (100 / slidesToShow)}%)`,
-          transition: 'transform 0.3s ease-in-out',
-          width: `${(items.length * 100) / slidesToShow}%`
-          }}>
-        {items.map((product) => (
-          <div key={product.id}
-          className="carousel-card"
+    <div className="carousel-wrapper">
+      <button
+          className="carousel-button"
+          onClick={handlePrev}
+          disabled={index === 0}>←</button>
+      <div className="carousel-container">
+        <div
+          className="carousel-track"
           style={{
-            flex: `0 0 ${100 / slidesToShow}%`,
-            boxSizing: 'border-box'
-          }}
-          onClick={() => handleCardClick(product)}>
-            <button
-              className="star-button"
-              onClick={(e) => {
-                e.stopPropagation();
-                handleStarClick(currentProduct, product);
-              }}>⭐</button>
-              <img src={product.results[0].photos[0].thumbnail_url} alt={product.name}/>
-              <div className="card-content">
-              <h6>{product.category}</h6>
-              <h3>{product.name}</h3>
-              <h5>{product.default_price}</h5>
-              <h5>star rating</h5>
-              </div>
-          </div>
-        ))}
+            display: 'flex',
+            transform: `translateX(-${index * (100 / slidesToShow)}%)`,
+            transition: 'transform 0.3s ease-in-out'
+            }}>
+          {items.map((product) => (
+            <div key={product.id}
+            className="carousel-card"
+            style={{
+              flex: `0 0 ${100 / slidesToShow}%`,
+              boxSizing: 'border-box'
+            }}
+            onClick={() => handleCardClick(product)}>
+              <button
+                className="star-button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleStarClick(product);
+                }}>⭐</button>
+                <img src={product.results[0].photos[0].thumbnail_url} alt={product.name}/>
+                <div className="card-content">
+                <h6>{product.category}</h6>
+                <h3>{product.name}</h3>
+                <h5>{product.default_price}</h5>
+                <h5>star rating</h5>
+                </div>
+            </div>
+          ))}
+        </div>
       </div>
         <button
-          className="prev"
-          onClick={handlePrev}
-          disabled={index === 0}>Previous</button>
-        <button
-          className="next"
+          className="carousel-button"
           onClick={handleNext}
-          disabled={index >= items.length - 1}>Next</button>
+          disabled={index >= items.length - 1}>→</button>
     </div>
   )
 };
