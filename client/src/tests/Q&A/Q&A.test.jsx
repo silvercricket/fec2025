@@ -148,9 +148,9 @@ describe('Q&A',()=>{
     const nameInput = create.getByTestId('name');
     const emailInput = create.getByTestId('email');
     const submitButton = create.getByTestId('submit');
-    await fireEvent.change(bodyInput, {target: {value: 'This is a question'}});
-    await fireEvent.change(nameInput, {target: {value: 'answerer'}});
-    await fireEvent.change(emailInput, {target: {value: 'john@gmail.com'}})
+    fireEvent.change(bodyInput, {target: {value: 'This is a question'}});
+    fireEvent.change(nameInput, {target: {value: 'answerer'}});
+    fireEvent.change(emailInput, {target: {value: 'john@gmail.com'}})
     fireEvent.click(submitButton);
     await waitFor(() => expect(axios.post).toHaveBeenCalled());
     expect(axios.post).toHaveBeenCalledWith(process.env.API_URL + '/qa/questions', postData ,{headers: {Authorization:process.env.AUTH_SECRET} });
