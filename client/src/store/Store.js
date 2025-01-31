@@ -8,6 +8,8 @@ import GallerySlice from './GallerySlice.js';
 import PictureSlice from './PictureSlice.js';
 import StylesSlice from './StylesSlice.js';
 import ReviewsMetaSlice from './ReviewsMetaSlice.js';
+import SearchSlice from './SearchSlice.js';
+
 const STORE = configureStore({
   reducer: {
     ReviewsMeta: ReviewsMetaSlice.reducer,
@@ -19,6 +21,7 @@ const STORE = configureStore({
     PictureData: PictureSlice.reducer,
     StylesData: StylesSlice.reducer,
     QuestionsData: QuestionsSlice.reducer,
+    Search: SearchSlice.reducer
   }
 })
 
