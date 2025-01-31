@@ -53,12 +53,14 @@ const Outfit = ({ currentProduct, currentStyle }) => {
                 <div className="outfit-card empty-card">
                     <button
                       className="add-button"
+                      data-testid="add-button"
                       onClick={handleAdd}>+</button>
                     <h5>Add to Outfit</h5>
                   </div>
                   {outfit.map((product) => (
                     <div key={product.id}
                     className="carousel-card"
+                    data-testid="item-added"
                     style={{
                       flex: `0 0 ${100 / slidesToShow}%`,
                       boxSizing: 'border-box'

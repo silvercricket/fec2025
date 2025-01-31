@@ -19,7 +19,7 @@ const Carousel = ({ items, handleCardClick, handleStarClick }) => {
         halfStar: <FontAwesomeIcon icon={faStarHalf} />,
       }
 
-  if (items.length < 1) {
+  if (!items || items.length < 1) {
     return <div>Loading...</div>;
   }
 
@@ -80,6 +80,7 @@ const Carousel = ({ items, handleCardClick, handleStarClick }) => {
                       <img
                         src={product.results ? product.results[0].photos[0].thumbnail_url : null}
                         className="carousel-card-image"
+                        data-testid="carousel-card-image"
                         onClick={() => handleCardClick(product)}/>
                       <Hover currentStyle={product} />
                       <div className="card-content">
