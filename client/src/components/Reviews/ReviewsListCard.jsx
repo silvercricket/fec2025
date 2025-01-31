@@ -1,3 +1,5 @@
+/*global process*/
+/*eslint no-undef: "error"*/
 import React, {useEffect}  from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
@@ -31,8 +33,6 @@ const ReviewsListCard = ({ review }) => {
 
     return ratingEle;
   };
-
-
   const handleHelpfullness = () => {
     if (clickedHelp) {
       return;
@@ -53,7 +53,6 @@ const ReviewsListCard = ({ review }) => {
     console.log('RESPOSE: ', res);
   })
   }
-
   const handleReport = () => {
     if (clickedReport) {
       return;
@@ -73,7 +72,6 @@ const ReviewsListCard = ({ review }) => {
     console.log('RESPOSE: ', res);
   })
   }
-
   const handleTime = () => {
     const dateString = review.date;
     const date = new Date(dateString);

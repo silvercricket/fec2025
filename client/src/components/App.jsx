@@ -10,7 +10,6 @@ import Similar from './Similar/similar.jsx';
 import {ProductActions} from '../store/ProductSlice.js';
 
 const App = () => {
-
   const Product = useSelector(store => store.Product);
   const dispatch = useDispatch();
 
@@ -35,7 +34,7 @@ const App = () => {
     <Overview/>
     <Similar/>
     <QA/>
-    <Reviews/>
+    <Reviews />
   </div>
 );
 }
