@@ -8,7 +8,6 @@ import GallerySlice from './GallerySlice.js';
 import PictureSlice from './PictureSlice.js';
 import StylesSlice from './StylesSlice.js';
 import ReviewsMetaSlice from './ReviewsMetaSlice.js';
-
 const STORE = configureStore({
   reducer: {
     ReviewsMeta: ReviewsMetaSlice.reducer,
@@ -19,7 +18,7 @@ const STORE = configureStore({
     GalleryData: GallerySlice.reducer,
     PictureData: PictureSlice.reducer,
     StylesData: StylesSlice.reducer,
-    QuestionsData: QuestionsSlice.reducer
+    QuestionsData: QuestionsSlice.reducer,
   }
 })
 

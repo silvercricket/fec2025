@@ -13,21 +13,23 @@ import CreateQuestion from './Q&AComponents/CreateQuestion.jsx';
 const QA = () => {
   const [refresh, setRefresh] = React.useState({});
   const Product = useSelector(store => store.Product);
+  const [questions, setQuestions] = React.useState([])
   const dispatch = useDispatch();
   useEffect(() => {
     if (Product.id) {
-      axios.get(process.env.API_URL + `/qa/questions?count=4&product_id=${Product.id}`,{headers: {Authorization:process.env.AUTH_SECRET} })
-      .then((result)=>{
-        console.log(result.data.results);
-        dispatch(QuestionsActions.setQuestions(result.data.results));
-      })
-      .catch((err) => {
-        if (err.response.status === 429) {
-          alert('Sorry traffic is full please refresh your browser');
-        } else {
-          alert('error while retrieving questions');
-        }
-      })
+      axios.get(process.env.API_URL + `/qa/questions?count=2147483647&product_id=${Product.id}`,{headers: {Authorization:process.env.AUTH_SECRET} })
+        .then((result)=>{
+          setQuestions(result.data.results);
+          const action = result.data.results.slice(0, 4);
+          dispatch(QuestionsActions.setQuestions(action));
+        })
+        .catch((err) => {
+          if (err.response && err.response.status === 429) {
+            alert('Sorry traffic is full please refresh your browser');
+          } else {
+            alert('error while retrieving questions');
+          }
+        })
     }
   },[Product.id, refresh])
 
@@ -38,7 +40,7 @@ const QA = () => {
         <SearchQuestions setRefresh={setRefresh}/>
         <br/>
         <Questions refresh={refresh} setRefresh={setRefresh}/>
-        <CreateQuestion setRefresh={setRefresh}/>
+        <CreateQuestion questions={questions} setQuestions={setQuestions} setRefresh={setRefresh}/>
       </div>
       <br/>
     </>
