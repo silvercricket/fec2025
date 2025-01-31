@@ -10,7 +10,9 @@ const Compare = ({ currentProduct, starClicked, onClose }) => {
   ])
 
   return (
-    <div className="modal-popup">
+    <div
+      className="modal-popup"
+      data-testid="compare">
       <div className="modal-content">
         <button className="close-button" onClick={onClose}>X</button>
         <h3>Product Comparison</h3>

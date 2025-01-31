@@ -22,5 +22,18 @@ describe('Similar', () => {
     expect(Related.getByTestId('similar')).toBeDefined();
 
   });
+
+  // it('Should render modal after ⭐ click', async () => {
+  //   const handleOnClick = jest.fn();
+  //   const { getByTestId } = render(<Similar onClick={handleOnClick} />);
+  //   const element = getByTestId('star-button');
+
+  //   fireEvent.click(element);
+
+  //   expect(handleOnClick).toBeCalled();
+  //   expect(element).toHaveClass('star-button');
+  // })
 });
+
+
 

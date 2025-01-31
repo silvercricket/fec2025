@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import '../../../dist/styles/index.css';
-import {RelatedActions} from '../../store/RelatedSlice.js';
+// import {RelatedActions} from '../../store/RelatedSlice.js';
 import {ProductActions} from '../../store/ProductSlice.js';
 import Carousel from './Carousel.jsx';
 import Outfit from './Outfit.jsx';
@@ -72,7 +72,7 @@ const Similar = () => {
     axios.get(`${process.env.API_URL}/products/${Product.id}/related`, {headers: {Authorization: process.env.AUTH_SECRET}})
     .then((response) => {
       const relatedProductIds = response.data;
-      dispatch(RelatedActions.setRelated(response.data));
+      // dispatch(RelatedActions.setRelated(response.data));
       getStyles(relatedProductIds);
       getProducts(relatedProductIds);
     })
@@ -136,7 +136,8 @@ const Similar = () => {
           items={combinedData}
           handleCardClick={handleCardClick}
           handleStarClick={handleStarClick}
-          currentProduct={currentProduct} />
+          currentProduct={currentProduct}
+          currentStyle={currentStyle} />
         ) : (
           <div>Loading related products...</div>
         )}

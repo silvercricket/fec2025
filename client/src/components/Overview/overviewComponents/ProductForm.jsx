@@ -33,7 +33,7 @@ const ProductForm = () => {
           tempSizesUpdated.push({size:tempSizes[i].size,quantity:tempSizes[i].quantity})
         }
       }
-      console.log(tempSizesUpdated);
+      // console.log(tempSizesUpdated);
       setSizes(tempSizesUpdated);
     }
   },[GalleryData]);
