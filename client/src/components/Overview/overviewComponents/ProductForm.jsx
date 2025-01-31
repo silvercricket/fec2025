@@ -74,7 +74,7 @@ const ProductForm = () => {
   },[size])
   if(GalleryData.Gallery.name !== undefined){
     return(
-      <form data-testid="productForm">
+      <form>
         <p>{notify}</p>
         <select name="sizes" onChange={(e)=>{
 

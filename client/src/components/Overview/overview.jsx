@@ -58,10 +58,24 @@ const Overview = () => {
   },[GalleryData]);
 
   return(
-  <div data-testid="overview">
-    <div id='display'>
-      <MainDisplay data-testid="mainDisplay" />
-      <Gallery />
+  <div id="overview" data-testid="overview"
+      style={{
+        background: "linear-gradient(rgb(27, 100, 60), rgb(25, 77, 146))",
+        height: 800,
+        width: "100%",
+        margin: "auto",
+        padding: "2%",
+        border: "2px solid #000",
+        borderRadius: "10px",
+        boxShadow: "2px solid black",
+        float: "left",
+        //objectFit: "contain"
+        //overflow: "hidden"
+
+    }}>
+    <div id='display' style={{height: "80%", width: "40%", float: "left",}}>
+      <MainDisplay  />
+
     </div>
     <h3>!!!star rating goes here!!!</h3>
     <h3>{Product.category}</h3>
