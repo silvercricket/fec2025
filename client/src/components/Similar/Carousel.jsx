@@ -34,6 +34,7 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) =
             transition: 'transform 0.3s ease-in-out'
             }}>
               {items.length > 0 && items.map((product) => (
+
                   <div key={product.id}
                   className="carousel-card"
                   onClick={() => handleCardClick(product)}
@@ -41,13 +42,14 @@ const Carousel = ({ items, handleCardClick, handleStarClick, currentProduct }) =
                     flex: `0 0 ${100 / slidesToShow}%`,
                     boxSizing: 'border-box'
                   }}>
+                    {console.log(product)}
                     <button
                       className="star-button"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleStarClick(product);
                       }}>⭐</button>
-                      <img src={product.results[0].photos[0].thumbnail_url} />
+                      <img src={product.results ? product.results[0].photos[0].thumbnail_url : null} />
                       <div className="card-content">
                       <h6>{product.category}</h6>
                       <h3>{product.name}</h3>

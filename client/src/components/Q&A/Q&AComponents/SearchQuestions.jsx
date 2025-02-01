@@ -24,7 +24,7 @@ const SearchQuestions = ({setRefresh}) => {
   }
   return (
   <form className="input-container" data-testid="search-questions" action={handleSearch}>
-    <input data-testid="query" name="query" className="input-box" type="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." style={{height: '40px'}}></input>
+    <input data-testid="query" name="query" defaultValue={''} className="input-box" type="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." style={{height: '40px'}}></input>
     <button data-testid="search" type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
   </form>
   );
