@@ -21,14 +21,14 @@ const Modal = ({ isOpen, onClose, children }) => {
         >
 
             <div
-                id='MainDisplayExpandedContainer'
+                id='mainDisplayExpandedContainer'
                 style={{
                     position: "relative",
                     background: "grey",
                     height: 800,
                     width: 800,
                     margin: "auto",
-                    padding: "2%",
+                    //padding: "2%",
                     border: "2px solid #000",
                     borderRadius: "10px",
                     boxShadow: "2px solid black",
