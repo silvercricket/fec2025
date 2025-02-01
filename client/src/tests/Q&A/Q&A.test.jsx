@@ -10,13 +10,16 @@ import STORE from '../../store/Store.js';
 import {Provider} from 'react-redux';
 import Answers from '../../components/Q&A/Q&AComponents/Answers.jsx';
 import axios from 'axios';
+import swal from 'sweetalert';
+
+jest.mock('sweetalert');
 
 jest.mock('axios');
 
 describe('Q&A',()=>{
 
   beforeEach(() => {
-    global.alert = jest.fn()
+    jest.clearAllMocks();
   });
 
   it('Should render all non-conditional components of QA', () => {
@@ -92,19 +95,6 @@ describe('Q&A',()=>{
       expect(question.getByTestId('question-body')).toHaveTextContent('Q: How long does it last?');
 
     });
-    it('SearchQuestions should set inputs correctly and throw alert when given invalid input', () => {
-      const search = render(
-        <Provider store={STORE}>
-          <QA/>
-        </Provider>
-      )
-      const queryInput = search.getByTestId('query');
-      const searchButton = search.getByTestId('search');
-      fireEvent.change(queryInput, {target: {value: 'query'}})
-      expect(queryInput).toHaveValue('query');
-      fireEvent.click(searchButton);
-      expect(global.alert).toHaveBeenCalledWith('No questions found, if you need help please feel free to leave a question addressing your concern');
-    })
 
     it('CreateQuestions should call an alert if given invalid form', () => {
       const create = render(
@@ -118,7 +108,7 @@ describe('Q&A',()=>{
       const submitButton = create.getByTestId('submit');
       fireEvent.change(bodyInput, {target: {value: 'This is a question'}});
       fireEvent.click(submitButton);
-      expect(global.alert).toHaveBeenCalledWith('One or more of the fields are empty');
+      expect(swal).toHaveBeenCalledWith("Warning", "One or more required fields are empty", "warning", {"buttons": "Continue filling form"});
     })
 
     it('Should create questions properly', async () => {
@@ -143,8 +133,24 @@ describe('Q&A',()=>{
       fireEvent.click(submitButton);
       await waitFor(() => expect(axios.post).toHaveBeenCalled());
       expect(axios.post).toHaveBeenCalledWith(process.env.API_URL + '/qa/questions', postData ,{headers: {Authorization:process.env.AUTH_SECRET} });
-      expect(global.alert).toHaveBeenCalledWith('Successfully submitted!!! 🎉');
+      expect(swal).toHaveBeenCalledWith("Success", "Successfully submitted!!! 🎉", "success", {"buttons": "Continue!"});
     })
+
+    it('SearchQuestions should set inputs correctly and throw alert when given invalid input', () => {
+      const search = render(
+        <Provider store={STORE}>
+          <QA/>
+        </Provider>
+      )
+      const queryInput = search.getByTestId('query');
+      const searchButton = search.getByTestId('search');
+      fireEvent.change(queryInput, {target: {value: 'query'}})
+      expect(queryInput).toHaveValue('query');
+      fireEvent.click(searchButton);
+      expect(swal).toHaveBeenCalledWith("Sorry for the inconvenience", "No questions found, if you need help please feel free to leave a question addressing your concern", "info");
+    })
+
+
   })
 
   describe('Answer', () => {
@@ -178,13 +184,14 @@ describe('Q&A',()=>{
       const submitButton = create.getByTestId('submit');
       fireEvent.change(bodyInput, {target: {value: 'This is a question'}});
       fireEvent.click(submitButton);
-      expect(global.alert).toHaveBeenCalledWith('One or more of the fields are empty');
+      expect(swal).toHaveBeenCalledWith("Warning", "One or more required fields are empty", "warning", {"buttons": "Continue filling form"});
     })
 
     it('Should create answers properly', async () => {
+      global.URL.createObjectURL = jest.fn(() => 'https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/23/2020/04/Common-Coqui1-web-sized.jpg');
       const mockResponse = { data: { message: 'Created' } };
       axios.post.mockResolvedValue(mockResponse);
-      const postData = {body: 'This is a answer', name: 'answerer', email: 'john@gmail.com', photos: []}
+      const postData = {body: 'This is a answer', name: 'answerer', email: 'john@gmail.com', photos: ['https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/23/2020/04/Common-Coqui1-web-sized.jpg']}
 
       const create = render(
         <Provider store={STORE}>
@@ -204,14 +211,16 @@ describe('Q&A',()=>{
       const bodyInput = create.getByTestId('body');
       const nameInput = create.getByTestId('name');
       const emailInput = create.getByTestId('email');
+      const imageInput = create.getByTestId('images');
       const submitButton = create.getByTestId('submit');
       fireEvent.change(bodyInput, {target: {value: 'This is a answer'}});
       fireEvent.change(nameInput, {target: {value: 'answerer'}});
       fireEvent.change(emailInput, {target: {value: 'john@gmail.com'}})
+      await waitFor(() => fireEvent.change(imageInput, {target: {files: ['https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/23/2020/04/Common-Coqui1-web-sized.jpg']}}))
       fireEvent.click(submitButton);
       await waitFor(() => expect(axios.post).toHaveBeenCalled());
       expect(axios.post).toHaveBeenCalledWith(process.env.API_URL + '/qa/questions/38/answers', postData ,{headers: {Authorization:process.env.AUTH_SECRET} });
-      expect(global.alert).toHaveBeenCalledWith('Successfully submitted!!! 🎉');
+      expect(swal).toHaveBeenCalledWith("Success", "Successfully submitted!!! 🎉", "success", {"buttons": "Continue!"});
     });
 
     it('Should render image in answer if given an image', () => {
