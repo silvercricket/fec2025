@@ -33,11 +33,6 @@ const ProductForm = () => {
           tempSizesUpdated.push({size:tempSizes[i].size,quantity:tempSizes[i].quantity})
         }
       }
-<<<<<<< HEAD
-
-=======
-      // console.log(tempSizesUpdated);
->>>>>>> a942e5d374edddae42b4085513d79a23f7a331cd
       setSizes(tempSizesUpdated);
     }
   },[GalleryData]);
@@ -59,10 +54,10 @@ const ProductForm = () => {
           for(var i = 0; i < quantity; i++){
             axios.post(process.env.API_URL + '/cart'  ,{sku_id:sku}, {headers: {Authorization:process.env.AUTH_SECRET} })
             .then((res)=>{
-              console.log(res.status);
+              alert('wow');
             })
             .catch((err)=>{
-              console.log(err);
+              alert('no way')
             })
           }
 
