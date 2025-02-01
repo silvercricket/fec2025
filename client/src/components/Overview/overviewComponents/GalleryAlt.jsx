@@ -22,7 +22,6 @@ const Gallery = () => {
       if(GalleryData.Gallery.photos.length > maxLength){
         activateArrows([
           <button type="button" key="GalleryLeftArrow" style={{float: 'left'}} onClick={()=>{
-            console.log(galleryDisplay);
             if(galleryDisplay>0){
 
               setGalleryDisplay(galleryDisplay - 1);

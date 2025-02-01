@@ -7,7 +7,7 @@ import GalleryElement from './GalleryElement.jsx';
 
 import {GalleryActions} from '../../../store/GallerySlice.js';
 
-import {GallerySelectionActions} from '../../../store/GallerySelectionSlice.js';
+
 
 const Gallery = () => {
   const GalleryData = useSelector(store => store.GalleryData);
@@ -16,7 +16,7 @@ const Gallery = () => {
   const [displayedIndex, setDisplayedIndex] = useState(0);
   const [checkmark, checkmarkSet] = useState(null);
   const maxLength = 5
-  const dispatch = useDispatch();
+
 
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Gallery = () => {
           <button type="button" key="GalleryUpArrow" onClick={()=>{
 
             if(GallerySelection>0){
-              dispatch(GallerySelectionActions.setGallery(result.data.results[0]));
+
               GallerySelectionSet(GallerySelection - 1);
             }
           }}>

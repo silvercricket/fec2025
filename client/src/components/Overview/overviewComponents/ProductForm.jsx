@@ -55,8 +55,10 @@ const ProductForm = () => {
             axios.post(process.env.API_URL + '/cart'  ,{sku_id:sku}, {headers: {Authorization:process.env.AUTH_SECRET} })
             .then((res)=>{
 
+              alert('wow');
             })
             .catch((err)=>{
+              alert('no way')
 
             })
           }
