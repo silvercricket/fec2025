@@ -1,8 +1,7 @@
-/*global describe, it, expect*/
+/*global describe, it, expect, beforeEach, global, jest, process*/
 /*eslint no-undef: "error"*/
 import React from 'react';
 import {render, fireEvent, waitFor} from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import QA from '../../components/Q&A/QA.jsx';
 import Question from '../../components/Q&A/Q&AComponents/Question.jsx';
 import '@testing-library/jest-dom';
@@ -10,9 +9,14 @@ import '../../dist/output.css';
 import STORE from '../../store/Store.js';
 import {Provider} from 'react-redux';
 import Answers from '../../components/Q&A/Q&AComponents/Answers.jsx';
-import SearchQuestions from '../../components/Q&A/Q&AComponents/SearchQuestions.jsx';
+import axios from 'axios';
+
+jest.mock('axios');
 
 describe('Q&A',()=>{
+  beforeEach(() => {
+    global.alert = jest.fn()
+  });
 
   it('Should render all non-conditional components of QA', () => {
     const Q_A = render(
@@ -89,10 +93,6 @@ describe('Q&A',()=>{
   });
 
   it('Should render answers if given an array of answers', () => {
-    /*
-    setAnswers: PropTypes.func.isRequired,
-      question: PropTypes.object.isRequired,
-      setRefresh: PropTypes.func.isRequired*/
     const answers = render(
       <Answers answers={[{"id": 8,"body": "What a great question!","date": "2018-01-04T00:00:00.000Z","answerer_name": "metslover","helpfulness": 8,"photos": [],},{"id": 5,"body": "Something pretty durable but I can't be sure","date": "2018-01-04T00:00:00.000Z","answerer_name": "metslover","helpfulness": 5,"photos": [{"id": 1,"url": "urlplaceholder/answer_5_photo_number_1.jpg"},{"id": 2,"url": "urlplaceholder/answer_5_photo_number_2.jpg"},]},]} setAnswers={() => {}} question={{answers: {1: 1, 2: 2}}} setRefresh={() =>{}}/>
     );
@@ -103,18 +103,113 @@ describe('Q&A',()=>{
 
   });
 
-  it('SearchQuestions should set inputs correctly', () => {
+  it('SearchQuestions should set inputs correctly and throw alert when given invalid input', () => {
     const search = render(
       <Provider store={STORE}>
-        <SearchQuestions/>
+        <QA/>
       </Provider>
     )
     const queryInput = search.getByTestId('query');
-    const submitButton = search.getByTestId('search');
-    userEvent.type(queryInput, 'query').then(() => {
-      fireEvent.click(submitButton).then(() => {
-        expect(queryInput).toHaveValue('query');
-      });
-    });
+    const searchButton = search.getByTestId('search');
+    fireEvent.change(queryInput, {target: {value: 'query'}})
+    expect(queryInput).toHaveValue('query');
+    fireEvent.click(searchButton);
+    expect(global.alert).toHaveBeenCalledWith('No questions found, if you need help please feel free to leave a question addressing your concern');
+  })
+
+  it('CreateQuestions should call an alert if given invalid form', () => {
+    const create = render(
+      <Provider store={STORE}>
+        <QA/>
+      </Provider>
+    )
+    const open = create.getByTestId('open-question');
+    fireEvent.click(open);
+    const bodyInput = create.getByTestId('body');
+    const submitButton = create.getByTestId('submit');
+    fireEvent.change(bodyInput, {target: {value: 'This is a question'}});
+    fireEvent.click(submitButton);
+    expect(global.alert).toHaveBeenCalledWith('One or more of the fields are empty');
+  })
+
+  it('Should create questions properly', async () => {
+    const mockResponse = { data: { message: 'Created' } };
+    axios.post.mockResolvedValue(mockResponse);
+    const postData = {body: 'This is a question', name: 'answerer', email: 'john@gmail.com'}
+
+    const create = render(
+      <Provider store={STORE}>
+        <QA/>
+      </Provider>
+    )
+    const open = create.getByTestId('open-question');
+    fireEvent.click(open);
+    const bodyInput = create.getByTestId('body');
+    const nameInput = create.getByTestId('name');
+    const emailInput = create.getByTestId('email');
+    const submitButton = create.getByTestId('submit');
+    fireEvent.change(bodyInput, {target: {value: 'This is a question'}});
+    fireEvent.change(nameInput, {target: {value: 'answerer'}});
+    fireEvent.change(emailInput, {target: {value: 'john@gmail.com'}})
+    fireEvent.click(submitButton);
+    await waitFor(() => expect(axios.post).toHaveBeenCalled());
+    expect(axios.post).toHaveBeenCalledWith(process.env.API_URL + '/qa/questions', postData ,{headers: {Authorization:process.env.AUTH_SECRET} });
+    expect(global.alert).toHaveBeenCalledWith('Successfully submitted!!! 🎉');
+  })
+
+  it('CreateAnswers should call an alert if given invalid form', () => {
+    const create = render(
+      <Provider store={STORE}>
+        <Question question={{
+          "question_id": 38,
+          "question_body": "How long does it last?",
+          "question_date": "2019-06-28T00:00:00.000Z",
+          "asker_name": "funnygirl",
+          "question_helpfulness": 2,
+          "reported": false,
+          "answers": {}
+        }}/>
+    </Provider>
+    )
+    const open = create.getByTestId('open-answer');
+    fireEvent.click(open);
+    const bodyInput = create.getByTestId('body');
+    const submitButton = create.getByTestId('submit');
+    fireEvent.change(bodyInput, {target: {value: 'This is a question'}});
+    fireEvent.click(submitButton);
+    expect(global.alert).toHaveBeenCalledWith('One or more of the fields are empty');
+  })
+
+  it('Should create answers properly', async () => {
+    const mockResponse = { data: { message: 'Created' } };
+    axios.post.mockResolvedValue(mockResponse);
+    const postData = {body: 'This is a answer', name: 'answerer', email: 'john@gmail.com', photos: []}
+
+    const create = render(
+      <Provider store={STORE}>
+        <Question question={{
+          "question_id": 38,
+          "question_body": "How long does it last?",
+          "question_date": "2019-06-28T00:00:00.000Z",
+          "asker_name": "funnygirl",
+          "question_helpfulness": 2,
+          "reported": false,
+          "answers": {}
+        }} setRefresh={() => {}}/>
+      </Provider>
+    )
+    const open = create.getByTestId('open-answer');
+    fireEvent.click(open);
+    const bodyInput = create.getByTestId('body');
+    const nameInput = create.getByTestId('name');
+    const emailInput = create.getByTestId('email');
+    const submitButton = create.getByTestId('submit');
+    fireEvent.change(bodyInput, {target: {value: 'This is a answer'}});
+    fireEvent.change(nameInput, {target: {value: 'answerer'}});
+    fireEvent.change(emailInput, {target: {value: 'john@gmail.com'}})
+    fireEvent.click(submitButton);
+    await waitFor(() => expect(axios.post).toHaveBeenCalled());
+    expect(axios.post).toHaveBeenCalledWith(process.env.API_URL + '/qa/questions/38/answers', postData ,{headers: {Authorization:process.env.AUTH_SECRET} });
+    expect(global.alert).toHaveBeenCalledWith('Successfully submitted!!! 🎉');
   })
 });

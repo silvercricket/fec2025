@@ -5,7 +5,6 @@ import StarRatings from './StarRatings.jsx';
 
 const ReviewsSidebar = () => {
   const ReviewsMeta = useSelector(store => store.ReviewsMeta);
-  console.log(ReviewsMeta);
   const handlePercentReviews = () => {
     var recommended = ReviewsMeta.recommended
     if(!recommended) {

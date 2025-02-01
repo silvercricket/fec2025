@@ -21,6 +21,7 @@ const CreateQuestion = ({questions, setQuestions, setRefresh}) => {
     const email = formData.get("email");
     if (!body || !name || !email) {
       alert('One or more of the fields are empty');
+      return;
     }
     axios.post(process.env.API_URL + '/qa/questions', {body, name, email, product_id: Product.id},{headers: {Authorization:process.env.AUTH_SECRET} })
       .then(() => {
@@ -48,7 +49,7 @@ const CreateQuestion = ({questions, setQuestions, setRefresh}) => {
   <div data-testid="create-question">
     {questions.length > 4 && !clicked && !Search? <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleQuestions}>MORE ANSWERED QUESTIONS</h3> : (clicked && !Search ? <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleCollapse}>Collapse Questions</h3> : null)}
 
-    <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleOpen}>ADD A QUESTION ➕</h3>
+    <h3 data-testid="open-question" style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleOpen}>ADD A QUESTION ➕</h3>
     <Modal isOpen={open} onClose={handleClose}>
       <>
         <h1>Ask Your Question</h1>
@@ -56,24 +57,24 @@ const CreateQuestion = ({questions, setQuestions, setRefresh}) => {
         <form action={handleSubmit}>
           <label>Your Question*</label>
           <br/>
-          <textarea name="body" placeholder="Why did you like the product or not?" maxLength="1000" minLength="1" rows="5" cols="60"></textarea>
+          <textarea data-testid="body" name="body" placeholder="Why did you like the product or not?" maxLength="1000" minLength="1" rows="5" cols="60"></textarea>
           <br/>
           <br/>
           <label> What is your nickname*</label>
           <br/>
-          <input placeholder="Example: jackson11!" name="name" maxLength="60" minLength="5"></input>
+          <input data-testid="name" placeholder="Example: jackson11!" name="name" maxLength="60" minLength="5"></input>
           <br/>
           <small>For privacy reasons, do not use your full name or email address</small>
           <br/>
           <br/>
           <label>Your email*</label>
           <br/>
-          <input type="email" placeholder="Example: john@gmail.com" name="email" maxLength="60" minLength="3"></input>
+          <input data-testid="email" type="email" placeholder="Example: john@gmail.com" name="email" maxLength="60" minLength="3"></input>
           <br/>
           <small>For authentication reasons, you will not be emailed</small>
           <br/>
           <br/>
-          <button type="submit">Submit question</button>
+          <button data-testid="submit" type="submit">Submit question</button>
         </form>
         <br/>
       </>
