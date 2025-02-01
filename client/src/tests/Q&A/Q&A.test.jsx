@@ -14,6 +14,7 @@ import axios from 'axios';
 jest.mock('axios');
 
 describe('Q&A',()=>{
+
   beforeEach(() => {
     global.alert = jest.fn()
   });
@@ -32,184 +33,199 @@ describe('Q&A',()=>{
     expect(Q_A.getByTestId('create-question')).toBeDefined();
 
   });
-
-  it('Should render question if given a question and answer', () => {
-    const question = render(
-      <Provider store={STORE}>
-        <Question question={{
-          "question_id": 38,
-          "question_body": "How long does it last?",
-          "question_date": "2019-06-28T00:00:00.000Z",
-          "asker_name": "funnygirl",
-          "question_helpfulness": 2,
-          "reported": false,
-          "answers": {
-            70: {
-              "id": 70,
-              "body": "Some of the seams started splitting the first time I wore it!",
-              "date": "2019-11-28T00:00:00.000Z",
-              "answerer_name": "sillyguy",
-              "helpfulness": 6,
-              "photos": [],
-            },
-            78: {
-              "id": 78,
-              "body": "9 lives",
-              "date": "2019-11-12T00:00:00.000Z",
-              "answerer_name": "iluvdogz",
-              "helpfulness": 31,
-              "photos": [],
+  describe('Question', () => {
+    it('Should render question if given a question and answer', () => {
+      const question = render(
+        <Provider store={STORE}>
+          <Question question={{
+            "question_id": 38,
+            "question_body": "How long does it last?",
+            "question_date": "2019-06-28T00:00:00.000Z",
+            "asker_name": "funnygirl",
+            "question_helpfulness": 2,
+            "reported": false,
+            "answers": {
+              70: {
+                "id": 70,
+                "body": "Some of the seams started splitting the first time I wore it!",
+                "date": "2019-11-28T00:00:00.000Z",
+                "answerer_name": "sillyguy",
+                "helpfulness": 6,
+                "photos": [],
+              },
+              78: {
+                "id": 78,
+                "body": "9 lives",
+                "date": "2019-11-12T00:00:00.000Z",
+                "answerer_name": "iluvdogz",
+                "helpfulness": 31,
+                "photos": [],
+              }
             }
-          }
-        }}/>
+          }}/>
+        </Provider>
+      );
+
+      expect(question.getByTestId('question')).toBeDefined();
+
+      expect(question.getByTestId('question-body')).toHaveTextContent('Q: How long does it last?');
+
+    });
+
+    it('Should render question if given just a question with no answer', () => {
+      const question = render(
+        <Provider store={STORE}>
+          <Question question={{
+            "question_id": 38,
+            "question_body": "How long does it last?",
+            "question_date": "2019-06-28T00:00:00.000Z",
+            "asker_name": "funnygirl",
+            "question_helpfulness": 2,
+            "reported": false,
+            "answers": {}
+          }}/>
       </Provider>
-    );
+      );
 
-    expect(question.getByTestId('question')).toBeDefined();
+      expect(question.getByTestId('question')).toBeDefined();
 
-    expect(question.getByTestId('question-body')).toHaveTextContent('Q: How long does it last?');
+      expect(question.getByTestId('question-body')).toHaveTextContent('Q: How long does it last?');
 
+    });
+    it('SearchQuestions should set inputs correctly and throw alert when given invalid input', () => {
+      const search = render(
+        <Provider store={STORE}>
+          <QA/>
+        </Provider>
+      )
+      const queryInput = search.getByTestId('query');
+      const searchButton = search.getByTestId('search');
+      fireEvent.change(queryInput, {target: {value: 'query'}})
+      expect(queryInput).toHaveValue('query');
+      fireEvent.click(searchButton);
+      expect(global.alert).toHaveBeenCalledWith('No questions found, if you need help please feel free to leave a question addressing your concern');
+    })
+
+    it('CreateQuestions should call an alert if given invalid form', () => {
+      const create = render(
+        <Provider store={STORE}>
+          <QA/>
+        </Provider>
+      )
+      const open = create.getByTestId('open-question');
+      fireEvent.click(open);
+      const bodyInput = create.getByTestId('body');
+      const submitButton = create.getByTestId('submit');
+      fireEvent.change(bodyInput, {target: {value: 'This is a question'}});
+      fireEvent.click(submitButton);
+      expect(global.alert).toHaveBeenCalledWith('One or more of the fields are empty');
+    })
+
+    it('Should create questions properly', async () => {
+      const mockResponse = { data: { message: 'Created' } };
+      axios.post.mockResolvedValue(mockResponse);
+      const postData = {body: 'This is a question', name: 'answerer', email: 'john@gmail.com'}
+
+      const create = render(
+        <Provider store={STORE}>
+          <QA/>
+        </Provider>
+      )
+      const open = create.getByTestId('open-question');
+      fireEvent.click(open);
+      const bodyInput = create.getByTestId('body');
+      const nameInput = create.getByTestId('name');
+      const emailInput = create.getByTestId('email');
+      const submitButton = create.getByTestId('submit');
+      fireEvent.change(bodyInput, {target: {value: 'This is a question'}});
+      fireEvent.change(nameInput, {target: {value: 'answerer'}});
+      fireEvent.change(emailInput, {target: {value: 'john@gmail.com'}})
+      fireEvent.click(submitButton);
+      await waitFor(() => expect(axios.post).toHaveBeenCalled());
+      expect(axios.post).toHaveBeenCalledWith(process.env.API_URL + '/qa/questions', postData ,{headers: {Authorization:process.env.AUTH_SECRET} });
+      expect(global.alert).toHaveBeenCalledWith('Successfully submitted!!! 🎉');
+    })
+  })
+
+  describe('Answer', () => {
+    it('Should render answers if given an array of answers', () => {
+      const answers = render(
+        <Answers answers={[{"id": 8,"body": "What a great question!","date": "2018-01-04T00:00:00.000Z","answerer_name": "metslover","helpfulness": 8,"photos": [],},{"id": 5,"body": "Something pretty durable but I can't be sure","date": "2018-01-04T00:00:00.000Z","answerer_name": "metslover","helpfulness": 5,"photos": []},]} setAnswers={() => {}} question={{answers: {1: 1, 2: 2}}} setRefresh={() =>{}}/>
+      );
+
+      expect(answers.getByTestId('answers')).toBeDefined();
+
+      expect(answers.getAllByTestId('answer-body')).toHaveLength(2);
+
+    });
+    it('CreateAnswers should call an alert if given invalid form', () => {
+      const create = render(
+        <Provider store={STORE}>
+          <Question question={{
+            "question_id": 38,
+            "question_body": "How long does it last?",
+            "question_date": "2019-06-28T00:00:00.000Z",
+            "asker_name": "funnygirl",
+            "question_helpfulness": 2,
+            "reported": false,
+            "answers": {}
+          }}/>
+      </Provider>
+      )
+      const open = create.getByTestId('open-answer');
+      fireEvent.click(open);
+      const bodyInput = create.getByTestId('body');
+      const submitButton = create.getByTestId('submit');
+      fireEvent.change(bodyInput, {target: {value: 'This is a question'}});
+      fireEvent.click(submitButton);
+      expect(global.alert).toHaveBeenCalledWith('One or more of the fields are empty');
+    })
+
+    it('Should create answers properly', async () => {
+      const mockResponse = { data: { message: 'Created' } };
+      axios.post.mockResolvedValue(mockResponse);
+      const postData = {body: 'This is a answer', name: 'answerer', email: 'john@gmail.com', photos: []}
+
+      const create = render(
+        <Provider store={STORE}>
+          <Question question={{
+            "question_id": 38,
+            "question_body": "How long does it last?",
+            "question_date": "2019-06-28T00:00:00.000Z",
+            "asker_name": "funnygirl",
+            "question_helpfulness": 2,
+            "reported": false,
+            "answers": {}
+          }} setRefresh={() => {}}/>
+        </Provider>
+      )
+      const open = create.getByTestId('open-answer');
+      fireEvent.click(open);
+      const bodyInput = create.getByTestId('body');
+      const nameInput = create.getByTestId('name');
+      const emailInput = create.getByTestId('email');
+      const submitButton = create.getByTestId('submit');
+      fireEvent.change(bodyInput, {target: {value: 'This is a answer'}});
+      fireEvent.change(nameInput, {target: {value: 'answerer'}});
+      fireEvent.change(emailInput, {target: {value: 'john@gmail.com'}})
+      fireEvent.click(submitButton);
+      await waitFor(() => expect(axios.post).toHaveBeenCalled());
+      expect(axios.post).toHaveBeenCalledWith(process.env.API_URL + '/qa/questions/38/answers', postData ,{headers: {Authorization:process.env.AUTH_SECRET} });
+      expect(global.alert).toHaveBeenCalledWith('Successfully submitted!!! 🎉');
+    });
+
+    it('Should render image in answer if given an image', () => {
+      const answers = render(
+        <Answers answers={[{"id": 8,"body": "What a great question!","date": "2018-01-04T00:00:00.000Z","answerer_name": "metslover","helpfulness": 8,"photos": [],},{"id": 5,"body": "Something pretty durable but I can't be sure","date": "2018-01-04T00:00:00.000Z","answerer_name": "metslover","helpfulness": 5,"photos": ['randomphoto']},]} setAnswers={() => {}} question={{answers: {1: 1, 2: 2}}} setRefresh={() =>{}}/>
+      );
+
+      const image = answers.getByTestId('image');
+      expect(image).toBeDefined();
+      expect(image.src).toEqual('https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/23/2020/04/Common-Coqui1-web-sized.jpg');
+      fireEvent.click(image);
+      const modal = answers.getByTestId('modal-image');
+      expect(modal).toBeDefined();
+      expect(modal.src).toEqual('https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/23/2020/04/Common-Coqui1-web-sized.jpg');
+    })
   });
-
-  it('Should render question if given just a question with no answer', () => {
-    const question = render(
-      <Provider store={STORE}>
-        <Question question={{
-          "question_id": 38,
-          "question_body": "How long does it last?",
-          "question_date": "2019-06-28T00:00:00.000Z",
-          "asker_name": "funnygirl",
-          "question_helpfulness": 2,
-          "reported": false,
-          "answers": {}
-        }}/>
-    </Provider>
-    );
-
-    expect(question.getByTestId('question')).toBeDefined();
-
-    expect(question.getByTestId('question-body')).toHaveTextContent('Q: How long does it last?');
-
-  });
-
-  it('Should render answers if given an array of answers', () => {
-    const answers = render(
-      <Answers answers={[{"id": 8,"body": "What a great question!","date": "2018-01-04T00:00:00.000Z","answerer_name": "metslover","helpfulness": 8,"photos": [],},{"id": 5,"body": "Something pretty durable but I can't be sure","date": "2018-01-04T00:00:00.000Z","answerer_name": "metslover","helpfulness": 5,"photos": []},]} setAnswers={() => {}} question={{answers: {1: 1, 2: 2}}} setRefresh={() =>{}}/>
-    );
-
-    expect(answers.getByTestId('answers')).toBeDefined();
-
-    expect(answers.getAllByTestId('answer-body')).toHaveLength(2);
-
-  });
-
-  it('SearchQuestions should set inputs correctly and throw alert when given invalid input', () => {
-    const search = render(
-      <Provider store={STORE}>
-        <QA/>
-      </Provider>
-    )
-    const queryInput = search.getByTestId('query');
-    const searchButton = search.getByTestId('search');
-    fireEvent.change(queryInput, {target: {value: 'query'}})
-    expect(queryInput).toHaveValue('query');
-    fireEvent.click(searchButton);
-    expect(global.alert).toHaveBeenCalledWith('No questions found, if you need help please feel free to leave a question addressing your concern');
-  })
-
-  it('CreateQuestions should call an alert if given invalid form', () => {
-    const create = render(
-      <Provider store={STORE}>
-        <QA/>
-      </Provider>
-    )
-    const open = create.getByTestId('open-question');
-    fireEvent.click(open);
-    const bodyInput = create.getByTestId('body');
-    const submitButton = create.getByTestId('submit');
-    fireEvent.change(bodyInput, {target: {value: 'This is a question'}});
-    fireEvent.click(submitButton);
-    expect(global.alert).toHaveBeenCalledWith('One or more of the fields are empty');
-  })
-
-  it('Should create questions properly', async () => {
-    const mockResponse = { data: { message: 'Created' } };
-    axios.post.mockResolvedValue(mockResponse);
-    const postData = {body: 'This is a question', name: 'answerer', email: 'john@gmail.com'}
-
-    const create = render(
-      <Provider store={STORE}>
-        <QA/>
-      </Provider>
-    )
-    const open = create.getByTestId('open-question');
-    fireEvent.click(open);
-    const bodyInput = create.getByTestId('body');
-    const nameInput = create.getByTestId('name');
-    const emailInput = create.getByTestId('email');
-    const submitButton = create.getByTestId('submit');
-    fireEvent.change(bodyInput, {target: {value: 'This is a question'}});
-    fireEvent.change(nameInput, {target: {value: 'answerer'}});
-    fireEvent.change(emailInput, {target: {value: 'john@gmail.com'}})
-    fireEvent.click(submitButton);
-    await waitFor(() => expect(axios.post).toHaveBeenCalled());
-    expect(axios.post).toHaveBeenCalledWith(process.env.API_URL + '/qa/questions', postData ,{headers: {Authorization:process.env.AUTH_SECRET} });
-    expect(global.alert).toHaveBeenCalledWith('Successfully submitted!!! 🎉');
-  })
-
-  it('CreateAnswers should call an alert if given invalid form', () => {
-    const create = render(
-      <Provider store={STORE}>
-        <Question question={{
-          "question_id": 38,
-          "question_body": "How long does it last?",
-          "question_date": "2019-06-28T00:00:00.000Z",
-          "asker_name": "funnygirl",
-          "question_helpfulness": 2,
-          "reported": false,
-          "answers": {}
-        }}/>
-    </Provider>
-    )
-    const open = create.getByTestId('open-answer');
-    fireEvent.click(open);
-    const bodyInput = create.getByTestId('body');
-    const submitButton = create.getByTestId('submit');
-    fireEvent.change(bodyInput, {target: {value: 'This is a question'}});
-    fireEvent.click(submitButton);
-    expect(global.alert).toHaveBeenCalledWith('One or more of the fields are empty');
-  })
-
-  it('Should create answers properly', async () => {
-    const mockResponse = { data: { message: 'Created' } };
-    axios.post.mockResolvedValue(mockResponse);
-    const postData = {body: 'This is a answer', name: 'answerer', email: 'john@gmail.com', photos: []}
-
-    const create = render(
-      <Provider store={STORE}>
-        <Question question={{
-          "question_id": 38,
-          "question_body": "How long does it last?",
-          "question_date": "2019-06-28T00:00:00.000Z",
-          "asker_name": "funnygirl",
-          "question_helpfulness": 2,
-          "reported": false,
-          "answers": {}
-        }} setRefresh={() => {}}/>
-      </Provider>
-    )
-    const open = create.getByTestId('open-answer');
-    fireEvent.click(open);
-    const bodyInput = create.getByTestId('body');
-    const nameInput = create.getByTestId('name');
-    const emailInput = create.getByTestId('email');
-    const submitButton = create.getByTestId('submit');
-    fireEvent.change(bodyInput, {target: {value: 'This is a answer'}});
-    fireEvent.change(nameInput, {target: {value: 'answerer'}});
-    fireEvent.change(emailInput, {target: {value: 'john@gmail.com'}})
-    fireEvent.click(submitButton);
-    await waitFor(() => expect(axios.post).toHaveBeenCalled());
-    expect(axios.post).toHaveBeenCalledWith(process.env.API_URL + '/qa/questions/38/answers', postData ,{headers: {Authorization:process.env.AUTH_SECRET} });
-    expect(global.alert).toHaveBeenCalledWith('Successfully submitted!!! 🎉');
-  })
 });

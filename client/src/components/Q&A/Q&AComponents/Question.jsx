@@ -15,6 +15,7 @@ const Question = ({question, setRefresh}) => {
     for(var key in question.answers) {
       answerArray.push(question.answers[key]);
     }
+    answerArray.sort((a, b) => b.helpfulness - a.helpfulness);
     setAnswersData(answerArray);
     setAnswers(answerArray.slice(0, 2));
   }, [QuestionsData]);

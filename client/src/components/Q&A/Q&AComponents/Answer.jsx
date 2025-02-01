@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Photo from './Photo.jsx';
+import swal from 'sweetalert';
 
 const Answer = ({answer, setRefresh, isClicked}) => {
 
@@ -16,13 +17,15 @@ const Answer = ({answer, setRefresh, isClicked}) => {
           isClicked(false);
           setYes(true);
           setRefresh({});
-          alert('Thank you for your help!!! 🤩');
+          swal('Success!!!', 'Successfully marked answer as helpful', 'success', {
+            buttons: 'Continue!'
+          });
         })
         .catch(() => {
-          alert('error while marking question as helpful')
+          swal('Error', 'Could not mark answer as helpful', 'error');
         })
     } else {
-      alert('You cannot mark a question as helpful more than once ❌')
+      swal('Warning', 'You cannot mark a answer as helpful more than once ❌', 'warning');
     }
   }
   const handleReport = () => {
@@ -31,10 +34,12 @@ const Answer = ({answer, setRefresh, isClicked}) => {
           isClicked(false);
           setYes(true);
           setRefresh({});
-          alert('Thank you for reporting this inappropriate answer 🫡');
+          swal('Success!!!', 'Thank you for reporting this inappropriate answer 🫡', 'success', {
+            buttons: 'Continue!'
+          });
         })
         .catch(() => {
-          alert('error while marking question as helpful')
+          swal('Error', 'Could not report answer', 'error');
         })
     }
 

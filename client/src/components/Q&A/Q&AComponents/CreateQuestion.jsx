@@ -5,10 +5,11 @@ import Modal from './Modal.jsx';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
-import {QuestionsActions} from '../../../store/QuestionsSlice.js'
+import {QuestionsActions} from '../../../store/QuestionsSlice.js';
+import swal from 'sweetalert';
+
 const CreateQuestion = ({questions, setQuestions, setRefresh}) => {
   const dispatch = useDispatch();
-  const Search = useSelector(store => store.Search);
   const Product = useSelector(store => store.Product);
   const QuestionsData = useSelector(store => store.QuestionsData);
   const [open, setOpen] = React.useState(false);
@@ -20,17 +21,21 @@ const CreateQuestion = ({questions, setQuestions, setRefresh}) => {
     const name = formData.get("name");
     const email = formData.get("email");
     if (!body || !name || !email) {
-      alert('One or more of the fields are empty');
+      swal('Warning', 'One or more required fields are empty', 'warning', {
+        buttons: 'Continue filling form'
+      });
       return;
     }
     axios.post(process.env.API_URL + '/qa/questions', {body, name, email, product_id: Product.id},{headers: {Authorization:process.env.AUTH_SECRET} })
       .then(() => {
         setOpen(false);
         setRefresh({});
-        alert('Successfully submitted!!! 🎉');
+        swal('Success', 'Successfully submitted!!! 🎉', 'success', {
+          buttons: 'Continue!'
+        });
       })
       .catch(() => {
-        alert('Error while submitting');
+        swal('Error', 'Could not submit form', 'error');
       })
   }
   const handleQuestions = () => {
@@ -47,7 +52,7 @@ const CreateQuestion = ({questions, setQuestions, setRefresh}) => {
   };
   return (
   <div data-testid="create-question">
-    {questions.length > 4 && !clicked && !Search? <h3 className="question-button" onClick={handleQuestions}>MORE ANSWERED QUESTIONS</h3> : (clicked && !Search ? <h3 className="question-button" onClick={handleCollapse}>Collapse Questions</h3> : null)}
+    {questions.length > 4 && !clicked ? <h3 className="question-button" onClick={handleQuestions}>MORE ANSWERED QUESTIONS</h3> : (clicked ? <h3 className="question-button" onClick={handleCollapse}>Collapse Questions</h3> : null)}
 
     <h3 data-testid="open-question" className="question-button" onClick={handleOpen}>ADD A QUESTION ➕</h3>
     <Modal isOpen={open} onClose={handleClose}>
