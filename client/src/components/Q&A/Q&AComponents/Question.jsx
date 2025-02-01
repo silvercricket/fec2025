@@ -21,7 +21,7 @@ const Question = ({question, setRefresh}) => {
   return (
     <div data-testid="question">
       <div id="question">
-        <h3 style={{margin: '.5em 0'}} data-testid="question-body"><b>Q: {question.question_body}</b></h3>
+        <h3 data-testid="question-body"><b>Q: {question.question_body}</b></h3>
         <CreateAnswer question={question} setRefresh={setRefresh}/>
       </div>
       <Answers answers={answers} setAnswers={setAnswers} answersData={answersData} setAnswersData={setAnswersData} question={question} setRefresh={setRefresh}/>

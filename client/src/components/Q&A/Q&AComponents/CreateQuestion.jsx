@@ -47,9 +47,9 @@ const CreateQuestion = ({questions, setQuestions, setRefresh}) => {
   };
   return (
   <div data-testid="create-question">
-    {questions.length > 4 && !clicked && !Search? <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleQuestions}>MORE ANSWERED QUESTIONS</h3> : (clicked && !Search ? <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleCollapse}>Collapse Questions</h3> : null)}
+    {questions.length > 4 && !clicked && !Search? <h3 className="question-button" onClick={handleQuestions}>MORE ANSWERED QUESTIONS</h3> : (clicked && !Search ? <h3 className="question-button" onClick={handleCollapse}>Collapse Questions</h3> : null)}
 
-    <h3 data-testid="open-question" style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleOpen}>ADD A QUESTION ➕</h3>
+    <h3 data-testid="open-question" className="question-button" onClick={handleOpen}>ADD A QUESTION ➕</h3>
     <Modal isOpen={open} onClose={handleClose}>
       <>
         <h1>Ask Your Question</h1>
@@ -79,6 +79,7 @@ const CreateQuestion = ({questions, setQuestions, setRefresh}) => {
         <br/>
       </>
     </Modal>
+    <div className="clearfix"></div>
   </div>
   );
 };

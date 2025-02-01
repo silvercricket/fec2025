@@ -443,6 +443,36 @@
     align-items: center;
     justify-content: center;
   }
+
+  #answer {
+    width: fit-content;
+    padding: 5px;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 5px;
+    margin: 5px 0;
+  }
+
+  #question-body {
+    width: fit-content;
+    padding: 5px;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 5px;
+    margin: .5em 0;
+  }
+
+  #answer-body {
+    margin-top: 0;
+  }
+
+  .question-button {
+    display: flex;
+    float: left;
+    margin: 15px 5px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px 10px;
+    width: fit-content;
+  }
 }
 
 @layer base {
