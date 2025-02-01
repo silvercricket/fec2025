@@ -3,14 +3,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Photo from './Photo.jsx';
+
 const Answer = ({answer, setRefresh, isClicked}) => {
-  const [clicked, setClicked] = React.useState(false)
+
+  const [yes, setYes] = React.useState(false);
+
   const handleYes = () => {
-    if (!clicked) {
+    if (!yes) {
       axios.put(process.env.API_URL + `/qa/answers/${answer.answer_id}/helpful`, {}, {headers: {Authorization:process.env.AUTH_SECRET} })
         .then( () => {
           isClicked(false);
-          setClicked(true);
+          setYes(true);
           setRefresh({});
           alert('Thank you for your help!!! 🤩');
         })
@@ -25,7 +29,7 @@ const Answer = ({answer, setRefresh, isClicked}) => {
     axios.put(process.env.API_URL + `/qa/answers/${answer.answer_id}/report`, {}, {headers: {Authorization:process.env.AUTH_SECRET} })
         .then( () => {
           isClicked(false);
-          setClicked(true);
+          setYes(true);
           setRefresh({});
           alert('Thank you for reporting this inappropriate answer 🫡');
         })
@@ -33,9 +37,12 @@ const Answer = ({answer, setRefresh, isClicked}) => {
           alert('error while marking question as helpful')
         })
     }
+
   return (
     <div data-testid="answer">
       <p data-testid="answer-body">{answer.body}</p>
+      {answer.photos.map(photo => <Photo key={photo} photo={photo}/>)}
+      <br></br>
       <small>by {answer.answerer_name}, {new Date(answer.date).toLocaleString(undefined, {year: 'numeric',  day: 'numeric', month: 'long'})} | Helpful?  <u onClick={handleYes}>Yes</u> {'(' + answer.helpfulness + ')'} | <u onClick={handleReport}>Report</u></small>
     </div>
   );

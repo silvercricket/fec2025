@@ -101,11 +101,11 @@ const MainDisplay = () => {
   useEffect(() => {
     if(moused) {
 
-      const zoom = document.querySelector("#mainDisplayContainer");
+      const zoom = document.querySelector("#mainDisplayModal");
 
       if(zoom!==null){
         zoom.addEventListener("mousemove", (e) => {
-          const container = document.querySelector("#mainDisplayContainer");
+          const container = document.querySelector("#mainDisplayExpandedContainer");
           const rect = container.getBoundingClientRect();
           const height = zoom.clientHeight *1.0;
           const width = zoom.clientWidth * 1.0;
@@ -120,7 +120,7 @@ const MainDisplay = () => {
             //top: `-${e.clientY}px`,
             //left: `-${focusX}px`,
 
-            transformOrigin: `${e.clientX}px ${e.clientY}px`,
+            transformOrigin: `${focusX}% ${focusY}%`,
             transform:"scale(2.5)",
             cursor: "crosshair"
           })
