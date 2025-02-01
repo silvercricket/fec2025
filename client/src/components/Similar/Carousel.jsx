@@ -35,7 +35,7 @@ const Carousel = ({ items, handleCardClick, handleStarClick }) => {
     if (!product) {
       return <div>Loading...</div>;
     }
-    const { sale_price, original_price } = product.results[0];
+    const { sale_price, original_price } = product?.results[0] ?? {};
 
     return sale_price ?
     (<span>
@@ -78,7 +78,7 @@ const Carousel = ({ items, handleCardClick, handleStarClick }) => {
                         handleStarClick(product);
                       }}>{stars.fullStar}</button>
                       <img
-                        src={product.results ? product.results[0].photos[0].thumbnail_url : null}
+                        src={product?.results[0]?.photos[0].thumbnail_url ?? null}
                         className="carousel-card-image"
                         data-testid="carousel-card-image"
                         onClick={() => handleCardClick(product)}/>
