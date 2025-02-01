@@ -79,8 +79,8 @@ const Overview = () => {
     </div>
     <h3>!!!star rating goes here!!!</h3>
     <button  onClick={()=>{document.getElementById("review-view").scrollIntoView();}}>Reviews </button>&nbsp;
-    <h3>{Product.product.category}</h3>
-    <h2>{Product.product.name}</h2>
+    <h3>{Product.category}</h3>
+    <h2>{Product.name}</h2>
     {/* <p>price: {price}</p> */}
     {price}
     <Styles  id='styles' />
