@@ -9,6 +9,7 @@ import '../../dist/output.css';
 import STORE from '../../store/Store.js';
 import {Provider} from 'react-redux';
 import Answers from '../../components/Q&A/Q&AComponents/Answers.jsx';
+import Answer from '../../components/Q&A/Q&AComponents/Answer.jsx';
 import axios from 'axios';
 import swal from 'sweetalert';
 
@@ -150,6 +151,34 @@ describe('Q&A',()=>{
       expect(swal).toHaveBeenCalledWith("Sorry for the inconvenience", "No questions found, if you need help please feel free to leave a question addressing your concern", "info");
     })
 
+    it('Should update yes if it is clicked on and prevent continouous click', async () => {
+      const mockResponse = { data: { message: 'Updated' } };
+      axios.put.mockResolvedValue(mockResponse);
+      const question = render(
+        <Provider store={STORE}>
+          <Question question={{
+            "question_id": 38,
+            "question_body": "How long does it last?",
+            "question_date": "2019-06-28T00:00:00.000Z",
+            "asker_name": "funnygirl",
+            "question_helpfulness": 2,
+            "reported": false,
+            "answers": {}
+          }} setRefresh={() => {}}/>
+      </Provider>
+      )
+      const yes = question.getByTestId('yes-question');
+      await waitFor(async () => {
+        fireEvent.click(yes);
+      })
+      await waitFor(() => expect(axios.put).toHaveBeenCalled());
+      expect(axios.put).toHaveBeenCalledWith(process.env.API_URL + "/qa/questions/38/helpful", {}, {"headers": {"Authorization": process.env.AUTH_SECRET}})
+      expect(swal).toHaveBeenCalledWith('Success!!!', 'Successfully marked question as helpful', 'success', {buttons: 'Continue!'});
+      await waitFor(async () => {
+        fireEvent.click(yes);
+      })
+      expect(swal).toHaveBeenCalledWith('Warning', 'You cannot mark a question as helpful more than once ❌', 'warning');
+    });
 
   })
 
@@ -236,5 +265,36 @@ describe('Q&A',()=>{
       expect(modal).toBeDefined();
       expect(modal.src).toEqual('https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/23/2020/04/Common-Coqui1-web-sized.jpg');
     })
+
+    it('Should update yes if it is clicked on and prevent continouous click', async () => {
+      const mockResponse = { data: { message: 'Updated' } };
+      axios.put.mockResolvedValue(mockResponse);
+      const answer = render(
+        <Answer answer={{"id": 8,"body": "What a great question!","date": "2018-01-04T00:00:00.000Z","answerer_name": "metslover","helpfulness": 8,"photos": [],}} setAnswers={() => {}} question={{answers: {1: 1, 2: 2}}} setRefresh={() =>{}} isClicked={() => {}}/>
+      );
+      const yes = answer.getByTestId('yes-answer');
+      await waitFor(async () => {
+        fireEvent.click(yes);
+      })
+      await waitFor(() => expect(axios.put).toHaveBeenCalled());
+      expect(axios.put).toHaveBeenCalledWith(process.env.API_URL + "/qa/answers/8/helpful", {}, {"headers": {"Authorization": process.env.AUTH_SECRET}})
+      expect(swal).toHaveBeenCalledWith('Success!!!', 'Successfully marked answer as helpful', 'success', {buttons: 'Continue!'});
+      await waitFor(async () => {
+        fireEvent.click(yes);
+      })
+      expect(swal).toHaveBeenCalledWith('Warning', 'You cannot mark a answer as helpful more than once ❌', 'warning');
+    });
+    it('Should report answer correctly', async () => {
+      const mockResponse = { data: { message: 'Updated' } };
+      axios.put.mockResolvedValue(mockResponse);
+      const answer = render(
+        <Answer answer={{"id": 8,"body": "What a great question!","date": "2018-01-04T00:00:00.000Z","answerer_name": "metslover","helpfulness": 8,"photos": [],}} setAnswers={() => {}} question={{answers: {1: 1, 2: 2}}} setRefresh={() =>{}} isClicked={() => {}}/>
+      );
+      const report = answer.getByTestId('report');
+      fireEvent.click(report);
+      await waitFor(() => expect(axios.put).toHaveBeenCalled());
+      expect(axios.put).toHaveBeenCalledWith(process.env.API_URL + "/qa/answers/8/report", {}, {"headers": {"Authorization": process.env.AUTH_SECRET}})
+      expect(swal).toHaveBeenCalledWith('Success!!!', 'Thank you for reporting this inappropriate answer 🫡', 'success', {buttons: 'Continue!'});
+    });
   });
 });

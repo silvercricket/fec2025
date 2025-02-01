@@ -67,7 +67,7 @@ const CreateAnswer = ({question, setRefresh}) => {
   }
   return (
   <div data-testid="create-answer">
-      <small>Helpful?  <u onClick={handleYes}>Yes</u> {'(' + question.question_helpfulness + ')'} | </small>
+      <small>Helpful?  <u data-testid="yes-question" onClick={handleYes}>Yes</u> {'(' + question.question_helpfulness + ')'} | </small>
       <small data-testid="open-answer" id="open-answer" onClick={handleOpen}><u>Add Answer</u></small>
       <Modal isOpen={open} onClose={handleClose}>
         <>
