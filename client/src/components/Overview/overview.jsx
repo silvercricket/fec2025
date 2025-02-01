@@ -14,16 +14,43 @@ import Share from './overviewComponents/Share.jsx'
 import Gallery from './overviewComponents/Gallery.jsx';
 import Styles from './overviewComponents/Styles.jsx';
 import ProductForm from './overviewComponents/ProductForm.jsx';
+import StarDisplay from './overviewComponents/StarDisplay.jsx';
+
+
+// import star from '../../../img/stars/Star.png'
+// import halfStar from '../../../img/stars/halfStar.png'
+// import threeQuarterStar from '../../../img/stars/threeQuarterStar.png'
+// import quarterStar from '../../../img/stars/quarterStar.png'
+
 const Overview = () => {
   const dispatch = useDispatch();
   const Product = useSelector(store => store.Product);
 
+  const ReviewsData = useSelector(store => store.ReviewsData);
+
   const PictureData = useSelector(store => store.PictureData);
   const GalleryData = useSelector(store => store.GalleryData);
   const [price, setPrice] = useState('');
+  const [score, setScore] = useState(0);
+
+
 
 
   useEffect(() => {
+    if(ReviewsData){
+
+      var scoreTemp = 0;
+      for(var i = 0; i < ReviewsData.length;i++) {
+        scoreTemp+=ReviewsData[i].rating;
+      }
+      scoreTemp/=ReviewsData.length;
+      setScore(scoreTemp);
+
+    }
+  }
+  ,[ReviewsData]);
+  useEffect(() => {
+
     if(Product.id){
       axios.get(process.env.API_URL + `/products/${Product.id}/styles`,{headers: {Authorization:process.env.AUTH_SECRET} })
         .then((result)=>{
@@ -32,7 +59,6 @@ const Overview = () => {
           dispatch(PictureActions.setPicture(result.data.results[0].photos[0].url));
           dispatch(StylesActions.setStyles(result.data.results));
           setPrice('$' + Product.default_price);
-
 
 
         })
@@ -71,7 +97,7 @@ const Overview = () => {
       <MainDisplay  />
 
     </div>
-    <h3>!!!star rating goes here!!!</h3>
+    <StarDisplay score={score} />
     <button  onClick={()=>{document.getElementById("review-view").scrollIntoView();}}>Reviews </button>&nbsp;
     <h3>{Product.category}</h3>
     <h2>{Product.name}</h2>
