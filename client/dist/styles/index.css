@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer base {
   :root {
@@ -450,14 +447,6 @@
     border: 1px solid rgb(189, 189, 189);
     border-radius: 5px;
     margin: 5px 0;
-  }
-
-  #question-body {
-    width: fit-content;
-    padding: 5px;
-    border: 1px solid rgb(189, 189, 189);
-    border-radius: 5px;
-    margin: .5em 0;
   }
 
   #answer-body {

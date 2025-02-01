@@ -30,7 +30,7 @@ const App = () => {
   },[Product.id])
 
   return(
-  <div data-testid="app">
+  <div className="dark" data-testid="app">
     <Overview/>
     <Similar/>
     <QA/>

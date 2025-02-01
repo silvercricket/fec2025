@@ -39,12 +39,14 @@ const Answer = ({answer, setRefresh, isClicked}) => {
     }
 
   return (
-    <div id="answer" data-testid="answer">
-      <p id="answer-body" data-testid="answer-body">{answer.body}</p>
-      {answer.photos.map(photo => <Photo key={photo} photo={photo}/>)}
-      {answer.photos.length > 0 ? <br/> : null}
-      <small>by {answer.answerer_name}, {new Date(answer.date).toLocaleString(undefined, {year: 'numeric',  day: 'numeric', month: 'long'})} | Helpful?  <u onClick={handleYes}>Yes</u> {'(' + answer.helpfulness + ')'} | <u onClick={handleReport}>Report</u></small>
-    </div>
+    <>
+      <div id="answer" data-testid="answer">
+        <p id="answer-body" data-testid="answer-body">{answer.body}</p>
+        {answer.photos.map(photo => <Photo key={photo} photo={photo}/>)}
+        {answer.photos.length > 0 ? <br/> : null}
+        <small>by {answer.answerer_name}, {new Date(answer.date).toLocaleString(undefined, {year: 'numeric',  day: 'numeric', month: 'long'})} | Helpful?  <u onClick={handleYes}>Yes</u> {'(' + answer.helpfulness + ')'} | <u onClick={handleReport}>Report</u></small>
+      </div>
+    </>
   );
 };
 
