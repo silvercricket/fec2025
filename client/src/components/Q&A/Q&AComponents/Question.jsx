@@ -15,13 +15,14 @@ const Question = ({question, setRefresh}) => {
     for(var key in question.answers) {
       answerArray.push(question.answers[key]);
     }
+    answerArray.sort((a, b) => b.helpfulness - a.helpfulness);
     setAnswersData(answerArray);
     setAnswers(answerArray.slice(0, 2));
   }, [QuestionsData]);
   return (
     <div data-testid="question">
       <div id="question">
-        <h3 style={{margin: '.5em 0'}} data-testid="question-body"><b>Q: {question.question_body}</b></h3>
+        <h3 data-testid="question-body"><b>Q: {question.question_body}</b></h3>
         <CreateAnswer question={question} setRefresh={setRefresh}/>
       </div>
       <Answers answers={answers} setAnswers={setAnswers} answersData={answersData} setAnswersData={setAnswersData} question={question} setRefresh={setRefresh}/>

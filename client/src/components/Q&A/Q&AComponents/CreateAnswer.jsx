@@ -5,6 +5,7 @@ import Modal from './Modal.jsx';
 import {useSelector} from 'react-redux';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 
 const CreateAnswer = ({question, setRefresh}) => {
   const Product = useSelector(store => store.Product);
@@ -19,17 +20,21 @@ const CreateAnswer = ({question, setRefresh}) => {
     const name = formData.get("name");
     const email = formData.get("email");
     if (!body || !name || !email) {
-      alert('One or more of the fields are empty');
+      swal('Warning', 'One or more required fields are empty', 'warning', {
+        buttons: 'Continue filling form'
+      });
       return;
     }
     axios.post(process.env.API_URL + `/qa/questions/${question.question_id}/answers`, {body, name, email, photos},{headers: {Authorization:process.env.AUTH_SECRET} })
       .then(() => {
         setOpen(false);
         setRefresh({});
-        alert('Successfully submitted!!! 🎉');
+        swal('Success', 'Successfully submitted!!! 🎉', 'success', {
+          buttons: 'Continue!'
+        });
       })
       .catch(() => {
-        alert('Error while submitting');
+        swal('Error', 'Could not submit form', 'error');
       })
   }
   const handleYes = () => {
@@ -38,11 +43,13 @@ const CreateAnswer = ({question, setRefresh}) => {
         .then( () => {
           setClicked(true);
           setRefresh({});
-          alert('Thank you for your help!!! 🤩');
+          swal('Success!!!', 'Successfully marked question as helpful', 'success', {
+            buttons: 'Continue!'
+          });
         })
-        .catch(() => alert('error while marking answer as helpful'))
+        .catch(() => swal('Error', 'Could not mark question as helpful', 'error'))
     } else {
-      alert('You cannot mark an answer as helpful more than once ❌')
+      swal('Warning', 'You cannot mark a question as helpful more than once ❌', 'warning');
     }
   }
   const handleImages = (event) => {
@@ -53,13 +60,15 @@ const CreateAnswer = ({question, setRefresh}) => {
     } else {
       imageInputRef.current.value = '';
       setPhotos([]);
-      alert('You can only upload a max of 5 images')
+      swal('Warning', 'You can only upload a max of 5 images', 'warning', {
+        buttons: 'Continue filling form'
+      });
     }
   }
   return (
   <div data-testid="create-answer">
-      <small>Helpful?  <u onClick={handleYes}>Yes</u> {'(' + question.question_helpfulness + ')'} | </small>
-      <small data-testid="open-answer" id="answer" onClick={handleOpen}><u>Add Answer</u></small>
+      <small>Helpful?  <u data-testid="yes-question" onClick={handleYes}>Yes</u> {'(' + question.question_helpfulness + ')'} | </small>
+      <small data-testid="open-answer" id="open-answer" onClick={handleOpen}><u>Add Answer</u></small>
       <Modal isOpen={open} onClose={handleClose}>
         <>
           <h1>Submit your Answer</h1>
