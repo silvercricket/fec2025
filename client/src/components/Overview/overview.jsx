@@ -59,7 +59,6 @@ const Overview = () => {
           dispatch(StylesActions.setStyles(result.data.results));
           setPrice('$' + Product.default_price);
 
-
         })
     }
   },[Product]);
