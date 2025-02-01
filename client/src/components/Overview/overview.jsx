@@ -21,12 +21,7 @@ const Overview = () => {
   const PictureData = useSelector(store => store.PictureData);
   const GalleryData = useSelector(store => store.GalleryData);
   const [price, setPrice] = useState('');
-  // console.log('Product details:')
-  // console.log(Product);
 
-  // console.log('Product details:')
-  // console.log(Product);
-  // console.log(OverviewData);
 
   useEffect(() => {
     if(Product.id){
@@ -37,8 +32,7 @@ const Overview = () => {
           dispatch(PictureActions.setPicture(result.data.results[0].photos[0].url));
           dispatch(StylesActions.setStyles(result.data.results));
           setPrice('$' + Product.default_price);
-          // console.log(result.data.results[0]);
-          // console.log(result.data.results[0].photos[0].url);
+
           //dispatch(ProductActions.setProduct(result.data[0]));
 
         })
@@ -48,12 +42,12 @@ const Overview = () => {
   useEffect(() => {
 
     setPrice('$' + Product.default_price);
-    if(GalleryData.Gallery.sale_price){
+    if(GalleryData.sale_price){
       setPrice(
       <p style={{color:'red'}}><s>{Product.default_price}</s>&nbsp;
-      {GalleryData.Gallery.sale_price} </p>
+      {GalleryData.sale_price} </p>
     )
-      //setPrice(<s>price</s>  GalleryData.Gallery.sale_price)
+      //setPrice(<s>price</s>  GalleryData.sale_price)
     }
   },[GalleryData]);
 
@@ -79,8 +73,8 @@ const Overview = () => {
     </div>
     <h3>!!!star rating goes here!!!</h3>
     <button  onClick={()=>{document.getElementById("review-view").scrollIntoView();}}>Reviews </button>&nbsp;
-    <h3>{Product.product.category}</h3>
-    <h2>{Product.product.name}</h2>
+    <h3>{Product.category}</h3>
+    <h2>{Product.name}</h2>
     {/* <p>price: {price}</p> */}
     {price}
     <Styles  id='styles' />

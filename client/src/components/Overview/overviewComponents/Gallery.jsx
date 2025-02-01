@@ -27,7 +27,7 @@ const Gallery = () => {
       if(GalleryData.Gallery.photos.length > maxLength){
         activateArrows([
           <button type="button" key="GalleryUpArrow" onClick={()=>{
-            console.log(GallerySelection);
+
             if(GallerySelection>0){
               dispatch(GallerySelectionActions.setGallery(result.data.results[0]));
               GallerySelectionSet(GallerySelection - 1);

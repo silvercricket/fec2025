@@ -42,7 +42,7 @@ const MainDisplay = () => {
       setGallery('');
     } else {
       setGallery(<Gallery/>)
-      console.log('gallery should not vanish!');
+
     }
   };
 
@@ -109,9 +109,7 @@ const MainDisplay = () => {
           const rect = container.getBoundingClientRect();
           const height = zoom.clientHeight *1.0;
           const width = zoom.clientWidth * 1.0;
-          // console.log('width: ' + width);
-          // console.log('height: ' + height);
-          // console.log(zoom);
+
           const focusX = ((e.clientX - rect.left)/width)*100;//((e.clientX / width) * 100);
           const focusY = (e.clientY - rect.top / height) * 100;
 
@@ -166,7 +164,7 @@ const MainDisplay = () => {
         }}
         onMouseLeave={()=>{
           setMoused(false);
-          console.log('bye');
+
           setStyle({
             width: "100%",
             height: "100%",

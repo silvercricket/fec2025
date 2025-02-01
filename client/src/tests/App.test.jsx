@@ -8,7 +8,9 @@ import '../../dist/output.css'
 import STORE from '../store/Store.js';
 import {Provider} from 'react-redux';
 import axios from 'axios';
+
 jest.mock('axios');
+
 describe('App',()=>{
 
   beforeEach(() => {
