@@ -1,3 +1,5 @@
+/*global process*/
+/*eslint no-undef: "error"*/
 import React, {useState, useEffect}  from 'react';
 
 import {useDispatch, useSelector} from 'react-redux';
@@ -31,7 +33,7 @@ const ProductForm = () => {
           tempSizesUpdated.push({size:tempSizes[i].size,quantity:tempSizes[i].quantity})
         }
       }
-      console.log(tempSizesUpdated);
+
       setSizes(tempSizesUpdated);
     }
   },[GalleryData]);

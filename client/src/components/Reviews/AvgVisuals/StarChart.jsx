@@ -4,9 +4,6 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const StarChart = ({ ratings }) => {
-  if (!ratings) {
-    return;
-  }
 
   const chartRef = React.useRef(null);
 
@@ -18,6 +15,10 @@ const StarChart = ({ ratings }) => {
       }
     };
   }, []);
+
+  if (!ratings) {
+    return;
+  }
 
   const newChart = {
     labels: ['5 stars', '4 Stars', '3 Stars', '2 Stars', '1 Stars'],

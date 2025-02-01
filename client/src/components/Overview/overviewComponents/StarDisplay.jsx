@@ -15,7 +15,7 @@ const StarDisplay = ({score}) => {
   // var Style = GalleryData.Gallery.name || 'none';
   useEffect(() => {
     setStars([]);
-    console.log(score);
+
     var tempStars = []
     for(var i = 0; i < score - 1; i++){
       //setStars([...stars,'https://static-00.iconduck.com/assets.00/star-icon-512x489-3o5omkh5.png']);
@@ -40,7 +40,7 @@ const StarDisplay = ({score}) => {
       tempStars.push('https://static-00.iconduck.com/assets.00/star-empty-icon-2048x1925-1pqyr3uy.png');
     }
     setStars(tempStars);
-    console.log(stars);
+
   },[score]);
 
     return(

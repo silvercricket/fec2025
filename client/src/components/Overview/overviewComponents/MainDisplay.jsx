@@ -42,7 +42,7 @@ const MainDisplay = () => {
       setGallery('');
     } else {
       setGallery(<Gallery/>)
-      console.log('gallery should not vanish!');
+
     }
   };
 

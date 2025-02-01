@@ -7,26 +7,31 @@ import axios from 'axios';
 import {QuestionsActions} from '../../store/QuestionsSlice.js';
 import Questions from './Q&AComponents/Questions.jsx';
 import SearchQuestions from './Q&AComponents/SearchQuestions.jsx';
-//Product.product.id
+
+import CreateQuestion from './Q&AComponents/CreateQuestion.jsx';
+
 const QA = () => {
   const [refresh, setRefresh] = React.useState({});
   const Product = useSelector(store => store.Product);
+  const [questions, setQuestions] = React.useState([])
   const dispatch = useDispatch();
   useEffect(() => {
-    if (Product.product.id) {
-      axios.get(process.env.API_URL + `/qa/questions?count=4&product_id=${40500}`,{headers: {Authorization:process.env.AUTH_SECRET} })
-      .then((result)=>{
-        dispatch(QuestionsActions.setQuestions(result.data.results));
-      })
-      .catch((err) => {
-        if (err.response.status === 429) {
-          alert('Sorry traffic is full please refresh your browser');
-        } else {
-          alert('error while retrieving questions');
-        }
-      })
+    if (Product.id) {
+      axios.get(process.env.API_URL + `/qa/questions?count=2147483647&product_id=${Product.id}`,{headers: {Authorization:process.env.AUTH_SECRET} })
+        .then((result)=>{
+          setQuestions(result.data.results);
+          const action = result.data.results.slice(0, 4);
+          dispatch(QuestionsActions.setQuestions(action));
+        })
+        .catch((err) => {
+          if (err.response && err.response.status === 429) {
+            alert('Sorry traffic is full please refresh your browser');
+          } else {
+            alert('error while retrieving questions');
+          }
+        })
     }
-  },[Product.product.id, refresh])
+  },[Product.id, refresh])
 
   return (
     <>
@@ -35,6 +40,7 @@ const QA = () => {
         <SearchQuestions setRefresh={setRefresh}/>
         <br/>
         <Questions refresh={refresh} setRefresh={setRefresh}/>
+        <CreateQuestion questions={questions} setQuestions={setQuestions} setRefresh={setRefresh}/>
       </div>
       <br/>
     </>
