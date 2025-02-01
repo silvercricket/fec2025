@@ -16,8 +16,7 @@ const GalleryAltElement = ({image, index, setDisplayedIndex}) => {
 
 
      useEffect(() => {
-      console.log(GallerySelection.GallerySelection);
-      console.log(index);
+
       if(GallerySelection.GallerySelection===index){
         setPicIndex('✔');
       }
@@ -27,7 +26,7 @@ const GalleryAltElement = ({image, index, setDisplayedIndex}) => {
       <>
         <div data-testid="galleryAltPicture" className='galleryAltPicture'
         onClick={()=>{
-          console.log(GalleryData.Gallery.photos[index].url);
+
           setDisplayedIndex(index);
           dispatch(GallerySelectionActions.setGallerySelection(index));
           dispatch(PictureActions.setPicture(GalleryData.Gallery.photos[index].url));
