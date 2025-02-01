@@ -42,7 +42,6 @@ const SearchQuestions = () => {
   }
   return (
   <div className="input-container" data-testid="search-questions">
-    {/* {console.log(unfiltered)} */}
     <input data-testid="query" name="query" className="input-box" type="search" value={input} onChange={handleInput} placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." onClick={handleReset} style={{height: '40px'}} minLength="3"></input>
     <button data-testid="search" type="submit" onClick={handleSearch}><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
   </div>

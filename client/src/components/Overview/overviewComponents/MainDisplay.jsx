@@ -109,13 +109,10 @@ const MainDisplay = () => {
           const rect = container.getBoundingClientRect();
           const height = zoom.clientHeight *1.0;
           const width = zoom.clientWidth * 1.0;
-          // console.log('width: ' + width);
-          // console.log('height: ' + height);
-          // console.log(zoom);
+
           const focusX = ((e.clientX - rect.left)/width)*100;//((e.clientX / width) * 100);
           const focusY = (e.clientY - rect.top / height) * 100;
-          // console.log('x%: ' + focusX);
-          // console.log(rect.left);
+
           setStyle({
             position: "absolute",
             width:"100%",
