@@ -25,8 +25,9 @@ import StarDisplay from './overviewComponents/StarDisplay.jsx';
 const Overview = () => {
   const dispatch = useDispatch();
   const Product = useSelector(store => store.Product);
+
   const ReviewsData = useSelector(store => store.ReviewsData);
-  // const OverviewData = useSelector(store => store.Overview);
+
   const PictureData = useSelector(store => store.PictureData);
   const GalleryData = useSelector(store => store.GalleryData);
   const [price, setPrice] = useState('');
@@ -59,6 +60,7 @@ const Overview = () => {
           dispatch(StylesActions.setStyles(result.data.results));
           setPrice('$' + Product.default_price);
 
+
         })
     }
   },[Product]);
@@ -66,12 +68,12 @@ const Overview = () => {
   useEffect(() => {
 
     setPrice('$' + Product.default_price);
-    if(GalleryData.Gallery.sale_price){
+    if(GalleryData.sale_price){
       setPrice(
       <p style={{color:'red'}}><s>{Product.default_price}</s>&nbsp;
-      {GalleryData.Gallery.sale_price} </p>
+      {GalleryData.sale_price} </p>
     )
-      //setPrice(<s>price</s>  GalleryData.Gallery.sale_price)
+
     }
   },[GalleryData]);
 
@@ -87,8 +89,8 @@ const Overview = () => {
         borderRadius: "10px",
         boxShadow: "2px solid black",
         float: "left",
-        //objectFit: "contain"
-        //overflow: "hidden"
+
+
 
     }}>
     <div id='display' style={{height: "80%", width: "40%", float: "left",}}>

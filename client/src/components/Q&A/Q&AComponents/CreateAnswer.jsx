@@ -88,7 +88,7 @@ const CreateAnswer = ({question, setRefresh}) => {
             <br/>
             <input data-testid="images" type="file" ref={imageInputRef} multiple accept="image/*" onChange={handleImages}></input>
             <br/>
-            {photos.map(photo => <img key={photo} style={{height: '80px', width: '100px'}} src={photo} alt="Preview Image"></img>)}
+            {photos.map(photo => <img key={photo} style={{height: '50px', width: '100px'}} src={photo} alt="Preview Image"></img>)}
             <br/>
             <small>Only upload up to 5 images</small>
             <br/>
