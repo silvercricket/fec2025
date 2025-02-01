@@ -1,5 +1,4 @@
-/*global process*/
-/*eslint no-undef: "error"*/
+
 import React, {useState, useEffect}  from 'react';
 
 import {useDispatch, useSelector} from 'react-redux';
@@ -26,7 +25,7 @@ const ProductForm = () => {
       var tempSizesListed = {};
       for(var i = 0; i < tempSizes.length; i++){
         if(tempSizesListed[tempSizes[i].size]){
-          //add to where that size was
+
           tempSizesUpdated[tempSizesListed[tempSizes[i].size]].quantity+=tempSizes[i].quantity;
         } else {
           tempSizesListed[tempSizes[i].size] = i;
@@ -40,10 +39,10 @@ const ProductForm = () => {
 
 
   useEffect(() => {
-    if(inStock){//pretty sure this won't work for products not actually in stock, but...
+    if(inStock){
       setPurchase(<button type="button" onClick={()=>{
         if(size!=='' && size!=='select size'){
-          //add to cart I guess?
+
 
           var sku = 0;
 
@@ -51,7 +50,7 @@ const ProductForm = () => {
             if(GalleryData.Gallery.skus[key].size === size)
               sku = key;
             })
-          //send sku to cart for each quantity (I saw no way to send them en masse).
+
           for(var i = 0; i < quantity; i++){
             axios.post(process.env.API_URL + '/cart'  ,{sku_id:sku}, {headers: {Authorization:process.env.AUTH_SECRET} })
             .then((res)=>{

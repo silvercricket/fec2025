@@ -57,8 +57,8 @@ const Gallery = () => {
         {arrows[0]}
         {GalleryData.Gallery.photos.map((pic, index)=>{
           if(index >= GallerySelection && index < GallerySelection+maxLength){
-            // if(index === displayedIndex)
-            //   checkmarkSet('✔');
+
+
           return (
           <GalleryElement image={pic.thumbnail_url} index={index} setDisplayedIndex={setDisplayedIndex} target={displayedIndex} setTarget={setDisplayedIndex} key={index}/>
         );}})}

@@ -17,7 +17,7 @@ import ProductForm from './overviewComponents/ProductForm.jsx';
 const Overview = () => {
   const dispatch = useDispatch();
   const Product = useSelector(store => store.Product);
-  // const OverviewData = useSelector(store => store.Overview);
+
   const PictureData = useSelector(store => store.PictureData);
   const GalleryData = useSelector(store => store.GalleryData);
   const [price, setPrice] = useState('');
@@ -33,7 +33,7 @@ const Overview = () => {
           dispatch(StylesActions.setStyles(result.data.results));
           setPrice('$' + Product.default_price);
 
-          //dispatch(ProductActions.setProduct(result.data[0]));
+
 
         })
     }
@@ -47,7 +47,7 @@ const Overview = () => {
       <p style={{color:'red'}}><s>{Product.default_price}</s>&nbsp;
       {GalleryData.sale_price} </p>
     )
-      //setPrice(<s>price</s>  GalleryData.sale_price)
+
     }
   },[GalleryData]);
 
@@ -63,8 +63,8 @@ const Overview = () => {
         borderRadius: "10px",
         boxShadow: "2px solid black",
         float: "left",
-        //objectFit: "contain"
-        //overflow: "hidden"
+
+
 
     }}>
     <div id='display' style={{height: "80%", width: "40%", float: "left",}}>

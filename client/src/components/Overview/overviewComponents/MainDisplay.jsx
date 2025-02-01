@@ -19,20 +19,20 @@ const MainDisplay = () => {
   });
 
   const [divStyle, setDivStyle] = useState({
-    // width: "40%",
-    // height: "100%",
-    // //float: 'left',
-    // //background: "rgba(0, 0, 0, 0.5)",
-    // margin: "auto",
-    // padding: "2%",
-    // border: "2px solid #000",
-    // borderRadius: "10px",
-    // boxShadow: "2px solid black",
 
-    // float: "left",
-    // alignItems: "center",
-    // justifyContent: "center",
-    // objectFit: 'contain'
+
+
+
+
+
+
+
+
+
+
+
+
+
   });
   const [open, setOpen] = useState(false);
   const [gallery, setGallery] = useState(<Gallery/>)
@@ -110,15 +110,15 @@ const MainDisplay = () => {
           const height = zoom.clientHeight *1.0;
           const width = zoom.clientWidth * 1.0;
 
-          const focusX = ((e.clientX - rect.left)/width)*100;//((e.clientX / width) * 100);
+          const focusX = ((e.clientX - rect.left)/width)*100;
           const focusY = (e.clientY - rect.top / height) * 100;
 
           setStyle({
             position: "absolute",
             width:"100%",
             height:"100%",
-            //top: `-${e.clientY}px`,
-            //left: `-${focusX}px`,
+
+
 
             transformOrigin: `${focusX}% ${focusY}%`,
             transform:"scale(2.5)",
@@ -140,7 +140,7 @@ const MainDisplay = () => {
       <div style= {divStyle} id ='mainDisplayContainer'>
         <img  id='mainDisplay' data-testid="mainDisplay" src={PictureData.Picture}
         onClick={()=>{
-          //toggleOpen();
+
           if(expanded>1){
             setExpanded(0);
           } else {
@@ -168,7 +168,7 @@ const MainDisplay = () => {
           setStyle({
             width: "100%",
             height: "100%",
-            //float: 'left',
+
             transformOrigin:"top left",
             transform:"scale(1)"
           })
