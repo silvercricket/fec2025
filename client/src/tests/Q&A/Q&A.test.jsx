@@ -156,4 +156,60 @@ describe('Q&A',()=>{
     expect(axios.post).toHaveBeenCalledWith(process.env.API_URL + '/qa/questions', postData ,{headers: {Authorization:process.env.AUTH_SECRET} });
     expect(global.alert).toHaveBeenCalledWith('Successfully submitted!!! 🎉');
   })
+
+  it('CreateAnswers should call an alert if given invalid form', () => {
+    const create = render(
+      <Provider store={STORE}>
+        <Question question={{
+          "question_id": 38,
+          "question_body": "How long does it last?",
+          "question_date": "2019-06-28T00:00:00.000Z",
+          "asker_name": "funnygirl",
+          "question_helpfulness": 2,
+          "reported": false,
+          "answers": {}
+        }}/>
+    </Provider>
+    )
+    const open = create.getByTestId('open-answer');
+    fireEvent.click(open);
+    const bodyInput = create.getByTestId('body');
+    const submitButton = create.getByTestId('submit');
+    fireEvent.change(bodyInput, {target: {value: 'This is a question'}});
+    fireEvent.click(submitButton);
+    expect(global.alert).toHaveBeenCalledWith('One or more of the fields are empty');
+  })
+
+  it('Should create answers properly', async () => {
+    const mockResponse = { data: { message: 'Created' } };
+    axios.post.mockResolvedValue(mockResponse);
+    const postData = {body: 'This is a answer', name: 'answerer', email: 'john@gmail.com', photos: []}
+
+    const create = render(
+      <Provider store={STORE}>
+        <Question question={{
+          "question_id": 38,
+          "question_body": "How long does it last?",
+          "question_date": "2019-06-28T00:00:00.000Z",
+          "asker_name": "funnygirl",
+          "question_helpfulness": 2,
+          "reported": false,
+          "answers": {}
+        }} setRefresh={() => {}}/>
+      </Provider>
+    )
+    const open = create.getByTestId('open-answer');
+    fireEvent.click(open);
+    const bodyInput = create.getByTestId('body');
+    const nameInput = create.getByTestId('name');
+    const emailInput = create.getByTestId('email');
+    const submitButton = create.getByTestId('submit');
+    fireEvent.change(bodyInput, {target: {value: 'This is a answer'}});
+    fireEvent.change(nameInput, {target: {value: 'answerer'}});
+    fireEvent.change(emailInput, {target: {value: 'john@gmail.com'}})
+    fireEvent.click(submitButton);
+    await waitFor(() => expect(axios.post).toHaveBeenCalled());
+    expect(axios.post).toHaveBeenCalledWith(process.env.API_URL + '/qa/questions/38/answers', postData ,{headers: {Authorization:process.env.AUTH_SECRET} });
+    expect(global.alert).toHaveBeenCalledWith('Successfully submitted!!! 🎉');
+  })
 });
