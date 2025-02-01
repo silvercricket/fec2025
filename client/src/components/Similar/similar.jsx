@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import '../../../dist/styles/index.css';
-import {RelatedActions} from '../../store/RelatedSlice.js';
+// import {RelatedActions} from '../../store/RelatedSlice.js';
 import {ProductActions} from '../../store/ProductSlice.js';
 import Carousel from './Carousel.jsx';
 import Outfit from './Outfit.jsx';
@@ -65,14 +65,14 @@ const Similar = () => {
   }
 
   const getRelated = () => {
-    if (!Product.product.id) {
+    if (!Product.id) {
       console.error('Product Id undefined in Similar Product');
       return;
     }
-    axios.get(`${process.env.API_URL}/products/${Product.product.id}/related`, {headers: {Authorization: process.env.AUTH_SECRET}})
+    axios.get(`${process.env.API_URL}/products/${Product.id}/related`, {headers: {Authorization: process.env.AUTH_SECRET}})
     .then((response) => {
       const relatedProductIds = response.data;
-      dispatch(RelatedActions.setRelated(response.data));
+      // dispatch(RelatedActions.setRelated(response.data));
       getStyles(relatedProductIds);
       getProducts(relatedProductIds);
     })
@@ -92,12 +92,12 @@ const Similar = () => {
     }
 
     useEffect(() => {
-      if (Product.product.id) {
-        setCurrentProduct(Product.product);
+      if (Product.id) {
+        setCurrentProduct(Product);
         getRelated();
-        getCurrentDetails(Product.product.id);
+        getCurrentDetails(Product.id);
       }
-    }, [Product.product.id]);
+    }, [Product.id]);
 
     useEffect(() => {
       if (products.length > 0 && styles.length > 0) {
@@ -113,7 +113,6 @@ const Similar = () => {
     }, [products, styles]);
 
     const handleCardClick = (product) => {
-      console.log(product)
       dispatch(ProductActions.setProduct(product));
     };
 
@@ -129,7 +128,6 @@ const Similar = () => {
 
 
 
-
   return (
     <div data-testid="similar">
       <h3>Related Products</h3>
@@ -138,7 +136,8 @@ const Similar = () => {
           items={combinedData}
           handleCardClick={handleCardClick}
           handleStarClick={handleStarClick}
-          currentProduct={currentProduct} />
+          currentProduct={currentProduct}
+          currentStyle={currentStyle} />
         ) : (
           <div>Loading related products...</div>
         )}

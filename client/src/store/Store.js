@@ -8,8 +8,10 @@ import GallerySlice from './GallerySlice.js';
 import PictureSlice from './PictureSlice.js';
 import StylesSlice from './StylesSlice.js';
 import GallerySelectionSlice from './GallerySelectionSlice.js';
+
 const STORE = configureStore({
   reducer: {
+    ReviewsMeta: ReviewsMetaSlice.reducer,
     ReviewsData: ReviewsSlice.reducer,
     Product: ProductSlice.reducer,
     RelatedData: RelatedSlice.reducer,

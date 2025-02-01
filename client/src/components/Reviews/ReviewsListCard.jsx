@@ -1,3 +1,5 @@
+/*global process*/
+/*eslint no-undef: "error"*/
 import React, {useEffect}  from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
@@ -19,26 +21,18 @@ const ReviewsListCard = ({ review }) => {
   const handleRating = (rating) => {
     let ratingEle = [];
     let numStars = rating;
-    if (rating % 1 === 0.5) {
-      while (numStars > 0 ) {
-        ratingEle.push(stars.fullStar);
-        numStars--
-      }
-      ratingEle.push(stars.halfStar);
-      while (ratingEle.length < 5) {
-        ratingEle.push(stars.emptyStar);
-      }
-    } else {
-      while (numStars > 0 ) {
-        ratingEle.push(stars.fullStar);
-        numStars--
-      }
-      while (ratingEle.length < 5) {
-        ratingEle.push(stars.emptyStar);
-      }
+    for (let i = 0; i < Math.floor(numStars); i++) {
+      ratingEle.push(<span key={`fullStar-${i}`}>{stars.fullStar}</span>);
     }
+    if (numStars % 1 === 0.5) {
+      ratingEle.push(<span key={`halfStar`}>{stars.halfStar}</span>);
+    }
+    for (let i = ratingEle.length; i < 5; i++) {
+      ratingEle.push(<span key={`emptyStar-${i}`}>{stars.emptyStar}</span>);
+    }
+
     return ratingEle;
-  }
+  };
   const handleHelpfullness = () => {
     if (clickedHelp) {
       return;
@@ -59,7 +53,6 @@ const ReviewsListCard = ({ review }) => {
     console.log('RESPOSE: ', res);
   })
   }
-
   const handleReport = () => {
     if (clickedReport) {
       return;
@@ -79,7 +72,6 @@ const ReviewsListCard = ({ review }) => {
     console.log('RESPOSE: ', res);
   })
   }
-
   const handleTime = () => {
     const dateString = review.date;
     const date = new Date(dateString);
@@ -94,11 +86,11 @@ const ReviewsListCard = ({ review }) => {
     if(!Array.isArray(review.photos)) {
       return '###'
     }
-    return (review.photos.slice(0, currPhotos).map(photo => { return <ReviewsListCardPhotos photo={photo} />}))
+    return (review.photos.slice(0, currPhotos).map((photo, index) => { return <ReviewsListCardPhotos key={photo.id || index} photo={photo}/>}))
   }
 
   return (
-    <div>
+    <div >
       <h3>Stars: {handleRating(review.rating)}</h3>
       <small>{review.reviewer_name}, {handleTime()}</small>
       <h3>{review.summary}</h3>

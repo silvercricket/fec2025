@@ -23,7 +23,7 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
   };
 
   const handleReviewCardList = () => {
-    if (ReviewsData.Reviews.length > 2) {
+    if (ReviewsData.length > 2) {
       return <button onClick={() => {
         if (Math.floor((numOfReviewCards / 5)) === currPage) {
           setNumOfReviewCards(0);
@@ -37,22 +37,22 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
   };
 
   const handleSize = () => {
-    if (!Array.isArray(ReviewsData.Reviews)) {
+    if (!Array.isArray(ReviewsData)) {
       return '###';
     }
-    return ReviewsData.Reviews.length;
+    return ReviewsData.length;
   };
 
   const handleMap = (extra) => {
-    const currCards = Math.min(2 + extra, ReviewsData.Reviews.length);
-    if (!Array.isArray(ReviewsData.Reviews)) {
+    const currCards = Math.min(2 + extra, ReviewsData.length);
+    if (!Array.isArray(ReviewsData)) {
       return '###';
     }
-    return ReviewsData.Reviews.slice(0, currCards).map(review => <ReviewsListCard review={review} />);
+    return ReviewsData.slice(0, currCards).map((review, index) => <ReviewsListCard review={review} key={`${review.id} - ${index}`} />);
   };
 
   return (
-    <div>
+    <div data-testid="list-view" id='list-view'>
       <h3>{handleSize()} reviews, {
         <section>
         <label htmlFor='sort'>Sorted on</label>

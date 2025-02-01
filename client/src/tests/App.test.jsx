@@ -16,8 +16,6 @@ describe('App',()=>{
         <App/>
       </Provider>
     );
-    console.log('here');
-
     expect(Apple.getByTestId('app')).toBeDefined();
 
     expect(Apple.getByTestId('overview')).toBeDefined();
@@ -26,7 +24,7 @@ describe('App',()=>{
 
     expect(Apple.getByTestId('qa')).toBeDefined();
 
-    expect(Apple.getByTestId('review')).toBeDefined();
+    expect(Apple.getByTestId('review-view')).toBeDefined();
   });
 
 });

@@ -1,3 +1,5 @@
+/*global process require module __dirname*/
+/*eslint no-undef: "error"*/
 require("dotenv").config();
 
 const path = require("path");

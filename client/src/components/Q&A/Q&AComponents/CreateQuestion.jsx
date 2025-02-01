@@ -6,10 +6,11 @@ import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 import {QuestionsActions} from '../../../store/QuestionsSlice.js'
-const CreateQuestion = ({setRefresh}) => {
+const CreateQuestion = ({questions, setQuestions, setRefresh}) => {
   const dispatch = useDispatch();
-  const QuestionsData = useSelector(store => store.QuestionsData);
+  const Search = useSelector(store => store.Search);
   const Product = useSelector(store => store.Product);
+  const QuestionsData = useSelector(store => store.QuestionsData);
   const [open, setOpen] = React.useState(false);
   const [clicked, setClicked] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -21,7 +22,7 @@ const CreateQuestion = ({setRefresh}) => {
     if (!body || !name || !email) {
       alert('One or more of the fields are empty');
     }
-    axios.post(process.env.API_URL + '/qa/questions', {body, name, email, product_id: Product.product.id},{headers: {Authorization:process.env.AUTH_SECRET} })
+    axios.post(process.env.API_URL + '/qa/questions', {body, name, email, product_id: Product.id},{headers: {Authorization:process.env.AUTH_SECRET} })
       .then(() => {
         setOpen(false);
         setRefresh({});
@@ -32,36 +33,30 @@ const CreateQuestion = ({setRefresh}) => {
       })
   }
   const handleQuestions = () => {
-    axios.get(process.env.API_URL + `/qa/questions?count=2147483647&product_id=${40500}`,{headers: {Authorization:process.env.AUTH_SECRET} })
-      .then((result)=>{
-        setClicked(true);
-        dispatch(QuestionsActions.setQuestions(result.data.results));
-      })
-      .catch((err) => {
-        if (err.response.status === 429) {
-          alert('Sorry traffic is full please refresh your browser');
-        } else {
-          alert('error while retrieving questions');
-        }
-      })
+    setClicked(true);
+    const temp = QuestionsData;
+    dispatch(QuestionsActions.setQuestions(questions));
+    setQuestions(temp);
   }
   const handleCollapse = () => {
     setClicked(false);
-    setRefresh({});
+    const temp = QuestionsData;
+    dispatch(QuestionsActions.setQuestions(questions));
+    setQuestions(temp);
   };
   return (
   <div data-testid="create-question">
-    {Object.keys(QuestionsData).length > 2 && !clicked ? <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleQuestions}>MORE ANSWERED QUESTIONS</h3> : (clicked ? <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleCollapse}>Collapse Questions</h3> : null)}
+    {questions.length > 4 && !clicked && !Search? <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleQuestions}>MORE ANSWERED QUESTIONS</h3> : (clicked && !Search ? <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleCollapse}>Collapse Questions</h3> : null)}
 
     <h3 style={{border: 'solid black', padding: '20px 10px', width:'fit-content'}} onClick={handleOpen}>ADD A QUESTION ➕</h3>
     <Modal isOpen={open} onClose={handleClose}>
       <>
         <h1>Ask Your Question</h1>
-        <h3>About the {Product.product.name}</h3>
+        <h3>About the {Product.name}</h3>
         <form action={handleSubmit}>
           <label>Your Question*</label>
           <br/>
-          <textarea name="body" placeholder="Why did you like the product or not?" maxLength="1000" minLength="1" rows="5" cols="65"></textarea>
+          <textarea name="body" placeholder="Why did you like the product or not?" maxLength="1000" minLength="1" rows="5" cols="60"></textarea>
           <br/>
           <br/>
           <label> What is your nickname*</label>
@@ -88,6 +83,8 @@ const CreateQuestion = ({setRefresh}) => {
 };
 
 CreateQuestion.propTypes = {
+  questions: PropTypes.array.isRequired,
+  setQuestions: PropTypes.func.isRequired,
   setRefresh: PropTypes.func.isRequired,
 };
 
