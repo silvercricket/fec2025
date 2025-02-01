@@ -43,7 +43,7 @@ const GalleryElement = ({image, index, target, setTarget}) => {
     return(
       <div>
         <img data-testid="galleryPicture" className='galleryPicture' style={style} onClick={()=>{
-          //console.log(GalleryData.Gallery.photos[index].url);
+
           dispatch(PictureActions.setPicture(GalleryData.Gallery.photos[index].url));
           dispatch(GallerySelectionActions.setGallerySelection(index));
         }} src={image}/>
