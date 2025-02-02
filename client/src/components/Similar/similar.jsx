@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import '../../../dist/styles/index.css';
-import {RelatedActions} from '../../store/RelatedSlice.js';
+// import {RelatedActions} from '../../store/RelatedSlice.js';
 import {ProductActions} from '../../store/ProductSlice.js';
 import Carousel from './Carousel.jsx';
 import Outfit from './Outfit.jsx';
@@ -73,7 +73,7 @@ const Similar = () => {
     axios.get(`${process.env.API_URL}/products/${Product.id}/related`, {headers: {Authorization: process.env.AUTH_SECRET}})
     .then((response) => {
       const relatedProductIds = response.data;
-      dispatch(RelatedActions.setRelated(response.data));
+      // dispatch(RelatedActions.setRelated(response.data));
       getStyles(relatedProductIds);
       getProducts(relatedProductIds);
     })
@@ -137,7 +137,8 @@ const Similar = () => {
           items={combinedData}
           handleCardClick={handleCardClick}
           handleStarClick={handleStarClick}
-          currentProduct={currentProduct} />
+          currentProduct={currentProduct}
+          currentStyle={currentStyle} />
         ) : (
           <div>Loading related products...</div>
         )}
@@ -196,8 +197,6 @@ export default Similar;
 //   	{
 // 			"feature": "Material",
 // 			"value": "FullControlSkin"
-// 		},
-//   	// ...
 // 	],
 // }
 
@@ -224,49 +223,6 @@ export default Similar;
 //   			// ...
 // 			],
 // 		"skus": {
-//                 	"37": {
-//                     		"quantity": 8,
-//                     		"size": "XS"
-//                 	},
-//                 	"38": {
-//                     		"quantity": 16,
-//                     		"size": "S"
-//                 	},
-//                 	"39": {
-//                     		"quantity": 17,
-//                     		"size": "M"
-//                 	},
-// 			//...
-//             	}
-// 	},
-//   {
-// 		"style_id": 2,
-// 		"name": "Desert Brown & Tan",
-// 		"original_price": "140",
-// 		"sale_price": "0",
-// 		"default?": false,
-// 		"photos": [
-//   			{
-// 					"thumbnail_url": "urlplaceholder/style_2_photo_number_thumbnail.jpg",
-// 					"url": "urlplaceholder/style_2_photo_number.jpg"
-//         }
-//       // ...
-// 			],
-// 		"skus": {
-//                 	"37": {
-//                     		"quantity": 8,
-//                     		"size": "XS"
-//                 	},
-//                 	"38": {
-//                     		"quantity": 16,
-//                     		"size": "S"
-//                 	},
-//                 	"39": {
-//                     		"quantity": 17,
-//                     		"size": "M"
-//                 	},
-// 			//...
-//             	}
-// 	},
-//   // ...
+//
+// 	}
 // }

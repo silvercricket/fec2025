@@ -1,4 +1,6 @@
-import React from 'react';
+/*global process*/
+/*eslint no-undef: "error"*/
+import React, { useState } from 'react';
 import axios from 'axios';
 
 const FileUpload = ({ files, setFiles }) => {

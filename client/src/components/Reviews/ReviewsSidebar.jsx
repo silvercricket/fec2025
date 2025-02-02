@@ -5,7 +5,7 @@ import StarRatings from './StarRatings.jsx';
 
 const ReviewsSidebar = () => {
   const ReviewsMeta = useSelector(store => store.ReviewsMeta);
-  console.log(ReviewsMeta);
+
   const handlePercentReviews = () => {
     var recommended = ReviewsMeta.recommended
     if(!recommended) {
@@ -17,18 +17,55 @@ const ReviewsSidebar = () => {
   }
 
   const handleCharacteristics = () => {
+    const charLabels = {
+      Size: {
+        low: "A size too small",
+        high: "A size too wide"
+      },
+      Width: {
+        low: "Too narrow",
+        high: "Too wide"
+      },
+      Comfort: {
+        low: "Uncomfortable",
+        high: "Perfect"
+      },
+      Quality: {
+        low: "Poor",
+        high: "Perfect"
+      },
+      Length: {
+        low: "Runs Short",
+        high: "Runs long"
+      },
+      Fit: {
+        low: "Runs tight",
+        high: "Runs long"
+      }
+    }
+
     let productBreakdown = [];
     let characteristics = ReviewsMeta.characteristics;
     if (!characteristics) {
       return '###';
     } else {
       for (var char in characteristics) {
+        const labels = charLabels[char] || { low: "", high: "" };
+        console.log('char: ', characteristics[char]);
         let value = characteristics[char].value;
+        const progressPercentage = ((value - 1) / 4) * 100;
         productBreakdown.push(
-          <div key={char}>
-            <label htmlFor="file">{char}</label>
-            <progress id="file" max="5" value={value}>{char}</progress>
+          <div key={char} className="spectrum-container">
+          <label htmlFor="file">{char}</label>
+          <div className="spectrum-bar">
+            <div className="spectrum-fill" style={{ width: `${progressPercentage}%` }}></div>
+            <div className="indicator" style={{ left: `${progressPercentage}%` }}></div>
           </div>
+          <div className="metaLabels">
+            {labels.low && <span className="metaLow-label">{labels.low}</span>}
+            {labels.high && <span className="metaHigh-label">{labels.high}</span>}
+          </div>
+        </div>
         );
       }
     }

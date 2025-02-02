@@ -4,10 +4,12 @@ import OverviewSlice from './OverviewSlice.js';
 import RelatedSlice from './RelatedSlice.js';
 import QuestionsSlice from './QuestionsSlice.js';
 import ReviewsSlice from './ReviewsSlice.js';
+import ReviewsMetaSlice from './ReviewsMetaSlice.js';
 import GallerySlice from './GallerySlice.js';
 import PictureSlice from './PictureSlice.js';
 import StylesSlice from './StylesSlice.js';
-import ReviewsMetaSlice from './ReviewsMetaSlice.js';
+import GallerySelectionSlice from './GallerySelectionSlice.js';
+import SearchSlice from './SearchSlice.js'
 
 const STORE = configureStore({
   reducer: {
@@ -19,7 +21,9 @@ const STORE = configureStore({
     GalleryData: GallerySlice.reducer,
     PictureData: PictureSlice.reducer,
     StylesData: StylesSlice.reducer,
-    QuestionsData: QuestionsSlice.reducer
+    GallerySelection: GallerySelectionSlice.reducer,
+    QuestionsData: QuestionsSlice.reducer,
+    Search: SearchSlice.reducer,
   }
 })
 

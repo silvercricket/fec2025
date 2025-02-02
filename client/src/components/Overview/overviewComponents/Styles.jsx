@@ -1,4 +1,4 @@
-import React, {useEffect}  from 'react';
+import React, {useState, useEffect}  from 'react';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {ProductActions} from '../../../store/ProductSlice.js';
@@ -16,14 +16,24 @@ const Styles = () => {
   },[StylesData]);
   if(GalleryData.Gallery.name !== undefined){
     return(
-      <div>
-        <h3>style: { Style}</h3>
+      <>
+      <h3>style: { Style}</h3>
+      <div style={{
+        display: 'grid',
+        gridGap: '20px',
+        justifyContent: 'left',
+        gridTemplateColumns: 'repeat(3, calc(8.33% - 20px))'
+        }}>
+
+
         {StylesData.Styles.map((style, index)=>(
+
           <StylesElement  style={style} index={index} key={index}/>
         ))
         }
 
       </div>
+      </>
     );
   }
 }

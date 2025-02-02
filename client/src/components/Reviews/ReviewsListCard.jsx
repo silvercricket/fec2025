@@ -1,3 +1,5 @@
+/*global process*/
+/*eslint no-undef: "error"*/
 import React, {useEffect}  from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
@@ -88,23 +90,23 @@ const ReviewsListCard = ({ review }) => {
   }
 
   return (
-    <div >
-      <h3>Stars: {handleRating(review.rating)}</h3>
-      <small>{review.reviewer_name}, {handleTime()}</small>
-      <h3>{review.summary}</h3>
-      <p>{review.response}</p>
-      <div>
-        {handleMap()}
-      </div>
-      <small className='spacious'>
-        Helpful?
-        <button className='helpButton' onClick={() => handleHelpfullness()}>Yes</button>
-        ({helpful})<span className='separator'> | </span>
-        <button className='helpButton' onClick={() => handleReport()} >Report</button>
-        </small>
-        <br></br>
-        <small>____________________________________________________________________________________________________</small>
+  <div className="review-card">
+    <h3 className="review-rating">Stars: {handleRating(review.rating)}</h3>
+    <small className="review-meta">{review.reviewer_name}, {handleTime()}</small>
+    <h3 className="review-summary">{review.summary}</h3>
+    <p className="review-response">{review.response}</p>
+    <div className="review-map">
+      {handleMap()}
     </div>
+    <small className="helpful-section">
+      Helpful?
+      <button className="helpButton" onClick={() => handleHelpfullness()}>Yes</button>
+      ({helpful})<span className="separator"> | </span>
+      <button className="helpButton" onClick={() => handleReport()}>Report</button>
+    </small>
+    <br />
+    <small className="separator-line">____________________________________________________________________________________________________</small>
+  </div>
   );
 }
 

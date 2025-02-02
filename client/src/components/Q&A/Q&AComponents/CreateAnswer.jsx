@@ -5,6 +5,7 @@ import Modal from './Modal.jsx';
 import {useSelector} from 'react-redux';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 
 const CreateAnswer = ({question, setRefresh}) => {
   const Product = useSelector(store => store.Product);
@@ -19,16 +20,21 @@ const CreateAnswer = ({question, setRefresh}) => {
     const name = formData.get("name");
     const email = formData.get("email");
     if (!body || !name || !email) {
-      alert('One or more of the fields are empty');
+      swal('Warning', 'One or more required fields are empty', 'warning', {
+        buttons: 'Continue filling form'
+      });
+      return;
     }
     axios.post(process.env.API_URL + `/qa/questions/${question.question_id}/answers`, {body, name, email, photos},{headers: {Authorization:process.env.AUTH_SECRET} })
       .then(() => {
         setOpen(false);
         setRefresh({});
-        alert('Successfully submitted!!! 🎉');
+        swal('Success', 'Successfully submitted!!! 🎉', 'success', {
+          buttons: 'Continue!'
+        });
       })
       .catch(() => {
-        alert('Error while submitting');
+        swal('Error', 'Could not submit form', 'error');
       })
   }
   const handleYes = () => {
@@ -37,11 +43,13 @@ const CreateAnswer = ({question, setRefresh}) => {
         .then( () => {
           setClicked(true);
           setRefresh({});
-          alert('Thank you for your help!!! 🤩');
+          swal('Success!!!', 'Successfully marked question as helpful', 'success', {
+            buttons: 'Continue!'
+          });
         })
-        .catch(() => alert('error while marking question as helpful'))
+        .catch(() => swal('Error', 'Could not mark question as helpful', 'error'))
     } else {
-      alert('You cannot mark a question as helpful more than once ❌')
+      swal('Warning', 'You cannot mark a question as helpful more than once ❌', 'warning');
     }
   }
   const handleImages = (event) => {
@@ -52,13 +60,15 @@ const CreateAnswer = ({question, setRefresh}) => {
     } else {
       imageInputRef.current.value = '';
       setPhotos([]);
-      alert('You can only upload a max of 5 images')
+      swal('Warning', 'You can only upload a max of 5 images', 'warning', {
+        buttons: 'Continue filling form'
+      });
     }
   }
   return (
   <div data-testid="create-answer">
-      <small>Helpful?  <u onClick={handleYes}>Yes</u> {'(' + question.question_helpfulness + ')'} | </small>
-      <small id="answer" onClick={handleOpen}><u>Add Answer</u></small>
+      <small>Helpful?  <u data-testid="yes-question" onClick={handleYes}>Yes</u> {'(' + question.question_helpfulness + ')'} | </small>
+      <small data-testid="open-answer" id="open-answer" onClick={handleOpen}><u>Add Answer</u></small>
       <Modal isOpen={open} onClose={handleClose}>
         <>
           <h1>Submit your Answer</h1>
@@ -66,33 +76,33 @@ const CreateAnswer = ({question, setRefresh}) => {
           <form action={handleSubmit}>
             <label>Your Answer*</label>
             <br/>
-            <textarea name="body" placeholder="Your answer to the question above" maxLength="1000" minLength="1" rows="5" cols="65"></textarea>
+            <textarea data-testid="body" name="body" placeholder="Your answer to the question above" maxLength="1000" minLength="1" rows="5" cols="65"></textarea>
             <br/>
             <br/>
             <label> What is your nickname*</label>
             <br/>
-            <input placeholder="Example: jack543!" name="name" maxLength="60" minLength="5"></input>
+            <input data-testid="name" placeholder="Example: jack543!" name="name" maxLength="60" minLength="5"></input>
             <br/>
             <small>For privacy reasons, do not use your full name or email address</small>
             <br/>
             <br/>
             <label>Your email*</label>
             <br/>
-            <input type="email" placeholder="Example: jack@email.com" name="email" maxLength="60" minLength="3"></input>
+            <input data-testid="email" type="email" placeholder="Example: jack@email.com" name="email" maxLength="60" minLength="3"></input>
             <br/>
             <small>For authentication reasons, you will not be emailed</small>
             <br/>
             <br/>
             <label>Photos</label>
             <br/>
-            <input type="file" ref={imageInputRef} multiple accept="image/*" onChange={handleImages}></input>
+            <input data-testid="images" type="file" ref={imageInputRef} multiple accept="image/*" onChange={handleImages}></input>
             <br/>
-            {photos.map(photo => <img key={photo} style={{height: '80px', width: '100px'}} src={photo} alt="Preview Image"></img>)}
+            {photos.map(photo => <img key={photo} style={{height: '50px', width: '100px'}} src={photo} alt="Preview Image"></img>)}
             <br/>
             <small>Only upload up to 5 images</small>
             <br/>
             <br/>
-            <button type="submit">Submit Answer</button>
+            <button data-testid="submit" type="submit">Submit Answer</button>
           </form>
           <br/>
         </>

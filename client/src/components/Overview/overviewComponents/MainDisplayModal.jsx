@@ -6,9 +6,7 @@ const Modal = ({ isOpen, onClose, children }) => {
 
     return (
         <div
-            className="reviewAdd-container"
             style={{
-                fontFamily: 'Arial, sans-serif',
                 position: "fixed",
                 top: 0,
                 left: 0,
@@ -18,26 +16,26 @@ const Modal = ({ isOpen, onClose, children }) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                overflow: "hidden"
             }}
         >
-            <div
-                className="reviewAdd-container"
 
+            <div
+                id='mainDisplayExpandedContainer'
                 style={{
-                    fontFamily: 'Arial, sans-serif',
-                    background: "white",
-                    height: 600,
-                    width: 500,
+                    position: "relative",
+                    background: "grey",
+                    height: 800,
+                    width: 800,
                     margin: "auto",
-                    padding: "2%",
+
                     border: "2px solid #000",
                     borderRadius: "10px",
                     boxShadow: "2px solid black",
-                    overflowY: "auto",
+                    overflow: "hidden"
                 }}
             >
                 {children}
-                <button className='modal-close' onClick={onClose}>Cancel Review</button>
             </div>
         </div>
     );
