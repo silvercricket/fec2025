@@ -45,7 +45,7 @@ describe('Similar', () => {
 
     const CarouselCard = render(
       <Provider store={STORE}>
-        <Carousel items={[testItem]} />
+        <Carousel items={[testItem]} currentProduct={{"id": 12}} />
       </Provider>
     )
 
@@ -134,7 +134,10 @@ describe('Similar', () => {
 
     const CompareItems = render(
       <Provider store={STORE}>
-        <Carousel items={[testItem]} handleStarClick={handleClick}/>
+        <Carousel
+          items={[testItem]}
+          currentProduct={{"id": 12}}
+          handleStarClick={handleClick}/>
         <Compare currentProduct={testItem} starClicked={testItem} />
       </Provider>
     )
@@ -162,11 +165,11 @@ describe('Similar', () => {
           "sale_price": "0",
           "photos": [{
             "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",}]
-        }]}
+        }]};
 
     const CompareItems = render(
       <Provider store={STORE}>
-        <Carousel items={[testItem]} />
+        <Carousel items={[testItem]} currentProduct={{"id": 12}} />
         <Hover currentStyle={testItem} />
       </Provider>
     )
@@ -179,6 +182,14 @@ describe('Similar', () => {
 
 
 });
+
+// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/?page=1
+// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344
+// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/related
+// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/styles
+// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=40344&page=2
+// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=40344&sort=newest
+
 
 
 
