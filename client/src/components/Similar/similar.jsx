@@ -65,16 +65,19 @@ const Similar = () => {
   }
 
   const getRelated = () => {
+    setStyles([]);
+    setProducts([]);
+    setCombinedData([]);
+
     if (!Product.id) {
       console.error('Product Id undefined in Similar Product');
       return;
     }
     axios.get(`${process.env.API_URL}/products/${Product.id}/related`, {headers: {Authorization: process.env.AUTH_SECRET}})
     .then((response) => {
-      const relatedProductIds = response.data;
       // dispatch(RelatedActions.setRelated(response.data));
-      getStyles(relatedProductIds);
-      getProducts(relatedProductIds);
+      getStyles(response.data);
+      getProducts(response.data);
     })
     .catch((err) => {
       console.error('Related GET failed', err);
@@ -159,69 +162,3 @@ const Similar = () => {
 
 export default Similar;
 
-// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/?page=1
-// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344
-// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/related
-// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/styles
-// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=40344&page=2
-// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=40344&sort=newest
-
-// product[0] = {
-//   campus: "hr-rfp"
-//   category: "Jackets"
-//   created_at: "2021-08-13T14:38:44.509Z"
-//   default_price: "140.00"
-//   description: "The So Fatigues will wake you up and fit you in.
-//                  This high energy camo will have you blending in to even the
-//                  wildest surroundings."
-//   id: 40344
-//   name: "Camo Onesie"
-//   slogan: "Blend in to your crowd"
-//   updated_at: "2021-08-13T14:38:44.509Z"
-// }
-
-// /id
-// {
-// 	"id": 11,
-// 	"name": "Air Minis 250",
-// 	"slogan": "Full court support",
-// 	"description": "This optimized air cushion pocket reduces impact but keeps a perfect balance underfoot.",
-// 	"category": "Basketball Shoes",
-// 	"default_price": "0",
-// 	"features": [
-//   	{
-// 			"feature": "Sole",
-// 			"value": "Rubber"
-// 		},
-//   	{
-// 			"feature": "Material",
-// 			"value": "FullControlSkin"
-// 	],
-// }
-
-
-// /styles
-// {
-// 	"product_id": "1",
-// 	"results": [
-//   	{
-// 			"style_id": 1,
-// 			"name": "Forest Green & Black",
-// 			"original_price": "140",
-// 			"sale_price": "0",
-// 			"default?": true,
-// 			"photos": [
-//   			{
-// 					"thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg", **img**
-// 					"url": "urlplaceholder/style_1_photo_number.jpg"
-// 				},
-//   			{
-// 					"thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
-// 					"url": "urlplaceholder/style_1_photo_number.jpg"
-// 				}
-//   			// ...
-// 			],
-// 		"skus": {
-//
-// 	}
-// }

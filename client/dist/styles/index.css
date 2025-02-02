@@ -115,7 +115,7 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    width: 50%;
+    width: 75%;
     position: relative;
   }
 
@@ -229,7 +229,7 @@
     width: 100%;
     height: 30%;
     position: absolute;
-    bottom: 25%;
+    bottom: 10%;
     left: 0;
     visibility: hidden;
   }
@@ -310,7 +310,7 @@
 
   .outfit-container {
    overflow: hidden;
-   width: 50%;
+   width: 75%;
    height: 100%;
    display: flex;
    padding: 8px;

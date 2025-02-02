@@ -11,6 +11,7 @@ import StylesSlice from './StylesSlice.js';
 import GallerySelectionSlice from './GallerySelectionSlice.js';
 import SearchSlice from './SearchSlice.js'
 
+
 const STORE = configureStore({
   reducer: {
     ReviewsMeta: ReviewsMetaSlice.reducer,
