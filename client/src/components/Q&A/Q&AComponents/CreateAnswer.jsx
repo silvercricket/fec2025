@@ -10,18 +10,18 @@ const CreateAnswer = ({question, setRefresh}) => {
   const Product = useSelector(store => store.Product);
   const [open, setOpen] = React.useState(false);
   const [clicked, setClicked] = React.useState(false);
+  const imageInputRef = React.useRef(null);
+  const [photos, setPhotos] = React.useState([])
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleSubmit= (formData) => {
     const body = formData.get("body");
     const name = formData.get("name");
     const email = formData.get("email");
-    const image = formData.get("image") || [];
-    console.log(image);
     if (!body || !name || !email) {
       alert('One or more of the fields are empty');
     }
-    axios.post(process.env.API_URL + `/qa/questions/${question.question_id}/answers`, {body, name, email, image},{headers: {Authorization:process.env.AUTH_SECRET} })
+    axios.post(process.env.API_URL + `/qa/questions/${question.question_id}/answers`, {body, name, email, photos},{headers: {Authorization:process.env.AUTH_SECRET} })
       .then(() => {
         setOpen(false);
         setRefresh({});
@@ -42,6 +42,17 @@ const CreateAnswer = ({question, setRefresh}) => {
         .catch(() => alert('error while marking question as helpful'))
     } else {
       alert('You cannot mark a question as helpful more than once ❌')
+    }
+  }
+  const handleImages = (event) => {
+    const fileArray = Array.from(event.target.files);
+    if (fileArray.length <= 5) {
+      var photosData = fileArray.map((file) => URL.createObjectURL(file));
+      setPhotos([...photosData]);
+    } else {
+      imageInputRef.current.value = '';
+      setPhotos([]);
+      alert('You can only upload a max of 5 images')
     }
   }
   return (
@@ -72,7 +83,15 @@ const CreateAnswer = ({question, setRefresh}) => {
             <small>For authentication reasons, you will not be emailed</small>
             <br/>
             <br/>
-            {/*Add images here*/}
+            <label>Photos</label>
+            <br/>
+            <input type="file" ref={imageInputRef} multiple accept="image/*" onChange={handleImages}></input>
+            <br/>
+            {photos.map(photo => <img key={photo} style={{height: '80px', width: '100px'}} src={photo} alt="Preview Image"></img>)}
+            <br/>
+            <small>Only upload up to 5 images</small>
+            <br/>
+            <br/>
             <button type="submit">Submit Answer</button>
           </form>
           <br/>

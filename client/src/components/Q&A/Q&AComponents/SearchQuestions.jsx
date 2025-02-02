@@ -1,16 +1,13 @@
-/*global process*/
+/*global */
 /*eslint no-undef: "error"*/
 import React from 'react';
 import '../../../../dist/styles/index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import {QuestionsActions} from '../../../store/QuestionsSlice.js';
-import PropTypes from 'prop-types';
 
-const SearchQuestions = ({setRefresh}) => {
-  const Product = useSelector(store => store.Product);
+const SearchQuestions = () => {
   const QuestionsData = useSelector(store => store.QuestionsData)
   const dispatch = useDispatch();
   const handleSearch = (formData) => {
@@ -30,8 +27,5 @@ const SearchQuestions = ({setRefresh}) => {
   );
 };
 
-SearchQuestions.propTypes = {
-  setRefresh: PropTypes.func.isRequired,
-};
 
 export default SearchQuestions;

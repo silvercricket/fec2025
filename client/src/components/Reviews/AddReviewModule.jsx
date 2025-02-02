@@ -83,6 +83,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
     var formSummary = document.getElementById('form-summary').value;
     var formName = document.getElementById('nickname-form').value;
     var formEmail = document.getElementById('email-form').value;
+
     axios.post(process.env.API_URL + '/reviews', {
         product_id: Product.id,
         rating: formRating,
@@ -93,6 +94,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
         email: formEmail,
         photos: formUrls,
         characteristics: filteredProductChars,
+
     },
     { headers: { 'Authorization': process.env.AUTH_SECRET }})
     .then((res) => {

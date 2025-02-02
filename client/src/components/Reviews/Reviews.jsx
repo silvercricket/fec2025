@@ -43,7 +43,7 @@ const Reviews = () => {
     }
 
   },[Product.id, currPage, sort]);
-  
+
   return (
     <div data-testid="review-view">
       <div data-testid='metaData-view'>
