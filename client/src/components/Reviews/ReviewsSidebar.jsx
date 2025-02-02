@@ -25,7 +25,7 @@ const ReviewsSidebar = () => {
       for (var char in characteristics) {
         let value = characteristics[char].value;
         productBreakdown.push(
-          <div key={char}> {/* Use the characteristic name as the key */}
+          <div key={char}>
             <label htmlFor="file">{char}</label>
             <progress id="file" max="5" value={value}>{char}</progress>
           </div>
