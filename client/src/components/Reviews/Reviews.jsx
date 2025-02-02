@@ -45,11 +45,11 @@ const Reviews = () => {
   },[Product.id, currPage, sort]);
 
   return (
-    <div data-testid="review-view">
-      <div data-testid='metaData-view'>
+    <div data-testid="review-view" className="review-container">
+      <div data-testid='metaData-view' className="sidebar">
         <ReviewsSidebar />
       </div>
-      <div data-testid='reviewCards-view'>
+      <div data-testid='reviewCards-view' className="reviews-list">
         <ReviewsList key={Product.id} setCurrPage={setCurrPage} currPage={currPage} setSort={setSort} sort={sort}/>
       </div>
     </div>

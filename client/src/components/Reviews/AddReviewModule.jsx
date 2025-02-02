@@ -6,7 +6,7 @@ import Modal from './ReviewModal.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faRegularStar } from '@fortawesome/free-regular-svg-icons';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import FileUpload from './FileUpload.jsx';
 
 
@@ -468,7 +468,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
       <h4>Email:</h4>
       <input id='email-form' name='email' placeholder='Enter Email...' required={true} ></input>
       </div>
-      <button type='submit' value='Submit Review'>Submit Review</button>
+      <button className='submit-review'type='submit' value='Submit Review'>Submit Review</button>
     </form>
     </Modal>
   );
