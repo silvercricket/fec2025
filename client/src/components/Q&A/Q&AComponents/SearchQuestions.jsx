@@ -7,6 +7,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
 import {QuestionsActions} from '../../../store/QuestionsSlice.js';
 import {SearchActions} from '../../../store/SearchSlice.js';
+import swal from 'sweetalert';
 
 const SearchQuestions = () => {
   const QuestionsData = useSelector(store => store.QuestionsData);
@@ -25,8 +26,9 @@ const SearchQuestions = () => {
     }
     var filtered = QuestionsData.filter((question) => question.question_body.includes(input));
     if (filtered.length === 0) {
-      alert('No questions found, if you need help please feel free to leave a question addressing your concern');
+      swal('Sorry for the inconvenience', 'No questions found, if you need help please feel free to leave a question addressing your concern', 'info');
       dispatch(QuestionsActions.setQuestions(unfiltered));
+      setUnfiltered([]);
       return;
     }
     dispatch(QuestionsActions.setQuestions(filtered));
@@ -40,6 +42,7 @@ const SearchQuestions = () => {
       return;
     }
     dispatch(QuestionsActions.setQuestions(unfiltered));
+    setUnfiltered([]);
   }
   return (
   <div className="input-container" data-testid="search-questions">

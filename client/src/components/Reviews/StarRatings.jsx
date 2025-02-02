@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faRegularStar } from '@fortawesome/free-regular-svg-icons';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -9,7 +9,7 @@ const StarRatings = () => {
   const stars = {
       fullStar: <FontAwesomeIcon icon={faStar} />,
       emptyStar: <FontAwesomeIcon icon={faRegularStar} />,
-      halfStar: <FontAwesomeIcon icon={faStarHalf} />,
+      halfStar: <FontAwesomeIcon icon={faStarHalfAlt} />,
     }
   const handleAvgStars = (Reviews) => {
     let avgStars = 0;

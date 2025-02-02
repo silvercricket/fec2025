@@ -38,7 +38,9 @@ const Carousel = ({ items, currentProduct, handleCardClick, handleStarClick }) =
     if (!product || !product.results || product.results.length === 0) {
       return <div>Loading...</div>;
     }
+
     const { sale_price, original_price } = product.results[0] || {};
+
 
     return sale_price ?
     (<span>
@@ -87,11 +89,13 @@ const Carousel = ({ items, currentProduct, handleCardClick, handleStarClick }) =
                         e.stopPropagation();
                         handleStarClick(product);
                       }}>{stars.fullStar}</button>
+
                       {product.results ? <img
                         src={cleanUrl(product)}
                         className="carousel-card-image"
                         data-testid="carousel-card-image"
                         onClick={() => handleCardClick(product)}/> : <div>Loading...</div>}
+
                       <Hover currentStyle={product} />
                       <div className="card-content">
                       <h6>{product.category}</h6>

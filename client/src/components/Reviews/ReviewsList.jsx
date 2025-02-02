@@ -24,12 +24,13 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
 
   const handleReviewCardList = () => {
     if (ReviewsData.length > 2) {
-      return <button onClick={() => {
-        if (Math.floor((numOfReviewCards / 5)) === currPage) {
+      return <button className='more-reviews-button' onClick={() => {
+        if (numOfReviewCards + 2 > 5) {
           setNumOfReviewCards(0);
           setCurrPage(currPage + 1);
+        } else {
+          setNumOfReviewCards(numOfReviewCards + 2);
         }
-        setNumOfReviewCards(numOfReviewCards + 2)
       }}>MORE REVIEWS</button>;
     } else {
       return null;
@@ -44,47 +45,46 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
   };
 
   const handleMap = (extra) => {
-    const currCards = Math.min(2 + extra, ReviewsData.length);
+    const currCards = 2 + extra;
+    console.log(currCards, numOfReviewCards);
+    const currListPage = ((Math.floor(ReviewsData.length / 5) - 1) * 5);
     if (!Array.isArray(ReviewsData)) {
       return '###';
     }
-    return ReviewsData.slice(0, currCards).map((review, index) => <ReviewsListCard review={review} key={`${review.id} - ${index}`} />);
+    return ReviewsData.slice(currListPage, currCards).map((review, index) => <ReviewsListCard review={review} key={`${review.id} - ${index}`} />);
   };
 
   return (
-    <div data-testid="list-view" id='list-view'>
-      <h3>{handleSize()} reviews, {
+    <div data-testid="list-view" id="list-view">
+      <h3>
+        {handleSize()} reviews,
         <section>
-        <label htmlFor='sort'>Sorted on</label>
-        <select onChange={handleSort} name="sort" id="sort">
-          <option value="Relevent">Relevent</option>
-          <option value="Helpful">Helpful</option>
-          <option value="Newest">Newest</option>
-        </select>
+          <label htmlFor="sort">Sorted on</label>
+          <select onChange={handleSort} name="sort" id="sort">
+            <option value="Relevent">Relevent</option>
+            <option value="Helpful">Helpful</option>
+            <option value="Newest">Newest</option>
+          </select>
         </section>
-        } page: {currPage}</h3>
-      <div
-        style={{
-          height: '500px',
-          overflow: 'auto',
-          backgroundColor: 'white',
-        }}
-      >
+        page: {currPage}
+      </h3>
+      <div className="reviewList-container">
         {handleMap(numOfReviewCards)}
       </div>
-      <div>
+      <div className="review-list">
         {handleReviewCardList()}
-        <button onClick={handleOpenModal}>+ ADD REVIEW</button>
+        <button className="add-review-button" onClick={handleOpenModal}>+ ADD REVIEW</button>
         {modalIsOpen && (
-        <AddReviewModule
-          modalIsOpen={modalIsOpen}
-          closeModal={handleCloseModal}
-          setFormRating={setFormRating}
-          formRating={formRating}
-        />
-      )}
+          <AddReviewModule 
+            modalIsOpen={modalIsOpen}
+            closeModal={handleCloseModal}
+            setFormRating={setFormRating}
+            formRating={formRating}
+          />
+        )}
       </div>
     </div>
+
   );
 };
 
