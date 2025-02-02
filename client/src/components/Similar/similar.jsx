@@ -65,16 +65,19 @@ const Similar = () => {
   }
 
   const getRelated = () => {
+    setStyles([]);
+    setProducts([]);
+    setCombinedData([]);
+
     if (!Product.id) {
       console.error('Product Id undefined in Similar Product');
       return;
     }
     axios.get(`${process.env.API_URL}/products/${Product.id}/related`, {headers: {Authorization: process.env.AUTH_SECRET}})
     .then((response) => {
-      const relatedProductIds = response.data;
       // dispatch(RelatedActions.setRelated(response.data));
-      getStyles(relatedProductIds);
-      getProducts(relatedProductIds);
+      getStyles(response.data);
+      getProducts(response.data);
     })
     .catch((err) => {
       console.error('Related GET failed', err);

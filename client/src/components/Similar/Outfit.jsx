@@ -36,6 +36,11 @@ const Outfit = ({ currentProduct, currentStyle }) => {
     (<span>${original_price}</span>);
   };
 
+  const cleanUrl = (product) => {
+    const urlImg = product?.results?.[0]?.photos?.[0]?.thumbnail_url || '';
+    return urlImg.startsWith('u') ? urlImg.slice(1) : urlImg || 'https://ih1.redbubble.net/image.3572931436.7035/ssrco,classic_tee,mens,fafafa:ca443f4786,front_alt,square_product,600x600.jpg';
+  };
+
 
   return (
     <div>
@@ -72,7 +77,7 @@ const Outfit = ({ currentProduct, currentStyle }) => {
                           handleRemove(product.id);
                         }}>X</button>
                       <img
-                        src={currentStyle.results[0].photos[0].thumbnail_url}
+                        src={cleanUrl(currentStyle)}
                         className="carousel-card-image"/>
                       <div className="card-content">
                         <h6>{product.category}</h6>
