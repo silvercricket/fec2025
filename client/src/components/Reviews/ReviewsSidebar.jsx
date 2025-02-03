@@ -50,7 +50,6 @@ const ReviewsSidebar = () => {
     } else {
       for (var char in characteristics) {
         const labels = charLabels[char] || { low: "", high: "" };
-        console.log('char: ', characteristics[char]);
         let value = characteristics[char].value;
         const progressPercentage = ((value - 1) / 4) * 100;
         productBreakdown.push(

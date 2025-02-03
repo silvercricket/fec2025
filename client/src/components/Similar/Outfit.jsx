@@ -66,10 +66,7 @@ const Outfit = ({ currentProduct, currentStyle }) => {
                     <div key={product.id}
                     className="carousel-card"
                     data-testid="item-added"
-                    style={{
-                      flex: `0 0 ${100 / slidesToShow}%`,
-                      boxSizing: 'border-box'
-                    }}>
+                    >
                       <button
                         className="close-button"
                         onClick={(e) => {
@@ -82,7 +79,7 @@ const Outfit = ({ currentProduct, currentStyle }) => {
                       <div className="card-content">
                         <h6>{product.category}</h6>
                         <h3>{product.name}</h3>
-                        <h5 className="card-price">{displayPrice(currentStyle)}</h5>
+                        <h3 className="card-price">{displayPrice(currentStyle)}</h3>
                         <h5 className="card-star-rating">star rating</h5>
                       </div>
                   </div>

@@ -8,6 +8,7 @@ import QA from './Q&A/QA.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 import Similar from './Similar/similar.jsx';
 import {ProductActions} from '../store/ProductSlice.js';
+import logo from '../../img/east_blue_logo.jpg';
 
 const App = () => {
   const Product = useSelector(store => store.Product);
@@ -31,10 +32,15 @@ const App = () => {
 
   return(
   <div className="dark" data-testid="app">
+    <div className="logo-container">
+      <img className="logo" src={logo} alt="" />
+    </div>
+    <div className="app-content">
     <Overview/>
     <Similar/>
     <QA/>
     <Reviews />
+    </div>
   </div>
 );
 }
