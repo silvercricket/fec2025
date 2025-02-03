@@ -33,7 +33,6 @@ const Similar = () => {
       axios.get(`${process.env.API_URL}/products/${pid}/styles`, {headers: {Authorization: process.env.AUTH_SECRET}}));
     Promise.all(styleRequests)
       .then((responses) => {
-        console.log("style responses: ", responses);
         const allStyles = responses.map((response, index) => ({
           id: productIds[index],
           results: response.data.results
@@ -154,7 +153,8 @@ const Similar = () => {
         )}
         <Outfit
           currentProduct={currentProduct}
-          currentStyle={currentStyle} />
+          currentStyle={currentStyle}
+          handleCardClick={handleCardClick} />
       </div>
   );
 };
