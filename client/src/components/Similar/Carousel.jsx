@@ -73,6 +73,7 @@ const Carousel = ({ items, currentProduct, handleCardClick, handleStarClick }) =
             transform: `translateX(-${index * (100 / slidesToShow)}%)`,
             transition: 'transform 0.3s ease-in-out'
             }}>
+
               {items.length > 0 && items
                 .filter((product) => currentProduct && product.id !== currentProduct.id)
                 .map((product) => (
@@ -82,6 +83,7 @@ const Carousel = ({ items, currentProduct, handleCardClick, handleStarClick }) =
                     flex: `0 0 ${100 / slidesToShow}%`,
                     boxSizing: 'border-box'
                   }}>
+                    {console.log(product)}
                     <button
                       data-testid="star-button"
                       className="star-button"
