@@ -36,6 +36,11 @@ const Outfit = ({ currentProduct, currentStyle }) => {
     (<span>${original_price}</span>);
   };
 
+  const cleanUrl = (product) => {
+    const urlImg = product?.results?.[0]?.photos?.[0]?.thumbnail_url || '';
+    return urlImg.startsWith('u') ? urlImg.slice(1) : urlImg || 'https://ih1.redbubble.net/image.3572931436.7035/ssrco,classic_tee,mens,fafafa:ca443f4786,front_alt,square_product,600x600.jpg';
+  };
+
 
   return (
     <div>
@@ -61,10 +66,7 @@ const Outfit = ({ currentProduct, currentStyle }) => {
                     <div key={product.id}
                     className="carousel-card"
                     data-testid="item-added"
-                    style={{
-                      flex: `0 0 ${100 / slidesToShow}%`,
-                      boxSizing: 'border-box'
-                    }}>
+                    >
                       <button
                         className="close-button"
                         onClick={(e) => {
@@ -72,12 +74,12 @@ const Outfit = ({ currentProduct, currentStyle }) => {
                           handleRemove(product.id);
                         }}>X</button>
                       <img
-                        src={currentStyle.results[0].photos[0].thumbnail_url}
+                        src={cleanUrl(currentStyle)}
                         className="carousel-card-image"/>
                       <div className="card-content">
                         <h6>{product.category}</h6>
                         <h3>{product.name}</h3>
-                        <h5 className="card-price">{displayPrice(currentStyle)}</h5>
+                        <h3 className="card-price">{displayPrice(currentStyle)}</h3>
                         <h5 className="card-star-rating">star rating</h5>
                       </div>
                   </div>

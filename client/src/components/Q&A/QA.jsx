@@ -36,7 +36,7 @@ const QA = () => {
 
   return (
     <>
-      <div data-testid="qa">
+      <div className="qa" data-testid="qa">
         <h3>Questions & Answers</h3>
         <SearchQuestions/>
         <br/>
