@@ -83,7 +83,6 @@ const Carousel = ({ items, currentProduct, handleCardClick, handleStarClick }) =
                     flex: `0 0 ${100 / slidesToShow}%`,
                     boxSizing: 'border-box'
                   }}>
-                    {console.log(product)}
                     <button
                       data-testid="star-button"
                       className="star-button"
