@@ -8,9 +8,8 @@ import QA from './Q&A/QA.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 import Similar from './Similar/similar.jsx';
 import {ProductActions} from '../store/ProductSlice.js';
-import '../../img/east_blue_logo.jpg';
 
-const App = () => {
+const App = ({logo}) => {
   const Product = useSelector(store => store.Product);
   const dispatch = useDispatch();
 
@@ -33,7 +32,7 @@ const App = () => {
   return(
   <div className="dark" data-testid="app">
     <div className="logo-container">
-      <img className="logo" src={'../../img/east_blue_logo.jpg'} alt="East Blue Logo" />
+      <img className="logo" src={logo} alt="East Blue Logo" />
     </div>
     <div className="app-content">
     <Overview/>
