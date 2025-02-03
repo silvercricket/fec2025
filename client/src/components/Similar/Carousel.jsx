@@ -10,6 +10,7 @@ import StarRatings from '../Reviews/StarRatings.jsx';
 const Carousel = ({ items, currentProduct, handleCardClick, handleStarClick }) => {
 
   const [index, setIndex] = useState(0);
+  const [mainImgs, setMainImgs] = useState({});
   const slidesToShow = 5;
 
   useEffect(() => {
@@ -56,6 +57,13 @@ const Carousel = ({ items, currentProduct, handleCardClick, handleStarClick }) =
     return urlImg.startsWith('u') ? urlImg.slice(1) : urlImg || 'https://ih1.redbubble.net/image.3572931436.7035/ssrco,classic_tee,mens,fafafa:ca443f4786,front_alt,square_product,600x600.jpg';
   };
 
+  const updateMainImgs = (productId, newImg) => {
+    setMainImgs((prevImgs) => ({
+      ...prevImgs,
+      [productId]: newImg
+    }));
+  };
+
 
   return (
     <div
@@ -92,12 +100,14 @@ const Carousel = ({ items, currentProduct, handleCardClick, handleStarClick }) =
                       }}>{stars.fullStar}</button>
 
                       {product.results ? <img
-                        src={cleanUrl(product)}
+                        src={mainImgs[product.id] || cleanUrl(product)}
                         className="carousel-card-image"
                         data-testid="carousel-card-image"
                         onClick={() => handleCardClick(product)}/> : <div>Loading...</div>}
 
-                      <Hover currentStyle={product} />
+                      <Hover
+                        currentStyle={product}
+                        setMainImg={(newImg) => updateMainImgs(product.id, newImg)} />
                       <div className="card-content">
                       <h6>{product.category}</h6>
                       <h3>{product.name}</h3>

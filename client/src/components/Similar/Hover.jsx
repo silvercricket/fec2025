@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const Hover = ({ currentStyle }) => {
+const Hover = ({ currentStyle, setMainImg }) => {
 
   const [index, setIndex] = useState(0);
   const slidesToShow = 4;
@@ -46,7 +46,7 @@ const Hover = ({ currentStyle }) => {
               {currentStyle.results[0].photos.length > 0 && currentStyle.results[0].photos.map((photo, i) => (
                   <div key={i}
                   className="hover-card"
-                  onClick={() => console.log('update current product style')}
+                  onClick={() => setMainImg(cleanUrl(photo))}
                   style={{
                     flex: `0 0 ${100 / slidesToShow}%`,
                     boxSizing: 'border-box'
@@ -66,7 +66,8 @@ const Hover = ({ currentStyle }) => {
 };
 
 Hover.propTypes = {
-  currentStyle: PropTypes.object.isRequired
+  currentStyle: PropTypes.object.isRequired,
+  setMainImg: PropTypes.func.isRequired
 };
 
 export default Hover;
