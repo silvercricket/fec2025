@@ -33,7 +33,7 @@ const App = () => {
   return(
   <div className="dark" data-testid="app">
     <div className="logo-container">
-      <img className="logo" src={'../../img/east_blue_logo.jpg'} alt="" />
+      <img className="logo" src={'../../img/east_blue_logo.jpg'} alt="East Blue Logo" />
     </div>
     <div className="app-content">
     <Overview/>
