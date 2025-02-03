@@ -100,7 +100,7 @@ const Carousel = ({ items, currentProduct, handleCardClick, handleStarClick }) =
                       <div className="card-content">
                       <h6>{product.category}</h6>
                       <h3>{product.name}</h3>
-                      <h5 className="card-price">{product ? displayPrice(product) : null}</h5>
+                      <h3 className="card-price">{product ? displayPrice(product) : null}</h3>
                       <h5 className="card-star-rating"><StarRatings /></h5>
                       </div>
                   </div>

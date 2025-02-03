@@ -46,7 +46,6 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
 
   const handleMap = (extra) => {
     const currCards = 2 + extra;
-    console.log(currCards, numOfReviewCards);
     const currListPage = ((Math.floor(ReviewsData.length / 5) - 1) * 5);
     if (!Array.isArray(ReviewsData)) {
       return '###';
@@ -75,7 +74,7 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
         {handleReviewCardList()}
         <button className="add-review-button" onClick={handleOpenModal}>+ ADD REVIEW</button>
         {modalIsOpen && (
-          <AddReviewModule 
+          <AddReviewModule
             modalIsOpen={modalIsOpen}
             closeModal={handleCloseModal}
             setFormRating={setFormRating}
