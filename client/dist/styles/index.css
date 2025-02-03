@@ -403,8 +403,8 @@
 
   .modal-popup {
     position: fixed;
-    top: 340px;
-    left: 8px;
+    top: 30%;
+    left: 30%;
     width: 450px;
     height: 350px;
     background-color: #f9f9f9;
