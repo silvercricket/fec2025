@@ -1,8 +1,8 @@
-FROM node:16.20.2
+FROM node:23.7.0
 
 WORKDIR /
 
-COPY package.json package.json ./
+COPY package.json package-lock.json ./
 
 RUN npm install
 
