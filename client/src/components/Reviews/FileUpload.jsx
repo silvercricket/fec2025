@@ -1,7 +1,6 @@
-/*global process*/
 /*eslint no-undef: "error"*/
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const FileUpload = ({ files, setFiles }) => {
 
@@ -59,6 +58,11 @@ const FileUpload = ({ files, setFiles }) => {
       </div>
     </div>
   );
+};
+
+FileUpload.propTypes = {
+  files: PropTypes.array.isRequired,
+  setFiles: PropTypes.func.isRequired,
 };
 
 export default FileUpload;
