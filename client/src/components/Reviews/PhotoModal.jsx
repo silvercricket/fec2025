@@ -5,7 +5,7 @@ const Modal = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null;
 
     return (
-        <div
+        <div className="modal-photo"
             style={{
                 position: "fixed",
                 top: 0,
@@ -21,8 +21,8 @@ const Modal = ({ isOpen, onClose, children }) => {
             <div
                 style={{
                     background: "white",
-                    maxHeight: "90%", // Restrict maximum height to 90% of the screen height
-                    maxWidth: "90%",  // Restrict maximum width to 90% of the screen width
+                    maxHeight: "90%",
+                    maxWidth: "90%",
                     margin: "auto",
                     padding: "2%",
                     border: "2px solid #000",
@@ -34,7 +34,6 @@ const Modal = ({ isOpen, onClose, children }) => {
                     alignItems: "center",
                 }}
             >
-                {/* Ensure the image is responsive */}
                 <div style={{ maxWidth: "100%", maxHeight: "80vh", overflow: "hidden" }}>
                     {children}
                 </div>

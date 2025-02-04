@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import StarRatings from '../Reviews/StarRatings.jsx';
 
-const Outfit = ({ currentProduct, currentStyle }) => {
+
+const Outfit = ({ currentProduct, currentStyle, handleCardClick }) => {
 
   const [outfit, setOutfit] = useState([]);
   const [index, setIndex] = useState(0);
-  const slidesToShow = 5;
+  const slidesToShow = 4;
+
+  useEffect(() => {
+    setIndex(0);
+  }, [currentProduct]);
 
   const handleAdd = () => {
     const exists = outfit.find((item) => item.id === currentProduct.id);
     if (!exists) {
-      setOutfit((prevOutfit => [...prevOutfit, currentProduct]));
+      setOutfit((prevOutfit => [...prevOutfit, {...currentProduct, ...currentStyle}]));
     }
   };
 
@@ -36,6 +42,11 @@ const Outfit = ({ currentProduct, currentStyle }) => {
     (<span>${original_price}</span>);
   };
 
+  const cleanUrl = (product) => {
+    const urlImg = product?.results?.[0]?.photos?.[0]?.thumbnail_url || '';
+    return urlImg.startsWith('u') ? urlImg.slice(1) : urlImg || 'https://ih1.redbubble.net/image.3572931436.7035/ssrco,classic_tee,mens,fafafa:ca443f4786,front_alt,square_product,600x600.jpg';
+  };
+
 
   return (
     <div>
@@ -44,7 +55,7 @@ const Outfit = ({ currentProduct, currentStyle }) => {
         className="outfit-container"
         data-testid="outfit">
           <div
-            className="carousel-track"
+            className="outfit-track"
             style={{
               display: 'flex',
               transform: `translateX(-${index * (100 / slidesToShow)}%)`,
@@ -61,10 +72,7 @@ const Outfit = ({ currentProduct, currentStyle }) => {
                     <div key={product.id}
                     className="carousel-card"
                     data-testid="item-added"
-                    style={{
-                      flex: `0 0 ${100 / slidesToShow}%`,
-                      boxSizing: 'border-box'
-                    }}>
+                    >
                       <button
                         className="close-button"
                         onClick={(e) => {
@@ -72,13 +80,14 @@ const Outfit = ({ currentProduct, currentStyle }) => {
                           handleRemove(product.id);
                         }}>X</button>
                       <img
-                        src={currentStyle.results[0].photos[0].thumbnail_url}
-                        className="carousel-card-image"/>
+                        src={cleanUrl(product)}
+                        className="carousel-card-image"
+                        onClick={() => handleCardClick(product)}/>
                       <div className="card-content">
                         <h6>{product.category}</h6>
                         <h3>{product.name}</h3>
-                        <h5 className="card-price">{displayPrice(currentStyle)}</h5>
-                        <h5 className="card-star-rating">star rating</h5>
+                        <h3 className="card-price">{displayPrice(product)}</h3>
+                        <h5 className="card-star-rating"><StarRatings /></h5>
                       </div>
                   </div>
                 ))}
@@ -86,11 +95,11 @@ const Outfit = ({ currentProduct, currentStyle }) => {
             {outfit.length > slidesToShow && (
               <div>
                 <button
-                  className="prev"
+                  className="carousel-button prev"
                   onClick={handlePrev}
                   disabled={index === 0}>←</button>
                 <button
-                  className="next"
+                  className="carousel-button next"
                   onClick={handleNext}
                   disabled={index >= outfit.length - slidesToShow}>→</button>
               </div>
@@ -102,73 +111,9 @@ const Outfit = ({ currentProduct, currentStyle }) => {
 
 Outfit.propTypes = {
   currentProduct: PropTypes.object.isRequired,
-  currentStyle: PropTypes.object.isRequired
+  currentStyle: PropTypes.object.isRequired,
+  handleCardClick: PropTypes.func.isRequired
 };
 
 export default Outfit;
 
-// return (
-//   <div>
-//     <h3>Your Outfit</h3>
-//     <div
-//       className="outfit-container"
-//       data-testid="outfit">
-//       {outfit.length === 0 && (
-//         <div
-//         className="outfit-card empty-card"
-//         onClick={handleAdd}>
-//         <button className="add-button">+</button>
-//         <h5>Add to Outfit</h5>
-//       </div>
-//       )}
-//       {outfit.length > 0 && (
-//         <div className="carousel-container">
-//         <div
-//           className="carousel-track"
-//           style={{
-//             display: 'flex',
-//             transform: `translateX(-${index * (100 / slidesToShow)}%)`,
-//             transition: 'transform 0.3s ease-in-out',
-//             }}>
-//               {outfit.map((product) => (
-//                 <div key={product.id}
-//                 className="carousel-card"
-//                 style={{
-//                   flex: `0 0 ${100 / slidesToShow}%`,
-//                   boxSizing: 'border-box'
-//                 }}>
-//                   <button
-//                     className="close-button"
-//                     onClick={(e) => {
-//                       e.stopPropagation();
-//                       handleRemove(product.id);
-//                     }}>X</button>
-//                     <img
-//                       src={currentStyle.results[0].photos[0].thumbnail_url}
-//                       className="carousel-card-image"/>
-//                     <div className="card-content">
-//                       <h6>{product.category}</h6>
-//                       <h3>{product.name}</h3>
-//                       <h5 className="card-price">{displayPrice(currentStyle)}</h5>
-//                       <h5 className="card-star-rating">star rating</h5>
-//                     </div>
-//                 </div>
-//               ))}
-//         </div>
-//           {outfit.length > slidesToShow && (
-//             <div>
-//               <button
-//                 className="prev"
-//                 onClick={handlePrev}
-//                 disabled={index === 0}>Previous</button>
-//               <button
-//                 className="next"
-//                 onClick={handleNext}
-//                 disabled={index >= outfit.length - 1}>Next</button>
-//             </div>
-//           )}
-//       </div>
-//       )}
-//     </div>
-//   </div>
-// );

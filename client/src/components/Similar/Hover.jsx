@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const Hover = ({ currentStyle }) => {
+const Hover = ({ currentStyle, setMainImg }) => {
 
   const [index, setIndex] = useState(0);
-
   const slidesToShow = 4;
+
+  useEffect(() => {
+    setIndex(0);
+  }, [currentStyle]);
 
   if (!currentStyle || !currentStyle.results || !currentStyle.results[0].photos) {
     return null;
@@ -17,6 +20,11 @@ const Hover = ({ currentStyle }) => {
 
   const handlePrev = () => {
     setIndex((prevIndex) => prevIndex - 1);
+  };
+
+  const cleanUrl = (photo) => {
+    const urlImg = photo?.thumbnail_url || '';
+    return urlImg.startsWith('u') ? urlImg.slice(1) : urlImg || 'https://ih1.redbubble.net/image.3572931436.7035/ssrco,classic_tee,mens,fafafa:ca443f4786,front_alt,square_product,600x600.jpg';
   };
 
   return (
@@ -38,12 +46,12 @@ const Hover = ({ currentStyle }) => {
               {currentStyle.results[0].photos.length > 0 && currentStyle.results[0].photos.map((photo, i) => (
                   <div key={i}
                   className="hover-card"
-                  onClick={() => console.log('update current product style')}
+                  onClick={() => setMainImg(cleanUrl(photo))}
                   style={{
                     flex: `0 0 ${100 / slidesToShow}%`,
                     boxSizing: 'border-box'
                   }}>
-                    <img src={photo.thumbnail_url} className="card-photo-thumbs"/>
+                    <img src={cleanUrl(photo)} className="card-photo-thumbs"/>
                   </div>
                 ))}
         </div>
@@ -58,7 +66,8 @@ const Hover = ({ currentStyle }) => {
 };
 
 Hover.propTypes = {
-  currentStyle: PropTypes.object.isRequired
+  currentStyle: PropTypes.object.isRequired,
+  setMainImg: PropTypes.func.isRequired
 };
 
 export default Hover;

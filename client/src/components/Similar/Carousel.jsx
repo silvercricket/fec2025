@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faRegularStar } from '@fortawesome/free-regular-svg-icons';
@@ -7,11 +7,15 @@ import Hover from './Hover.jsx';
 import StarRatings from '../Reviews/StarRatings.jsx';
 
 
-const Carousel = ({ items, handleCardClick, handleStarClick }) => {
+const Carousel = ({ items, currentProduct, handleCardClick, handleStarClick }) => {
 
   const [index, setIndex] = useState(0);
-
+  const [mainImgs, setMainImgs] = useState({});
   const slidesToShow = 5;
+
+  useEffect(() => {
+    setIndex(0);
+  }, [currentProduct]);
 
   const stars = {
         fullStar: <FontAwesomeIcon icon={faStar} />,
@@ -32,10 +36,12 @@ const Carousel = ({ items, handleCardClick, handleStarClick }) => {
   };
 
   const displayPrice = (product) => {
-    if (!product) {
+    if (!product || !product.results || product.results.length === 0) {
       return <div>Loading...</div>;
     }
-    const { sale_price, original_price } = product?.results[0] ?? {};
+
+    const { sale_price, original_price } = product.results[0] || {};
+
 
     return sale_price ?
     (<span>
@@ -44,6 +50,18 @@ const Carousel = ({ items, handleCardClick, handleStarClick }) => {
     </span>)
     :
     (<span>${original_price}</span>);
+  };
+
+  const cleanUrl = (product) => {
+    const urlImg = product?.results?.[0]?.photos?.[0]?.thumbnail_url || '';
+    return urlImg.startsWith('u') ? urlImg.slice(1) : urlImg || 'https://ih1.redbubble.net/image.3572931436.7035/ssrco,classic_tee,mens,fafafa:ca443f4786,front_alt,square_product,600x600.jpg';
+  };
+
+  const updateMainImgs = (productId, newImg) => {
+    setMainImgs((prevImgs) => ({
+      ...prevImgs,
+      [productId]: newImg
+    }));
   };
 
 
@@ -63,7 +81,10 @@ const Carousel = ({ items, handleCardClick, handleStarClick }) => {
             transform: `translateX(-${index * (100 / slidesToShow)}%)`,
             transition: 'transform 0.3s ease-in-out'
             }}>
-              {items.length > 0 && items.map((product) => (
+
+              {items.length > 0 && items
+                .filter((product) => currentProduct && product.id !== currentProduct.id)
+                .map((product) => (
                   <div key={product.id}
                   className="carousel-card"
                   style={{
@@ -77,17 +98,20 @@ const Carousel = ({ items, handleCardClick, handleStarClick }) => {
                         e.stopPropagation();
                         handleStarClick(product);
                       }}>{stars.fullStar}</button>
-                      <img
-                        src={product?.results[0]?.photos[0].thumbnail_url ?? null}
+
+                      {product.results ? <img
+                        src={mainImgs[product.id] || cleanUrl(product)}
                         className="carousel-card-image"
                         data-testid="carousel-card-image"
-                        onClick={() => handleCardClick(product)}/>
-                      <Hover currentStyle={product} />
+                        onClick={() => handleCardClick(product)}/> : <div>Loading...</div>}
+
+                      <Hover
+                        currentStyle={product}
+                        setMainImg={(newImg) => updateMainImgs(product.id, newImg)} />
                       <div className="card-content">
                       <h6>{product.category}</h6>
                       <h3>{product.name}</h3>
-                      <h5 className="card-price">{product ? displayPrice(product) : null}</h5>
-                      {/* <h5 className="card-star-rating">star rating</h5> */}
+                      <h3 className="card-price">{product ? displayPrice(product) : null}</h3>
                       <h5 className="card-star-rating"><StarRatings /></h5>
                       </div>
                   </div>
@@ -97,7 +121,7 @@ const Carousel = ({ items, handleCardClick, handleStarClick }) => {
         <button
           className="carousel-button next"
           onClick={handleNext}
-          disabled={index >= items.length - slidesToShow}>→</button>
+          disabled={index >= items.length - slidesToShow + 1}>→</button>
     </div>
   )
 };

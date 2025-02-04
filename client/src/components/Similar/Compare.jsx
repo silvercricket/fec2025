@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 const Compare = ({ currentProduct, starClicked, onClose }) => {
 
-  // console.log(starClicked.features);
   const allProperties = new Set([
     ...(currentProduct.features || []).map((f) => f.feature),
     ...(starClicked.features || []).map((f) => f.feature)

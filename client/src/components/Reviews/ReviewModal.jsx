@@ -6,7 +6,9 @@ const Modal = ({ isOpen, onClose, children }) => {
 
     return (
         <div
+            className="reviewAdd-container"
             style={{
+                fontFamily: 'Arial, sans-serif',
                 position: "fixed",
                 top: 0,
                 left: 0,
@@ -19,7 +21,10 @@ const Modal = ({ isOpen, onClose, children }) => {
             }}
         >
             <div
+                className="reviewAdd-container"
+
                 style={{
+                    fontFamily: 'Arial, sans-serif',
                     background: "white",
                     height: 600,
                     width: 500,
@@ -32,7 +37,7 @@ const Modal = ({ isOpen, onClose, children }) => {
                 }}
             >
                 {children}
-                <button onClick={onClose}>Cancel Review</button>
+                <button className='modal-close' onClick={onClose}>Cancel Review</button>
             </div>
         </div>
     );

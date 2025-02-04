@@ -48,8 +48,8 @@ const StarDisplay = ({score}) => {
       <div>
 
 
-        {stars.map((star)=>(
-        <img style={{width:'20px', height:'20px'}} src = {star}/>
+        {stars.map((star, index)=>(
+        <img key={index} style={{width:'20px', height:'20px'}} src = {star}/>
         ))}
 
 

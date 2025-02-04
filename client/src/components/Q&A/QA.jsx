@@ -7,11 +7,12 @@ import axios from 'axios';
 import {QuestionsActions} from '../../store/QuestionsSlice.js';
 import Questions from './Q&AComponents/Questions.jsx';
 import SearchQuestions from './Q&AComponents/SearchQuestions.jsx';
-
+import swal from 'sweetalert';
 import CreateQuestion from './Q&AComponents/CreateQuestion.jsx';
 
 const QA = () => {
   const [refresh, setRefresh] = React.useState({});
+  const Search = useSelector(store => store.Search);
   const Product = useSelector(store => store.Product);
   const [questions, setQuestions] = React.useState([])
   const dispatch = useDispatch();
@@ -25,9 +26,9 @@ const QA = () => {
         })
         .catch((err) => {
           if (err.response && err.response.status === 429) {
-            alert('Sorry traffic is full please refresh your browser');
+            swal('Sorry!', 'Traffic is full please refresh your browser', 'warning');
           } else {
-            alert('error while retrieving questions');
+            swal('Error!', 'Error while retrieving questions', 'error');
           }
         })
     }
@@ -35,12 +36,12 @@ const QA = () => {
 
   return (
     <>
-      <div data-testid="qa">
+      <div className="qa" data-testid="qa">
         <h3>Questions & Answers</h3>
-        <SearchQuestions setRefresh={setRefresh}/>
+        <SearchQuestions/>
         <br/>
         <Questions refresh={refresh} setRefresh={setRefresh}/>
-        <CreateQuestion questions={questions} setQuestions={setQuestions} setRefresh={setRefresh}/>
+        {!Search ? <CreateQuestion questions={questions} setQuestions={setQuestions} setRefresh={setRefresh}/> : null}
       </div>
       <br/>
     </>

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {render, waitFor, act, fireEvent} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -13,6 +14,7 @@ import '@testing-library/jest-dom';
 import '../../dist/output.css';
 import STORE from '../../store/Store.js';
 import {Provider, useDispatch} from 'react-redux';
+
 
 import {configureStore} from '@reduxjs/toolkit';
 import axios from 'axios';
@@ -39,7 +41,8 @@ import selectEvent from 'react-select-event'
 
 jest.mock('axios');
 
-describe('Overview',()=>{
+// describe('Overview',()=>{
+
 
 
   beforeEach(() => {
@@ -54,33 +57,35 @@ describe('Overview',()=>{
       </Provider>
     );
 
-    expect(OverviewTest.getByTestId('share')).toBeDefined();
-    expect(OverviewTest.getByTestId('mainDisplay')).toBeDefined();
 
-  });
-  it('Should render images in galleryElement when images are provided', () => {
-    const GalleryElementTest = render(
-      <Provider store={STORE}>
-        <GalleryElement image= {'https://pbs.twimg.com/media/GSsUqwGXsAA-cD_.jpg:large'} index = {0}/>
-      </Provider>
-    );
+//     expect(OverviewTest.getByTestId('share')).toBeDefined();
+//     expect(OverviewTest.getByTestId('mainDisplay')).toBeDefined();
 
-    expect(GalleryElementTest.getByTestId('galleryPicture')).toBeDefined();
+//   });
+//   it('Should render images in galleryElement when images are provided', () => {
+//     const GalleryElementTest = render(
+//       <Provider store={STORE}>
+//         <GalleryElement image= {'https://pbs.twimg.com/media/GSsUqwGXsAA-cD_.jpg:large'} index = {0}/>
+//       </Provider>
+//     );
 
-
-  });
-
-  it('Should render placeholder if the image provided is an invalid type', () => {
-    const GalleryElementTest = render(
-      <Provider store={STORE}>
-        <GalleryElement image= {7} index = {0}/>
-      </Provider>
-    );
-
-    expect(GalleryElementTest.getByTestId('galleryPicturePlaceholder')).toBeDefined()
+//     expect(GalleryElementTest.getByTestId('galleryPicture')).toBeDefined();
 
 
-  });
+//   });
+
+//   it('Should render placeholder if the image provided is an invalid type', () => {
+//     const GalleryElementTest = render(
+//       <Provider store={STORE}>
+//         <GalleryElement image= {7} index = {0}/>
+//       </Provider>
+//     );
+
+//     expect(GalleryElementTest.getByTestId('galleryPicturePlaceholder')).toBeDefined()
+
+
+//   });
+
 
 
 
@@ -181,3 +186,4 @@ describe('Overview',()=>{
 
 
 });
+

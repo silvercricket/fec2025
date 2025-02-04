@@ -10,7 +10,6 @@ const Questions = ({setRefresh}) => {
   return (
   <div style={{maxHeight: `${window.innerHeight - 200}px`, overflow: 'auto'}} data-testid="questions">
     {QuestionsData.length > 0 ? [...QuestionsData].map((question) => {
-      // console.log(typeof question);
       return (<Question key={question.question_id} question={question} setRefresh={setRefresh}/>)
     }) : <p><b>No questions here but feel free to add one</b></p>}
   </div>
