@@ -1,19 +1,19 @@
-const puppeteer = require('puppeteer');
-// const WebSocket = require('ws');
+const puppeteer = require("puppeteer");
 
-describe('End-to-End Test', () => {
-  test('should display the homepage', async () => {
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      executablePath: puppeteer.executablePath(),
-      timeout: 10000,
-    });
+test("Confirm text on page", async () => {
+  const browser = await puppeteer.launch();
+  try {
     const page = await browser.newPage();
-    await page.setViewport({ width: 1000, height: 750 });
-    await page.goto('http://google.com');
-    await expect(page.title()).resolves.toMatch('Google');
+
+    await page.goto("http://google.com");
+
+    let pageHeader = await page.$("#pageTitle");
+    let pageHeaderValue = await pageHeader.evaluate((el) => el.textContent);
+
+    expect(pageHeaderValue).toContain("Google");
+
+  } finally {
     await browser.close();
-  });
-});
+  }
+}, 120000);
 
