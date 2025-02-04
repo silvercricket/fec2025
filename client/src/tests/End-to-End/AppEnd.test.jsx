@@ -1,6 +1,7 @@
 const puppeteer = require("puppeteer");
 
 test("Confirm text on page", async () => {
+  global.WebSocket = require('ws');
   const browser = await puppeteer.launch();
   try {
     const page = await browser.newPage();
