@@ -97,6 +97,7 @@ const ProductForm = () => {
           }
           else{
             setInStock(false);
+            setSizes('OUT OF STOCK');
           }
         }} >
 

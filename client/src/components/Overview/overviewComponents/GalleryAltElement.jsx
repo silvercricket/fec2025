@@ -19,6 +19,8 @@ const GalleryAltElement = ({image, index, setDisplayedIndex}) => {
 
       if(GallerySelection.GallerySelection===index){
         setPicIndex('✔');
+      } else {
+        setPicIndex(index);
       }
      },[GallerySelection])
   if(typeof image === 'string' && (typeof index === 'number' || index === '✔')){
