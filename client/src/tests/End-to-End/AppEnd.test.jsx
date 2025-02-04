@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const WebSocket = require('ws');
 
 describe('End-to-End Test', () => {
   test('should display the homepage', async () => {
