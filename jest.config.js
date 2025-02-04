@@ -7,7 +7,7 @@
 
 /** @type {import('jest').Config} */
 
-const config = {
+module.exports = {
   preset: 'jest-puppeteer',
   verbose : true,
   moduleNameMapper: {
@@ -21,5 +21,3 @@ const config = {
   }
 };
 
-
-module.exports = config;
