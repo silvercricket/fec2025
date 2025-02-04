@@ -9,10 +9,6 @@ import STORE from '../store/Store.js';
 import {Provider} from 'react-redux';
 import axios from 'axios';
 
-/**
- * @jest-environment jsdom
- */
-
 jest.mock('axios');
 
 describe('App',()=>{
