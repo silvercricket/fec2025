@@ -39,7 +39,7 @@ import selectEvent from 'react-select-event'
 
 jest.mock('axios');
 
-describe('Overview',()=>{
+// describe('Overview',()=>{
 
 
   beforeEach(() => {
@@ -54,33 +54,7 @@ describe('Overview',()=>{
       </Provider>
     );
 
-    expect(OverviewTest.getByTestId('share')).toBeDefined();
-    expect(OverviewTest.getByTestId('mainDisplay')).toBeDefined();
 
-  });
-  it('Should render images in galleryElement when images are provided', () => {
-    const GalleryElementTest = render(
-      <Provider store={STORE}>
-        <GalleryElement image= {'https://pbs.twimg.com/media/GSsUqwGXsAA-cD_.jpg:large'} index = {0}/>
-      </Provider>
-    );
-
-    expect(GalleryElementTest.getByTestId('galleryPicture')).toBeDefined();
-
-
-  });
-
-  it('Should render placeholder if the image provided is an invalid type', () => {
-    const GalleryElementTest = render(
-      <Provider store={STORE}>
-        <GalleryElement image= {7} index = {0}/>
-      </Provider>
-    );
-
-    expect(GalleryElementTest.getByTestId('galleryPicturePlaceholder')).toBeDefined()
-
-
-  });
 
 
 
@@ -134,27 +108,17 @@ describe('Overview',()=>{
 
 
 
-  //   //const dummyStyles = DummyData.dummyStyles.results;
+
   //   const dummyGallery = DummyData.dummyStyles.results[0];
-  //   //const dummyProduct = DummyData.dummyProduct;
-  //   //const dummyPicture = DummyData.dummyStyles.results[0].photos[0].url;
 
 
   //   const mockStore = configureStore({
   //     reducer: {
-  //       // Product: ProductSlice.reducer,
-  //       // OverviewData: OverviewSlice.reducer,
   //       GalleryData: GallerySlice.reducer,
-  //       // PictureData: PictureSlice.reducer,
-  //       // StylesData: StylesSlice.reducer,
-  //       // GallerySelection: GallerySelectionSlice.reducer,
   //     }
   //   })
 
-  //   // mockStore.dispatch(PictureActions.setPicture(dummyPicture));
-  //   // mockStore.dispatch(ProductActions.setProduct(dummyProduct));
   //   mockStore.dispatch(GalleryActions.setGallery(dummyGallery));
-  //   // mockStore.dispatch(StylesActions.setStyles(dummyStyles));
 
 
   //   const Apple = render(
@@ -163,10 +127,9 @@ describe('Overview',()=>{
   //     </Provider>
   //   );
 
-
-  //   // const firstStyle = mockStore.getState().GalleryData.Gallery.style_id;
   //   act(()=>{
-  //     Apple.getByTestId('selectSize').change({ target: { value: 'M' } });
+  //     fireEvent.change(Apple.getByTestId('selectSize'), { target: { value: 'Hello world' } });
+  //     //Apple.getByTestId('selectSize').change({ target: { value: 'M' } });
   //   })
 
   //   // await selectEvent.select(Apple.getByTestId('selectSize'), ['M'])

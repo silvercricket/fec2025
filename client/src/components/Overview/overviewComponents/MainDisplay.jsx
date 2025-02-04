@@ -18,7 +18,9 @@ const MainDisplay = () => {
     width: "40000%"
   });
 
+
   const [divStyle, setDivStyle] = useState({});
+
   const [open, setOpen] = useState(false);
   const [gallery, setGallery] = useState(<Gallery/>)
   const toggleOpen = () => {
@@ -94,12 +96,15 @@ const MainDisplay = () => {
           const rect = container.getBoundingClientRect();
           const height = zoom.clientHeight *1.0;
           const width = zoom.clientWidth * 1.0;
+
           const focusX = ((e.clientX - rect.left)/width)*100;
           const focusY = ((e.clientY - rect.top) / height) * 100;
+
           setStyle({
             position: "absolute",
             width:"100%",
             height:"100%",
+
 
             transformOrigin: `${focusX}% ${focusY}%`,
             transform:"scale(2.5)",
@@ -149,6 +154,7 @@ const MainDisplay = () => {
           setStyle({
             width: "100%",
             height: "100%",
+
             transformOrigin:"top left",
             transform:"scale(1)"
           })

@@ -8,8 +8,9 @@ import QA from './Q&A/QA.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 import Similar from './Similar/similar.jsx';
 import {ProductActions} from '../store/ProductSlice.js';
+import PropTypes from 'prop-types';
 
-const App = () => {
+const App = ({logo}) => {
   const Product = useSelector(store => store.Product);
   const dispatch = useDispatch();
 
@@ -19,7 +20,7 @@ const App = () => {
     axios.get(`${process.env.API_URL}/products/${product}`,{headers: {Authorization:process.env.AUTH_SECRET} })
       .then((result) => {
         dispatch(ProductActions.setProduct(result.data));
-        console.log(JSON.stringify(result.data));
+
       })
       .catch((err) => {
         if (err.response.status === 429) {
@@ -32,12 +33,21 @@ const App = () => {
 
   return(
   <div data-testid="app">
+    <div className="logo-container">
+      <img className="logo" src={logo} alt="East Blue Logo" />
+    </div>
+    <div className="app-content">
     <Overview/>
     <Similar/>
     <QA/>
     <Reviews />
+    </div>
   </div>
-);
+  );
+}
+
+App.propTypes = {
+  logo: PropTypes.string,
 }
 
 export default App;

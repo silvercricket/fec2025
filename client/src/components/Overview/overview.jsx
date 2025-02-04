@@ -25,8 +25,9 @@ import StarDisplay from './overviewComponents/StarDisplay.jsx';
 const Overview = () => {
   const dispatch = useDispatch();
   const Product = useSelector(store => store.Product);
+
   const ReviewsData = useSelector(store => store.ReviewsData);
-  // const OverviewData = useSelector(store => store.Overview);
+
   const PictureData = useSelector(store => store.PictureData);
   const GalleryData = useSelector(store => store.GalleryData);
   const [price, setPrice] = useState('');
@@ -59,6 +60,7 @@ const Overview = () => {
           dispatch(StylesActions.setStyles(result.data.results));
           setPrice('$' + Product.default_price);
 
+
         })
     }
   },[Product]);
@@ -66,29 +68,29 @@ const Overview = () => {
   useEffect(() => {
 
     setPrice('$' + Product.default_price);
-    if(GalleryData.Gallery.sale_price){
+    if(GalleryData.sale_price){
       setPrice(
       <p style={{color:'red'}}><s>{Product.default_price}</s>&nbsp;
-      {GalleryData.Gallery.sale_price} </p>
+      {GalleryData.sale_price} </p>
     )
-      //setPrice(<s>price</s>  GalleryData.Gallery.sale_price)
+
     }
   },[GalleryData]);
 
   return(
   <div id="overview" data-testid="overview"
       style={{
-        background: "linear-gradient(rgb(27, 100, 60), rgb(25, 77, 146))",
+        // background: "linear-gradient(rgb(27, 100, 60), rgb(25, 77, 146))",
         height: 800,
         width: "100%",
         margin: "auto",
         padding: "2%",
-        border: "2px solid #000",
+        // border: "2px solid #000",
         borderRadius: "10px",
-        boxShadow: "2px solid black",
+        // boxShadow: "2px solid black",
         float: "left",
-        //objectFit: "contain"
-        //overflow: "hidden"
+
+
 
     }}>
     <div id='display' style={{height: "80%", width: "40%", float: "left",}}>
@@ -96,7 +98,7 @@ const Overview = () => {
 
     </div>
     <StarDisplay score={score} />
-    <button  onClick={()=>{document.getElementById("review-view").scrollIntoView();}}>Reviews </button>&nbsp;
+    <button  onClick={()=>{document.getElementsByClassName("review-container")[0].scrollIntoView();}}>Reviews </button>&nbsp;
     <h3>{Product.category}</h3>
     <h2>{Product.name}</h2>
     {/* <p>price: {price}</p> */}

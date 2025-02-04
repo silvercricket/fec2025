@@ -18,7 +18,6 @@ const StylesElement = ({style, index}) => {
   })
   const dispatch = useDispatch();
    useEffect(() => {
-
     if(GalleryData.Gallery){
     if(GalleryData.Gallery.photos[0].thumbnail_url===image){
       setBackground({

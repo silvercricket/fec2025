@@ -12,6 +12,7 @@ import CreateQuestion from './Q&AComponents/CreateQuestion.jsx';
 
 const QA = () => {
   const [refresh, setRefresh] = React.useState({});
+  const Search = useSelector(store => store.Search);
   const Product = useSelector(store => store.Product);
   const [questions, setQuestions] = React.useState([])
   const dispatch = useDispatch();
@@ -35,12 +36,12 @@ const QA = () => {
 
   return (
     <>
-      <div data-testid="qa">
+      <div className="qa" data-testid="qa">
         <h3>Questions & Answers</h3>
-        <SearchQuestions setRefresh={setRefresh}/>
+        <SearchQuestions/>
         <br/>
         <Questions refresh={refresh} setRefresh={setRefresh}/>
-        <CreateQuestion questions={questions} setQuestions={setQuestions} setRefresh={setRefresh}/>
+        {!Search ? <CreateQuestion questions={questions} setQuestions={setQuestions} setRefresh={setRefresh}/> : null}
       </div>
       <br/>
     </>
