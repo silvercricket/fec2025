@@ -1,17 +1,16 @@
 import React, {useState, useEffect}  from 'react';
 
-import {useDispatch, useSelector} from 'react-redux';
-import {ProductActions} from '../../../store/ProductSlice.js';
+import {useSelector} from 'react-redux';
+
 
 import GalleryAltElement from './GalleryAltElement.jsx';
 
-import {GalleryActions} from '../../../store/GallerySlice.js';
 
 const Gallery = () => {
   const GalleryData = useSelector(store => store.GalleryData);
-  const GallerySelection = useSelector(store => store.GallerySelection);
+
   const [arrows, activateArrows] = useState([null,null]);
-  const [displayedIndex, setDisplayedIndex] = useState(0);
+
   const [galleryDisplay, setGalleryDisplay] = useState(0);
   const maxLength = 3;
 
@@ -52,7 +51,7 @@ const Gallery = () => {
             if(index >= galleryDisplay && index < galleryDisplay+maxLength){
 
             return (
-            <GalleryAltElement image={pic.thumbnail_url} index={index} setDisplayedIndex={setDisplayedIndex} key={index}/>
+            <GalleryAltElement image={pic.thumbnail_url} index={index} key={index}/>
           );}})}
 
           {arrows[1]}

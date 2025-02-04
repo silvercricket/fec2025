@@ -1,18 +1,16 @@
 import React from 'react';
-import {render, waitFor, act, fireEvent} from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import {render,  act} from '@testing-library/react';
+
 import Overview from '../../components/Overview/overview.jsx';
 import MainDisplay from '../../components/Overview/overviewComponents/MainDisplay.jsx';
-import Gallery from '../../components/Overview/overviewComponents/Gallery.jsx';
+
 import GalleryElement from '../../components/Overview/overviewComponents/GalleryElement.jsx';
 import Styles from '../../components/Overview/overviewComponents/Styles.jsx';
-import ProductForm from '../../components/Overview/overviewComponents/ProductForm.jsx';
-import Share from '../../components/Overview/overviewComponents/Share.jsx';
-import App from '../../components/App.jsx';
+
 import '@testing-library/jest-dom';
 import '../../dist/output.css';
 import STORE from '../../store/Store.js';
-import {Provider, useDispatch} from 'react-redux';
+import {Provider} from 'react-redux';
 
 import {configureStore} from '@reduxjs/toolkit';
 import axios from 'axios';
@@ -23,7 +21,7 @@ import StylesSlice from '../../store/StylesSlice.js';
 import PictureSlice from '../../store/PictureSlice.js';
 
 import {ProductActions} from '../../store/ProductSlice.js';
-import {OverviewActions} from '../../store/OverviewSlice.js';
+
 import {PictureActions} from '../../store/PictureSlice.js';
 import {GalleryActions} from '../../store/GallerySlice.js';
 import {StylesActions} from '../../store/StylesSlice.js';

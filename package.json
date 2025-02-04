@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
+    "start": "npx webpack && node server.js",
     "server-dev": "npx nodemon --watch server server.js",
     "client-dev": "npx webpack --watch",
     "test": "jest test --setupFiles dotenv/config",
-    "deploy": "npx webpack && node server.js"
+    "dev": "concurrently \"npm run server-dev\" \"npm run client-dev\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
@@ -28,6 +29,7 @@
     "install": "^0.13.0",
     "lightningcss": "^1.29.1",
     "lucide-react": "^0.474.0",
+    "node": "^23.7.0",
     "path": "^0.12.7",
     "prop-types": "^15.8.1",
     "punycode": "^2.3.1",
@@ -43,7 +45,8 @@
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.1.14",
     "sweetalert": "^2.1.2",
-    "util": "^0.12.5"
+    "util": "^0.12.5",
+    "ws": "^8.18.0"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
@@ -57,6 +60,7 @@
     "autoprefixer": "^10.4.20",
     "babel-jest": "^29.7.0",
     "babel-loader": "^9.2.1",
+    "concurrently": "^9.1.2",
     "css-loader": "^7.1.2",
     "eslint": "^8.57.1",
     "eslint-config-airbnb": "^19.0.4",

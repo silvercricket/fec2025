@@ -66,6 +66,8 @@ const Gallery = () => {
 
       </div>
     );
+  } else {
+    return null;
   }
 }
 

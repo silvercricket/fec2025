@@ -1,8 +1,8 @@
 import React, {useState, useEffect}  from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {ProductActions} from '../../../store/ProductSlice.js';
+
 import {GalleryActions} from '../../../store/GallerySlice.js';
-import {StylesActions} from '../../../store/StylesSlice.js';
+
 import {PictureActions} from '../../../store/PictureSlice.js';
 import PropTypes from 'prop-types';
 
