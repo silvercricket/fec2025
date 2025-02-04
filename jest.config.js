@@ -14,7 +14,7 @@ module.exports = {
     "\\.(css|jpg)$": "identity-obj-proxy",
   },
   bail: 1,
-  // testEnvironment: 'jsdom',
+  testEnvironment: 'jsdom',
   transform: {
     "\\.[jt]sx?$": "babel-jest",
     '^.+\\.css$': 'jest-transform-css'
