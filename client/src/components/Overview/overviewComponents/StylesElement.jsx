@@ -10,6 +10,7 @@ const StylesElement = ({style, index}) => {
   const StylesData = useSelector(store => store.StylesData);
   const GalleryData = useSelector(store => store.GalleryData);
   const image = style.photos[0].thumbnail_url;
+  const testId= 'stylePicture' + index;
   const [background, setBackground] = useState({
     borderRadius: '100000px',
     width: '60px',
@@ -40,7 +41,7 @@ const StylesElement = ({style, index}) => {
    }},[GalleryData])
   return(
 
-      <img className='stylePicture' onClick={()=>{
+      <img className='stylePicture' data-testid = {testId} id={'stylePicture' + index} onClick={()=>{
         dispatch(PictureActions.setPicture(StylesData.Styles[index].photos[0].url));
         dispatch(GalleryActions.setGallery(StylesData.Styles[index]));
 
