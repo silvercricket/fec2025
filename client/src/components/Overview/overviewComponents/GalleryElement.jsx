@@ -19,7 +19,6 @@ const GalleryElement = ({image, index, target, setTarget}) => {
     height: '22%'
   })
    useEffect(() => {
-
     if(GallerySelection.GallerySelection===index){
       setStyle({
         position:'relative',

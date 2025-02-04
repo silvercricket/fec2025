@@ -80,14 +80,14 @@ const Overview = () => {
   return(
   <div id="overview" data-testid="overview"
       style={{
-        background: "linear-gradient(rgb(27, 100, 60), rgb(25, 77, 146))",
+        // background: "linear-gradient(rgb(27, 100, 60), rgb(25, 77, 146))",
         height: 800,
         width: "100%",
         margin: "auto",
         padding: "2%",
-        border: "2px solid #000",
+        // border: "2px solid #000",
         borderRadius: "10px",
-        boxShadow: "2px solid black",
+        // boxShadow: "2px solid black",
         float: "left",
 
 
