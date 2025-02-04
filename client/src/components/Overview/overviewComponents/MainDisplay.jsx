@@ -1,16 +1,13 @@
-import React, {useRef, useState, useEffect}  from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {ProductActions} from '../../../store/ProductSlice.js';
+import React, { useState, useEffect}  from 'react';
+import { useSelector} from 'react-redux';
 
-import {OverviewActions} from '../../../store/OverviewSlice.js';
 import Modal from './MainDisplayModal.jsx';
 import GalleryAlt from './GalleryAlt.jsx';
 import Gallery from './Gallery.jsx';
 const MainDisplay = () => {
-  const elementRef = useRef(null);
-  const Product = useSelector(store => store.Product);
+
   const PictureData = useSelector(store => store.PictureData);
-  const GalleryData = useSelector(store => store.GalleryData);
+
   const [moused, setMoused] = useState(false);
   const [expanded, setExpanded] = useState(0);
   const [style, setStyle] = useState({

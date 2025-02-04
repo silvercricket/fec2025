@@ -30,6 +30,7 @@
     "install": "^0.13.0",
     "lightningcss": "^1.29.1",
     "lucide-react": "^0.474.0",
+    "node": "^23.7.0",
     "path": "^0.12.7",
     "prop-types": "^15.8.1",
     "punycode": "^2.3.1",
