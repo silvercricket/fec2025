@@ -1,0 +1,13 @@
+version: 2.1
+executors:
+  node-executor:
+    docker:
+      - image: circleci/node:16.20.2-browsers
+
+jobs:
+  build:
+    executor: node-executor
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
