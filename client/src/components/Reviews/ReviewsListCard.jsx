@@ -1,13 +1,12 @@
 /*global process*/
 /*eslint no-undef: "error"*/
-import React, {useEffect}  from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React  from 'react';
 import axios from 'axios';
-import {ReviewsActions} from '../../store/ReviewsSlice.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faRegularStar } from '@fortawesome/free-regular-svg-icons';
 import ReviewsListCardPhotos from './ReviewsListCardPhotos.jsx';
+import PropTypes from 'prop-types';
 
 const ReviewsListCard = ({ review }) => {
   const [clickedHelp, setClickedHelp] = React.useState(false);
@@ -48,11 +47,7 @@ const ReviewsListCard = ({ review }) => {
       Authorization:process.env.AUTH_SECRET
       }
     }
-  )
-  .then(res => {
-    console.log('RESPOSE: ', res);
-  })
-  }
+  )}
   const handleReport = () => {
     if (clickedReport) {
       return;
@@ -67,11 +62,7 @@ const ReviewsListCard = ({ review }) => {
       Authorization:process.env.AUTH_SECRET
       }
     }
-  )
-  .then(res => {
-    console.log('RESPOSE: ', res);
-  })
-  }
+  )}
   const handleTime = () => {
     const dateString = review.date;
     const date = new Date(dateString);
@@ -109,5 +100,9 @@ const ReviewsListCard = ({ review }) => {
   </div>
   );
 }
+
+ReviewsListCard.propTypes = {
+  review: PropTypes.object.isRequired,
+};
 
 export default ReviewsListCard;
