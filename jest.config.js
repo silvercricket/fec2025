@@ -7,8 +7,7 @@
 
 /** @type {import('jest').Config} */
 
-module.exports = {
-  preset: 'jest-puppeteer',
+const config = {
   verbose : true,
   moduleNameMapper: {
     "\\.(css|jpg)$": "identity-obj-proxy",
@@ -21,3 +20,5 @@ module.exports = {
   }
 };
 
+
+module.exports = config;
