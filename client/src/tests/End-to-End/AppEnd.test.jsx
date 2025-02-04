@@ -6,6 +6,7 @@ describe('End-to-End Test', () => {
     const browser = await puppeteer.launch({
       headless: true,
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      executablePath: puppeteer.executablePath(),
       timeout: 10000,
     });
     const page = await browser.newPage();
