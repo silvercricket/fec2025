@@ -120,7 +120,7 @@ const MainDisplay = () => {
 
 
 
-  if(!open) {
+  if(!open && PictureData) {
     return(
 
       <div style= {divStyle} id ='mainDisplayContainer'>

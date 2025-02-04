@@ -7,7 +7,7 @@ import axios from 'axios';
 import {QuestionsActions} from '../../store/QuestionsSlice.js';
 import Questions from './Q&AComponents/Questions.jsx';
 import SearchQuestions from './Q&AComponents/SearchQuestions.jsx';
-
+import swal from 'sweetalert';
 import CreateQuestion from './Q&AComponents/CreateQuestion.jsx';
 
 const QA = () => {
@@ -26,9 +26,9 @@ const QA = () => {
         })
         .catch((err) => {
           if (err.response && err.response.status === 429) {
-            alert('Sorry traffic is full please refresh your browser');
+            swal('Sorry!', 'Traffic is full please refresh your browser', 'warning');
           } else {
-            alert('error while retrieving questions');
+            swal('Error!', 'Error while retrieving questions', 'error');
           }
         })
     }

@@ -5,7 +5,7 @@ const Modal = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null;
 
     return (
-        <div
+        <div className="modal-photo"
             style={{
                 position: "fixed",
                 top: 0,
