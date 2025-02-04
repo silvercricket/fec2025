@@ -8,6 +8,7 @@
 /** @type {import('jest').Config} */
 process.env.JEST_PUPPETEER_CONFIG = require.resolve('./jest-puppeteer.config.js');
 const config = {
+  // preset: 'jest-puppeteer',
   verbose : true,
   moduleNameMapper: {
     "\\.(css|jpg)$": "identity-obj-proxy",
