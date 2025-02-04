@@ -9,6 +9,7 @@ import Reviews from './Reviews/Reviews.jsx';
 import Similar from './Similar/similar.jsx';
 import {ProductActions} from '../store/ProductSlice.js';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 
 const App = ({logo}) => {
   const Product = useSelector(store => store.Product);
@@ -23,9 +24,9 @@ const App = ({logo}) => {
       })
       .catch((err) => {
         if (err.response.status === 429) {
-          alert('Sorry traffic is full please refresh your browser');
+          swal('Sorry!', 'Traffic is full please refresh your browser', 'warning');
         } else {
-          alert('Error while loading browser')
+          swal('Error!', 'Error while retrieving questions', 'error');
         }
       })
   },[Product.id])
