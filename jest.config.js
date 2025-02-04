@@ -1,4 +1,4 @@
-/*global module*/
+/*global module process require*/
 /*eslint no-undef: "error"*/
 /**
  * For a detailed explanation regarding each configuration property, visit:
@@ -6,7 +6,7 @@
  */
 
 /** @type {import('jest').Config} */
-
+process.env.JEST_PUPPETEER_CONFIG = require.resolve('./jest-puppeteer.config.js');
 const config = {
   verbose : true,
   moduleNameMapper: {

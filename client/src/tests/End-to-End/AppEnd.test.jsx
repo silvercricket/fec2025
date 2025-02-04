@@ -3,13 +3,13 @@
 
 import "expect-puppeteer";
 
-describe("Google Homepage", () => {
+describe("App Homepage", () => {
   beforeAll(async () => {
-
-    await page.goto('https://google.com');
+    await page.goto('http://localhost:3000');
   }, 600000);
 
-  it('should display "google" text on page', async () => {
-    await expect(page).toMatchTextContent(/Google/);
+  it('should have a title of eastbluelegends', async () => {
+    const title = await page.title();
+    expect(title).toBe('eastbluelegends');
   }, 600000);
 });

@@ -8,6 +8,7 @@ import QA from './Q&A/QA.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 import Similar from './Similar/similar.jsx';
 import {ProductActions} from '../store/ProductSlice.js';
+import PropTypes from 'prop-types';
 
 const App = ({logo}) => {
   const Product = useSelector(store => store.Product);
@@ -30,7 +31,7 @@ const App = ({logo}) => {
   },[Product.id])
 
   return(
-  <div className="dark" data-testid="app">
+  <div data-testid="app">
     <div className="logo-container">
       <img className="logo" src={logo} alt="East Blue Logo" />
     </div>
@@ -41,7 +42,11 @@ const App = ({logo}) => {
     <Reviews />
     </div>
   </div>
-);
+  );
+}
+
+App.propTypes = {
+  logo: PropTypes.string,
 }
 
 export default App;
