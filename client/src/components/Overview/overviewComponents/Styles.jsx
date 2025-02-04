@@ -14,7 +14,9 @@ const Styles = () => {
   useEffect(() => {
     Style = GalleryData.name;
   },[StylesData]);
+
   if(GalleryData.Gallery.name !== undefined){
+
     return(
       <>
       <h3>style: { Style}</h3>
@@ -28,7 +30,7 @@ const Styles = () => {
 
         {StylesData.Styles.map((style, index)=>(
 
-          <StylesElement  style={style} index={index} key={index}/>
+          <StylesElement  style={style} index={index} key={'style ' + index} id={'style' + index}/>
         ))
         }
 
