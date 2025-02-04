@@ -21,25 +21,21 @@ import ProductSlice from '../../store/ProductSlice.js';
 import GallerySlice from '../../store/GallerySlice.js';
 import StylesSlice from '../../store/StylesSlice.js';
 import PictureSlice from '../../store/PictureSlice.js';
-import OverviewSlice from '../../store/OverviewSlice.js';
-import GallerySelectionSlice from '../../store/GallerySelectionSlice.js';
-
 
 import {ProductActions} from '../../store/ProductSlice.js';
 import {OverviewActions} from '../../store/OverviewSlice.js';
-
 import {PictureActions} from '../../store/PictureSlice.js';
 import {GalleryActions} from '../../store/GallerySlice.js';
 import {StylesActions} from '../../store/StylesSlice.js';
 
 import DummyData from './TestData/dummyData.js';
-import selectEvent from 'react-select-event'
+
 
 
 
 jest.mock('axios');
 
-// describe('Overview',()=>{
+describe('Overview',()=>{
 
 
   beforeEach(() => {
@@ -54,13 +50,37 @@ jest.mock('axios');
       </Provider>
     );
 
+    expect(OverviewTest.getByTestId('share')).toBeDefined();
+    expect(OverviewTest.getByTestId('mainDisplay')).toBeDefined();
 
+  });
+  it('Should render images in galleryElement when images are provided', () => {
+    const GalleryElementTest = render(
+      <Provider store={STORE}>
+        <GalleryElement image= {'https://pbs.twimg.com/media/GSsUqwGXsAA-cD_.jpg:large'} index = {0}/>
+      </Provider>
+    );
+
+    expect(GalleryElementTest.getByTestId('galleryPicture')).toBeDefined();
+
+
+  });
+
+  it('Should render placeholder if the image provided is an invalid type', () => {
+    const GalleryElementTest = render(
+      <Provider store={STORE}>
+        <GalleryElement image= {7} index = {0}/>
+      </Provider>
+    );
+
+    expect(GalleryElementTest.getByTestId('galleryPicturePlaceholder')).toBeDefined()
+
+
+  });
 
 
 
   it('Should change display based on style selected ', async () => {//to realistically run the majority of these tests, a mock API request seems to be the only way...
-
-
 
     const dummyStyles = DummyData.dummyStyles.results;
     const dummyGallery = DummyData.dummyStyles.results[0];
@@ -104,43 +124,16 @@ jest.mock('axios');
 
   });
 
-  // it('Should list quantity as OUT OF STOCK when no products of that size remain', async () => {//to realistically run the majority of these tests, a mock API request seems to be the only way...
-
-
-
-
-  //   const dummyGallery = DummyData.dummyStyles.results[0];
-
-
-  //   const mockStore = configureStore({
-  //     reducer: {
-  //       GalleryData: GallerySlice.reducer,
-  //     }
-  //   })
-
-  //   mockStore.dispatch(GalleryActions.setGallery(dummyGallery));
-
-
+  // it('should list a product as OUT OF STOCK when quantity is 0', () => {
   //   const Apple = render(
-  //     <Provider store={mockStore}>
-  //       <ProductForm/>
+  //     <Provider store={STORE}>
+  //       <App/>
   //     </Provider>
   //   );
 
-  //   act(()=>{
-  //     fireEvent.change(Apple.getByTestId('selectSize'), { target: { value: 'Hello world' } });
-  //     //Apple.getByTestId('selectSize').change({ target: { value: 'M' } });
-  //   })
-
-  //   // await selectEvent.select(Apple.getByTestId('selectSize'), ['M'])
-  //   expect(Apple.getByTestId('selectQuantity')).toHaveValue('OUT OF STOCK');
-  //   console.log(Apple.getByTestId('selectQuantity'));
-  //   //expect(firstStyle).not.toBe(secondStyle);
+  //   expect(.getByTestId('galleryPicturePlaceholder')).toBeDefined()
 
 
   // });
-
-
-
 
 });
