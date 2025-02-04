@@ -8,6 +8,7 @@
 /** @type {import('jest').Config} */
 
 const config = {
+  preset: 'jest-puppeteer',
   verbose : true,
   moduleNameMapper: {
     "\\.(css|jpg)$": "identity-obj-proxy",
