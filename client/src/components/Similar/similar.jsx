@@ -153,7 +153,8 @@ const Similar = () => {
         )}
         <Outfit
           currentProduct={currentProduct}
-          currentStyle={currentStyle} />
+          currentStyle={currentStyle}
+          handleCardClick={handleCardClick} />
       </div>
   );
 };
