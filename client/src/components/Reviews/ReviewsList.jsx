@@ -61,9 +61,9 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
         <section>
           <label htmlFor="sort">Sorted on</label>
           <select onChange={handleSort} name="sort" id="sort">
-            <option value="Relevent">Relevent</option>
-            <option value="Helpful">Helpful</option>
-            <option value="Newest">Newest</option>
+            <option value="relevant">Relevant</option>
+            <option value="helpful">Helpful</option>
+            <option value="newest">Newest</option>
           </select>
         </section>
         page: {currPage}
@@ -75,7 +75,7 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
         {handleReviewCardList()}
         <button className="add-review-button" onClick={handleOpenModal}>+ ADD REVIEW</button>
         {modalIsOpen && (
-          <AddReviewModule 
+          <AddReviewModule
             modalIsOpen={modalIsOpen}
             closeModal={handleCloseModal}
             setFormRating={setFormRating}

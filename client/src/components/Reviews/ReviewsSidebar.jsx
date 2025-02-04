@@ -69,6 +69,7 @@ const ReviewsSidebar = () => {
         );
       }
     }
+    console.log(productBreakdown);
     return productBreakdown;
   };
 

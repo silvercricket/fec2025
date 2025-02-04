@@ -15,6 +15,7 @@ const Reviews = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("Product ID, Page, and Sort have changed");
     if (Product.id) {
       axios.get(process.env.API_URL + `/reviews/`,{params: {
         product_id: Product.id,
