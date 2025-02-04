@@ -8,12 +8,13 @@
 /** @type {import('jest').Config} */
 
 const config = {
+  preset: 'jest-puppeteer',
   verbose : true,
   moduleNameMapper: {
     "\\.(css|jpg)$": "identity-obj-proxy",
   },
   bail: 1,
-  testEnvironment: 'jsdom',
+  // testEnvironment: 'jsdom',
   transform: {
     "\\.[jt]sx?$": "babel-jest",
     '^.+\\.css$': 'jest-transform-css'

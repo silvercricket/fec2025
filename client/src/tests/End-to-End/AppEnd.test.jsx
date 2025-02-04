@@ -1,6 +1,4 @@
-/**
- * @jest-environment puppeteer
- */
+
 
 describe('Google', () => {
 
