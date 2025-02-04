@@ -1,9 +1,10 @@
 import React from 'react';
 import Modal from './PhotoModal.jsx';
+import PropTypes from 'prop-types';
 
 const ModalComponent = ({url, handleSize}) => {
   const [modalIsOpen, setIsOpen] = React.useState(true);
-  const [selectedImage, setSelectedImage] = React.useState(url);
+  const selectedImage = url;
   function closeModal() {
     handleSize();
     setIsOpen(false);
@@ -19,7 +20,7 @@ const ModalComponent = ({url, handleSize}) => {
     style={{
       maxWidth: '100%',
       maxHeight: '80vh',
-      objectFit: 'contain',  // Ensures the image maintains its aspect ratio
+      objectFit: 'contain',
   }}
     src={url}
     />
@@ -27,5 +28,10 @@ const ModalComponent = ({url, handleSize}) => {
   </div>
   );
 }
+
+ModalComponent.propTypes = {
+  url:PropTypes.string.isRequired,
+  handleSize:PropTypes.func.isRequired,
+};
 
 export default ModalComponent;

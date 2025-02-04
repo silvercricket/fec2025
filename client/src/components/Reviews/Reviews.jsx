@@ -15,7 +15,6 @@ const Reviews = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("Product ID, Page, and Sort have changed");
     if (Product.id) {
       axios.get(process.env.API_URL + `/reviews/`,{params: {
         product_id: Product.id,
@@ -28,8 +27,8 @@ const Reviews = () => {
       .then((response)=>{
         dispatch(ReviewsActions.setReviews(response.data.results));
       })
-      .catch((err)=> {
-        console.log(err);
+      .catch(()=> {
+        console.error('No reviews for current product');
       })
 
       axios.get(process.env.API_URL + `/reviews/meta`,{params: {
@@ -38,8 +37,8 @@ const Reviews = () => {
       .then((response)=>{
         dispatch(ReviewsMetaActions.setReviewsMeta(response.data));
       })
-      .catch((err)=> {
-        console.log(err);
+      .catch(()=> {
+        console.error('No review meta data for current product');
       })
     }
 

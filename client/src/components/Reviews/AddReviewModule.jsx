@@ -8,7 +8,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faRegularStar } from '@fortawesome/free-regular-svg-icons';
 import { useSelector } from 'react-redux';
 import FileUpload from './FileUpload.jsx';
-
+import PropTypes from 'prop-types';
 
 const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) => {
   const Product = useSelector(store => store.Product);
@@ -77,7 +77,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
       [fitRec[0]]: Number(fitRec[2]),
     }
     var filteredProductChars = Object.fromEntries(
-      Object.entries(productChars).filter(([key, value]) => !isNaN(value))
+      Object.entries(productChars).filter(([key, value]) => !isNaN(value) || key === undefined)
     );
     var formUrls = files.slice(5).map(file => file.thumbnail);
     var formSummary = document.getElementById('form-summary').value;
@@ -94,7 +94,6 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
         email: formEmail,
         photos: formUrls,
         characteristics: filteredProductChars,
-
     },
     { headers: { 'Authorization': process.env.AUTH_SECRET }})
     .then((res) => {
@@ -115,7 +114,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
 
     var formFields = [];
     const listOfChars = {
-      'Size' : <fieldset id='size-form' name='size-form'>
+      'Size' : <fieldset id='size-form' name='size-form' key="size-form">
           <legend>Size: {sizeRec[1]}</legend>
       <div>
         <input
@@ -165,7 +164,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
         <label htmlFor="form-size5">5</label>
       </div>
               </fieldset>,
-      'Width': <fieldset id='width-form' name='width-form'>
+      'Width': <fieldset id='width-form' name='width-form' key="width-form">
         <legend>Width: {widthRec[1]}</legend>
       <div>
         <input
@@ -213,7 +212,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
         <label htmlFor="form-width5">5</label>
       </div>
               </fieldset>,
-      'Comfort': <fieldset id='comfort-form' name='comfort-form'>
+      'Comfort': <fieldset id='comfort-form' name='comfort-form' key="comfort-form">
       <legend>Comfort: {comfortRec[1]}</legend>
   <div>
     <input
@@ -261,7 +260,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
     <label htmlFor="form-comfort5">5</label>
   </div>
               </fieldset>,
-      'Quality': <fieldset id='quality-form' name='quality-form'>
+      'Quality': <fieldset id='quality-form' name='quality-form' key="quality-form">
       <legend>Quality: {qualityRec[1]}</legend>
   <div>
     <input
@@ -309,7 +308,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
     <label htmlFor="form-quality5">5</label>
   </div>
               </fieldset>,
-      'Length': <fieldset id='length-form' name='length-form'>
+      'Length': <fieldset id='length-form' name='length-form' key="length-form">
       <legend>Length: {lengthRec[1]}</legend>
   <div>
     <input
@@ -357,7 +356,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
     <label htmlFor="form-length5">5</label>
   </div>
               </fieldset>,
-      'Fit': <fieldset id='fit-form' name='fit-form'>
+      'Fit': <fieldset id='fit-form' name='fit-form' key="fit-form">
       <legend>Fit: {fitRec[1]}</legend>
   <div>
     <input
@@ -472,6 +471,13 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
     </form>
     </Modal>
   );
+};
+
+AddReviewModule.propTypes = {
+  modalIsOpen: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  setFormRating: PropTypes.func.isRequired,
+  formRating: PropTypes.number.isRequired,
 };
 
 export default AddReviewModule;

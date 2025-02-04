@@ -1,22 +1,18 @@
-/*global describe, it, expect, beforeEach, global, jest, process*/
+/*global describe, it, expect, beforeEach, jest, process*/
 /*eslint no-undef: "error"*/
 import React from 'react';
-import { render, fireEvent, waitFor, act } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, waitFor, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import '../../dist/output.css';
 import STORE from '../../store/Store.js';
 import {Provider} from 'react-redux';
 import {configureStore} from '@reduxjs/toolkit';
 import Reviews from '../../components/Reviews/Reviews.jsx';
-import ReviewsSidebar from '../../components/Reviews/ReviewsSidebar.jsx';
 import axios from 'axios';
 import ProductSlice from '../../store/ProductSlice.js';
 import ReviewsSlice from '../../store/ReviewsSlice.js';
 import ReviewsMetaSlice from '../../store/ReviewsMetaSlice.js';
-import {ProductActions} from '../../store/ProductSlice.js';
-import {ReviewsActions} from '../../store/ReviewsSlice.js';
-import {ReviewsMetaActions} from '../../store/ReviewsMetaSlice.js';
+
 jest.mock('axios');
 jest.mock('../../components/Reviews/StarRatings', () => {
   return function StarRatings() {

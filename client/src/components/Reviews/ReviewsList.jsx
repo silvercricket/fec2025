@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
-import { ReviewsActions } from '../../store/ReviewsSlice.js';
+import {useSelector } from 'react-redux';
 import ReviewsListCard from './ReviewsListCard.jsx';
 import AddReviewModule from './AddReviewModule.jsx';
+import PropTypes from 'prop-types';
 
-const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
+const ReviewsList = ({ setCurrPage, currPage, setSort }) => {
   const ReviewsData = useSelector(store => store.ReviewsData);
   const [numOfReviewCards, setNumOfReviewCards] = useState(0);
   const [formRating, setFormRating] = useState(1);
@@ -46,7 +45,6 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
 
   const handleMap = (extra) => {
     const currCards = 2 + extra;
-    console.log(currCards, numOfReviewCards);
     const currListPage = ((Math.floor(ReviewsData.length / 5) - 1) * 5);
     if (!Array.isArray(ReviewsData)) {
       return '###';
@@ -86,6 +84,13 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
     </div>
 
   );
+};
+
+ReviewsList.propTypes = {
+  setCurrPage:PropTypes.func.isRequired,
+  currPage:PropTypes.number.isRequired,
+  setSort:PropTypes.func.isRequired,
+  sort:PropTypes.string.isRequired,
 };
 
 export default ReviewsList;
