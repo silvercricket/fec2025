@@ -8,6 +8,8 @@ import QA from './Q&A/QA.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 import Similar from './Similar/similar.jsx';
 import {ProductActions} from '../store/ProductSlice.js';
+import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 
 const App = ({logo}) => {
   const Product = useSelector(store => store.Product);
@@ -22,15 +24,15 @@ const App = ({logo}) => {
       })
       .catch((err) => {
         if (err.response.status === 429) {
-          alert('Sorry traffic is full please refresh your browser');
+          swal('Sorry!', 'Traffic is full please refresh your browser', 'warning');
         } else {
-          alert('Error while loading browser')
+          swal('Error!', 'Error while retrieving questions', 'error');
         }
       })
   },[Product.id])
 
   return(
-  <div className="dark" data-testid="app">
+  <div data-testid="app">
     <div className="logo-container">
       <img className="logo" src={logo} alt="East Blue Logo" />
     </div>
@@ -41,7 +43,11 @@ const App = ({logo}) => {
     <Reviews />
     </div>
   </div>
-);
+  );
+}
+
+App.propTypes = {
+  logo: PropTypes.string,
 }
 
 export default App;
