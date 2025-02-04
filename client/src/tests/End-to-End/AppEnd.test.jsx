@@ -10,4 +10,3 @@ describe('End-to-End Test', () => {
   });
 });
 
-//running test
