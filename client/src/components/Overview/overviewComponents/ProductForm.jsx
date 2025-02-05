@@ -85,7 +85,12 @@ const ProductForm = () => {
               index = i;
             }
           }
-          const tempQuantity = sizes[index].quantity;
+          var tempQuantity;
+          if(index>-1){
+            tempQuantity = 0;
+          } else {
+            tempQuantity = sizes[index].quantity;
+          }
           var tempQuantities = [];
           for(i = 1; i <= tempQuantity; i++){
             tempQuantities.push(i);
@@ -97,7 +102,10 @@ const ProductForm = () => {
           }
           else{
             setInStock(false);
-            setSizes('OUT OF STOCK');
+
+            //setSizes(['OUT OF STOCK']);
+            setQuantities(['OUT OF STOCK'])
+            setQuantity('OUT OF STOCK')
           }
         }} >
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, fireEvent, waitFor, act} from '@testing-library/react';
+import {render, fireEvent, userEvent, waitFor, act} from '@testing-library/react';
 
 import Overview from '../../components/Overview/overview.jsx';
 import MainDisplay from '../../components/Overview/overviewComponents/MainDisplay.jsx';
@@ -60,7 +60,7 @@ describe('Overview',()=>{
       </Provider>
     );
 
-    expect(GalleryElementTest.getByTestId('galleryPicture')).toBeDefined();
+    expect(GalleryElementTest.getByTestId('galleryPicture0')).toBeDefined();
 
 
   });
@@ -77,6 +77,207 @@ describe('Overview',()=>{
 
   });
 
+
+
+  it('Should render GalleryAlt when Main Display is clicked on twice ', async () => {//to realistically run the majority of these tests, a mock API request seems to be the only way...
+
+    const dummyStyles = DummyData.dummyStyles.results;
+    const dummyGallery = DummyData.dummyStyles.results[0];
+    const dummyProduct = DummyData.dummyProduct;
+    const dummyPicture = DummyData.dummyStyles.results[0].photos[0].url;
+
+
+    const mockStore = configureStore({
+      reducer: {
+        Product: ProductSlice.reducer,
+        OverviewData: OverviewSlice.reducer,
+        GalleryData: GallerySlice.reducer,
+        PictureData: PictureSlice.reducer,
+        StylesData: StylesSlice.reducer,
+        GallerySelection: GallerySelectionSlice.reducer,
+      }
+    })
+
+    mockStore.dispatch(PictureActions.setPicture(dummyPicture));
+    mockStore.dispatch(ProductActions.setProduct(dummyProduct));
+    mockStore.dispatch(GalleryActions.setGallery(dummyGallery));
+    mockStore.dispatch(StylesActions.setStyles(dummyStyles));
+
+
+    const Apple = render(
+      <Provider store={mockStore}>
+        <MainDisplay/>
+      </Provider>
+    );
+    const mainDisplay = Apple.getByTestId("mainDisplay");
+
+
+    await waitFor(()=>{
+      fireEvent.click(mainDisplay);
+      //Apple.getByTestId("mainDisplay").click();
+
+    })
+    await waitFor(()=>{
+      fireEvent.click(mainDisplay);
+      //Apple.getByTestId("mainDisplay").click();
+
+    })
+
+    expect(Apple.getByTestId("galleryAlt")).toBeDefined();
+    expect(Apple.getByTestId("mainDisplayModal")).toBeDefined();
+
+  });
+
+  it('Should change gallery elements displayed when buttons clicked ', async () => {//to realistically run the majority of these tests, a mock API request seems to be the only way...
+
+    const dummyStyles = DummyData.dummyStyles.results;
+    const dummyGallery = DummyData.dummyStyles.results[0];
+    const dummyProduct = DummyData.dummyProduct;
+    const dummyPicture = DummyData.dummyStyles.results[0].photos[0].url;
+
+
+    const mockStore = configureStore({
+      reducer: {
+        Product: ProductSlice.reducer,
+        OverviewData: OverviewSlice.reducer,
+        GalleryData: GallerySlice.reducer,
+        PictureData: PictureSlice.reducer,
+        StylesData: StylesSlice.reducer,
+        GallerySelection: GallerySelectionSlice.reducer,
+      }
+    })
+
+    mockStore.dispatch(PictureActions.setPicture(dummyPicture));
+    mockStore.dispatch(ProductActions.setProduct(dummyProduct));
+    mockStore.dispatch(GalleryActions.setGallery(dummyGallery));
+    mockStore.dispatch(StylesActions.setStyles(dummyStyles));
+
+
+    const Apple = render(
+      <Provider store={mockStore}>
+        <MainDisplay/>
+      </Provider>
+    );
+    const mainDisplay = Apple.getByTestId("mainDisplay");
+    const upButton = Apple.getByTestId("GalleryUpArrow")
+    const downButton = Apple.getByTestId("GalleryDownArrow")
+
+    expect(Apple.getByTestId("galleryPicture0")).toBeDefined();
+    await waitFor(()=>{
+      fireEvent.click(downButton);
+
+      //Apple.getByTestId("mainDisplay").click();
+
+    })
+
+    expect(Apple.queryByTestId("galleryPicture0")).toEqual(null);
+
+    await waitFor(()=>{
+      fireEvent.click(upButton);
+
+      //Apple.getByTestId("mainDisplay").click();
+
+    })
+    expect(Apple.queryByTestId("galleryPicture0")).toBeDefined();
+    // var GalleryPic2 = Apple.getByTestId("galleryPicture1").src;
+
+    // console.log(GalleryPic1);
+    // console.log(GalleryPic2);
+    // expect(GalleryPic1 !== GalleryPic2).toBeTruthy();
+
+    // await waitFor(()=>{
+    //   fireEvent.click(upButton);
+    //   //Apple.getByTestId("mainDisplay").click();
+
+    // })
+    // GalleryPic2 = Apple.getByTestId("galleryPicture1").src;
+    // expect(GalleryPic1 === GalleryPic2).toBeTruthy();
+  });
+
+  it('Should zoom in on mainDisplayModal when double clicked and shift between gallery Alt elements', async () => {//to realistically run the majority of these tests, a mock API request seems to be the only way...
+
+    const dummyStyles = DummyData.dummyStyles.results;
+    const dummyGallery = DummyData.dummyStyles.results[0];
+    const dummyProduct = DummyData.dummyProduct;
+    const dummyPicture = DummyData.dummyStyles.results[0].photos[0].url;
+
+
+    const mockStore = configureStore({
+      reducer: {
+        Product: ProductSlice.reducer,
+        OverviewData: OverviewSlice.reducer,
+        GalleryData: GallerySlice.reducer,
+        PictureData: PictureSlice.reducer,
+        StylesData: StylesSlice.reducer,
+        GallerySelection: GallerySelectionSlice.reducer,
+      }
+    })
+
+    mockStore.dispatch(PictureActions.setPicture(dummyPicture));
+    mockStore.dispatch(ProductActions.setProduct(dummyProduct));
+    mockStore.dispatch(GalleryActions.setGallery(dummyGallery));
+    mockStore.dispatch(StylesActions.setStyles(dummyStyles));
+
+
+    const Apple = render(
+      <Provider store={mockStore}>
+        <MainDisplay/>
+      </Provider>
+    );
+    const mainDisplay = Apple.getByTestId("mainDisplay");
+
+
+    await waitFor(()=>{
+      fireEvent.click(mainDisplay);
+      //Apple.getByTestId("mainDisplay").click();
+
+    })
+    await waitFor(()=>{
+      fireEvent.click(mainDisplay);
+      //Apple.getByTestId("mainDisplay").click();
+
+    })
+    await waitFor(()=>{
+      fireEvent.mouseEnter(Apple.getByTestId("mainDisplayModal"));
+      //Apple.getByTestId("mainDisplay").click();
+
+    })
+    await waitFor(()=>{
+      fireEvent.mouseMove(Apple.getByTestId("mainDisplayModal"));
+      //Apple.getByTestId("mainDisplay").click();
+
+    })
+    const style = Apple.getByTestId("mainDisplayModal").style._values;
+    const testStyle = {
+      height: '100%',
+      width: '100%',
+      position: 'absolute',
+      'transform-origin': 'NaN% NaN%',
+      transform: 'scale(2.5)',
+      cursor: 'crosshair'
+    }
+
+    expect(JSON.stringify(style) === JSON.stringify(testStyle)).toBeTruthy();
+    const leftButton = Apple.getByTestId("GalleryLeftArrow")
+    const rightButton = Apple.getByTestId("GalleryRightArrow")
+
+
+    expect(Apple.getByTestId("galleryAltPicture0")).toBeDefined();
+    await waitFor(()=>{
+      fireEvent.click(rightButton);
+      //Apple.getByTestId("mainDisplay").click();
+
+    })
+    expect(Apple.queryByTestId("galleryAltPicture0")).toEqual(null);
+    //expect(Apple.getByTestId("galleryPicture0")).toBeDefined();
+    await waitFor(()=>{
+      fireEvent.click(leftButton);
+      //Apple.getByTestId("mainDisplay").click();
+
+    })
+    expect(Apple.getByTestId("galleryAltPicture0")).toBeDefined();
+    //expect(Apple.getByTestId("galleryPicture0")).toBeDefined();
+  });
 
 
   it('Should change display based on style selected ', async () => {//to realistically run the majority of these tests, a mock API request seems to be the only way...
@@ -124,20 +325,31 @@ describe('Overview',()=>{
   });
 
 
-
   it('Should show OUT OF STOCK when no quantity is available', async () => {//to realistically run the majority of these tests, a mock API request seems to be the only way...
 
-
+    const dummyStyles = DummyData.dummyStyles.results;
     const dummyGallery = DummyData.dummyStyles.results[0];
+    const dummyProduct = DummyData.dummyProduct;
+    const dummyPicture = DummyData.dummyStyles.results[0].photos[0].url;
 
+    const mockResponse = { data: {message : 'Grabbed'}};
+    axios.get.mockResolvedValue(mockResponse);
 
     const mockStore = configureStore({
       reducer: {
+        Product: ProductSlice.reducer,
+        OverviewData: OverviewSlice.reducer,
         GalleryData: GallerySlice.reducer,
+        PictureData: PictureSlice.reducer,
+        StylesData: StylesSlice.reducer,
+        GallerySelection: GallerySelectionSlice.reducer,
       }
     })
-    mockStore.dispatch(GalleryActions.setGallery(dummyGallery));
 
+    mockStore.dispatch(PictureActions.setPicture(dummyPicture));
+    mockStore.dispatch(ProductActions.setProduct(dummyProduct));
+    mockStore.dispatch(GalleryActions.setGallery(dummyGallery));
+    mockStore.dispatch(StylesActions.setStyles(dummyStyles));
 
 
     const Apple = render(
@@ -145,6 +357,8 @@ describe('Overview',()=>{
         <ProductForm/>
       </Provider>
     );
+
+
     const formSizes = Apple.getByTestId("formSizes");
 
 

@@ -10,6 +10,8 @@ const GalleryAltElement = ({image, index}) => {
   const GalleryData = useSelector(store => store.GalleryData);
   const GallerySelection = useSelector(store => store.GallerySelection);
   const [picIndex,setPicIndex] = useState(index);
+  const testId = "galleryAltPicture" + index;
+
   const dispatch = useDispatch();
 
 
@@ -22,9 +24,10 @@ const GalleryAltElement = ({image, index}) => {
       }
      },[GallerySelection])
   if(typeof image === 'string' && (typeof index === 'number' || index === '✔')){
+
     return(
       <>
-        <div data-testid="galleryAltPicture" className='galleryAltPicture'
+        <div data-testid= {testId} className='galleryAltPicture'
         onClick={()=>{
 
 

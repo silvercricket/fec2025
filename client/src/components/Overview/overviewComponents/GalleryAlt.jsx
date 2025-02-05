@@ -18,9 +18,10 @@ const Gallery = () => {
 
   useEffect(() => {
     if(GalleryData.Gallery.photos !== undefined){
+
       if(GalleryData.Gallery.photos.length > maxLength){
         activateArrows([
-          <button type="button" key="GalleryLeftArrow" style={{float: 'left'}} onClick={()=>{
+          <button type="button" key="GalleryLeftArrow" data-testid="GalleryLeftArrow" style={{float: 'left'}} onClick={()=>{
             if(galleryDisplay>0){
 
               setGalleryDisplay(galleryDisplay - 1);
@@ -28,7 +29,7 @@ const Gallery = () => {
           }}>
             &larr;
           </button>,
-          <button type="button" key="GalleryRightArrow" onClick={()=>{
+          <button type="button" key="GalleryRightArrow" data-testid="GalleryRightArrow" onClick={()=>{
             if(galleryDisplay<(GalleryData.Gallery.photos.length - maxLength)){
               setGalleryDisplay(galleryDisplay + 1);
             }
@@ -45,7 +46,7 @@ const Gallery = () => {
   if(GalleryData.Gallery.photos !== undefined){
     return(
       <div>
-        <div id='galleryAlt'>
+        <div id='galleryAlt' data-testid="galleryAlt">
           {arrows[0]}
           {GalleryData.Gallery.photos.map((pic, index)=>{
             if(index >= galleryDisplay && index < galleryDisplay+maxLength){
