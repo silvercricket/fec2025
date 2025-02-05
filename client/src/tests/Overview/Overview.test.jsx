@@ -1,12 +1,12 @@
 import React from 'react';
-import {render,  act} from '@testing-library/react';
+import {render, fireEvent, waitFor, act} from '@testing-library/react';
 
 import Overview from '../../components/Overview/overview.jsx';
 import MainDisplay from '../../components/Overview/overviewComponents/MainDisplay.jsx';
 
 import GalleryElement from '../../components/Overview/overviewComponents/GalleryElement.jsx';
 import Styles from '../../components/Overview/overviewComponents/Styles.jsx';
-
+import ProductForm from '../../components/Overview/overview'
 import '@testing-library/jest-dom';
 import '../../dist/output.css';
 import STORE from '../../store/Store.js';
@@ -122,6 +122,40 @@ describe('Overview',()=>{
 
   });
 
+
+
+  it('Should show OUT OF STOCK when no quantity is available', async () => {//to realistically run the majority of these tests, a mock API request seems to be the only way...
+
+
+    const dummyGallery = DummyData.dummyStyles.results[0];
+
+
+    const mockStore = configureStore({
+      reducer: {
+        GalleryData: GallerySlice.reducer,
+      }
+    })
+    mockStore.dispatch(GalleryActions.setGallery(dummyGallery));
+
+
+
+    const Apple = render(
+      <Provider store={mockStore}>
+        <ProductForm/>
+      </Provider>
+    );
+    const formSizes = Apple.getByTestId("formSizes");
+
+
+    await waitFor(() => fireEvent.change(formSizes, {target: {value: 'S'}}));
+    const formQuantities = Apple.getByTestId("formQuantities");
+
+
+
+    expect(formQuantities).toHaveValue('OUT OF STOCK');
+
+
+  });
   // it('should list a product as OUT OF STOCK when quantity is 0', () => {
   //   const Apple = render(
   //     <Provider store={STORE}>

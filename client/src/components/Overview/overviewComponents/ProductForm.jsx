@@ -76,7 +76,7 @@ const ProductForm = () => {
     return(
       <form>
         <p>{notify}</p>
-        <select name="sizes" onChange={(e)=>{
+        <select name="sizes" data-testid="formSizes" onChange={(e)=>{
 
           setSize(e.target.value);
           var index = -1;
@@ -107,7 +107,7 @@ const ProductForm = () => {
           )})}
         </select>
 
-        <select name="quantity"onChange={(e)=>{
+        <select name="quantity" data-testid="formQuantities" onChange={(e)=>{
           setQuantity(e.target.value);
         }} >
           {quantities.map((amount)=>(
