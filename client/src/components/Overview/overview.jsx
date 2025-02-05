@@ -54,11 +54,12 @@ const Overview = () => {
       axios.get(process.env.API_URL + `/products/${Product.id}/styles`,{headers: {Authorization:process.env.AUTH_SECRET} })
         .then((result)=>{
 
-          dispatch(GalleryActions.setGallery(result.data.results[0]));
-          dispatch(PictureActions.setPicture(result.data.results[0].photos[0].url));
-          dispatch(StylesActions.setStyles(result.data.results));
-          setPrice('$' + Product.default_price);
-
+          if(result.data.results){
+            dispatch(GalleryActions.setGallery(result.data.results[0]));
+            dispatch(PictureActions.setPicture(result.data.results[0].photos[0].url));
+            dispatch(StylesActions.setStyles(result.data.results));
+            setPrice('$' + Product.default_price);
+          }
 
         })
     }

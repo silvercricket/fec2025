@@ -26,7 +26,7 @@ const Gallery = () => {
       }
       if(GalleryData.Gallery.photos.length > maxLength){
         activateArrows([
-          <button type="button" key="GalleryUpArrow" onClick={()=>{
+          <button type="button" key="GalleryUpArrow" data-testid="GalleryUpArrow" onClick={()=>{
 
             if(GallerySelection>0){
 
@@ -35,8 +35,10 @@ const Gallery = () => {
           }}>
             &uarr;
           </button>,
-          <button type="button" key="GalleryDownArrow" onClick={()=>{
+          <button type="button" key="GalleryDownArrow" data-testid="GalleryDownArrow" onClick={()=>{
+
             if(GallerySelection<(GalleryData.Gallery.photos.length - maxLength)){
+
               GallerySelectionSet(GallerySelection + 1);
             }
           }}>

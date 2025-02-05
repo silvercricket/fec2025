@@ -1,0 +1,1083 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1738798880007" clover="3.2.0">
+  <project timestamp="1738798880007" name="All files">
+    <metrics statements="888" coveredstatements="608" conditionals="325" coveredconditionals="187" methods="294" coveredmethods="177" elements="1507" coveredelements="972" complexity="0" loc="888" ncloc="888" packages="10" files="53" classes="53"/>
+    <package name="components">
+      <metrics statements="12" coveredstatements="9" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="4"/>
+      <file name="App.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\App.jsx">
+        <metrics statements="12" coveredstatements="9" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="4"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="8" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="18" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="35" count="4" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Overview">
+      <metrics statements="29" coveredstatements="22" conditionals="10" coveredconditionals="7" methods="9" coveredmethods="8"/>
+      <file name="overview.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Overview\overview.jsx">
+        <metrics statements="29" coveredstatements="22" conditionals="10" coveredconditionals="7" methods="9" coveredmethods="8"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="10" type="stmt"/>
+        <line num="26" count="16" type="stmt"/>
+        <line num="28" count="16" type="stmt"/>
+        <line num="31" count="16" type="stmt"/>
+        <line num="32" count="10" type="stmt"/>
+        <line num="33" count="10" type="stmt"/>
+        <line num="38" count="10" type="stmt"/>
+        <line num="39" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="41" count="3" type="stmt"/>
+        <line num="42" count="3" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="3" type="stmt"/>
+        <line num="46" count="3" type="stmt"/>
+        <line num="51" count="10" type="stmt"/>
+        <line num="53" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="57" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="68" count="10" type="stmt"/>
+        <line num="70" count="4" type="stmt"/>
+        <line num="71" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="80" count="10" type="cond" truecount="1" falsecount="1"/>
+        <line num="81" count="10" type="stmt"/>
+        <line num="102" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Overview.overviewComponents">
+      <metrics statements="230" coveredstatements="195" conditionals="99" coveredconditionals="69" methods="62" coveredmethods="51"/>
+      <file name="Gallery.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Overview\overviewComponents\Gallery.jsx">
+        <metrics statements="22" coveredstatements="21" conditionals="16" coveredconditionals="12" methods="6" coveredmethods="6"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="31" type="stmt"/>
+        <line num="14" count="19" type="stmt"/>
+        <line num="15" count="19" type="stmt"/>
+        <line num="16" count="19" type="stmt"/>
+        <line num="17" count="19" type="stmt"/>
+        <line num="18" count="19" type="stmt"/>
+        <line num="22" count="19" type="stmt"/>
+        <line num="23" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="24" count="8" type="cond" truecount="1" falsecount="1"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="27" count="8" type="cond" truecount="1" falsecount="1"/>
+        <line num="28" count="8" type="stmt"/>
+        <line num="31" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="40" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="55" count="19" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="16" type="stmt"/>
+        <line num="61" count="96" type="cond" truecount="4" falsecount="0"/>
+        <line num="64" count="80" type="stmt"/>
+        <line num="72" count="3" type="stmt"/>
+      </file>
+      <file name="GalleryAlt.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Overview\overviewComponents\GalleryAlt.jsx">
+        <metrics statements="17" coveredstatements="17" conditionals="14" coveredconditionals="9" methods="6" coveredmethods="6"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="12" count="10" type="stmt"/>
+        <line num="14" count="10" type="stmt"/>
+        <line num="15" count="10" type="stmt"/>
+        <line num="19" count="10" type="stmt"/>
+        <line num="20" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="22" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="25" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="33" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="46" count="10" type="cond" truecount="1" falsecount="1"/>
+        <line num="47" count="10" type="stmt"/>
+        <line num="52" count="60" type="cond" truecount="4" falsecount="0"/>
+        <line num="54" count="30" type="stmt"/>
+      </file>
+      <file name="GalleryAltElement.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Overview\overviewComponents\GalleryAltElement.jsx">
+        <metrics statements="17" coveredstatements="14" conditionals="7" coveredconditionals="5" methods="5" coveredmethods="4"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="38" type="stmt"/>
+        <line num="11" count="38" type="stmt"/>
+        <line num="12" count="30" type="stmt"/>
+        <line num="13" count="30" type="stmt"/>
+        <line num="15" count="30" type="stmt"/>
+        <line num="18" count="30" type="stmt"/>
+        <line num="20" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="26" count="30" type="cond" truecount="3" falsecount="2"/>
+        <line num="27" count="30" type="stmt"/>
+        <line num="28" count="30" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="63" count="2" type="stmt"/>
+      </file>
+      <file name="GalleryElement.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Overview\overviewComponents\GalleryElement.jsx">
+        <metrics statements="16" coveredstatements="14" conditionals="6" coveredconditionals="6" methods="5" coveredmethods="4"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="123" type="stmt"/>
+        <line num="11" count="123" type="stmt"/>
+        <line num="12" count="84" type="stmt"/>
+        <line num="14" count="84" type="stmt"/>
+        <line num="19" count="84" type="stmt"/>
+        <line num="20" count="29" type="cond" truecount="2" falsecount="0"/>
+        <line num="21" count="8" type="stmt"/>
+        <line num="31" count="21" type="stmt"/>
+        <line num="39" count="84" type="cond" truecount="4" falsecount="0"/>
+        <line num="40" count="82" type="stmt"/>
+        <line num="41" count="82" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="60" count="2" type="stmt"/>
+      </file>
+      <file name="MainDisplay.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Overview\overviewComponents\MainDisplay.jsx">
+        <metrics statements="48" coveredstatements="39" conditionals="18" coveredconditionals="13" methods="12" coveredmethods="8"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="41" type="stmt"/>
+        <line num="11" count="29" type="stmt"/>
+        <line num="12" count="29" type="stmt"/>
+        <line num="13" count="29" type="stmt"/>
+        <line num="19" count="29" type="stmt"/>
+        <line num="21" count="29" type="stmt"/>
+        <line num="22" count="29" type="stmt"/>
+        <line num="23" count="29" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="33" count="29" type="stmt"/>
+        <line num="35" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="36" count="8" type="stmt"/>
+        <line num="50" count="8" type="stmt"/>
+        <line num="58" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="60" count="2" type="stmt"/>
+        <line num="74" count="2" type="stmt"/>
+        <line num="84" count="2" type="stmt"/>
+        <line num="88" count="29" type="stmt"/>
+        <line num="89" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="90" count="1" type="stmt"/>
+        <line num="91" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="93" count="1" type="stmt"/>
+        <line num="94" count="1" type="stmt"/>
+        <line num="95" count="1" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="97" count="1" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="100" count="1" type="stmt"/>
+        <line num="102" count="1" type="stmt"/>
+        <line num="114" count="1" type="stmt"/>
+        <line num="122" count="29" type="cond" truecount="4" falsecount="0"/>
+        <line num="123" count="25" type="stmt"/>
+        <line num="128" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="129" count="0" type="stmt"/>
+        <line num="131" count="4" type="stmt"/>
+        <line num="140" count="4" type="stmt"/>
+        <line num="142" count="0" type="stmt"/>
+        <line num="147" count="1" type="stmt"/>
+        <line num="150" count="0" type="stmt"/>
+        <line num="152" count="0" type="stmt"/>
+        <line num="164" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="165" count="0" type="stmt"/>
+        <line num="166" count="0" type="stmt"/>
+        <line num="168" count="0" type="stmt"/>
+      </file>
+      <file name="MainDisplayModal.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Overview\overviewComponents\MainDisplayModal.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
+      </file>
+      <file name="ProductForm.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Overview\overviewComponents\ProductForm.jsx">
+        <metrics statements="57" coveredstatements="42" conditionals="20" coveredconditionals="12" methods="13" coveredmethods="8"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="15" count="12" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="18" count="18" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
+        <line num="22" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="6" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="31" count="6" type="stmt"/>
+        <line num="32" count="6" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="41" count="12" type="stmt"/>
+        <line num="42" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="43" count="4" type="stmt"/>
+        <line num="44" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="75" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="76" count="4" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="82" count="1" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+        <line num="84" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="89" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="90" count="1" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="94" count="1" type="stmt"/>
+        <line num="95" count="1" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
+        <line num="98" count="1" type="stmt"/>
+        <line num="99" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="104" count="1" type="stmt"/>
+        <line num="107" count="1" type="stmt"/>
+        <line num="108" count="1" type="stmt"/>
+        <line num="113" count="18" type="stmt"/>
+        <line num="119" count="0" type="stmt"/>
+        <line num="122" count="2" type="stmt"/>
+      </file>
+      <file name="Share.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Overview\overviewComponents\Share.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="10" type="stmt"/>
+      </file>
+      <file name="StarDisplay.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Overview\overviewComponents\StarDisplay.jsx">
+        <metrics statements="22" coveredstatements="17" conditionals="8" coveredconditionals="4" methods="3" coveredmethods="3"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="13" type="stmt"/>
+        <line num="11" count="13" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="14" count="7" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="19" count="7" type="stmt"/>
+        <line num="20" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="33" count="7" type="stmt"/>
+        <line num="34" count="7" type="stmt"/>
+        <line num="35" count="28" type="stmt"/>
+        <line num="37" count="7" type="stmt"/>
+        <line num="41" count="13" type="stmt"/>
+        <line num="47" count="36" type="stmt"/>
+      </file>
+      <file name="Styles.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Overview\overviewComponents\Styles.jsx">
+        <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="4" methods="5" coveredmethods="5"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="21" type="stmt"/>
+        <line num="12" count="21" type="stmt"/>
+        <line num="13" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="12" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+        <line num="18" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="33" count="24" type="stmt"/>
+      </file>
+      <file name="StylesElement.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Overview\overviewComponents\StylesElement.jsx">
+        <metrics statements="16" coveredstatements="16" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="60" type="stmt"/>
+        <line num="11" count="60" type="stmt"/>
+        <line num="12" count="36" type="stmt"/>
+        <line num="13" count="36" type="stmt"/>
+        <line num="14" count="36" type="stmt"/>
+        <line num="19" count="36" type="stmt"/>
+        <line num="20" count="36" type="stmt"/>
+        <line num="21" count="18" type="cond" truecount="1" falsecount="1"/>
+        <line num="22" count="18" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="34" count="15" type="stmt"/>
+        <line num="41" count="36" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Q&A">
+      <metrics statements="16" coveredstatements="9" conditionals="8" coveredconditionals="3" methods="6" coveredmethods="4"/>
+      <file name="QA.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Q&A\QA.jsx">
+        <metrics statements="16" coveredstatements="9" conditionals="8" coveredconditionals="3" methods="6" coveredmethods="4"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="10" type="stmt"/>
+        <line num="15" count="20" type="stmt"/>
+        <line num="16" count="20" type="stmt"/>
+        <line num="17" count="10" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="19" count="10" type="stmt"/>
+        <line num="20" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="37" count="10" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Q&A.Q&AComponents">
+      <metrics statements="164" coveredstatements="129" conditionals="46" coveredconditionals="32" methods="52" coveredmethods="37"/>
+      <file name="Answer.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Q&A\Q&AComponents\Answer.jsx">
+        <metrics statements="22" coveredstatements="19" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="6"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="11" count="9" type="stmt"/>
+        <line num="13" count="9" type="stmt"/>
+        <line num="14" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="32" count="9" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="47" count="9" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="59" count="2" type="stmt"/>
+      </file>
+      <file name="Answers.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Q&A\Q&AComponents\Answers.jsx">
+        <metrics statements="15" coveredstatements="7" conditionals="10" coveredconditionals="6" methods="4" coveredmethods="2"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="12" type="stmt"/>
+        <line num="8" count="12" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="12" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
+        <line num="23" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="30" count="2" type="stmt"/>
+      </file>
+      <file name="CreateAnswer.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Q&A\Q&AComponents\CreateAnswer.jsx">
+        <metrics statements="39" coveredstatements="34" conditionals="9" coveredconditionals="8" methods="13" coveredmethods="10"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="20" type="stmt"/>
+        <line num="12" count="15" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+        <line num="14" count="15" type="stmt"/>
+        <line num="15" count="15" type="stmt"/>
+        <line num="16" count="15" type="stmt"/>
+        <line num="17" count="15" type="stmt"/>
+        <line num="18" count="15" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="2" type="cond" truecount="5" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="40" count="15" type="stmt"/>
+        <line num="41" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="55" count="15" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="57" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="68" count="15" type="stmt"/>
+        <line num="100" count="2" type="stmt"/>
+        <line num="114" count="2" type="stmt"/>
+      </file>
+      <file name="CreateQuestion.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Q&A\Q&AComponents\CreateQuestion.jsx">
+        <metrics statements="32" coveredstatements="23" conditionals="11" coveredconditionals="8" methods="10" coveredmethods="6"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="11" type="stmt"/>
+        <line num="13" count="21" type="stmt"/>
+        <line num="14" count="21" type="stmt"/>
+        <line num="15" count="11" type="stmt"/>
+        <line num="16" count="11" type="stmt"/>
+        <line num="17" count="11" type="stmt"/>
+        <line num="18" count="11" type="stmt"/>
+        <line num="19" count="11" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="cond" truecount="5" falsecount="0"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="41" count="11" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="47" count="11" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="53" count="11" type="stmt"/>
+        <line num="92" count="2" type="stmt"/>
+      </file>
+      <file name="Modal.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Q&A\Q&AComponents\Modal.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="26" type="cond" truecount="2" falsecount="0"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+      </file>
+      <file name="Photo.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Q&A\Q&AComponents\Photo.jsx">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+      </file>
+      <file name="Question.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Q&A\Q&AComponents\Question.jsx">
+        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="10" type="stmt"/>
+        <line num="11" count="10" type="stmt"/>
+        <line num="12" count="15" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="20" count="5" type="stmt"/>
+        <line num="22" count="10" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+      </file>
+      <file name="Questions.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Q&A\Q&AComponents\Questions.jsx">
+        <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="20" type="stmt"/>
+        <line num="10" count="10" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+      </file>
+      <file name="SearchQuestions.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Q&A\Q&AComponents\SearchQuestions.jsx">
+        <metrics statements="28" coveredstatements="19" conditionals="8" coveredconditionals="3" methods="6" coveredmethods="4"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="21" type="stmt"/>
+        <line num="14" count="11" type="stmt"/>
+        <line num="15" count="11" type="stmt"/>
+        <line num="16" count="11" type="stmt"/>
+        <line num="17" count="11" type="stmt"/>
+        <line num="18" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="21" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="36" count="11" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="39" count="11" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="47" count="11" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Reviews">
+      <metrics statements="238" coveredstatements="79" conditionals="62" coveredconditionals="12" methods="75" coveredmethods="19"/>
+      <file name="AddReviewModule.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Reviews\AddReviewModule.jsx">
+        <metrics statements="64" coveredstatements="2" conditionals="12" coveredconditionals="0" methods="26" coveredmethods="0"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="80" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="103" count="0" type="stmt"/>
+        <line num="106" count="0" type="stmt"/>
+        <line num="107" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="108" count="0" type="stmt"/>
+        <line num="110" count="0" type="stmt"/>
+        <line num="113" count="0" type="stmt"/>
+        <line num="115" count="0" type="stmt"/>
+        <line num="116" count="0" type="stmt"/>
+        <line num="408" count="0" type="stmt"/>
+        <line num="409" count="0" type="stmt"/>
+        <line num="411" count="0" type="stmt"/>
+        <line num="413" count="0" type="stmt"/>
+        <line num="415" count="0" type="stmt"/>
+        <line num="420" count="0" type="stmt"/>
+        <line num="421" count="0" type="stmt"/>
+        <line num="425" count="0" type="stmt"/>
+        <line num="426" count="0" type="stmt"/>
+        <line num="443" count="0" type="stmt"/>
+        <line num="446" count="0" type="stmt"/>
+        <line num="457" count="0" type="stmt"/>
+        <line num="476" count="2" type="stmt"/>
+      </file>
+      <file name="FileUpload.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Reviews\FileUpload.jsx">
+        <metrics statements="17" coveredstatements="2" conditionals="6" coveredconditionals="0" methods="8" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="63" count="2" type="stmt"/>
+      </file>
+      <file name="PhotoModal.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Reviews\PhotoModal.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="46" count="3" type="stmt"/>
+      </file>
+      <file name="PhotoModule.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Reviews\PhotoModule.jsx">
+        <metrics statements="7" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+      </file>
+      <file name="ReviewModal.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Reviews\ReviewModal.jsx">
+        <metrics statements="4" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="46" count="2" type="stmt"/>
+      </file>
+      <file name="Reviews.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Reviews\Reviews.jsx">
+        <metrics statements="14" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="5"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="13" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="17" count="6" type="stmt"/>
+        <line num="18" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="47" count="6" type="stmt"/>
+      </file>
+      <file name="ReviewsList.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Reviews\ReviewsList.jsx">
+        <metrics statements="31" coveredstatements="21" conditionals="10" coveredconditionals="4" methods="10" coveredmethods="5"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="13" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+        <line num="12" count="6" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="6" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="20" count="6" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="24" count="6" type="stmt"/>
+        <line num="25" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="35" count="6" type="stmt"/>
+        <line num="39" count="6" type="stmt"/>
+        <line num="40" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="41" count="6" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="46" count="6" type="stmt"/>
+        <line num="47" count="6" type="stmt"/>
+        <line num="48" count="6" type="stmt"/>
+        <line num="49" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="50" count="6" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="55" count="6" type="stmt"/>
+        <line num="89" count="2" type="stmt"/>
+      </file>
+      <file name="ReviewsListCard.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Reviews\ReviewsListCard.jsx">
+        <metrics statements="43" coveredstatements="2" conditionals="10" coveredconditionals="0" methods="9" coveredmethods="0"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="77" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="80" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
+        <line num="104" count="2" type="stmt"/>
+      </file>
+      <file name="ReviewsListCardPhotos.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Reviews\ReviewsListCardPhotos.jsx">
+        <metrics statements="9" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+      </file>
+      <file name="ReviewsSidebar.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Reviews\ReviewsSidebar.jsx">
+        <metrics statements="22" coveredstatements="13" conditionals="10" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="14" type="stmt"/>
+        <line num="8" count="7" type="stmt"/>
+        <line num="9" count="7" type="stmt"/>
+        <line num="10" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="11" count="7" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
+        <line num="19" count="7" type="stmt"/>
+        <line num="46" count="7" type="stmt"/>
+        <line num="47" count="7" type="stmt"/>
+        <line num="48" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="49" count="7" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="73" count="7" type="stmt"/>
+      </file>
+      <file name="StarRatings.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Reviews\StarRatings.jsx">
+        <metrics statements="23" coveredstatements="17" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="8" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
+        <line num="31" count="4" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="37" count="4" type="stmt"/>
+        <line num="38" count="20" type="stmt"/>
+        <line num="40" count="4" type="stmt"/>
+        <line num="43" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Reviews.AvgVisuals">
+      <metrics statements="14" coveredstatements="10" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <file name="StarChart.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Reviews\AvgVisuals\StarChart.jsx">
+        <metrics statements="14" coveredstatements="10" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="7" type="stmt"/>
+        <line num="11" count="7" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="20" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="21" count="7" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="97" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Similar">
+      <metrics statements="149" coveredstatements="122" conditionals="92" coveredconditionals="60" methods="71" coveredmethods="43"/>
+      <file name="Carousel.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Similar\Carousel.jsx">
+        <metrics statements="31" coveredstatements="26" conditionals="29" coveredconditionals="21" methods="15" coveredmethods="8"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="20" count="5" type="stmt"/>
+        <line num="26" count="5" type="cond" truecount="3" falsecount="1"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="30" count="5" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="38" count="5" type="stmt"/>
+        <line num="39" count="6" type="cond" truecount="5" falsecount="0"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="43" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="46" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="55" count="5" type="stmt"/>
+        <line num="56" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="57" count="4" type="cond" truecount="1" falsecount="3"/>
+        <line num="60" count="5" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="68" count="5" type="stmt"/>
+        <line num="86" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="88" count="6" type="stmt"/>
+        <line num="98" count="1" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="106" count="1" type="stmt"/>
+        <line num="110" count="0" type="stmt"/>
+        <line num="129" count="2" type="stmt"/>
+      </file>
+      <file name="Compare.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Similar\Compare.jsx">
+        <metrics statements="9" coveredstatements="9" conditionals="18" coveredconditionals="9" methods="6" coveredmethods="6"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="8" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="28" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="29" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+      </file>
+      <file name="Hover.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Similar\Hover.jsx">
+        <metrics statements="18" coveredstatements="15" conditionals="13" coveredconditionals="9" methods="9" coveredmethods="4"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="7" type="stmt"/>
+        <line num="7" count="7" type="stmt"/>
+        <line num="9" count="7" type="stmt"/>
+        <line num="10" count="7" type="stmt"/>
+        <line num="13" count="7" type="cond" truecount="5" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="5" type="stmt"/>
+        <line num="26" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="27" count="5" type="cond" truecount="1" falsecount="3"/>
+        <line num="30" count="5" type="stmt"/>
+        <line num="47" count="5" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="68" count="2" type="stmt"/>
+      </file>
+      <file name="Outfit.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Similar\Outfit.jsx">
+        <metrics statements="26" coveredstatements="22" conditionals="12" coveredconditionals="5" methods="16" coveredmethods="7"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="20" type="stmt"/>
+        <line num="9" count="20" type="stmt"/>
+        <line num="10" count="20" type="stmt"/>
+        <line num="12" count="20" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+        <line num="16" count="20" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="23" count="20" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="20" type="stmt"/>
+        <line num="30" count="20" type="stmt"/>
+        <line num="33" count="20" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="36" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="45" count="20" type="stmt"/>
+        <line num="46" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="47" count="2" type="cond" truecount="1" falsecount="3"/>
+        <line num="51" count="20" type="stmt"/>
+        <line num="72" count="2" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="112" count="2" type="stmt"/>
+      </file>
+      <file name="similar.jsx" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\components\Similar\similar.jsx">
+        <metrics statements="65" coveredstatements="50" conditionals="20" coveredconditionals="16" methods="25" coveredmethods="18"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="21" type="stmt"/>
+        <line num="17" count="13" type="stmt"/>
+        <line num="19" count="13" type="stmt"/>
+        <line num="20" count="13" type="stmt"/>
+        <line num="21" count="13" type="stmt"/>
+        <line num="22" count="13" type="stmt"/>
+        <line num="23" count="13" type="stmt"/>
+        <line num="24" count="13" type="stmt"/>
+        <line num="25" count="13" type="stmt"/>
+        <line num="27" count="13" type="stmt"/>
+        <line num="28" count="3" type="cond" truecount="3" falsecount="1"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="32" count="3" type="stmt"/>
+        <line num="33" count="6" type="stmt"/>
+        <line num="34" count="3" type="stmt"/>
+        <line num="36" count="6" type="stmt"/>
+        <line num="40" count="3" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="47" count="13" type="stmt"/>
+        <line num="48" count="3" type="cond" truecount="3" falsecount="1"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="52" count="3" type="stmt"/>
+        <line num="53" count="6" type="stmt"/>
+        <line num="54" count="3" type="stmt"/>
+        <line num="56" count="6" type="stmt"/>
+        <line num="60" count="3" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="67" count="13" type="stmt"/>
+        <line num="68" count="3" type="stmt"/>
+        <line num="69" count="3" type="stmt"/>
+        <line num="70" count="3" type="stmt"/>
+        <line num="72" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="76" count="3" type="stmt"/>
+        <line num="79" count="3" type="stmt"/>
+        <line num="80" count="3" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="87" count="13" type="stmt"/>
+        <line num="88" count="3" type="stmt"/>
+        <line num="90" count="3" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="97" count="13" type="stmt"/>
+        <line num="98" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="99" count="3" type="stmt"/>
+        <line num="100" count="3" type="stmt"/>
+        <line num="101" count="3" type="stmt"/>
+        <line num="105" count="13" type="stmt"/>
+        <line num="106" count="9" type="cond" truecount="4" falsecount="0"/>
+        <line num="107" count="1" type="stmt"/>
+        <line num="108" count="3" type="stmt"/>
+        <line num="109" count="2" type="stmt"/>
+        <line num="114" count="1" type="stmt"/>
+        <line num="118" count="13" type="stmt"/>
+        <line num="119" count="0" type="stmt"/>
+        <line num="122" count="13" type="stmt"/>
+        <line num="123" count="0" type="stmt"/>
+        <line num="124" count="0" type="stmt"/>
+        <line num="127" count="13" type="stmt"/>
+        <line num="128" count="0" type="stmt"/>
+        <line num="129" count="0" type="stmt"/>
+        <line num="134" count="13" type="stmt"/>
+      </file>
+    </package>
+    <package name="store">
+      <metrics statements="34" coveredstatements="31" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="8"/>
+      <file name="GallerySelectionSlice.js" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\store\GallerySelectionSlice.js">
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+      </file>
+      <file name="GallerySlice.js" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\store\GallerySlice.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+      </file>
+      <file name="OverviewSlice.js" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\store\OverviewSlice.js">
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+      </file>
+      <file name="PictureSlice.js" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\store\PictureSlice.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="23" count="5" type="stmt"/>
+      </file>
+      <file name="ProductSlice.js" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\store\ProductSlice.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="9" count="8" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+      </file>
+      <file name="QuestionsSlice.js" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\store\QuestionsSlice.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+      </file>
+      <file name="RelatedSlice.js" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\store\RelatedSlice.js">
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+      </file>
+      <file name="ReviewsMetaSlice.js" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\store\ReviewsMetaSlice.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+      </file>
+      <file name="ReviewsSlice.js" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\store\ReviewsSlice.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+      </file>
+      <file name="SearchSlice.js" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\store\SearchSlice.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+      </file>
+      <file name="Store.js" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\store\Store.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="15" count="5" type="stmt"/>
+      </file>
+      <file name="StylesSlice.js" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\store\StylesSlice.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="tests.Overview.TestData">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="dummyData.js" path="C:\Users\Aj\HackReactor\FEC-retry\fec2025\client\src\tests\Overview\TestData\dummyData.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

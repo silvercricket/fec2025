@@ -51,7 +51,8 @@ const MainDisplay = () => {
         height: "100%",
         width: "100%",
         objectFit: "contain",
-        float: 'left'
+        float: 'left',
+        transform:"scale(1)"
       });
 
     } else if(expanded === 1) {
@@ -75,19 +76,20 @@ const MainDisplay = () => {
        width: "100%",
        objectFit: "contain",
 
-       float: 'left'
+       float: 'left',
+       //transform:"scale(1)"
      });
     } else {
+
       toggleOpen();
 
     }
   },[expanded])
   useEffect(() => {
     if(moused) {
-
       const zoom = document.querySelector("#mainDisplayModal");
-
       if(zoom!==null){
+
         zoom.addEventListener("mousemove", (e) => {
           const container = document.querySelector("#mainDisplayExpandedContainer");
           const rect = container.getBoundingClientRect();
@@ -123,7 +125,6 @@ const MainDisplay = () => {
       <div style= {divStyle} id ='mainDisplayContainer'>
         <img  id='mainDisplay' data-testid="mainDisplay" src={PictureData.Picture}
         onClick={()=>{
-
           if(expanded>1){
             setExpanded(0);
           } else {
