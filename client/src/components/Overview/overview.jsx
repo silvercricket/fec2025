@@ -4,14 +4,13 @@ import React, {useState, useEffect}  from 'react';
 
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
-import {ProductActions} from '../../store/ProductSlice.js';
-import {OverviewActions} from '../../store/OverviewSlice.js';
+
 import {PictureActions} from '../../store/PictureSlice.js';
 import {GalleryActions} from '../../store/GallerySlice.js';
 import {StylesActions} from '../../store/StylesSlice.js';
 import MainDisplay from './overviewComponents/MainDisplay.jsx'
 import Share from './overviewComponents/Share.jsx'
-import Gallery from './overviewComponents/Gallery.jsx';
+
 import Styles from './overviewComponents/Styles.jsx';
 import ProductForm from './overviewComponents/ProductForm.jsx';
 import StarDisplay from './overviewComponents/StarDisplay.jsx';
@@ -28,7 +27,7 @@ const Overview = () => {
 
   const ReviewsData = useSelector(store => store.ReviewsData);
 
-  const PictureData = useSelector(store => store.PictureData);
+
   const GalleryData = useSelector(store => store.GalleryData);
   const [price, setPrice] = useState('');
   const [score, setScore] = useState(0);
@@ -77,6 +76,7 @@ const Overview = () => {
     }
   },[GalleryData]);
 
+  if(GalleryData===undefined){return null}
   return(
   <div id="overview" data-testid="overview"
       style={{
@@ -98,7 +98,7 @@ const Overview = () => {
 
     </div>
     <StarDisplay score={score} />
-    <button  onClick={()=>{document.getElementById("review-view").scrollIntoView();}}>Reviews </button>&nbsp;
+    <button  onClick={()=>{document.getElementsByClassName("review-container")[0].scrollIntoView();}}>Reviews </button>&nbsp;
     <h3>{Product.category}</h3>
     <h2>{Product.name}</h2>
     {/* <p>price: {price}</p> */}

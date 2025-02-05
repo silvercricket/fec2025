@@ -13,13 +13,13 @@ const config = {
   moduleNameMapper: {
     "\\.(css|jpg)$": "identity-obj-proxy",
   },
-  bail: 1,
-  //testEnvironment: 'jsdom',
+  bail: 100,
+  testEnvironment: 'jsdom',
   transform: {
     "\\.[jt]sx?$": "babel-jest",
     '^.+\\.css$': 'jest-transform-css'
   },
-  preset: "jest-puppeteer",
+  // preset: "jest-puppeteer",
   testTimeout: 60000,
 };
 
