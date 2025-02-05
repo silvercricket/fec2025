@@ -21,7 +21,6 @@ const App = ({logo}) => {
     axios.get(`${process.env.API_URL}/products/${product}`,{headers: {Authorization:process.env.AUTH_SECRET} })
       .then((result) => {
         dispatch(ProductActions.setProduct(result.data));
-
       })
       .catch((err) => {
         if (err.response.status === 429) {
