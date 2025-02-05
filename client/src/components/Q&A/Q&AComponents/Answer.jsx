@@ -50,7 +50,7 @@ const Answer = ({answer, setRefresh, isClicked}) => {
         <p id="answer-body" data-testid="answer-body">{answer.body}</p>
         {answer.photos.map(photo => <Photo key={photo} photo={photo}/>)}
         {answer.photos.length > 0 ? <br/> : null}
-        <small>by {answer.answerer_name}, {new Date(answer.date).toLocaleString(undefined, {year: 'numeric',  day: 'numeric', month: 'long'})} | Helpful?  <u data-testid="yes-answer" onClick={handleYes}>Yes</u> {'(' + answer.helpfulness + ')'} | <u data-testid="report" onClick={handleReport}>Report</u></small>
+        <small>by {answer.answerer_name}, {new Date(answer.date).toLocaleString(undefined, {year: 'numeric',  day: 'numeric', month: 'long'})} | Helpful?  <u className="helpButton" data-testid="yes-answer" onClick={handleYes}>Yes</u> {'(' + answer.helpfulness + ')'} | <u className="helpButton" data-testid="report" onClick={handleReport}>Report</u></small>
       </div>
     </>
   );

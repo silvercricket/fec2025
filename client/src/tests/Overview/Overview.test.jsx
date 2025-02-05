@@ -19,7 +19,8 @@ import ProductSlice from '../../store/ProductSlice.js';
 import GallerySlice from '../../store/GallerySlice.js';
 import StylesSlice from '../../store/StylesSlice.js';
 import PictureSlice from '../../store/PictureSlice.js';
-
+import OverviewSlice from '../../store/OverviewSlice.js';
+import GallerySelectionSlice from '../../store/GallerySelectionSlice.js';
 import {ProductActions} from '../../store/ProductSlice.js';
 
 import {PictureActions} from '../../store/PictureSlice.js';
