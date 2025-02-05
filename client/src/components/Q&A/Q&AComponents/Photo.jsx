@@ -11,9 +11,9 @@ const Photo = ({image}) => {
   const handleClose = () => setOpen(false);
   return (
     <>
-      <img data-testid="image" onClick={handleOpen} style={{height: '50px', width: 'auto'}} src="https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/23/2020/04/Common-Coqui1-web-sized.jpg" alt="coqui"></img>
+      <img data-testid="image" onClick={handleOpen} style={{height: '4em', width: 'auto'}} src="https://i.ibb.co/1YscJG4P/Common-Coqui1-web-sized-1.webp" alt="Coqui" border="0"/>
       <Modal isOpen={open} onClose={handleClose}>
-        <img data-testid="modal-image" style={{ maxWidth: '100%', maxHeight: '80vh', objectFit: 'contain'}} src="https://www.floridamuseum.ufl.edu/wp-content/uploads/sites/23/2020/04/Common-Coqui1-web-sized.jpg" alt="coqui"/>
+        <img data-testid="modal-image" style={{ maxWidth: '100%', maxHeight: 'auto', objectFit: 'contain'}} src="https://i.ibb.co/1YscJG4P/Common-Coqui1-web-sized-1.webp" alt="coqui"/>
       </Modal>
     </>
   );
