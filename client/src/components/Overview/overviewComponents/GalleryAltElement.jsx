@@ -1,14 +1,12 @@
 import React, {useState, useEffect}  from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {ProductActions} from '../../../store/ProductSlice.js';
 
-import {GalleryActions} from '../../../store/GallerySlice.js';
 import {PictureActions} from '../../../store/PictureSlice.js';
 
 import {GallerySelectionActions} from '../../../store/GallerySelectionSlice.js';
 
 import PropTypes from 'prop-types';
-const GalleryAltElement = ({image, index, setDisplayedIndex}) => {
+const GalleryAltElement = ({image, index}) => {
   const GalleryData = useSelector(store => store.GalleryData);
   const GallerySelection = useSelector(store => store.GallerySelection);
   const [picIndex,setPicIndex] = useState(index);
@@ -29,7 +27,7 @@ const GalleryAltElement = ({image, index, setDisplayedIndex}) => {
         <div data-testid="galleryAltPicture" className='galleryAltPicture'
         onClick={()=>{
 
-          setDisplayedIndex(index);
+
           dispatch(GallerySelectionActions.setGallerySelection(index));
           dispatch(PictureActions.setPicture(GalleryData.Gallery.photos[index].url));
 

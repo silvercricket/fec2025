@@ -2,6 +2,7 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+import PropTypes from 'prop-types';
 
 const StarChart = ({ ratings }) => {
 
@@ -92,5 +93,9 @@ const StarChart = ({ ratings }) => {
   height={100}
   options={options} />
 }
+
+StarChart.propTypes = {
+  ratings: PropTypes.object.isRequired,
+};
 
 export default StarChart;

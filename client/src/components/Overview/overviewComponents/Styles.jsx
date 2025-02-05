@@ -1,11 +1,11 @@
-import React, {useState, useEffect}  from 'react';
+import React, { useEffect}  from 'react';
 
-import {useDispatch, useSelector} from 'react-redux';
-import {ProductActions} from '../../../store/ProductSlice.js';
+import { useSelector} from 'react-redux';
+
 
 import StylesElement from './StylesElement.jsx';
 
-import {StylesActions} from '../../../store/StylesSlice.js';
+
 
 const Styles = () => {
   const StylesData = useSelector(store => store.StylesData);

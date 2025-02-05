@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
-import { ReviewsActions } from '../../store/ReviewsSlice.js';
+import {useSelector } from 'react-redux';
 import ReviewsListCard from './ReviewsListCard.jsx';
 import AddReviewModule from './AddReviewModule.jsx';
+import PropTypes from 'prop-types';
 
-const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
+const ReviewsList = ({ setCurrPage, currPage, setSort }) => {
   const ReviewsData = useSelector(store => store.ReviewsData);
   const [numOfReviewCards, setNumOfReviewCards] = useState(0);
   const [formRating, setFormRating] = useState(1);
@@ -60,9 +59,9 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
         <section>
           <label htmlFor="sort">Sorted on</label>
           <select onChange={handleSort} name="sort" id="sort">
-            <option value="Relevent">Relevent</option>
-            <option value="Helpful">Helpful</option>
-            <option value="Newest">Newest</option>
+            <option value="relevant">Relevant</option>
+            <option value="helpful">Helpful</option>
+            <option value="newest">Newest</option>
           </select>
         </section>
         page: {currPage}
@@ -85,6 +84,13 @@ const ReviewsList = ({ setCurrPage, currPage, setSort, sort }) => {
     </div>
 
   );
+};
+
+ReviewsList.propTypes = {
+  setCurrPage:PropTypes.func.isRequired,
+  currPage:PropTypes.number.isRequired,
+  setSort:PropTypes.func.isRequired,
+  sort:PropTypes.string.isRequired,
 };
 
 export default ReviewsList;

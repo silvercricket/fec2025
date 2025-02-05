@@ -1,18 +1,16 @@
 import React, {useState, useEffect}  from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {ProductActions} from '../../../store/ProductSlice.js';
 
-import {GalleryActions} from '../../../store/GallerySlice.js';
 import {PictureActions} from '../../../store/PictureSlice.js';
 
 import {GallerySelectionActions} from '../../../store/GallerySelectionSlice.js';
 
 import PropTypes from 'prop-types';
-const GalleryElement = ({image, index, target, setTarget}) => {
+const GalleryElement = ({image, index}) => {
   const GalleryData = useSelector(store => store.GalleryData);
   const GallerySelection = useSelector(store => store.GallerySelection);
   const dispatch = useDispatch();
-  const [highlight, setHighlight] =useState(null)
+
   const [style, setStyle] = useState({
     position:'relative',
     width: '22%',
