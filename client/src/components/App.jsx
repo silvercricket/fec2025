@@ -14,14 +14,13 @@ import swal from 'sweetalert';
 const App = ({logo}) => {
   const Product = useSelector(store => store.Product);
   const dispatch = useDispatch();
-
+  const [currPage, setCurrPage] = React.useState(1);
   var product = Product.id ||  40344;
 
   useEffect(() => {
     axios.get(`${process.env.API_URL}/products/${product}`,{headers: {Authorization:process.env.AUTH_SECRET} })
       .then((result) => {
         dispatch(ProductActions.setProduct(result.data));
-        console.log(JSON.stringify(result.data));
       })
       .catch((err) => {
         if (err.response.status === 429) {
@@ -30,6 +29,7 @@ const App = ({logo}) => {
           swal('Error!', 'Error while retrieving questions', 'error');
         }
       })
+    setCurrPage(1);
   },[Product.id])
 
   return(
@@ -41,7 +41,7 @@ const App = ({logo}) => {
     <Overview/>
     <Similar/>
     <QA/>
-    <Reviews />
+    <Reviews currPage={currPage} setCurrPage={setCurrPage} />
     </div>
   </div>
   );
