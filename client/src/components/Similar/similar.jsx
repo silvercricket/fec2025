@@ -9,6 +9,7 @@ import {ProductActions} from '../../store/ProductSlice.js';
 import Carousel from './Carousel.jsx';
 import Outfit from './Outfit.jsx';
 import Compare from './Compare.jsx';
+import swal from 'sweetalert';
 
 
 const Similar = () => {
@@ -26,7 +27,7 @@ const Similar = () => {
 
   const getStyles = (productIds) => {
     if (!productIds || productIds.length === 0) {
-      console.error('Product Id undefined in Similar Styles');
+      swal('Product Id undefined in Similar Styles');
       return;
     }
     const styleRequests = productIds.map((pid) =>
@@ -40,13 +41,13 @@ const Similar = () => {
         setStyles(allStyles);
       })
       .catch((err) => {
-        console.error('Styles GET failed', err);
+        swal('Styles GET failed', err);
       })
   };
 
   const getProducts = (productIds) => {
     if (!productIds || productIds.length === 0) {
-      console.error('Product Id undefined in Similar Products');
+      swal('Product Id undefined in Similar Products');
       return;
     }
     const productRequests = productIds.map((pid) =>
@@ -60,7 +61,7 @@ const Similar = () => {
         setProducts(allRelatedProducts);
       })
       .catch((err) => {
-        console.error('Styles GET failed', err);
+        swal('Styles GET failed', err);
       })
   }
 
@@ -70,7 +71,7 @@ const Similar = () => {
     setCombinedData([]);
 
     if (!Product.id) {
-      console.error('Product Id undefined in Similar Product');
+      swal('Product Id undefined in Similar Product');
       return;
     }
     axios.get(`${process.env.API_URL}/products/${Product.id}/related`, {headers: {Authorization: process.env.AUTH_SECRET}})
@@ -80,7 +81,7 @@ const Similar = () => {
       getProducts(response.data);
     })
     .catch((err) => {
-      console.error('Related GET failed', err);
+      swal('Related GET failed', err);
     })
    };
 
@@ -90,7 +91,7 @@ const Similar = () => {
         setCurrentStyle(response.data);
       })
       .catch((err) => {
-        console.error('current style GET error', err);
+        swal('current style GET error', err);
       })
     }
 
