@@ -9,6 +9,7 @@ import { faStar as faRegularStar } from '@fortawesome/free-regular-svg-icons';
 import { useSelector } from 'react-redux';
 import FileUpload from './FileUpload.jsx';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 
 const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) => {
   const Product = useSelector(store => store.Product);
@@ -96,11 +97,12 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
         characteristics: filteredProductChars,
     },
     { headers: { 'Authorization': process.env.AUTH_SECRET }})
-    .then((res) => {
-      console.log(res);
-    })
     .catch((err) => {
-      console.log(err);
+      if (err.response && err.response.status === 429) {
+        swal('Sorry!', 'Traffic is full please refresh your browser', 'warning');
+      } else {
+        swal('Error!', 'Error while retrieving questions', 'error');
+      }
     })
   }
   const handleMinText = () => {
@@ -411,6 +413,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
     return formFields;
   }
   return (
+    <div data-testid='addreviewmodule-view'>
     <Modal isOpen={modalIsOpen} onClose={closeModal}>
       <form action={() => handleSubmit()}>
       <h2>Please Rate:</h2>
@@ -420,6 +423,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
             const starIndex = index + 1;
             return (
               <button
+                data-testid={`starrating-view${index}`}
                 key={starIndex}
                 type="button"
                 onMouseOver={() => handleHover(starIndex)}
@@ -470,6 +474,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
       <button className='submit-review'type='submit' value='Submit Review'>Submit Review</button>
     </form>
     </Modal>
+    </div>
   );
 };
 
