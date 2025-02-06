@@ -5,4 +5,5 @@ package-lock.json
 prettyBad.pem
 coverage
 .next
+build
 next-env.d.js
