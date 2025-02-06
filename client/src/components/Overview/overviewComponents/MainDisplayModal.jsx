@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-const Modal = ({ isOpen, onClose, children }) => {
+const Modal = ({ isOpen, children }) => {
     if (!isOpen) return null;
 
     return (
@@ -43,7 +43,6 @@ const Modal = ({ isOpen, onClose, children }) => {
 
 Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
   children: PropTypes.any.isRequired
 };
 

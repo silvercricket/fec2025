@@ -11,6 +11,9 @@ const Question = ({question, setRefresh}) => {
   const [answers, setAnswers] = React.useState([]);
   const QuestionsData = useSelector(store => store.QuestionsData);
   React.useEffect(() => {
+    if(Object.keys(question.answers).length === 0) {
+      return;
+    }
     var answerArray = []
     for(var key in question.answers) {
       answerArray.push(question.answers[key]);
