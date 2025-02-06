@@ -12,7 +12,8 @@ module.exports = {
   entry: path.join(__dirname, "/client/src/index.jsx"),
   output: {
     path: path.join(__dirname, "/client/dist"),
-    filename: "bundle.js",
+    filename: '[name].[contenthash].js',
+    clean: true,
   },
   devtool: "source-map",
   module: {
@@ -36,8 +37,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'client/index.html',
-      title: "eastbluelegends"
+      template: path.join(__dirname, "/client/index.html"),
+      title: "eastbluelegends",
+      favicon: path.join(__dirname, "/client/src/east_blue_logo.jpg")
     }),
     new webpack.DefinePlugin({
       "process.env": {
