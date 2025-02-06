@@ -24,7 +24,7 @@ const Overview = ({overview}) => {
   const dispatch = useDispatch();
   const Product = useSelector(store => store.Product);
 
-  const ReviewsData = useSelector(store => store.ReviewsData);
+  const ReviewsData = useSelector(store => store.ReviewsMeta);
 
 
   const GalleryData = useSelector(store => store.GalleryData);
@@ -32,21 +32,27 @@ const Overview = ({overview}) => {
   const [score, setScore] = useState(0);
 
 
+<<<<<<< HEAD
   useEffect(() => {
     dispatch(GalleryActions.setGallery(overview.gallery));
     dispatch(PictureActions.setPicture(overview.picture));
     dispatch(StylesActions.setStyles(overview.styles));
     setPrice(overview.price);
   }, [])
+=======
+>>>>>>> 44b34641731e41a634ee1408249bb242a18bf168
 
   useEffect(() => {
+
     if(ReviewsData){
 
       var scoreTemp = 0;
-      for(var i = 0; i < ReviewsData.length;i++) {
-        scoreTemp+=ReviewsData[i].rating;
+      var reviewTotal = 0;
+      for(var stars in ReviewsData.ratings) {
+        scoreTemp += stars * ReviewsData.ratings[stars]
+        reviewTotal += Number(ReviewsData.ratings[stars]);
       }
-      scoreTemp/=ReviewsData.length;
+      scoreTemp/=reviewTotal;
       setScore(scoreTemp);
 
     }
