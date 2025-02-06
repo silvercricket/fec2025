@@ -7,6 +7,7 @@ import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faRegularStar } from '@fortawesome/free-regular-svg-icons';
 import ReviewsListCardPhotos from './ReviewsListCardPhotos.jsx';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 
 const ReviewsListCard = ({ review }) => {
   const [clickedHelp, setClickedHelp] = React.useState(false);
@@ -46,8 +47,15 @@ const ReviewsListCard = ({ review }) => {
       headers: {
       Authorization:process.env.NEXT_PUBLIC_AUTH_SECRET
       }
-    }
-  )}
+    })
+    .catch((err) => {
+      if (err.response && err.response.status === 429) {
+        swal('Sorry!', 'Traffic is full please refresh your browser', 'warning');
+      } else {
+        swal('Error!', 'Error while retrieving questions', 'error');
+      }
+    })
+  }
   const handleReport = () => {
     if (clickedReport) {
       return;
@@ -61,8 +69,15 @@ const ReviewsListCard = ({ review }) => {
       headers: {
       Authorization:process.env.NEXT_PUBLIC_AUTH_SECRET
       }
-    }
-  )}
+    })
+    .catch((err) => {
+      if (err.response && err.response.status === 429) {
+        swal('Sorry!', 'Traffic is full please refresh your browser', 'warning');
+      } else {
+        swal('Error!', 'Error while retrieving questions', 'error');
+      }
+    })
+}
   const handleTime = () => {
     const dateString = review.date;
     const date = new Date(dateString);
@@ -79,7 +94,6 @@ const ReviewsListCard = ({ review }) => {
     }
     return (review.photos.slice(0, currPhotos).map((photo, index) => { return <ReviewsListCardPhotos key={photo.id || index} photo={photo}/>}))
   }
-  console.log(review);
   return (
   <div data-testid='reviewslistcard-view' className="review-card">
     <h3 className="review-rating">Stars: {handleRating(review.rating)}</h3>

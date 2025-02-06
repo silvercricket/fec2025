@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import '../public/index.css';
 const RootLayout = ({ children }) => {
   return (
     <html>

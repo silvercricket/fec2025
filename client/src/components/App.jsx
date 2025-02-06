@@ -14,7 +14,7 @@ const swal = lazy(() => import('sweetalert'));
 const App = ({logo}) => {
   const Product = useSelector(store => store.Product);
   const dispatch = useDispatch();
-
+  const [currPage, setCurrPage] = React.useState(1);
   var product = Product.id ||  40344;
 
   useEffect(() => {
@@ -29,6 +29,7 @@ const App = ({logo}) => {
           swal('Error!', 'Error while retrieving questions', 'error');
         }
       })
+    setCurrPage(1);
   },[Product.id])
 
   return(
@@ -40,7 +41,7 @@ const App = ({logo}) => {
     <Overview/>
     <Similar/>
     <QA/>
-    <Reviews />
+    <Reviews currPage={currPage} setCurrPage={setCurrPage} />
     </div>
   </div>
   );

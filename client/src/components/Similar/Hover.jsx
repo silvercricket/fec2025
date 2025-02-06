@@ -46,6 +46,7 @@ const Hover = ({ currentStyle, setMainImg }) => {
               {currentStyle.results[0].photos.length > 0 && currentStyle.results[0].photos.map((photo, i) => (
                   <div key={i}
                   className="hover-card"
+                  data-testid="hover-image"
                   onClick={() => setMainImg(cleanUrl(photo))}
                   style={{
                     flex: `0 0 ${100 / slidesToShow}%`,

@@ -86,7 +86,7 @@ const ProductForm = () => {
             }
           }
           var tempQuantity;
-          if(index>-1){
+          if(index<0){
             tempQuantity = 0;
           } else {
             tempQuantity = sizes[index].quantity;

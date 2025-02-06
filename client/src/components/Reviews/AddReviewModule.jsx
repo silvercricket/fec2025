@@ -9,6 +9,7 @@ import { faStar as faRegularStar } from '@fortawesome/free-regular-svg-icons';
 import { useSelector } from 'react-redux';
 import FileUpload from './FileUpload.jsx';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 
 const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) => {
   const Product = useSelector(store => store.Product);
@@ -96,11 +97,14 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
         characteristics: filteredProductChars,
     },
     { headers: { 'Authorization': process.env.NEXT_PUBLIC_AUTH_SECRET }})
-    .then((res) => {
-      console.log(res);
+    .then(() => {
     })
     .catch((err) => {
-      console.log(err);
+      if (err.response && err.response.status === 429) {
+        swal('Sorry!', 'Traffic is full please refresh your browser', 'warning');
+      } else {
+        swal('Error!', 'Error while retrieving questions', 'error');
+      }
     })
   }
   const handleMinText = () => {

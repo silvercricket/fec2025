@@ -7,10 +7,12 @@ import ReviewsSidebar from './ReviewsSidebar.jsx'
 import {ReviewsActions} from '../../store/ReviewsSlice.js';
 import ReviewsList from './ReviewsList.jsx';
 import {ReviewsMetaActions} from '../../store/ReviewsMetaSlice.js';
+import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 
-const Reviews = () => {
+const Reviews = ({ currPage, setCurrPage }) => {
   const Product = useSelector(store => store.Product);
-  const [currPage, setCurrPage] = React.useState(1);
+
   const [sort, setSort] = React.useState("relevant");
   const dispatch = useDispatch();
 
@@ -27,8 +29,12 @@ const Reviews = () => {
       .then((response)=>{
         dispatch(ReviewsActions.setReviews(response.data.results));
       })
-      .catch(()=> {
-        console.error('No reviews for current product');
+      .catch((err) => {
+        if (err.response && err.response.status === 429) {
+          swal('Sorry!', 'Traffic is full please refresh your browser', 'warning');
+        } else {
+          swal('Error!', 'Error while retrieving questions', 'error');
+        }
       })
 
       axios.get(process.env.NEXT_PUBLIC_API_URL + `/reviews/meta`,{params: {
@@ -37,8 +43,12 @@ const Reviews = () => {
       .then((response)=>{
         dispatch(ReviewsMetaActions.setReviewsMeta(response.data));
       })
-      .catch(()=> {
-        console.error('No review meta data for current product');
+      .catch((err) => {
+        if (err.response && err.response.status === 429) {
+          swal('Sorry!', 'Traffic is full please refresh your browser', 'warning');
+        } else {
+          swal('Error!', 'Error while retrieving questions', 'error');
+        }
       })
     }
 
@@ -56,6 +66,10 @@ const Reviews = () => {
   )
 }
 
+Reviews.propTypes = {
+  currPage: PropTypes.number.isRequired,
+  setCurrPage: PropTypes.func.isRequired,
+};
 
 
 export default Reviews;
