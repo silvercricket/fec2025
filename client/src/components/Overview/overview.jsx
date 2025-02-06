@@ -32,15 +32,12 @@ const Overview = ({overview}) => {
   const [score, setScore] = useState(0);
 
 
-<<<<<<< HEAD
   useEffect(() => {
     dispatch(GalleryActions.setGallery(overview.gallery));
     dispatch(PictureActions.setPicture(overview.picture));
     dispatch(StylesActions.setStyles(overview.styles));
     setPrice(overview.price);
   }, [])
-=======
->>>>>>> 44b34641731e41a634ee1408249bb242a18bf168
 
   useEffect(() => {
 
