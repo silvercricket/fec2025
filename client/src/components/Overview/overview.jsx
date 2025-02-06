@@ -25,7 +25,7 @@ const Overview = () => {
   const dispatch = useDispatch();
   const Product = useSelector(store => store.Product);
 
-  const ReviewsData = useSelector(store => store.ReviewsMeta.ratings);
+  const ReviewsData = useSelector(store => store.ReviewsMeta);
 
 
   const GalleryData = useSelector(store => store.GalleryData);
@@ -40,9 +40,9 @@ const Overview = () => {
 
       var scoreTemp = 0;
       var reviewTotal = 0;
-      for(var stars in ReviewsData) {
-        scoreTemp += stars * ReviewsData[stars]
-        reviewTotal += Number(ReviewsData[stars]);
+      for(var stars in ReviewsData.ratings) {
+        scoreTemp += stars * ReviewsData.ratings[stars]
+        reviewTotal += Number(ReviewsData.ratings[stars]);
       }
       scoreTemp/=reviewTotal;
       setScore(scoreTemp);
