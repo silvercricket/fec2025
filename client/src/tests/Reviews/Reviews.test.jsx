@@ -63,7 +63,7 @@ describe('Review\'s Components', () => {
 
     const mockReviewsData = {
       "product": "2",
-      "page": 0,
+      "page": 1,
       "count": 5,
       "results": [
         {
@@ -129,10 +129,8 @@ describe('Review\'s Components', () => {
 
     await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(2));
 
-    await waitFor(() => expect(axios.get).toHaveBeenCalledWith(process.env.API_URL + `/reviews/`,{params: {
-      "page": 1,
+    await waitFor(() => expect(axios.get).toHaveBeenCalledWith(process.env.API_URL + `/reviews/meta`,{params: {
       "product_id": 40344,
-      "sort": "relevant",
     },
     headers: {
       Authorization:process.env.AUTH_SECRET
