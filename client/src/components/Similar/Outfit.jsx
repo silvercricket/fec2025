@@ -75,6 +75,7 @@ const Outfit = ({ currentProduct, currentStyle, handleCardClick }) => {
                     >
                       <button
                         className="close-button"
+                        data-testid="close-button"
                         onClick={(e) => {
                           e.stopPropagation();
                           handleRemove(product.id);
@@ -82,11 +83,15 @@ const Outfit = ({ currentProduct, currentStyle, handleCardClick }) => {
                       <img
                         src={cleanUrl(product)}
                         className="carousel-card-image"
+                        data-testid="oufit-card-image"
                         onClick={() => handleCardClick(product)}/>
                       <div className="card-content">
                         <h6>{product.category}</h6>
                         <h3>{product.name}</h3>
-                        <h3 className="card-price">{displayPrice(product)}</h3>
+                        <h3
+                          className="card-price"
+                          data-testid="price">
+                            {displayPrice(product)}</h3>
                         <h5 className="card-star-rating"><StarRatings /></h5>
                       </div>
                   </div>
@@ -96,6 +101,7 @@ const Outfit = ({ currentProduct, currentStyle, handleCardClick }) => {
               <div>
                 <button
                   className="carousel-button prev"
+                  data-testid="prev-button"
                   onClick={handlePrev}
                   disabled={index === 0}>←</button>
                 <button

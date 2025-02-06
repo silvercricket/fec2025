@@ -94,6 +94,8 @@ const Overview = () => {
 
     }}>
     <div id='display' style={{height: "80%", width: "40%", float: "left",}}>
+    <MainDisplay  />
+    <Share />
     </div>
 
     {/* <p>price: {price}</p> */}
