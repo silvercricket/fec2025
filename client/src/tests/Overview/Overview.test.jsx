@@ -166,7 +166,6 @@ describe('Overview',()=>{
     await waitFor(()=>{
       fireEvent.click(downButton);
 
-      //Apple.getByTestId("mainDisplay").click();
 
     })
 
@@ -175,23 +174,10 @@ describe('Overview',()=>{
     await waitFor(()=>{
       fireEvent.click(upButton);
 
-      //Apple.getByTestId("mainDisplay").click();
 
     })
     expect(Apple.queryByTestId("galleryPicture0")).toBeDefined();
-    // var GalleryPic2 = Apple.getByTestId("galleryPicture1").src;
 
-    // console.log(GalleryPic1);
-    // console.log(GalleryPic2);
-    // expect(GalleryPic1 !== GalleryPic2).toBeTruthy();
-
-    // await waitFor(()=>{
-    //   fireEvent.click(upButton);
-    //   //Apple.getByTestId("mainDisplay").click();
-
-    // })
-    // GalleryPic2 = Apple.getByTestId("galleryPicture1").src;
-    // expect(GalleryPic1 === GalleryPic2).toBeTruthy();
   });
 
   it('Should zoom in on mainDisplayModal when double clicked and shift between gallery Alt elements', async () => {//to realistically run the majority of these tests, a mock API request seems to be the only way...

@@ -5,9 +5,7 @@ import PropTypes from 'prop-types';
 const FileUpload = ({ files, setFiles }) => {
   const handleFileChange = async (event) => {
     const selectedFiles = Array.from(event.target.files);
-
     const validImages = selectedFiles.filter(file => file.type.startsWith('image/'));
-    console.log(validImages, selectedFiles);
     if (validImages.length !== selectedFiles.length) {
       return window.alert('Only image files are allowed.');
     } else {
@@ -25,7 +23,6 @@ const FileUpload = ({ files, setFiles }) => {
   const handleRemoveFile = (fileName) => {
     setFiles(files.filter(file => file.file.name !== fileName));
   };
-  console.log('files:', files);
   return (
     <div data-testid='fileupload-view'>
       <input

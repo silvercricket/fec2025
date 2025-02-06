@@ -2,6 +2,17 @@
 node_modules
 coverage
 client/dist/
+client/dist/
+client/dist//
+client/dist/bundle.js
+client/dist/bundle.js.map
+client/dist/bundle.js.LICENSE.txt
+[0-9][0-9][0-9].bundle.js
+[0-9][0-9][0-9].bundle.js.map
+[0-9][0-9][0-9].bundle.js.LICENSE.txt
+[0-9][0-9].bundle.js
+[0-9][0-9].bundle.js.map
+[0-9][0-9].bundle.js.LICENSE.txt
 package-lock.json
 prettyBad.pem
 coverage

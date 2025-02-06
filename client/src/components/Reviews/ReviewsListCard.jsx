@@ -94,7 +94,6 @@ const ReviewsListCard = ({ review }) => {
     }
     return (review.photos.slice(0, currPhotos).map((photo, index) => { return <ReviewsListCardPhotos key={photo.id || index} photo={photo}/>}))
   }
-  console.log(review);
   return (
   <div data-testid='reviewslistcard-view' className="review-card">
     <h3 className="review-rating">Stars: {handleRating(review.rating)}</h3>
