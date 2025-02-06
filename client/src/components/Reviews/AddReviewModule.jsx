@@ -411,6 +411,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
     return formFields;
   }
   return (
+    <div data-testid='addreviewmodule-view'>
     <Modal isOpen={modalIsOpen} onClose={closeModal}>
       <form action={() => handleSubmit()}>
       <h2>Please Rate:</h2>
@@ -420,6 +421,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
             const starIndex = index + 1;
             return (
               <button
+                data-testid={`starrating-view${index}`}
                 key={starIndex}
                 type="button"
                 onMouseOver={() => handleHover(starIndex)}
@@ -470,6 +472,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
       <button className='submit-review'type='submit' value='Submit Review'>Submit Review</button>
     </form>
     </Modal>
+    </div>
   );
 };
 
