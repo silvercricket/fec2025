@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "jest test --collectCoverage --setupFiles dotenv/config",
-    "jest": "jest test --setupFiles dotenv/config",
+    "test": "jest test --collectCoverage",
+    "jest": "jest test",
     "dev": "next dev",
     "build": "next build",
     "start": "npx serve@latest ./build"
