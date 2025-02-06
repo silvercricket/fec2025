@@ -37,6 +37,7 @@ const SearchQuestions = () => {
     setInput(event.target.value)
   };
   const handleReset = () => {
+    setInput('');
     dispatch(SearchActions.setSearch(false));
     if (unfiltered.length === 0) {
       return;

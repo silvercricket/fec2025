@@ -11,7 +11,7 @@ const Photo = ({image}) => {
   const handleClose = () => setOpen(false);
   return (
     <>
-      <img data-testid="image" onClick={handleOpen} style={{height: '4em', width: 'auto'}} src="https://i.ibb.co/1YscJG4P/Common-Coqui1-web-sized-1.webp" alt="Coqui" border="0"/>
+      <img data-testid="image" onClick={handleOpen} style={{height: '4em', width: '6em'}} src="https://i.ibb.co/1YscJG4P/Common-Coqui1-web-sized-1.webp" alt="Coqui" border="0"/>
       <Modal isOpen={open} onClose={handleClose}>
         <img data-testid="modal-image" style={{ maxWidth: '100%', maxHeight: 'auto', objectFit: 'contain'}} src="https://i.ibb.co/1YscJG4P/Common-Coqui1-web-sized-1.webp" alt="coqui"/>
       </Modal>

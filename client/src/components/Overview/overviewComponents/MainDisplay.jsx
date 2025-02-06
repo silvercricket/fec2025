@@ -158,7 +158,7 @@ const MainDisplay = () => {
   }
   return(
     <div style= {divStyle} id ='mainDisplayContainer'>
-      <Modal isOpen={open} onClose={()=>{toggleOpen();setMoused(false)}}>
+      <Modal isOpen={open}>
         <img
         id='mainDisplayModal'
         style={style}

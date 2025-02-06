@@ -37,7 +37,7 @@ const Modal = ({ isOpen, onClose, children }) => {
                 <div style={{ maxWidth: "100%", maxHeight: "80vh", overflow: "hidden" }}>
                     {children}
                 </div>
-                <button onClick={onClose}>Close</button>
+                <button data-testid="photo-modal" onClick={onClose}>Close</button>
             </div>
         </div>
     );

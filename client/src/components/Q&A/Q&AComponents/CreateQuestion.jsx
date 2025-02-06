@@ -52,8 +52,7 @@ const CreateQuestion = ({questions, setQuestions, setRefresh}) => {
   };
   return (
   <div data-testid="create-question">
-    {questions.length > 4 && !clicked ? <h3 className="question-button" onClick={handleQuestions}>MORE ANSWERED QUESTIONS</h3> : (clicked ? <h3 className="question-button" onClick={handleCollapse}>Collapse Questions</h3> : null)}
-
+    {questions && questions.length > 4 && !clicked ? <h3 data-testid="load-questions" className="question-button" onClick={handleQuestions}>MORE ANSWERED QUESTIONS</h3> : (clicked ? <h3 data-testid="collapse-questions" className="question-button" onClick={handleCollapse}>COLLAPSE QUESTIONS</h3> : null)}
     <h3 data-testid="open-question" className="question-button" onClick={handleOpen}>ADD A QUESTION ➕</h3>
     <Modal isOpen={open} onClose={handleClose}>
       <>

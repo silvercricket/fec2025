@@ -6,6 +6,7 @@ const Modal = ({ isOpen, onClose, children }) => {
 
     return (
         <div
+            data-testid='reviewmodal-view'
             className="reviewAdd-container"
             style={{
                 fontFamily: 'Arial, sans-serif',
@@ -37,7 +38,7 @@ const Modal = ({ isOpen, onClose, children }) => {
                 }}
             >
                 {children}
-                <button className='modal-close' onClick={onClose}>Cancel Review</button>
+                <button data-testid='modal-close' className='modal-close' onClick={onClose}>Cancel Review</button>
             </div>
         </div>
     );

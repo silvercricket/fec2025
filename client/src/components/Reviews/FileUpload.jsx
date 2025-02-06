@@ -3,34 +3,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FileUpload = ({ files, setFiles }) => {
-
   const handleFileChange = async (event) => {
     const selectedFiles = Array.from(event.target.files);
 
     const validImages = selectedFiles.filter(file => file.type.startsWith('image/'));
-
+    console.log(validImages, selectedFiles);
     if (validImages.length !== selectedFiles.length) {
-      alert('Only image files are allowed.');
-      return;
-    }
-
-    for (let file of validImages) {
-      const imageUrl = URL.createObjectURL(file);
-      if (imageUrl) {
-        setFiles(prevFiles => [
-          ...prevFiles,
-          { file, thumbnail: imageUrl }
-        ]);
+      return window.alert('Only image files are allowed.');
+    } else {
+      for (let file of validImages) {
+        const imageUrl = URL.createObjectURL(file);
+        if (imageUrl) {
+          setFiles(prevFiles => [
+            ...prevFiles,
+            { file, thumbnail: imageUrl }
+          ]);
+        }
       }
     }
   };
   const handleRemoveFile = (fileName) => {
     setFiles(files.filter(file => file.file.name !== fileName));
   };
-
+  console.log('files:', files);
   return (
-    <div>
+    <div data-testid='fileupload-view'>
       <input
+        data-testid="fileupload-input"
         type="file"
         accept="image/*"
         multiple
@@ -50,7 +49,7 @@ const FileUpload = ({ files, setFiles }) => {
                 style={{ width: '100px', height: '100px', objectFit: 'cover' }}
               />
               <div>
-                <button onClick={() => handleRemoveFile(file.name)}>Remove</button>
+                <button data-testid='removefile-button' onClick={() => handleRemoveFile(file.name)}>Remove</button>
               </div>
             </div>
           ))}
