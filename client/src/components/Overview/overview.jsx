@@ -1,4 +1,4 @@
-import React, {useState, useEffect}  from 'react';
+import React, {useState, lazy, Suspense, useEffect}  from 'react';
 /*global process*/
 /*eslint no-undef: "error"*/
 
@@ -8,7 +8,7 @@ import axios from 'axios';
 import {PictureActions} from '../../store/PictureSlice.js';
 import {GalleryActions} from '../../store/GallerySlice.js';
 import {StylesActions} from '../../store/StylesSlice.js';
-import MainDisplay from './overviewComponents/MainDisplay.jsx'
+const MainDisplay = lazy(() => import('./overviewComponents/MainDisplay.jsx'));
 import Share from './overviewComponents/Share.jsx'
 
 import Styles from './overviewComponents/Styles.jsx';
@@ -77,7 +77,36 @@ const Overview = () => {
     }
   },[GalleryData]);
 
-  if(GalleryData===undefined){return null}
+  if(GalleryData.Gallery.length === 0){
+    return (  <div id="overview" data-testid="overview"
+      style={{
+        // background: "linear-gradient(rgb(27, 100, 60), rgb(25, 77, 146))",
+        height: 800,
+        width: "100%",
+        margin: "auto",
+        padding: "2%",
+        // border: "2px solid #000",
+        borderRadius: "10px",
+        // boxShadow: "2px solid black",
+        float: "left",
+
+
+
+    }}>
+    <div id='display' style={{height: "80%", width: "40%", float: "left",}}>
+    </div>
+
+    {/* <p>price: {price}</p> */}
+
+
+    <div className="clearfix"></div>
+
+
+
+
+  </div>);
+  }
+
   return(
   <div id="overview" data-testid="overview"
       style={{
@@ -95,8 +124,9 @@ const Overview = () => {
 
     }}>
     <div id='display' style={{height: "80%", width: "40%", float: "left",}}>
+    <Suspense fallback={<div> it do be loadin </div>}>
       <MainDisplay  />
-
+    </Suspense>
     </div>
     <StarDisplay score={score} />
     <button  onClick={()=>{document.getElementsByClassName("review-container")[0].scrollIntoView();}}>Reviews </button>&nbsp;
