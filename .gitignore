@@ -4,3 +4,5 @@ client/dist
 package-lock.json
 prettyBad.pem
 coverage
+.next
+next-env.d.js

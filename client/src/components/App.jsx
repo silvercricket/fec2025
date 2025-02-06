@@ -18,7 +18,7 @@ const App = ({logo}) => {
   var product = Product.id ||  40344;
 
   useEffect(() => {
-    axios.get(`${process.env.API_URL}/products/${product}`,{headers: {Authorization:process.env.AUTH_SECRET} })
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products/${product}`,{headers: {Authorization:process.env.NEXT_PUBLIC_AUTH_SECRET} })
       .then((result) => {
         dispatch(ProductActions.setProduct(result.data));
       })

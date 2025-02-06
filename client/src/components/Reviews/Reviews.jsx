@@ -16,13 +16,13 @@ const Reviews = () => {
 
   useEffect(() => {
     if (Product.id) {
-      axios.get(process.env.API_URL + `/reviews/`,{params: {
+      axios.get(process.env.NEXT_PUBLIC_API_URL + `/reviews/`,{params: {
         product_id: Product.id,
         page: currPage,
         sort: sort,
       },
       headers: {
-        Authorization:process.env.AUTH_SECRET
+        Authorization:process.env.NEXT_PUBLIC_AUTH_SECRET
       } })
       .then((response)=>{
         dispatch(ReviewsActions.setReviews(response.data.results));
@@ -31,9 +31,9 @@ const Reviews = () => {
         console.error('No reviews for current product');
       })
 
-      axios.get(process.env.API_URL + `/reviews/meta`,{params: {
+      axios.get(process.env.NEXT_PUBLIC_API_URL + `/reviews/meta`,{params: {
         product_id: Product.id,
-      }, headers: {Authorization:process.env.AUTH_SECRET} })
+      }, headers: {Authorization:process.env.NEXT_PUBLIC_AUTH_SECRET} })
       .then((response)=>{
         dispatch(ReviewsMetaActions.setReviewsMeta(response.data));
       })
