@@ -11,7 +11,7 @@ const ModalComponent = ({url, handleSize}) => {
   }
 
   return (
-  <div >
+  <div data-testid='photomodule-view' >
     <Modal
       isOpen={modalIsOpen}
       onClose={closeModal}

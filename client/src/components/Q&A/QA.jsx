@@ -2,7 +2,6 @@
 /*eslint no-undef: "error"*/
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {useEffect} from  'react';
 import axios from 'axios';
 import {QuestionsActions} from '../../store/QuestionsSlice.js';
 import Questions from './Q&AComponents/Questions.jsx';
@@ -16,7 +15,7 @@ const QA = () => {
   const Product = useSelector(store => store.Product);
   const [questions, setQuestions] = React.useState([])
   const dispatch = useDispatch();
-  useEffect(() => {
+  React.useEffect(() => {
     if (Product.id) {
       axios.get(process.env.API_URL + `/qa/questions?count=2147483647&product_id=${Product.id}`,{headers: {Authorization:process.env.AUTH_SECRET} })
         .then((result)=>{

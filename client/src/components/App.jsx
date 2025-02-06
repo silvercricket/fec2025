@@ -1,27 +1,26 @@
 /*global process*/
 /*eslint no-undef: "error"*/
-import React, { useEffect }  from 'react';
+import React, { lazy, useEffect }  from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import Overview from './Overview/overview.jsx';
-import QA from './Q&A/QA.jsx';
-import Reviews from './Reviews/Reviews.jsx';
-import Similar from './Similar/similar.jsx';
 import {ProductActions} from '../store/ProductSlice.js';
 import PropTypes from 'prop-types';
-import swal from 'sweetalert';
+const QA = lazy(() => import('./Q&A/QA.jsx'));
+const Reviews = lazy(() => import('./Reviews/Reviews.jsx'));
+const Similar = lazy(() => import('./Similar/similar.jsx'));
+const swal = lazy(() => import('sweetalert'));
 
 const App = ({logo}) => {
   const Product = useSelector(store => store.Product);
   const dispatch = useDispatch();
-
+  const [currPage, setCurrPage] = React.useState(1);
   var product = Product.id ||  40344;
 
   useEffect(() => {
     axios.get(`${process.env.API_URL}/products/${product}`,{headers: {Authorization:process.env.AUTH_SECRET} })
       .then((result) => {
         dispatch(ProductActions.setProduct(result.data));
-
       })
       .catch((err) => {
         if (err.response.status === 429) {
@@ -30,6 +29,7 @@ const App = ({logo}) => {
           swal('Error!', 'Error while retrieving questions', 'error');
         }
       })
+    setCurrPage(1);
   },[Product.id])
 
   return(
@@ -41,7 +41,7 @@ const App = ({logo}) => {
     <Overview/>
     <Similar/>
     <QA/>
-    <Reviews />
+    <Reviews currPage={currPage} setCurrPage={setCurrPage} />
     </div>
   </div>
   );

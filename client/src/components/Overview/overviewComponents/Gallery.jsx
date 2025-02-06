@@ -1,23 +1,15 @@
 import React, {useState, useEffect}  from 'react';
 
-import {useDispatch, useSelector} from 'react-redux';
-import {ProductActions} from '../../../store/ProductSlice.js';
+import {useSelector} from 'react-redux';
 
 import GalleryElement from './GalleryElement.jsx';
-
-import {GalleryActions} from '../../../store/GallerySlice.js';
-
-
 
 const Gallery = () => {
   const GalleryData = useSelector(store => store.GalleryData);
   const [GallerySelection, GallerySelectionSet] = useState(0);
   const [arrows, activateArrows] = useState([null,null]);
   const [displayedIndex, setDisplayedIndex] = useState(0);
-  const [checkmark, checkmarkSet] = useState(null);
   const maxLength = 5
-
-
 
   useEffect(() => {
     if(GalleryData.Gallery.photos !== undefined){
@@ -26,7 +18,7 @@ const Gallery = () => {
       }
       if(GalleryData.Gallery.photos.length > maxLength){
         activateArrows([
-          <button type="button" key="GalleryUpArrow" onClick={()=>{
+          <button type="button" key="GalleryUpArrow" data-testid="GalleryUpArrow" onClick={()=>{
 
             if(GallerySelection>0){
 
@@ -35,8 +27,10 @@ const Gallery = () => {
           }}>
             &uarr;
           </button>,
-          <button type="button" key="GalleryDownArrow" onClick={()=>{
+          <button type="button" key="GalleryDownArrow" data-testid="GalleryDownArrow" onClick={()=>{
+
             if(GallerySelection<(GalleryData.Gallery.photos.length - maxLength)){
+
               GallerySelectionSet(GallerySelection + 1);
             }
           }}>
@@ -46,9 +40,6 @@ const Gallery = () => {
       }
     }
   },[GalleryData, GallerySelection]);
-
-
-
 
   if(GalleryData.Gallery.photos !== undefined){
 

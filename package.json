@@ -7,6 +7,7 @@
     "server-dev": "npx nodemon --watch server server.js",
     "client-dev": "npx webpack --watch",
     "test": "jest test --collectCoverage --setupFiles dotenv/config",
+    "jest": "jest test --setupFiles dotenv/config",
     "dev": "concurrently \"npm run server-dev\" \"npm run client-dev\""
   },
   "dependencies": {

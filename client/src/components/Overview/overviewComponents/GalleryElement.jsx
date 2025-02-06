@@ -37,10 +37,10 @@ const GalleryElement = ({image, index}) => {
    },[GallerySelection])
 
   if(typeof image === 'string' && typeof index === 'number' ){
-
+    const testId= 'galleryPicture' + index;
     return(
       <div>
-        <img data-testid="galleryPicture" className='galleryPicture' style={style} onClick={()=>{
+        <img data-testid={testId} className='galleryPicture' style={style} onClick={()=>{
 
           dispatch(PictureActions.setPicture(GalleryData.Gallery.photos[index].url));
           dispatch(GallerySelectionActions.setGallerySelection(index));
