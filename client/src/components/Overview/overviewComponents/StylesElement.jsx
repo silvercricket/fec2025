@@ -18,7 +18,7 @@ const StylesElement = ({style, index}) => {
   })
   const dispatch = useDispatch();
    useEffect(() => {
-    console.log(GalleryData);
+
     if(GalleryData.Gallery){
     if(GalleryData.Gallery.style_id===style.style_id){
       setBackground({

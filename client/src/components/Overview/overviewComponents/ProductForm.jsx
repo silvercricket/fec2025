@@ -106,7 +106,7 @@ const ProductForm = () => {
             setQuantity(1);
             setInStock(true);
           } else{
-            console.log('out of stock yo');
+
             setInStock(false);
 
             //setSizes(['OUT OF STOCK']);

@@ -66,9 +66,9 @@ const Overview = () => {
   },[Product]);
 
   useEffect(() => {
-    console.log('style change');
+
     setPrice('$' + Product.default_price);
-    console.log(GalleryData.Gallery);
+
     if(GalleryData.Gallery.sale_price){
       setPrice(
       <p style={{color:'red'}}><s>{Product.default_price}</s>&nbsp;
