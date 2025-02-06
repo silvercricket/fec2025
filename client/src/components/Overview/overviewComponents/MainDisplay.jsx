@@ -119,6 +119,25 @@ const MainDisplay = () => {
 
 
 
+
+  if(!open && !PictureData.Picture) {
+    return(
+
+      <div style= {divStyle} id ='mainDisplayContainer'>
+        <img  id='mainDisplay' data-testid="mainDisplay" src='https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png'
+        onClick={()=>{
+          if(expanded>1){
+            setExpanded(0);
+          } else {
+            setExpanded(expanded + 1);
+          }
+        }}
+        style={style}
+        />
+        {gallery}
+      </div>
+    );
+  }
   if(!open && PictureData) {
     return(
 
