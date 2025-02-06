@@ -4,7 +4,6 @@ import React from 'react';
 import {render, fireEvent, waitFor, act} from '@testing-library/react';
 import QA from '../../components/Q&A/QA.jsx';
 import Question from '../../components/Q&A/Q&AComponents/Question.jsx';
-import App from '../../components/App.jsx';
 import '@testing-library/jest-dom';
 import '../../dist/output.css';
 import STORE from '../../store/Store.js';
@@ -486,7 +485,6 @@ describe('Q&A',()=>{
       expect(modal.src).toEqual('https://i.ibb.co/1YscJG4P/Common-Coqui1-web-sized-1.webp');
       const modalClose = answers.getByTestId('photo-modal');
       fireEvent.click(modalClose);
-      answers.debug();
       expect(answers.queryByTestId('modal-image')).toEqual(null);
     })
 

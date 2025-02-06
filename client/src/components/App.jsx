@@ -1,15 +1,15 @@
 /*global process*/
 /*eslint no-undef: "error"*/
-import React, { useEffect }  from 'react';
+import React, { lazy, useEffect }  from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import Overview from './Overview/overview.jsx';
-import QA from './Q&A/QA.jsx';
-import Reviews from './Reviews/Reviews.jsx';
-import Similar from './Similar/similar.jsx';
 import {ProductActions} from '../store/ProductSlice.js';
 import PropTypes from 'prop-types';
-import swal from 'sweetalert';
+const QA = lazy(() => import('./Q&A/QA.jsx'));
+const Reviews = lazy(() => import('./Reviews/Reviews.jsx'));
+const Similar = lazy(() => import('./Similar/similar.jsx'));
+const swal = lazy(() => import('sweetalert'));
 
 const App = ({logo}) => {
   const Product = useSelector(store => store.Product);
