@@ -1,7 +1,6 @@
 .env
 node_modules
-client/dist/bundle.js
-client/dist/bundle.js.map
+client/dist/
 package-lock.json
 prettyBad.pem
 coverage

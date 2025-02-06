@@ -97,13 +97,11 @@ const Overview = () => {
     </div>
 
     {/* <p>price: {price}</p> */}
-    {price}
+
 
     <div className="clearfix"></div>
 
 
-    <p>{Product.slogan}</p>
-    <p>{Product.description}</p>
 
 
   </div>);
