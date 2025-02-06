@@ -1,7 +1,9 @@
 .env
 node_modules
+client/dist/
 client/dist/bundle.js
 client/dist/bundle.js.map
 package-lock.json
 prettyBad.pem
-coverage
+coverage/
+[0-9][0-9][0-9].bundle.js
