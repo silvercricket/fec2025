@@ -3,14 +3,11 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "server-dev": "npx nodemon --watch server server.js",
-    "client-dev": "npx webpack --watch",
     "test": "jest test --collectCoverage --setupFiles dotenv/config",
     "jest": "jest test --setupFiles dotenv/config",
     "dev": "next dev",
     "build": "next build",
     "start": "npx serve@latest ./build"
-
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
