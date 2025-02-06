@@ -26,7 +26,7 @@ const Overview = () => {
   const Product = useSelector(store => store.Product);
 
   const ReviewsData = useSelector(store => store.ReviewsMeta.ratings);
-  console.log(ReviewsData)
+
 
   const GalleryData = useSelector(store => store.GalleryData);
   const [price, setPrice] = useState('');
