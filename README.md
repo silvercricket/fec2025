@@ -1,28 +1,33 @@
-# fec2025
-RFP FEC 2025
+FEC 2025 FrontEnd E-Commerce App
+This repo is a full-stack e-commerce web application built with React.js, Next.js, and Node.js. The app is deployed with Vercel and uses automated testing with Jest.
 
-0.write the README
+Front page components include:
 
-1. define all dependencies
-       Node: NPM,
+Product Detail Information
+Related Items and a user Outfit manager
+Question and Answers
+and Product Reviews
+Installation
+Fork and clone the repository
 
-       formatting: airbnb linter,
+Manually
 
-       rendering:Babel, Webpack ,webpack-dev
-        
-       middleware: ReactJS, ExpressJS, Axios, Redux,
-        
-       CSS: Sass, Styled Components
+From the command line run “npm install” to install dependencies
 
-       Testing: Jest | React Testing Library
+Start the development server and client concurrently with “npm run dev”
 
-       Deployment/Containers and Swarms: AWS | Docker 
+OR start the app with “npm start”
 
-3. install all dependencies
+With Vercel
 
-4. setup package.json
-    run server, and run client
+Create an account with Vercel (if you have not already)
 
-5. setup express.static and render the the client
+Connect this repo
 
-6. 
+Create environment file
+
+Override output directory to ./build and deploy
+
+Testing
+
+Start testing with “npm test”
