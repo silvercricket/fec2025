@@ -1,4 +1,4 @@
-FEC 2025 FrontEnd E-Commerce App
+FEC 2025 Full-Stack E-Commerce App
 This repo is a full-stack e-commerce web application built with React.js, Next.js, and Node.js. The app is deployed with Vercel and uses automated testing with Jest.
 
 Front page components include:
