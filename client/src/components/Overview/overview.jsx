@@ -25,7 +25,7 @@ const Overview = () => {
   const dispatch = useDispatch();
   const Product = useSelector(store => store.Product);
 
-  const ReviewsData = useSelector(store => store.ReviewsData);
+  const ReviewsData = useSelector(store => store.ReviewsMeta);
 
 
   const GalleryData = useSelector(store => store.GalleryData);
@@ -34,15 +34,17 @@ const Overview = () => {
 
 
 
-
   useEffect(() => {
+
     if(ReviewsData){
 
       var scoreTemp = 0;
-      for(var i = 0; i < ReviewsData.length;i++) {
-        scoreTemp+=ReviewsData[i].rating;
+      var reviewTotal = 0;
+      for(var stars in ReviewsData.ratings) {
+        scoreTemp += stars * ReviewsData.ratings[stars]
+        reviewTotal += Number(ReviewsData.ratings[stars]);
       }
-      scoreTemp/=ReviewsData.length;
+      scoreTemp/=reviewTotal;
       setScore(scoreTemp);
 
     }
@@ -68,10 +70,11 @@ const Overview = () => {
   useEffect(() => {
 
     setPrice('$' + Product.default_price);
-    if(GalleryData.sale_price){
+
+    if(GalleryData.Gallery.sale_price){
       setPrice(
       <p style={{color:'red'}}><s>{Product.default_price}</s>&nbsp;
-      {GalleryData.sale_price} </p>
+      {GalleryData.Gallery.sale_price} </p>
     )
 
     }
@@ -94,11 +97,8 @@ const Overview = () => {
 
     }}>
     <div id='display' style={{height: "80%", width: "40%", float: "left",}}>
-<<<<<<< HEAD
-=======
     <MainDisplay  />
     <Share />
->>>>>>> origin/main
     </div>
 
     {/* <p>price: {price}</p> */}
