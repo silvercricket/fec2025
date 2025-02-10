@@ -1,8 +1,7 @@
 Read Me
 
-### FEC 2025 FrontEnd E-Commerce App
-
-This repo is a front-end e-commerce web application built with React and Node.js. The app is containerized with Docker and uses automated testing with Jest, Puppeteer, and CircleCI.
+### FEC 2025 Full-Stack E-Commerce App
+This repo is a full-stack e-commerce web application built with React.js and Next.js. The app is deployed with Vercel and uses testing with Jest.
 
 Front page components include:
 
@@ -11,36 +10,28 @@ Front page components include:
 - Question and Answers
 - and Product Reviews
 
-
 ### Installation
 
 Fork and clone the repository
 
 **Manually**
 
-From the command line run “npm install” to install dependencies
+- From the command line run “npm install” to install dependencies
 
-Start the development server and client concurrently with “npm run dev”
+- Start the development server “npm run dev”
 
-OR start the app with “npm start”
+- OR start the app with “npm run build” and then "npm start"
 
-**With Docker**
+**With Vercel**
 
-[Install Docker](https://www.docker.com/get-started/)
+- Create an account with Vercel (if you have not already)
 
-Create a Docker image:
+- Connect this repo
 
-From the command line run “docker build -t fec2025 .
+- Create environment file
 
-Start the container:
-
-From the command line run “docker run -p 3000:3000 --env API_URL=http://localhost:3000 --env AUTH_SECRET=yourSecretKey fec2025”
-
-Navigate to http://localhost:3000 in your browser
-
+- Override output directory to ./build and deploy
 
 **Testing**
 
 Start testing with “npm test”
-
-Tests will run automatically on each push via [CircleCI](https://circleci.com/). See documentation for more info
